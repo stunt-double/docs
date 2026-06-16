@@ -1,0 +1,74 @@
+export const metadata = {
+  title: 'Core concepts',
+  description:
+    'Actors, checklists, interviews, workflows, and insights: the building blocks of Stunt Double and how they relate.',
+};
+
+# Core concepts
+
+Stunt Double is organised around a small number of building blocks. This page
+explains each one and how they fit together.
+
+## Workspaces and projects
+
+A **workspace** is the top-level container for your team. It owns members,
+billing, and every project. A **project** sits inside a workspace and groups the
+actors, checklists, and runs for one product or surface. Teams working on
+several products keep them separated by using a project per product.
+
+## Actors
+
+An **actor** is an AI assistant you create. It is defined by its instructions,
+its knowledge, and its capabilities:
+
+- **Instructions** describe the actor's role and how it should behave.
+- **Knowledge** is the reference material the actor can draw on, such as facts
+  about your product or test credentials.
+- **Capabilities** decide what the actor can do, for example browsing the web or
+  reading email.
+
+Under the hood, an actor drives a real browser and works through your product
+the way a person would, observing the page, taking an action, observing the
+result, and repeating until the task is done.
+
+## Checklists
+
+A **checklist** is an automated verification workflow. You describe the steps you
+want checked in plain language, and an actor runs through them in a hosted
+browser. Each step is reported as passed or failed, with a screenshot and a
+short explanation.
+
+Checklists are the fastest way to catch regressions in flows that are tedious to
+test by hand, such as signup, checkout, or onboarding.
+
+## Interviews
+
+An **interview** is a structured conversation Stunt Double runs with your users.
+You define sections and questions, the platform conducts the interview, and it
+produces a report summarising what it learned. Interviews are useful for user
+research and feedback gathering at a scale that manual interviews cannot reach.
+
+## Workflows
+
+A **workflow** chains steps into a single repeatable automation. Where a
+checklist verifies a flow, a workflow is meant to get something done end to end,
+and can combine several actions into one run.
+
+## Insights
+
+As actors work, Stunt Double surfaces **insights**: notable observations drawn
+from a run, such as a confusing step, a broken link, or an unexpected result.
+Insights turn raw session recordings into something you can act on without
+watching every replay.
+
+## Recordings and replays
+
+Everything an actor does is recorded. For any run you can replay the session,
+step through each action, and see the screenshot captured at that moment. This
+is what makes a failed checklist or a surprising interview answer easy to
+diagnose.
+
+## Next steps
+
+Ready to automate this? See the **[API overview](/support/docs/api)** and the
+**[MCP server](/support/docs/api/mcp)**.

@@ -1,0 +1,111 @@
+export const metadata = {
+  title: 'MCP server',
+  description:
+    'Connect Claude and other MCP clients to your Stunt Double workspace: endpoint, authentication, scopes, and the full tool list.',
+};
+
+# MCP server
+
+The Stunt Double MCP server lets an AI client manage your workspace directly:
+create actors, run checklists, launch interviews, and read the results. This
+page covers how to connect and what the server can do.
+
+## Endpoint
+
+```
+https://app.stuntdouble.io/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport. The marketing host also
+answers MCP discovery probes at `/`, `/mcp`, and `/jsonrpc` and redirects real
+requests to the endpoint above, so pointing a client at `www.stuntdouble.io`
+also resolves to the canonical server.
+
+## Connecting a client
+
+Most MCP clients accept a remote server by URL. In a client that uses a JSON
+config (such as Claude), add the server like this:
+
+```json
+{
+  "mcpServers": {
+    "stunt-double": {
+      "url": "https://app.stuntdouble.io/api/mcp"
+    }
+  }
+}
+```
+
+The first time you connect, the client runs the OAuth flow and asks you to sign
+in to your Stunt Double workspace. After you approve, the client can list and
+call tools on your behalf.
+
+## Authentication and scopes
+
+Access is authorised with **OAuth 2.1**:
+
+- Authorization URL: `https://app.stuntdouble.io/oauth/authorize`
+- Token URL: `https://app.stuntdouble.io/oauth/token`
+
+Tokens are scoped to the minimum a client needs. The supported scopes are:
+
+```
+workspaces:read
+actors:read        actors:write
+knowledge:read     knowledge:write
+conversations:read
+checklists:read    checklists:run
+workflows:read     workflows:run
+feedback:read      feedback:write
+interviews:read    interviews:write   interviews:run
+```
+
+## Available tools
+
+The server exposes tools grouped by resource:
+
+### Workspaces
+
+- `list_workspaces`, `get_workspace`, `list_workspace_members`
+
+### Actors
+
+- `list_actors`, `get_actor`, `create_actor`, `update_actor`
+
+### Knowledge
+
+- `list_actor_knowledge`, `add_actor_knowledge`, `remove_actor_knowledge`
+
+### Conversations
+
+- `list_conversations`, `get_conversation`
+
+### Checklists
+
+- `list_checklists`, `get_checklist`, `get_checklist_run`, `run_checklist`
+
+### Workflows
+
+- `list_workflows`, `get_workflow`, `run_workflow`, `get_workflow_run`
+
+### Feedback
+
+- `list_feedback`, `get_feedback`, `update_feedback_status`
+
+### Interviews
+
+- `list_interviews`, `get_interview`, `create_interview`, `update_interview`,
+  `add_interview_section`, `add_interview_item`, `add_interview_participant`,
+  `get_interview_participant`, `get_interview_report`, `launch_interview`,
+  `regenerate_interview_report`
+
+## Discovery manifest
+
+Registries and clients can discover the server from its published manifest:
+
+```
+https://www.stuntdouble.io/.well-known/mcp.json
+```
+
+It describes the server name, transport, authentication, and the tool list
+above, following the MCP manifest schema.

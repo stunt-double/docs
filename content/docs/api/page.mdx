@@ -1,0 +1,57 @@
+export const metadata = {
+  title: 'API overview',
+  description:
+    'How to talk to Stunt Double programmatically: the MCP server, authentication, and the resources you can manage.',
+};
+
+# API overview
+
+Stunt Double exposes its platform programmatically through a
+**Model Context Protocol (MCP)** server. MCP is an open standard for connecting
+AI clients to tools and data, which means you can drive your workspace from
+Claude, from your own agents, or from any MCP-compatible client, without writing
+a bespoke integration.
+
+## The MCP server
+
+The server is hosted by the product app at:
+
+```
+https://app.stuntdouble.io/api/mcp
+```
+
+It speaks the **Streamable HTTP** transport. Point any MCP client at that URL to
+list and call the available tools. For a full walkthrough, including client
+configuration, see the **[MCP server](/support/docs/api/mcp)** page.
+
+## What you can manage
+
+The server groups its tools by the resource they act on:
+
+| Resource          | What you can do                                                     |
+| ----------------- | ------------------------------------------------------------------- |
+| **Workspaces**    | List workspaces and members, read workspace details                 |
+| **Actors**        | List, read, create, and update actors                               |
+| **Knowledge**     | List, add, and remove an actor's knowledge                          |
+| **Conversations** | List and read conversations                                         |
+| **Checklists**    | List, read, run checklists, and read checklist runs                 |
+| **Workflows**     | List, read, run workflows, and read workflow runs                   |
+| **Feedback**      | List and read feedback, and update its status                       |
+| **Interviews**    | Create, read, update, launch interviews, and read interview reports |
+
+## Authentication
+
+Access is authorised with **OAuth 2.1**. MCP clients that support OAuth will
+discover the authorization and token endpoints automatically and prompt you to
+sign in to your Stunt Double workspace the first time you connect.
+
+Tokens are scoped, so a client only gets the permissions it needs, for example
+`checklists:run` to start a checklist or `actors:write` to create one. See the
+[MCP server](/support/docs/api/mcp) page for the full list of scopes.
+
+## Discovery
+
+The platform publishes a manifest at
+`https://www.stuntdouble.io/.well-known/mcp.json` describing the server, its
+transport, authentication, and tools. MCP registries and clients use this to
+discover the integration.
