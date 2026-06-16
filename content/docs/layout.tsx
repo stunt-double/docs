@@ -3,13 +3,14 @@ import type { ReactNode } from 'react';
 import { Container } from '../../components/layout';
 import { DocsSidebar } from './_components/docs-sidebar';
 
-/** Prose styling for docs bodies. Uses the core marketing typography
- * (sans-serif headings via `font-sans`, `font-semibold tracking-tight`, matching
- * the homepage/support pages) rather than the blog's editorial serif, tuned for
- * reference material. */
+/** Prose styling for docs bodies. Headings use the Geist Pixel display
+ * voice (`font-pixel`, the same face that powers `.font-display`) rather
+ * than the blog's editorial serif, tuned for reference material. Pixel
+ * glyphs sit on a fixed square grid, so headings keep normal tracking and
+ * weight 400 (negative tracking collapses the cells). */
 const docsProse =
   'prose dark:prose-invert max-w-none ' +
-  'prose-headings:font-sans prose-headings:font-semibold prose-headings:tracking-tight prose-headings:scroll-mt-28 ' +
+  'prose-headings:font-pixel prose-headings:font-normal prose-headings:tracking-normal prose-headings:scroll-mt-28 ' +
   'prose-h1:text-3xl prose-h1:sm:text-4xl prose-h1:mb-3 ' +
   'prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 ' +
   'prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-3 ' +
