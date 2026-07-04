@@ -1,0 +1,67 @@
+export const metadata = {
+  title: 'Build an actor with the right capabilities',
+  description:
+    'Write instructions and knowledge that make an actor behave like a real member of your audience, and turn on only the capabilities it needs.',
+};
+
+# Build an actor with the right capabilities
+
+The **[Quickstart](/support/docs/getting-started)** has you create a minimal
+actor to run one checklist. This tutorial goes further: writing instructions
+and knowledge that make an actor behave like a genuine member of your
+audience, and choosing capabilities deliberately instead of turning everything
+on.
+
+## Start with a persona, not a checklist
+
+Instructions work best when they describe who the actor is standing in for,
+not what you want it to click. A persona has a goal, a level of product
+familiarity, and a tone:
+
+> You are a small business owner evaluating whether to switch invoicing
+> software. You are price-sensitive, comfortable with software but impatient
+> with jargon, and you will abandon a signup flow if it asks for a credit card
+> before showing you the product.
+
+An actor written this way makes the same kind of judgement calls a real
+visitor would, rather than mechanically executing steps.
+
+## Give it knowledge to draw on
+
+Knowledge entries are the reference material an actor can pull from mid-run:
+facts about your product, test account credentials, brand or tone
+guidelines, or answers to questions it might otherwise get wrong. Add a
+knowledge entry for anything you would otherwise have to explain to a new
+team member on day one.
+
+Keep entries short and specific. A dozen focused entries work better than one
+long document, since the actor only needs to draw on what's relevant to the
+step it's on.
+
+## Turn on only the capabilities it needs
+
+Capabilities are opt-in toggles on the actor's page and decide what it's
+allowed to do:
+
+- **Use browser**, drives a real browser through your product.
+- **Receive email**, reads codes and notifications sent to the actor's inbox,
+  useful for signup and verification flows.
+- **Web search**, looks things up beyond your product.
+- **Browser context** and **Memory**, carry state between runs.
+- **Code sandbox**, runs and checks code.
+
+An actor that only needs to browse your marketing site doesn't need email
+access, and one that never verifies an account doesn't need it either. Fewer
+capabilities also means a smaller surface to reason about when you're
+debugging an unexpected result.
+
+## Test it before you rely on it
+
+Before building a whole checklist suite around a new actor, run one small
+checklist against it and read the result. Confirm it interprets your
+instructions the way you intended, then expand from there.
+
+## Next steps
+
+- **[Write checklists that catch real regressions](/support/docs/tutorials/effective-checklists)**
+- **[Run a user interview](/support/docs/tutorials/running-an-interview)**

@@ -1,0 +1,53 @@
+export const metadata = {
+  title: 'Automate multi-step workflows',
+  description:
+    'Chain checklists, conditions, notifications, and PR reviews into one repeatable automation.',
+};
+
+# Automate multi-step workflows
+
+A checklist verifies one flow in one run. A workflow chains several steps
+together into a single repeatable automation, so you can wire up a whole
+process instead of a single check.
+
+## Step types available
+
+A workflow is built from steps, each with its own configuration:
+
+- **Run Checklist**, executes an existing checklist and carries its result
+  forward.
+- **Condition**, branches the workflow based on the result of a previous
+  step.
+- **Notification**, sends an alert when the workflow reaches that step.
+- **Delay**, waits before continuing, useful for giving an async process time
+  to finish.
+- **GitHub Comment**, posts a comment back to a pull request.
+- **Actor PR Review**, has an actor review a pull request and report its
+  findings.
+
+## Example: verify a pull request automatically
+
+A common workflow for a product team:
+
+1. **Run Checklist**, runs the checklist for the flow the pull request
+   touches.
+2. **Condition**, checks whether every check in that run passed.
+3. **Actor PR Review**, if the condition passes, has an actor review the
+   change directly.
+4. **GitHub Comment**, posts the outcome back to the pull request either way,
+   so the result is visible without leaving GitHub.
+
+Each step only needs to know about the step before it, which is what makes it
+possible to compose a whole review process out of a handful of pieces.
+
+## Toggle a workflow on when you're ready
+
+A new workflow can be built and tested without affecting anything else.
+Toggle it on only once you've run it a few times and are confident in the
+result, since an enabled workflow runs automatically going forward rather
+than waiting for you to trigger it by hand.
+
+## Next steps
+
+- **[Turn runs into insights](/support/docs/tutorials/reviewing-runs)**
+- **[Automate Stunt Double from Claude](/support/docs/tutorials/automate-with-mcp)**

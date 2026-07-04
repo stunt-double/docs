@@ -1,0 +1,60 @@
+export const metadata = {
+  title: 'Write checklists that catch real regressions',
+  description:
+    'Structure checks around outcomes, not clicks, and read the evidence behind a pass or fail instead of trusting the badge.',
+};
+
+# Write checklists that catch real regressions
+
+A checklist is only as useful as the checks inside it. This tutorial covers
+how to write checks that hold up over time, and how to read a run so a
+"failed" badge tells you something you can act on.
+
+## Write one check per outcome, not per click
+
+A check is a single description of what should be true. It's tempting to
+write mechanical, step-by-step instructions, but checks written that way
+break the moment your UI changes, even when the underlying behaviour didn't:
+
+- Weak: "Click the discount field, type SAVE10, click Apply."
+- Strong: "Confirm the cart shows the discounted price after applying code
+  SAVE10."
+
+The strong version tells the actor what outcome to verify and leaves it to
+work out how to get there, which is exactly what makes checklists resilient
+to redesigns.
+
+## Point checks at the moment that matters
+
+Group checks around the state that actually needs verifying, not the
+navigation that gets you there: the confirmation screen after checkout, the
+inbox after a signup, the dashboard after a plan change. If a flow has
+several outcomes worth confirming, write a check for each one rather than one
+check trying to cover all of them.
+
+## Read the evidence, not just the pass/fail badge
+
+Every check reports a status alongside the evidence behind it. A run report
+has tabs for:
+
+- **Results**, each check's status and a short explanation.
+- **Screenshots**, the page as the actor saw it at each step.
+- **Recording**, the full session if you want to watch it play out.
+- **Knowledge**, which knowledge entries the actor drew on.
+
+When a check fails, read the explanation and screenshot before deciding
+whether it's a real regression or an ambiguous instruction. A surprising
+number of "failures" turn out to be a check that needs to be more specific
+about what counts as success.
+
+## Re-run before you trust a result
+
+An actor working through a hosted browser can hit a transient issue, a slow
+page load, a flaky third-party script, just like a human tester can. Before
+filing a bug from a single failed run, re-run the checklist once. A result
+that reproduces consistently is worth acting on immediately.
+
+## Next steps
+
+- **[Turn runs into insights](/support/docs/tutorials/reviewing-runs)**
+- **[Automate multi-step workflows](/support/docs/tutorials/building-workflows)**

@@ -1,0 +1,55 @@
+export const metadata = {
+  title: 'Automate Stunt Double from Claude',
+  description:
+    'Connect the MCP server to Claude and drive actors, checklists, and interviews from a conversation.',
+};
+
+# Automate Stunt Double from Claude
+
+The **[API overview](/support/docs/api)** and **[MCP server](/support/docs/api/mcp)**
+pages cover the endpoint, authentication, and full tool list. This tutorial
+walks through actually connecting Claude and using it to run your workspace
+from a conversation.
+
+## Connect Claude to your workspace
+
+Add the Stunt Double server to Claude using the endpoint from the
+**[MCP server](/support/docs/api/mcp)** page:
+
+```
+https://app.stuntdouble.io/api/mcp
+```
+
+The first time Claude calls a tool, it runs the OAuth flow and asks you to
+sign in to your workspace. Once you approve, Claude can list and call tools
+on your behalf for the rest of the session.
+
+## What you can ask Claude to do
+
+With the server connected, you can drive most of the platform in plain
+language instead of clicking through the dashboard:
+
+- "Run the checklist for our signup flow and tell me if anything failed."
+- "Create an actor for a first-time free-trial user and give it browser
+  access."
+- "Launch a new round of our onboarding interview and summarise the top
+  themes."
+- "List the workflows that ran in the last day and flag any failures."
+
+Claude translates each request into the appropriate tool calls, actors,
+checklists, workflows, interviews, and reads back the result.
+
+## Scope tokens to least privilege
+
+Grant only the scopes a given client actually needs, for example
+`checklists:run` for a client that should trigger runs but never change what
+an actor does, or `actors:write` only for a client responsible for
+provisioning actors. See the full scope list on the
+**[MCP server](/support/docs/api/mcp)** page.
+
+## Next steps
+
+- **[Automate multi-step workflows](/support/docs/tutorials/building-workflows)**,
+  for automations that don't need a human in the loop at all.
+- **[API overview](/support/docs/api)**, for driving Stunt Double from your
+  own tools instead of Claude.

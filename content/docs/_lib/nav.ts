@@ -46,6 +46,51 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
+    title: 'Tutorials',
+    links: [
+      {
+        title: 'Overview',
+        href: '/support/docs/tutorials',
+        description: 'The full series, and where to start.',
+      },
+      {
+        title: 'Build an actor with the right capabilities',
+        href: '/support/docs/tutorials/first-actor',
+        description: 'Instructions, knowledge, and capabilities that fit the job.',
+      },
+      {
+        title: 'Write checklists that catch real regressions',
+        href: '/support/docs/tutorials/effective-checklists',
+        description: 'Structure checks around outcomes and read the evidence.',
+      },
+      {
+        title: 'Run a user interview',
+        href: '/support/docs/tutorials/running-an-interview',
+        description: 'Sections, items, recruitment, and reading the report.',
+      },
+      {
+        title: 'Automate multi-step workflows',
+        href: '/support/docs/tutorials/building-workflows',
+        description: 'Chain checklists, conditions, and PR reviews together.',
+      },
+      {
+        title: 'Turn runs into insights',
+        href: '/support/docs/tutorials/reviewing-runs',
+        description: 'Read results, screenshots, recordings, and insights.',
+      },
+      {
+        title: 'Test a product behind your firewall',
+        href: '/support/docs/tutorials/self-hosted-worker',
+        description: 'Run actors against an internal product with a worker.',
+      },
+      {
+        title: 'Automate Stunt Double from Claude',
+        href: '/support/docs/tutorials/automate-with-mcp',
+        description: 'Connect the MCP server and drive your workspace from Claude.',
+      },
+    ],
+  },
+  {
     title: 'API',
     links: [
       {
