@@ -1,0 +1,96 @@
+export const metadata = {
+  title: 'Stunt Double + Figma',
+  description:
+    'Test Figma prototypes with AI personas, re-check flows when files change, and put brand guardianship on autopilot.',
+};
+
+# Stunt Double + Figma
+
+Figma is where the design decisions happen; Stunt Double is how you find out
+whether users can actually follow them. The integration works at two levels:
+agent-driven testing of prototypes (via MCP), and event-driven automation that
+re-checks work whenever a file changes (via the Figma connection).
+
+**Who this is for:** designers validating flows before handoff, design systems
+teams guarding consistency, and PMs who want usability signal attached to the
+file, not in a separate report.
+
+## Setup
+
+1. **Connect Figma to your workspace**: Settings -> Connections in
+   [app.stuntdouble.io](https://app.stuntdouble.io), connect Figma. This
+   enables Figma event triggers for workflows (file updates, comments, version
+   updates, library publishes).
+2. **Link files to projects**: set the Figma file URL on a project so runs,
+   feedback, and interviews stay associated with the design source.
+3. **For agent workflows**, add the Stunt Double MCP connector to whichever
+   agent you use alongside Figma (Claude, Claude Code, Cursor):
+   `https://app.stuntdouble.io/api/mcp`. If you also run Figma's own MCP
+   server, the two compose well: Figma MCP reads and edits the design, Stunt
+   Double MCP tests it.
+
+## Workflow: test a prototype with personas
+
+Actors drive real browsers, so anything viewable at a URL is testable. For
+Figma that means:
+
+- **Prototype share links** (`figma.com/proto/...`) set to "anyone with the
+  link can view". Good for click-through flow testing: can a persona find
+  their way from the landing frame to the goal?
+- **Figma Make published sites** for anything with real interaction. See the
+  dedicated **[Figma Make guide](/support/docs/integrations/figma-make)**.
+
+From your agent:
+
+> "Use the validate_design prompt on my prototype link with personas for our
+> two main segments. Focus on whether the new onboarding order makes sense."
+
+The agent creates an interview, adds task items ("Get from the welcome screen
+to creating your first project"), attaches varied personas (mix devices;
+prototypes often fail on mobile first), launches, and returns the synthesised
+report with transcripts as evidence.
+
+**Interpreting results on prototypes:** personas can only follow the
+interactions you wired. A "could not proceed" finding on a prototype sometimes
+means a missing hotspot rather than a design flaw; the transcript makes it
+obvious which.
+
+## Workflow: re-check automatically when the design changes
+
+This is the predictive half. Once Figma is connected, workflows can trigger on
+Figma events:
+
+1. Create checklists for the flows the design feeds (staging or production
+   URLs).
+2. Create a workflow with a Figma event trigger and steps that run those
+   checklists, plus a notification step.
+3. Activate it.
+
+Now a designer shipping a file update or publishing a library triggers a
+re-check of the affected product flows, and discrepancies between the design
+intent and the built product surface within minutes of the change, not at the
+next QA pass. An agent can set this whole thing up from the `setup_guardrails`
+prompt.
+
+## Workflow: brand and design-system guardianship
+
+Give an actor your brand guidelines as knowledge (voice, spacing rules, colour
+usage, component dos and don'ts) and use it to run checklists like:
+
+- "Every page uses the product font stack; no default serif fallbacks
+  anywhere."
+- "Primary CTAs use the brand primary colour and sentence case."
+- "Empty states show the illustration style, not stock icons."
+
+Run these against staging on a schedule or on library publishes, and the
+design system stops drifting silently.
+
+## Tips
+
+- Keep prototype links public-viewable for the duration of a test; personas
+  do not have Figma accounts.
+- Name interviews after the design iteration ("Onboarding v3, post-crit") so
+  before/after comparisons are easy.
+- Feedback captured in Stunt Double carries page URL, pin position, and
+  screenshots, which maps naturally back to frames when you triage with the
+  `triage_feedback` prompt.

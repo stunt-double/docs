@@ -91,6 +91,36 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
+    title: 'Integration guides',
+    links: [
+      {
+        title: 'Overview',
+        href: '/support/docs/integrations',
+        description: 'How Stunt Double plugs into the tools where work already happens.',
+      },
+      {
+        title: 'Claude design',
+        href: '/support/docs/integrations/claude-design',
+        description: 'Design in Claude, publish the artifact, validate with personas.',
+      },
+      {
+        title: 'Figma',
+        href: '/support/docs/integrations/figma',
+        description: 'Test prototypes with personas and re-check flows on file updates.',
+      },
+      {
+        title: 'Figma Make',
+        href: '/support/docs/integrations/figma-make',
+        description: 'Publish a Make site and interview personas against it.',
+      },
+      {
+        title: 'Codebases',
+        href: '/support/docs/integrations/codebases',
+        description: 'Verify changes on preview deployments from Claude Code, Cursor, or GitHub.',
+      },
+    ],
+  },
+  {
     title: 'API',
     links: [
       {

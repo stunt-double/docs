@@ -1,0 +1,112 @@
+export const metadata = {
+  title: 'Stunt Double + codebases',
+  description:
+    'Wire Stunt Double into Claude Code, Cursor, and GitHub so every change on a preview deployment gets verified by an AI persona before merge.',
+};
+
+# Stunt Double + codebases (Claude Code, Cursor, GitHub)
+
+Unit tests prove the code does what the code says. Stunt Double proves a user
+can still do what they came for. Wired into a coding agent and GitHub, it
+closes the loop between "the diff looks right" and "the flow works": every
+change that reaches a preview deployment can be walked end to end by an AI
+persona before merge, with results reported where engineers already look.
+
+**Who this is for:** engineers using Claude Code, Cursor, Windsurf, or any
+MCP-capable coding agent; teams that want user-level verification in their PR
+flow.
+
+## Setup
+
+1. **Add the MCP server to your agent:**
+
+   ```bash
+   # Claude Code
+   claude mcp add --transport http stuntdouble https://app.stuntdouble.io/api/mcp
+   ```
+
+   ```json
+   // Cursor / Windsurf mcp.json
+   { "mcpServers": { "stuntdouble": { "url": "https://app.stuntdouble.io/api/mcp" } } }
+   ```
+
+   You authorise via browser on first use; no API keys.
+
+2. **Connect GitHub** to your workspace (Settings -> Connections) so
+   agents can read PRs and post results, and workflows can trigger on GitHub
+   events.
+
+3. **Teach your agent the habit.** Add a note to your repo's agent
+   instructions (`CLAUDE.md`, `.cursorrules`, etc.) so verification happens by
+   default, not on request:
+
+   ```markdown
+   ## Verification
+
+   After a change is deployed to a preview URL, verify it with Stunt Double
+   (use the verify_change MCP prompt): run a checklist over the affected user
+   flows and report per-check results with evidence. Post the results on the
+   pull request. If a checklist for the flow already exists, re-run it rather
+   than creating a new one.
+   ```
+
+## Workflow: verify a PR on its preview deployment
+
+The `verify_change` prompt encodes the whole loop, or drive it
+conversationally:
+
+> "The preview for this branch is at my-branch-preview.vercel.app. Verify the
+> signup changes and post results on the PR."
+
+Your agent will:
+
+1. Create (or reuse) a checklist against the preview URL, with instructions
+   derived from the diff and 4 to 8 pass/fail checks: the new behaviour,
+   adjacent flows, and error states.
+2. Run it; an actor drives a real browser through the flows and records
+   evidence per check.
+3. On failures, read the evidence, propose or apply the fix, and re-run.
+4. Post a verdict comment on the PR: pass/fail per check with evidence
+   highlights.
+
+Since the coding agent both wrote the change and read the failure evidence,
+the fix loop is tight: no repro steps, no handoff.
+
+## Workflow: checks that run themselves
+
+Checklists persist, so verification compounds into a regression net:
+
+- **On deploys**: a workflow with a Vercel or GitHub event trigger re-runs the
+  critical checklists on every deploy or PR, with notification steps for
+  failures and GitHub comment / actor PR review steps to report inline.
+- **On a schedule**: cron-triggered workflows (daily against production) catch
+  regressions that arrive via dependencies, config, or content rather than
+  code.
+
+Set both up in one shot with the `setup_guardrails` prompt. After a few PRs
+you accumulate a library of user-flow checks that no one has to remember to
+run.
+
+## Workflow: from bug report to fix without a human repro
+
+Feedback captured by Stunt Double (pinned to a page, with screenshot and
+device info) is agent-readable:
+
+> "Triage the new feedback on the dashboard project; reproduce anything that
+> looks like a bug."
+
+The agent clusters reports, reproduces suspects with targeted checklist runs,
+fixes what it can in the codebase, verifies on the preview, and updates the
+feedback status. The `triage_feedback` prompt packages this.
+
+## Tips
+
+- Actors have their own email inboxes, so flows behind OTP or magic-link auth
+  are testable end to end.
+- Keep checks user-phrased ("a new user can complete signup with a magic
+  link") rather than DOM-phrased ("the submit button is enabled"); they
+  survive refactors.
+- Small focused checklists beat one giant one: clearer failure signal, cheaper
+  re-runs.
+- Runs are async and take a few minutes; agents should poll for results
+  rather than assume completion.
