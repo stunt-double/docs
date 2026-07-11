@@ -4,8 +4,11 @@
  * Single source of truth for the docs sidebar and the sitemap, so a new page
  * only needs adding here once. Keep the order top-to-bottom as it should read
  * in the sidebar. Every `href` must map to a `page.mdx` route under
- * `src/app/support/docs`.
+ * `src/app/support/docs`, except the integration guides section, which links
+ * out to the guide sub-pages under `/integrations`.
  */
+
+import { guideHref, integrationGuides } from '../../../integrations/guides';
 
 export interface DocsLink {
   title: string;
@@ -91,34 +94,15 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
+    // Guides live under /integrations (their own marketing sub-pages), not
+    // under /support/docs; they are listed here for sidebar discovery and so
+    // the sitemap picks them up alongside the docs.
     title: 'Integration guides',
-    links: [
-      {
-        title: 'Overview',
-        href: '/support/docs/integrations',
-        description: 'How Stunt Double plugs into the tools where work already happens.',
-      },
-      {
-        title: 'Claude design',
-        href: '/support/docs/integrations/claude-design',
-        description: 'Design in Claude, publish the artifact, validate with personas.',
-      },
-      {
-        title: 'Figma',
-        href: '/support/docs/integrations/figma',
-        description: 'Test prototypes with personas and re-check flows on file updates.',
-      },
-      {
-        title: 'Figma Make',
-        href: '/support/docs/integrations/figma-make',
-        description: 'Publish a Make site and interview personas against it.',
-      },
-      {
-        title: 'Codebases',
-        href: '/support/docs/integrations/codebases',
-        description: 'Verify changes on preview deployments from Claude Code, Cursor, or GitHub.',
-      },
-    ],
+    links: integrationGuides.map((guide) => ({
+      title: guide.title,
+      href: guideHref(guide.slug),
+      description: guide.description,
+    })),
   },
   {
     title: 'API',
