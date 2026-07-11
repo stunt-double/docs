@@ -3,12 +3,11 @@
  *
  * Single source of truth for the docs sidebar and the sitemap, so a new page
  * only needs adding here once. Keep the order top-to-bottom as it should read
- * in the sidebar. Every `href` must map to a `page.mdx` route under
- * `src/app/support/docs`, except the integration guides section, which links
- * out to the guide sub-pages under `/integrations`.
+ * in the sidebar. Every `href` maps to a `page.mdx` route under
+ * `src/app/support/docs`.
  */
 
-import { guideHref, integrationGuides } from '../../../integrations/guides';
+import { guideHref, integrationGuides } from './guides';
 
 export interface DocsLink {
   title: string;
@@ -94,15 +93,19 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
-    // Guides live under /integrations (their own marketing sub-pages), not
-    // under /support/docs; they are listed here for sidebar discovery and so
-    // the sitemap picks them up alongside the docs.
     title: 'Integration guides',
-    links: integrationGuides.map((guide) => ({
-      title: guide.title,
-      href: guideHref(guide.slug),
-      description: guide.description,
-    })),
+    links: [
+      {
+        title: 'Overview',
+        href: '/support/docs/guides',
+        description: 'How Stunt Double plugs into the tools where work already happens.',
+      },
+      ...integrationGuides.map((guide) => ({
+        title: guide.title,
+        href: guideHref(guide.slug),
+        description: guide.description,
+      })),
+    ],
   },
   {
     title: 'API',

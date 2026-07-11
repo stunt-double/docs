@@ -1,0 +1,224 @@
+export const metadata = {
+  title: 'Continuous validation: brand, compliance, continuity, design system',
+  description:
+    'Turn brand, tone-of-voice, legal, continuity, and design-system standards into checks that run on every deploy and design update.',
+};
+
+# Continuous validation: brand, compliance, continuity, design system
+
+Most teams think of Stunt Double as flow verification: can a user sign up, can
+they check out. The same machinery enforces standards. An actor that can read
+every page like a customer can also read every page like a brand editor, a
+compliance reviewer, or a design-system maintainer, and unlike those humans,
+it can do it on every deploy.
+
+**Who this is for:** brand and content teams, legal and compliance owners,
+design-system maintainers, and PMs responsible for keeping many surfaces
+coherent.
+
+## The guardian pattern
+
+Every validation workflow follows the same three steps, and the MCP prompts
+(`check_brand`, `check_design_system`, `check_compliance`,
+`check_continuity`) encode them:
+
+1. **Codify the standard as actor knowledge.** Store the rules on a dedicated
+   reviewer actor (brand and tone guidelines, design tokens and component
+   rules, the list of regulatory requirements). Stored knowledge is what makes
+   audits repeatable: every future run enforces the same standard, not
+   whatever was in the prompt that day.
+2. **Assert the standard with observable checks.** Each rule becomes a
+   checklist check a reader could verify on the rendered page. Phrase checks
+   in terms of what is visible, not how it is implemented.
+3. **Automate the re-run.** A standard that is checked once decays. Wire the
+   checklists into a workflow: schedule (weekly brand sweep), deploy trigger
+   (compliance on every release), or Figma events (design-system audit when
+   the library is published).
+
+## Brand and tone of voice
+
+Give the reviewer actor your voice rules and let it read the site the way a
+customer does:
+
+- "Headlines use sentence case."
+- "Copy addresses the reader as you, never the user."
+- "Error messages state what happened and offer a next step."
+- "No unexplained jargon on pricing or onboarding pages."
+
+Findings come back grouped by page with the offending copy quoted as evidence
+and a suggested rewrite in the correct voice. Because the rules live on the
+actor, a rebrand is one knowledge update away from being enforced everywhere.
+
+## Design-system adherence
+
+Actors see the rendered product the way a user does, so checks are phrased
+visually rather than in terms of code:
+
+- "Body text uses the product font stack; no serif fallbacks anywhere."
+- "Primary CTAs use the brand primary colour and sentence case."
+- "Form fields show a visible focus state."
+- "Empty states use the illustration style, not stock icons."
+
+The natural trigger is a Figma event: when the design library is published or
+a file changes, the audit re-runs against staging and drift between the system
+and the shipped product surfaces within minutes. See the
+**[Figma guide](/support/docs/guides/figma)** for the connection setup.
+
+## Legal and compliance
+
+Compliance checks exercise behaviour, not just presence:
+
+- "A cookie banner appears before any non-essential tracking, and the reject
+  option works."
+- "Privacy policy and terms are reachable from every page footer."
+- "Prices include mandatory taxes, or state clearly that they do not."
+- "Required disclaimers appear adjacent to the claims they qualify."
+- "Marketing emails contain a working unsubscribe link" (actors have their own
+  inboxes, so email flows are testable end to end).
+
+Two framing rules keep this workflow honest: your team supplies which regimes
+apply (the actor never guesses jurisdictions), and results are evidence for
+counsel to review, presented as observations against the stated requirements
+rather than legal conclusions. Every finding carries the exact page content as
+evidence.
+
+## Continuity across surfaces
+
+Pricing, terminology, feature names, and promises drift apart across the
+marketing site, the product, the docs, and emails, and customers are usually
+the first to notice. The continuity workflow runs mirrored checks per surface
+("record the price, billing period, and plan names shown") plus cross-surface
+assertions ("the price at checkout matches the pricing page"), then reports a
+discrepancy table ranked by customer impact.
+
+For promise-versus-product continuity, an interview beats a checklist: give a
+persona the task "the homepage says setup takes two minutes; sign up and see
+if that holds" and read the transcript.
+
+## Example actors and workflows
+
+Each example below is a complete setup: the reviewer actor and its knowledge,
+the checklist that asserts the standard, and the workflow that re-runs it. Build
+them from the dashboard, or ask Claude to create them over MCP in one line, for
+example "Set up a weekly brand sweep on acme.com against these voice rules...".
+Swap the URLs, rules, and channels for your own.
+
+### Brand and tone of voice
+
+```text
+Actor      Brand Guardian
+           "A meticulous brand editor. Read every page as a first-time
+            visitor and flag anything that breaks our voice."
+Knowledge  Voice and tone guidelines
+           - Headlines use sentence case, no trailing full stops.
+           - Address the reader as "you"; never "the user".
+           - No exclamation marks in product UI or buttons.
+           - Errors say what happened, then the next step.
+Checklist  Brand sweep: marketing pages   (run by Brand Guardian, url: acme.com)
+           Instructions: Visit the homepage, pricing, and onboarding. Read each
+             as a first-time visitor and judge the copy against your knowledge.
+           Checks:
+           - Every headline uses sentence case.
+           - Copy addresses the reader as "you", never "the user".
+           - No exclamation marks in buttons, labels, or errors.
+           - Every error message states what happened and a next step.
+Workflow   Weekly brand sweep
+           Trigger: schedule "0 9 * * 1"   (Mondays, 9am)
+           Steps:   run_checklist  ->  notification (#brand)
+```
+
+### Design-system adherence
+
+```text
+Actor      Design-System Guardian
+           "A design-system maintainer. Judge the rendered product against our
+            tokens and component rules; report what a user would see."
+Knowledge  Design system rules
+           - Body text: Inter; headings: Inter Display. No serif fallbacks.
+           - Primary buttons: brand primary (#4F46E5), sentence case, 8px radius.
+           - Inputs show a 2px focus ring in brand primary.
+           - Empty states use the line-illustration set, never stock icons.
+Checklist  DS adherence: core app   (run by Design-System Guardian, url: staging)
+           Instructions: Walk the dashboard, a form, and one empty state.
+           Checks:
+           - Body and heading text use the product font stack, no serif fallback.
+           - Primary CTAs use the brand primary colour and sentence case.
+           - Focus states are visible on every input.
+           - Empty states use the illustration style, not stock icons.
+Workflow   DS drift check on library publish
+           Trigger: figma_event   (library publish / file update)
+           Steps:   run_checklist  ->  notification (#design-system)
+```
+
+### Legal and compliance
+
+```text
+Actor      Compliance Reviewer
+           "A compliance analyst. Check the product against the requirements in
+            your knowledge and report evidence for counsel; never draw legal
+            conclusions and never assume a jurisdiction."
+Knowledge  Applicable requirements (supplied by the team)
+           - GDPR / ePrivacy: consent before non-essential cookies; reject works.
+           - Privacy policy and terms reachable site-wide.
+           - Displayed prices include GST or state that they exclude it.
+           - Marketing emails carry a working unsubscribe link.
+Checklist  Compliance sweep: acquisition   (run by Compliance Reviewer, url: acme.com)
+           Instructions: Load the site fresh (no prior consent). Exercise the
+             cookie banner, footer links, pricing, and a marketing email.
+           Checks:
+           - A cookie banner appears before any non-essential tracking fires.
+           - The banner's reject option works and is honoured.
+           - Privacy policy and terms are reachable from every page footer.
+           - Displayed prices include GST or clearly state they exclude it.
+           - The latest marketing email has a working unsubscribe link.
+Workflow   Compliance gate on deploy
+           Trigger: vercel_event   (production deploy succeeded)
+           Steps:   run_checklist  ->  notification (#compliance + email counsel)
+```
+
+### Continuity across surfaces
+
+```text
+Actor      Continuity Reviewer
+           "Compare what we say across surfaces. Record exact values; flag any
+            surface that disagrees with the others."
+Checklist  Pricing continuity: marketing   (run by Continuity Reviewer, url: acme.com/pricing)
+           Checks:
+           - Record the price, billing period, and plan names shown.
+Checklist  Pricing continuity: checkout    (run by Continuity Reviewer, url: app.acme.com)
+           Instructions: Start checkout for each plan.
+           Checks:
+           - The price and plan name at checkout match the pricing page.
+           - Feature names match the marketing site (no renamed or dropped ones).
+Workflow   Weekly continuity check
+           Trigger: schedule "0 8 * * 1"
+           Steps:   run_checklist (marketing) -> run_checklist (checkout)
+                    -> notification (#growth)
+```
+
+For promise-versus-product continuity, an interview is a better fit than a
+checklist: attach a persona and give it the task "the homepage says setup takes
+two minutes; sign up and see if that holds", then read the transcript.
+
+## Where this fits in the other workflows
+
+- **Codebases**: run a compliance or brand audit against the preview
+  deployment alongside change verification, so a PR that breaks a disclosure
+  or ships off-brand copy is caught before merge. See the
+  **[codebases guide](/support/docs/guides/codebases)**.
+- **Figma**: a design-system audit on Figma events closes the loop between the
+  library and production. See the **[Figma guide](/support/docs/guides/figma)**.
+- **Claude**: all four prompts are available from the prompt picker once the
+  connector is added; "audit our site against the tone of voice guide" is a
+  one-line ask. See the **[Claude design guide](/support/docs/guides/claude-design)**.
+
+## Tips
+
+- One standard per checklist. A brand sweep and a compliance sweep produce
+  different reviewers' worth of findings; keep the failure signals separate.
+- Keep rules observable. "Feels premium" is not checkable; "no more than one
+  font family per page" is.
+- Start with the standard you already argue about in review. The first audit
+  usually pays for itself by ending a recurring debate with evidence.
+- Session recordings in the dashboard show exactly what the actor saw when it
+  flagged a deviation, which settles disputes quickly.

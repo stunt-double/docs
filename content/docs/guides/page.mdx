@@ -1,0 +1,70 @@
+export const metadata = {
+  title: 'Integration guides',
+  description:
+    'How Stunt Double plugs into the tools where design, engineering, and standards work already happens: Claude, Figma, Figma Make, your codebase, and continuous validation.',
+};
+
+# Integration guides
+
+Stunt Double's core offering is simple: AI user personas (actors) that drive
+real browsers through real products and report back with evidence. Anything
+with a reachable URL can be tested, so Stunt Double is not a destination you
+visit but a validation layer that plugs into wherever the work already happens.
+
+These guides show how to wire it into the most common workflows so testing,
+research, and standards enforcement happen automatically, at the moment a
+design or change exists, rather than as a separate chore afterwards.
+
+## The guides
+
+1. **[Claude design](/support/docs/guides/claude-design)**
+   Design an artifact in Claude, publish it, and validate it with personas in
+   the same conversation.
+2. **[Figma](/support/docs/guides/figma)**
+   Test prototypes with personas and re-check flows automatically when files
+   change or the library is published.
+3. **[Figma Make](/support/docs/guides/figma-make)**
+   Publish a Make site and interview personas against it before an engineer
+   touches it.
+4. **[Codebases](/support/docs/guides/codebases)**
+   Verify changes on preview deployments from Claude Code, Cursor, or GitHub,
+   and report results on the pull request.
+5. **[Validation](/support/docs/guides/validation)**
+   Turn brand, tone-of-voice, legal, continuity, and design-system standards
+   into checks that run on every deploy and design update, with ready-to-use
+   actor and workflow examples.
+
+## The integration model
+
+Three mechanisms make Stunt Double feel native in other tools:
+
+1. **The MCP server** (`https://app.stuntdouble.io/api/mcp`). Any
+   MCP-compatible agent (Claude, Claude Code, Cursor, Windsurf, custom agents)
+   gets the full toolset: create and run checklists, launch persona
+   interviews, triage feedback, comment on PRs. The server ships workflow
+   prompts (`validate_design`, `verify_change`, `run_user_research`,
+   `triage_feedback`, `setup_guardrails`, and the validation prompts
+   `check_brand`, `check_design_system`, `check_compliance`,
+   `check_continuity`) that appear as slash commands in most clients. See the
+   **[MCP server](/support/docs/api/mcp)** reference for setup.
+2. **Connections and event triggers.** Workspace connections (GitHub, Figma,
+   Linear, Slack, Vercel) let workflows fire on GitHub, Figma, Vercel, Linear,
+   and Slack events, so checks re-run on pull requests, deploys, and design
+   updates without anyone asking.
+3. **The dashboard** ([app.stuntdouble.io](https://app.stuntdouble.io)) for
+   anything visual: watching session recordings, reading interview reports,
+   managing actors and connections.
+
+## Where each role feels it
+
+- **Designers** get usability findings while the design is still cheap to
+  change: persona interviews against prototypes, with transcripts and evidence
+  instead of hunches.
+- **Product managers** get research at decision speed and feedback triage that
+  clusters and reproduces what users report.
+- **Engineers** get a user-level regression net: checklists that exercise real
+  flows on preview deployments, results as PR comments, and event-triggered
+  re-runs on deploys.
+- **Brand, legal, and design-system owners** get enforcement instead of
+  periodic review: standards codified once and checked on every deploy or
+  design update. See the **[validation guide](/support/docs/guides/validation)**.
