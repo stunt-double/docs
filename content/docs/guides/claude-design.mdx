@@ -1,11 +1,3 @@
-export const metadata = {
-  title: 'Stunt Double + Claude (design and chat)',
-  description:
-    'Design in Claude, publish the artifact, and validate it with AI personas without leaving the conversation.',
-};
-
-# Stunt Double + Claude (design and chat)
-
 Claude is where a growing share of design work starts: interactive artifacts,
 landing pages, dashboards, and full prototypes sketched in a conversation. The
 gap is validation. Claude can generate ten variants of a flow, but it cannot
@@ -13,9 +5,10 @@ tell you which one a distracted first-time user actually completes. With the
 Stunt Double connector, the same conversation that produced the design can also
 test it.
 
-**Who this is for:** designers and PMs designing in Claude (artifacts, Claude
-design previews), and anyone using Claude as their daily assistant who wants
-research and QA on tap.
+<Callout variant="who">
+  Designers and PMs designing in Claude (artifacts, Claude design previews), and
+  anyone using Claude as their daily assistant who wants research and QA on tap.
+</Callout>
 
 ## Setup (once)
 
@@ -29,6 +22,14 @@ Pick whichever fits how you use Claude:
 
 The first time Claude uses a Stunt Double tool, a browser window opens to sign
 in and authorise. No API keys.
+
+<FlowStrip
+  nodes={[
+    { label: 'Add the connector', sub: 'One click or a URL' },
+    { label: 'Authorise in browser', sub: 'No API keys' },
+    { label: 'Prompts appear', sub: 'validate_design and friends' },
+  ]}
+/>
 
 Once connected, the workflow prompts (`validate_design`, `run_user_research`,
 `triage_feedback`, and friends) are available from the prompt picker, and
@@ -57,9 +58,21 @@ conversation.
    apply the changes to the artifact immediately and re-run the identical
    interview for a before/after comparison.
 
+<FlowStrip
+  loop
+  nodes={[
+    { label: 'Generate', sub: 'Ask Claude for the artifact' },
+    { label: 'Publish', sub: 'Get a public URL' },
+    { label: 'Test', sub: 'Personas try to use it' },
+    { label: 'Revise', sub: 'Fold findings back in' },
+  ]}
+/>
+
 This loop (generate, publish, test, revise) typically fits inside a single
 working session, which is the point: validation happens while the design is
 still cheap to change.
+
+<TextureBreak />
 
 ## Workflow: research without a design
 
@@ -74,6 +87,11 @@ Stunt Double is also useful in Claude before anything is designed:
 - **Standing guardrails**: "Set up daily checks on signup and checkout" uses
   the `setup_guardrails` prompt to create checklists plus a scheduled
   workflow, so this becomes ambient rather than on-demand.
+
+<Pullquote>
+  Personas beat testers. Ask for real texture, not "a user", and the variety is
+  what surfaces the interesting failures.
+</Pullquote>
 
 ## Tips
 

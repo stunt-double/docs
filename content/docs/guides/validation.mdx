@@ -1,26 +1,27 @@
-export const metadata = {
-  title: 'Continuous validation: brand, compliance, continuity, design system',
-  description:
-    'Turn brand, tone-of-voice, legal, continuity, and design-system standards into checks that run on every deploy and design update.',
-};
-
-# Continuous validation: brand, compliance, continuity, design system
-
 Most teams think of Stunt Double as flow verification: can a user sign up, can
 they check out. The same machinery enforces standards. An actor that can read
 every page like a customer can also read every page like a brand editor, a
 compliance reviewer, or a design-system maintainer, and unlike those humans,
 it can do it on every deploy.
 
-**Who this is for:** brand and content teams, legal and compliance owners,
-design-system maintainers, and PMs responsible for keeping many surfaces
-coherent.
+<Callout variant="who">
+  Brand and content teams, legal and compliance owners, design-system
+  maintainers, and PMs responsible for keeping many surfaces coherent.
+</Callout>
 
 ## The guardian pattern
 
 Every validation workflow follows the same three steps, and the MCP prompts
 (`check_brand`, `check_design_system`, `check_compliance`,
 `check_continuity`) encode them:
+
+<FlowStrip
+  nodes={[
+    { label: 'Codify', sub: 'Rules as actor knowledge' },
+    { label: 'Assert', sub: 'Observable checklist checks' },
+    { label: 'Automate', sub: 'Re-run on every change' },
+  ]}
+/>
 
 1. **Codify the standard as actor knowledge.** Store the rules on a dedicated
    reviewer actor (brand and tone guidelines, design tokens and component
@@ -34,6 +35,18 @@ Every validation workflow follows the same three steps, and the MCP prompts
    checklists into a workflow: schedule (weekly brand sweep), deploy trigger
    (compliance on every release), or Figma events (design-system audit when
    the library is published).
+
+The four standards below all follow that pattern. They differ only in what the
+reviewer actor knows and what its checks look for:
+
+<RoleGrid
+  items={[
+    { role: 'Brand & tone', gets: 'Voice rules read against every page, with the offending copy quoted.' },
+    { role: 'Design system', gets: 'Tokens and component rules checked visually on the rendered product.' },
+    { role: 'Compliance', gets: 'Behavioural checks (consent, disclosures) as evidence for counsel.' },
+    { role: 'Continuity', gets: 'Prices, names, and promises reconciled across every surface.' },
+  ]}
+/>
 
 ## Brand and tone of voice
 
@@ -62,7 +75,7 @@ visually rather than in terms of code:
 The natural trigger is a Figma event: when the design library is published or
 a file changes, the audit re-runs against staging and drift between the system
 and the shipped product surfaces within minutes. See the
-**[Figma guide](/support/docs/guides/figma)** for the connection setup.
+**[Figma guide](/guides/figma)** for the connection setup.
 
 ## Legal and compliance
 
@@ -76,11 +89,12 @@ Compliance checks exercise behaviour, not just presence:
 - "Marketing emails contain a working unsubscribe link" (actors have their own
   inboxes, so email flows are testable end to end).
 
-Two framing rules keep this workflow honest: your team supplies which regimes
-apply (the actor never guesses jurisdictions), and results are evidence for
-counsel to review, presented as observations against the stated requirements
-rather than legal conclusions. Every finding carries the exact page content as
-evidence.
+<Callout variant="note" title="Two rules keep this honest">
+  Your team supplies which regimes apply (the actor never guesses
+  jurisdictions), and results are evidence for counsel to review, presented as
+  observations against the stated requirements rather than legal conclusions.
+  Every finding carries the exact page content as evidence.
+</Callout>
 
 ## Continuity across surfaces
 
@@ -94,6 +108,8 @@ discrepancy table ranked by customer impact.
 For promise-versus-product continuity, an interview beats a checklist: give a
 persona the task "the homepage says setup takes two minutes; sign up and see
 if that holds" and read the transcript.
+
+<TextureBreak />
 
 ## Example actors and workflows
 
@@ -205,12 +221,12 @@ two minutes; sign up and see if that holds", then read the transcript.
 - **Codebases**: run a compliance or brand audit against the preview
   deployment alongside change verification, so a PR that breaks a disclosure
   or ships off-brand copy is caught before merge. See the
-  **[codebases guide](/support/docs/guides/codebases)**.
+  **[codebases guide](/guides/codebases)**.
 - **Figma**: a design-system audit on Figma events closes the loop between the
-  library and production. See the **[Figma guide](/support/docs/guides/figma)**.
+  library and production. See the **[Figma guide](/guides/figma)**.
 - **Claude**: all four prompts are available from the prompt picker once the
   connector is added; "audit our site against the tone of voice guide" is a
-  one-line ask. See the **[Claude design guide](/support/docs/guides/claude-design)**.
+  one-line ask. See the **[Claude design guide](/guides/claude-design)**.
 
 ## Tips
 

@@ -1,20 +1,13 @@
-export const metadata = {
-  title: 'Stunt Double + codebases',
-  description:
-    'Wire Stunt Double into Claude Code, Cursor, and GitHub so every change on a preview deployment gets verified by an AI persona before merge.',
-};
-
-# Stunt Double + codebases (Claude Code, Cursor, GitHub)
-
 Unit tests prove the code does what the code says. Stunt Double proves a user
 can still do what they came for. Wired into a coding agent and GitHub, it
 closes the loop between "the diff looks right" and "the flow works": every
 change that reaches a preview deployment can be walked end to end by an AI
 persona before merge, with results reported where engineers already look.
 
-**Who this is for:** engineers using Claude Code, Cursor, Windsurf, or any
-MCP-capable coding agent; teams that want user-level verification in their PR
-flow.
+<Callout variant="who">
+  Engineers using Claude Code, Cursor, Windsurf, or any MCP-capable coding
+  agent, and teams that want user-level verification in their PR flow.
+</Callout>
 
 ## Setup
 
@@ -58,6 +51,15 @@ conversationally:
 > "The preview for this branch is at my-branch-preview.vercel.app. Verify the
 > signup changes and post results on the PR."
 
+<FlowStrip
+  nodes={[
+    { label: 'Preview deploys', sub: 'PR opens a URL' },
+    { label: 'Checklist runs', sub: 'Actor walks the flow' },
+    { label: 'Fix and re-run', sub: 'Agent reads evidence' },
+    { label: 'Verdict on the PR', sub: 'Pass/fail per check' },
+  ]}
+/>
+
 Your agent will:
 
 1. Create (or reuse) a checklist against the preview URL, with instructions
@@ -71,6 +73,8 @@ Your agent will:
 
 Since the coding agent both wrote the change and read the failure evidence,
 the fix loop is tight: no repro steps, no handoff.
+
+<TextureBreak />
 
 ## Workflow: checks that run themselves
 

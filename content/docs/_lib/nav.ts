@@ -7,8 +7,6 @@
  * `src/app/support/docs`.
  */
 
-import { guideHref, integrationGuides } from './guides';
-
 export interface DocsLink {
   title: string;
   href: string;
@@ -93,18 +91,13 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
-    title: 'Integration guides',
+    title: 'Guides',
     links: [
       {
-        title: 'Overview',
-        href: '/support/docs/guides',
+        title: 'Integration guides',
+        href: '/guides',
         description: 'How Stunt Double plugs into the tools where work already happens.',
       },
-      ...integrationGuides.map((guide) => ({
-        title: guide.title,
-        href: guideHref(guide.slug),
-        description: guide.description,
-      })),
     ],
   },
   {

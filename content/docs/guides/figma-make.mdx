@@ -1,19 +1,13 @@
-export const metadata = {
-  title: 'Stunt Double + Figma Make',
-  description:
-    'The fastest idea-to-evidence loop: publish a Figma Make prototype and have AI personas try to use it before an engineer touches it.',
-};
-
-# Stunt Double + Figma Make
-
 Figma Make turns a prompt or a design into a working web app and publishes it
 to a real URL. That published URL is exactly what Stunt Double actors are
 built to test, which makes Make plus Stunt Double the fastest idea-to-evidence
 loop available: describe a product, publish it, and have AI personas try to
 use it, all before an engineer touches it.
 
-**Who this is for:** designers and PMs prototyping in Figma Make, and founders
-validating concepts before committing to a build.
+<Callout variant="who">
+  Designers and PMs prototyping in Figma Make, and founders validating concepts
+  before committing to a build.
+</Callout>
 
 ## Setup
 
@@ -25,6 +19,16 @@ validating concepts before committing to a build.
   to Figma events.
 
 ## The loop: build, publish, test, revise
+
+<FlowStrip
+  loop
+  nodes={[
+    { label: 'Build in Make', sub: 'Rough is fine' },
+    { label: 'Publish', sub: 'Get the live URL' },
+    { label: 'Test with personas', sub: 'Tasks and questions' },
+    { label: 'Revise in Make', sub: 'Republish, re-run' },
+  ]}
+/>
 
 1. **Build in Make.** Get the prototype to the point where the core flow
    exists, even roughly. Real (fake) content beats lorem ipsum: personas read
@@ -51,6 +55,11 @@ validating concepts before committing to a build.
 Two or three cycles of this typically settles the big questions
 (comprehension, navigation, willingness to proceed) in an afternoon.
 
+<Pullquote>
+  Test the ugly version. The strongest signal comes before you polish; personas
+  are immune to embarrassment.
+</Pullquote>
+
 ## When the prototype graduates
 
 Make prototypes tend to become real products. The assets you built during
@@ -63,8 +72,7 @@ validation come along:
 - Add **checklists** for the flows as they harden, and a scheduled or
   deploy-triggered **workflow** (`setup_guardrails` prompt) so the validated
   behaviour stays validated. See the
-  **[codebases guide](/support/docs/guides/codebases)** for the
-  engineering-side loop.
+  **[codebases guide](/guides/codebases)** for the engineering-side loop.
 
 ## Tips
 
