@@ -79,6 +79,11 @@ export const docsNav: DocsSection[] = [
         description: 'Read results, screenshots, recordings, and insights.',
       },
       {
+        title: 'Capture comments from your live site',
+        href: '/support/docs/tutorials/feedback-widget',
+        description: 'Install the feedback widget and triage what visitors pin.',
+      },
+      {
         title: 'Test a product behind your firewall',
         href: '/support/docs/tutorials/self-hosted-worker',
         description: 'Run actors against an internal product with a worker.',

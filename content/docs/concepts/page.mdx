@@ -57,6 +57,27 @@ A **workflow** chains steps into a single repeatable automation. Where a
 checklist verifies a flow, a workflow is meant to get something done end to end,
 and can combine several actions into one run.
 
+## Comments and the feedback widget
+
+Actors report what an AI persona experienced. **Comments** cover the other half:
+what a real visitor experienced. The **feedback widget** is a small script you
+add to your own site, letting visitors drop a pin anywhere on a page and leave a
+comment in the place it applies to.
+
+Each comment arrives with a screenshot, the page URL, the pin position, and
+device details, and lands in the project's Comments view grouped by page. From
+there you reply in the thread and move each one through **new**, **reviewed**,
+**resolved**, or **dismissed**.
+
+The widget is identified by a per-project API key that lives in your page
+source, so the real access control is the **domain allowlist** on the project:
+the widget API only answers requests from domains you have approved. Workspace
+admins can narrow that further, or switch the widget off across the whole
+workspace, from Settings → Security.
+
+See **[Capture comments from your live site](/support/docs/tutorials/feedback-widget)**
+for installation and triage.
+
 ## Insights
 
 As actors work, Stunt Double surfaces **insights**: notable observations drawn

@@ -1,0 +1,226 @@
+export const metadata = {
+  alternates: {
+    canonical: '/support/docs/tutorials/feedback-widget',
+  },
+  title: 'Capture comments from your live site',
+  description:
+    'Install the feedback widget so visitors can pin comments on your pages, then triage, reply, and resolve them from the project Comments view.',
+};
+
+# Capture comments from your live site
+
+Actors tell you what an AI persona experienced. The feedback widget tells you
+what a real visitor experienced, in the place it happened. It is a small script
+you add to your own site: visitors drop a pin anywhere on the page, leave a
+comment, and it arrives in Stunt Double with a screenshot and the page context
+already attached.
+
+This tutorial covers turning it on, installing it, what visitors see, how to
+triage what comes back, and how to lock down who can use it.
+
+## 1. Turn comments on for a project
+
+Open the project you want to collect feedback for and go to **Comments**. If
+comments have never been enabled, you get a short explainer and an **Enable
+comments** button. Enabling switches the feature on for that project and mints
+its **API key**, which is what ties the widget on your site back to this
+project.
+
+Each project has its own key and its own inbox, so a workspace testing three
+products keeps their feedback cleanly separated.
+
+## 2. Install the widget
+
+Once comments are enabled, the Comments view shows the install step with two
+tabs.
+
+**With Claude** gives you a prompt to paste into Claude, Claude Code, or any
+coding assistant. It describes both script tags and where they go, which is
+usually the fastest route if an agent already has your repo open.
+
+**Code** gives you the snippet directly. Add it just before the closing
+`</body>` tag:
+
+```html
+<!-- Stunt Double Feedback Widget -->
+<script src="https://app.stuntdouble.io/api/feedback/widget"
+  data-sd-key="YOUR_PROJECT_KEY"
+  data-sd-url="https://app.stuntdouble.io"
+  defer></script>
+
+<!-- Optional: Add html2canvas for screenshot support -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+```
+
+The attributes are:
+
+- **`data-sd-key`** (required) is your project's feedback API key. Without it
+  the widget logs a warning and does nothing.
+- **`data-sd-url`** (required in practice) points at Stunt Double. It must be
+  `https`; the widget refuses to run otherwise.
+- **`data-sd-version`** (optional) pins comments to a version string you
+  control. See [Page versions](#page-versions) below.
+
+The second script tag is genuinely optional. If `html2canvas` is not already on
+the page the widget fetches it itself, from a pinned version checked against its
+subresource integrity hash. Including it up front just means the first
+screenshot is ready sooner.
+
+### Confirming it works
+
+The install screen polls while you work. Add the snippet, deploy or reload your
+site, and visit any page carrying it. Within a few seconds the screen flips from
+**Waiting for widget connection** to **Widget detected** and moves you on to the
+Comments view. No manual verification step, and nothing to paste back.
+
+If it never flips, the two usual causes are a mistyped key and a domain that is
+not allowed yet. Both are covered under [Control who can use
+it](#control-who-can-use-it).
+
+## 3. What a visitor sees
+
+A floating comment button sits in the bottom-right corner of every page with the
+snippet. The first time it appears, a short explainer popover introduces it, then
+never shows again on that browser.
+
+Leaving a comment takes three actions:
+
+1. Click the button, or press **`c`** anywhere on the page.
+2. Click the spot the comment is about. A pin lands there.
+3. Type a name, optionally an email, and the comment, then send. **Escape**
+   cancels at any point.
+
+The name and email are remembered in the visitor's own browser, so a second
+comment only needs the comment itself. The email is optional and only used to
+notify that person when someone replies to or resolves their comment.
+
+Every submission carries more than the text: a screenshot of the page as it
+looked, the page URL, the pin position, viewport size, scroll offset, and basic
+device information. That is what makes a one-line comment like "this is
+confusing" actionable later.
+
+If **Show comments on page** is enabled, existing pins are drawn on the page too,
+so visitors can read and reply to each other's threads rather than filing the
+same issue five times. With it off the widget still collects feedback, it just
+does not display anyone else's.
+
+### Team members on your own site
+
+Workspace members get a **Sign in to review** button instead of an anonymous
+form when the project is gated. It opens a popup, you sign in to Stunt Double as
+normal, and the popup hands the widget a short-lived token proving you are a
+member of the workspace that owns the project. Replies you leave are badged
+**Team** on the page, and your name comes from your account rather than the form.
+
+The token lasts an hour, so a long session may ask you to sign in again. Because
+a cross-origin widget cannot read the Stunt Double session cookie, this token is
+the only thing that unlocks gated data: the sign-in state the widget shows is
+cosmetic on its own.
+
+## 4. Triage what comes back
+
+The project's **Comments** view is where feedback lands. It opens on the
+**Open** queue with counts across the top: total comments, how many are open,
+how many pages they came from, and how many are resolved.
+
+Comments are **grouped by page**, because that is how you fix them. Expand a
+page to see every pin left on it, collapse the ones you have dealt with, or use
+**Collapse all** when the list gets long.
+
+Opening a comment shows the full detail: the screenshot with the pin in place,
+the device and viewport it was left on, the thread of replies, and the status
+control. From there you can:
+
+- **Reply** in the thread. If the visitor left an email they are notified, and
+  the reply appears on the page for them under a **Team** badge.
+- **Change status** between **new**, **reviewed**, **resolved**, and
+  **dismissed**. Resolving notifies the author so a closed loop does not go
+  unnoticed.
+- **Resolve all** to clear the whole open queue at once, after a round of fixes.
+
+Resolved and dismissed comments are filed under **Resolved** rather than
+deleted, so the history of what was raised on a page survives.
+
+### Page versions
+
+Pages change, and a comment about a button that no longer exists is noise unless
+you know which version it referred to. The widget hashes the page content with
+each comment and groups them into versions: **v1** is the earliest snapshot that
+received a comment, and the newest is badged **Latest**. A page group with more
+than one version shows a small timeline, and selecting a version filters the
+group to the comments left on it.
+
+By default the hash is computed from the rendered page, and recomputed as you
+navigate a single-page app. If you would rather tie versions to your own
+releases, set `data-sd-version` on the script tag to a release tag, build ID, or
+commit SHA. When it is set, the widget uses it verbatim and never re-hashes.
+
+## Control who can use it
+
+Your API key sits in your page source, so anyone who views source can read it.
+Treat it as an identifier, not a secret. The real access control is the domain
+allowlist, and every widget endpoint checks it.
+
+From **Comments → settings** (the gear icon):
+
+- **Allowed domains** is the list of hosts the widget API answers. Your project
+  URL is always accepted and shown as an implicit entry, so you do not need to
+  duplicate it. Add up to 20 more. An entry matches that exact host; use
+  `*.example.com` to cover every subdomain, and include a port or `http://`
+  prefix only if your site needs one. Requests from anywhere else are refused.
+- **Allow local development** (on by default) additionally permits `localhost`
+  and private network addresses, so the widget works while you build.
+- **Require sign in** restricts both reading and leaving comments to signed-in
+  members of the owning workspace. Use it for staging environments and internal
+  reviews.
+- **Toolbar visible**, **Show comments on page**, and **Keyboard shortcut**
+  control what visitors actually see. Turn the shortcut off if `c` clashes with
+  a shortcut of your own.
+- **Rotate** the API key to cut off an install you no longer control. The widget
+  stops working until you update the snippet with the new key, which is the
+  point.
+
+The allowlist **fails closed**: a project with no URL and an empty allowlist
+serves nothing at all. The settings page warns you when that is the case, so you
+can tell "locked down" apart from "broken".
+
+### Workspace-level controls
+
+Workspace admins have a ceiling above every project, under **Settings →
+Security**:
+
+- **Feedback widget** switches the widget off for the entire workspace. When
+  off, every widget endpoint returns nothing for every project in it, including
+  sites where the key is already installed.
+- A workspace-level **allowed origins** list narrows what any project may allow.
+  A project can only ever be more restrictive than the workspace, never less.
+
+## Working with comments over the API
+
+Feedback is available through the MCP server, so an assistant can triage it with
+you: `list_feedback` (filter by status when working the new queue), `get_feedback`
+for one item and its replies, and `update_feedback_status` to resolve or dismiss.
+The relevant scopes are `feedback:read` and `feedback:write`. See the
+**[MCP server](/support/docs/api/mcp)** page for connecting a client.
+
+A natural pairing: read the open comments for a page, then run a checklist
+against that page to reproduce what visitors reported before deciding what to
+fix.
+
+## Tips
+
+- Install it on staging first with **Require sign in** on. Your team gets a
+  low-friction way to leave notes in context, and nothing is exposed publicly.
+- Ask for the email field to be filled in when you actually intend to reply.
+  Silence after feedback is worse than no widget.
+- Set `data-sd-version` to your build ID if you deploy often. Version grouping
+  by content hash is good; grouping by release is unambiguous.
+- Resolve aggressively. The Open queue is only useful if it reflects what is
+  genuinely outstanding, and resolved comments are still there to look back on.
+
+## Next steps
+
+- **[Turn runs into insights](/support/docs/tutorials/reviewing-runs)** to pair
+  visitor comments with what actors found on the same pages.
+- **[Write checklists that catch real regressions](/support/docs/tutorials/effective-checklists)**
+  to turn a recurring complaint into a check that runs on every deploy.

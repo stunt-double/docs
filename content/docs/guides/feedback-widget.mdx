@@ -1,0 +1,174 @@
+AI personas tell you what a careful, unhurried user would hit. Real visitors
+tell you what actually happened to them, on their device, on the version you
+shipped this morning. The feedback widget closes that gap: one script tag on
+your own site, and anyone looking at a page can drop a pin on the exact spot
+that confused them and say why.
+
+What arrives is not a support ticket with "the page is broken" in it. It is a
+comment anchored to a coordinate, with a screenshot of the page as that person
+saw it, the URL, the viewport, and which version of the page they were on.
+
+<Callout variant="who">
+  PMs and designers running prototype and staging reviews, founders collecting
+  feedback from early customers, and any team tired of screenshots pasted into
+  Slack with no idea which page or build they came from.
+</Callout>
+
+## Setup, in about five minutes
+
+<FlowStrip
+  nodes={[
+    { label: 'Enable', sub: 'Project -> Comments' },
+    { label: 'Install', sub: 'One script tag' },
+    { label: 'Allow', sub: 'Your domains only' },
+    { label: 'Triage', sub: 'Reply and resolve' },
+  ]}
+/>
+
+1. **Enable comments.** In the project you want feedback on, open **Comments**
+   and enable it. That mints the project's feedback API key.
+2. **Install the widget.** The install step offers a prompt to hand Claude (or
+   any coding agent) and the raw snippet if you would rather paste it yourself.
+   It goes just before `</body>`:
+
+   ```html
+   <script src="https://app.stuntdouble.io/api/feedback/widget"
+     data-sd-key="YOUR_PROJECT_KEY"
+     data-sd-url="https://app.stuntdouble.io"
+     defer></script>
+   ```
+
+   There is no package to install and no build step. Screenshot capture pulls
+   in `html2canvas` on demand from a pinned, integrity-checked URL, so a single
+   tag is enough.
+3. **Watch it connect.** The install screen polls while you deploy. Load a page
+   carrying the snippet and it flips to **Widget detected** on its own.
+4. **Set your allowed domains** before you point anyone at it. See
+   [Who can actually use it](#who-can-actually-use-it).
+
+## What a visitor does
+
+Press **`c`** or click the floating button, click the thing you mean, type the
+comment, send. Name and email are remembered on their browser, so the second
+comment is just the comment. Email is optional and only used to tell them when
+someone replies or marks their comment resolved.
+
+If you enable **Show comments on page**, existing pins render for everyone, so a
+group review turns into a shared thread rather than five people reporting the
+same button. Turn it off and the widget still collects, it just does not
+display.
+
+<Pullquote>
+  The pin is the point. A comment attached to a coordinate and a screenshot
+  needs no reproduction steps.
+</Pullquote>
+
+## Three ways teams use it
+
+<RoleGrid
+  items={[
+    { role: 'Staging review', gets: 'Require sign in, and the whole team leaves notes in context instead of in Slack.' },
+    { role: 'Prototype testing', gets: 'Put a rough build in front of ten early users and watch where the pins cluster.' },
+    { role: 'Live product', gets: 'A standing feedback channel on the pages that matter, grouped by page and version.' },
+  ]}
+/>
+
+**Internal review on staging.** Switch on **Require sign in** and only signed-in
+members of your workspace can read or leave comments. Reviewers sign in through
+a popup from the widget, and their replies are badged **Team** on the page. It
+is the cheapest possible design-review tool: no seats to provision, no file to
+upload, and the thing under review is the actual product.
+
+**Prototype and beta testing.** Ship the rough version to a handful of real
+users with the widget on. Where pins cluster is your friction, and you have the
+screenshot to prove it. This pairs directly with persona interviews: run an
+interview to find what a careful user hits, run the widget to find what a
+hurried one does.
+
+**A standing channel on production.** Leave it installed with sign-in off and
+comments hidden from other visitors. People report what bothers them where it
+bothers them, and it lands in a queue rather than a support inbox.
+
+## Triage without losing the thread
+
+Comments are grouped **by page**, because that is how fixes get made. Each group
+shows every pin left on that page, and you collapse the ones you have handled.
+
+Open one and you get the screenshot with the pin in place, the device and
+viewport, the reply thread, and the status. Reply and the visitor is notified if
+they left an email, with your reply appearing on the page for them. Move it
+through **new**, **reviewed**, **resolved**, or **dismissed**; resolving notifies
+the author, which is the difference between collecting feedback and closing a
+loop. After a round of fixes, **Resolve all** clears the open queue in one go.
+
+### Versions, so old comments stay readable
+
+Pages change, and a comment about a button you deleted is noise unless you know
+which build it was about. Every comment records a hash of the page content, and
+comments are grouped into **v1**, **v2**, and so on, with the newest badged
+**Latest**. Select a version to see only the comments left on it.
+
+If you would rather tie versions to your releases than to page content, set
+`data-sd-version` on the script tag to a build ID, release tag, or commit SHA.
+The widget then uses that verbatim.
+
+## Who can actually use it
+
+<Callout variant="note" title="Your API key is not a secret">
+  It sits in your page source, where anyone can read it. Stunt Double treats it
+  as an identifier. The control that actually matters is the domain allowlist,
+  which every widget endpoint checks before it answers anything.
+</Callout>
+
+From **Comments -> settings**:
+
+- **Allowed domains.** Your project URL is always accepted; add up to 20 more.
+  Entries match an exact host, and `*.example.com` covers every subdomain.
+  Everything else is refused. The list **fails closed**: a project with no URL
+  and nothing allowed serves nothing, and the settings page tells you so rather
+  than letting you assume it is working.
+- **Allow local development** (on by default) additionally permits `localhost`
+  and private addresses while you build.
+- **Require sign in** limits reading and writing to members of the owning
+  workspace.
+- **Rotate** the key to cut off an install you no longer control.
+
+Workspace admins hold a ceiling above all of this in **Settings -> Security**: a
+workspace-wide allowed-origins list that projects cannot widen, and a single
+switch that disables the widget across every project, including sites where the
+key is already deployed.
+
+<TextureBreak />
+
+## Feeding comments back into verification
+
+A comment tells you something is wrong once. A checklist tells you whether it is
+still wrong on every deploy. The move that pays off is turning the recurring
+ones into checks:
+
+```text
+1. Read the open comments for a page (list_feedback, status: "new")
+2. Reproduce: run a checklist against that page with the reported flow
+3. Fix, then keep the checklist and wire it into a deploy-triggered workflow
+4. Resolve the comment (update_feedback_status) so the author is notified
+```
+
+All three feedback tools are on the MCP server, so an agent can work that loop
+with you: "read the new comments on the pricing page, reproduce the top one with
+a checklist, and tell me what you find." See the
+**[codebases guide](/guides/codebases)** for the deploy-trigger side, and the
+**[validation playbook](/guides/validation)** for turning findings into standing
+checks.
+
+## Tips
+
+- Install on staging first, with **Require sign in** on. You get the value
+  immediately and nothing is exposed while you are still deciding.
+- Only ask for an email if you intend to reply. Collecting addresses and going
+  quiet is worse than not collecting them.
+- Set `data-sd-version` if you deploy several times a day. Content hashing works,
+  but grouping by release is unambiguous when you are reading back a week later.
+- Resolve aggressively. An open queue that reflects genuinely outstanding work
+  gets looked at; one that has become an archive does not.
+- Turn off the `c` shortcut if your own page already uses it. It is one toggle,
+  and clashing shortcuts confuse visitors more than they help.
