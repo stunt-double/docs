@@ -79,9 +79,9 @@ export const docsNav: DocsSection[] = [
         description: 'Read results, screenshots, recordings, and insights.',
       },
       {
-        title: 'Capture comments from your live site',
+        title: 'Collect stakeholder feedback on a prototype',
         href: '/support/docs/tutorials/feedback-widget',
-        description: 'Install the feedback widget and triage what visitors pin.',
+        description: 'Install the feedback widget and triage what reviewers pin.',
       },
       {
         title: 'Test a product behind your firewall',
