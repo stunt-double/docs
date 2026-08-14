@@ -84,6 +84,11 @@ export const docsNav: DocsSection[] = [
         description: 'Install the feedback widget and triage what reviewers pin.',
       },
       {
+        title: 'Review designs from Slack',
+        href: '/support/docs/tutorials/slack-design-review',
+        description: 'Share a link in Slack and get a reviewed screen back in the thread.',
+      },
+      {
         title: 'Test a product behind your firewall',
         href: '/support/docs/tutorials/self-hosted-worker',
         description: 'Run actors against an internal product with a worker.',
