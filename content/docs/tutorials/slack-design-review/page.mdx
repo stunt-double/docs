@@ -66,28 +66,52 @@ Where you post decides how explicit you have to be:
 | A direct message to Stunt Double         | a link and a request phrase               |
 | A channel with design review turned on   | a link, and a request phrase or a mention |
 | Any other channel it has been invited to | a link, a mention, and a request phrase   |
+| A reply in a thread that holds a review  | the reply is addressed to us, see below   |
 
 The last row is what keeps mentions predictable. "@Stunt Double run the checkout
 checklist against `https://...`" is a request for a checklist, so it goes to the
 agent rather than coming back as a design review.
 
-Only a new top-level message starts a review. A reply inside an existing thread
-is follow-up conversation and goes to the agent, so you can discuss a review in
-its own thread without starting another one.
+A reply inside a thread is different. If the thread already holds a review, a
+reply continues it: the reviewer opens the product again, carrying what it
+already found plus whatever you just said ("walk the whole checkout", "try it
+signed out"). That is how you steer a review without repeating yourself, and it
+is why a reply does not need a link or a request phrase.
+
+It also means a reply costs a review. In a channel with design review turned on,
+every reply in a review's thread is treated as addressed to us, so a thread where
+three people talk through the findings is three more reviews. Somewhere else the
+bot has simply been invited, a reply only continues the review when it mentions
+the bot or answers a question the bot asked. If you want to talk about a review
+rather than extend it, do it outside the thread, or in a channel that does not
+have design review turned on.
 
 Up to three links from a single message are reviewed. Anything past that is
 ignored, so one message cannot spend an afternoon of browser time.
 
 ## 3. What comes back
 
-The thread answers immediately, before any work has started: "On it, reviewing
-the link and posting feedback here." That same message is then edited in place as
-the review progresses, so the thread holds one message that keeps up to date
+The thread answers immediately, before any work has started: "On it, taking a
+look at the link." It stops short of promising feedback on purpose, because the
+next thing it says might be a question. That same message is then edited in place
+as the review progresses, so the thread holds one message that keeps up to date
 rather than a progress log. In a direct message there is no status message at
 all: Slack's own loading indicator carries the progress and clears itself when
 the review lands.
 
-Then, per link:
+**The bot may ask one question first.** It opens the first link and looks at it
+before deciding, so if the page is behind a sign-in wall, or the request could
+mean any of several flows, it turns that same status message into a single short
+question with up to three quick-reply buttons. Click one or just reply in the
+thread; either way the review starts from your answer. Nothing is left hanging in
+the background while it waits, so an unanswered question costs nothing.
+
+Otherwise it reviews straight away. A web page is reviewed by **using** it: the
+reviewer drives a real browser, opens menus, fills forms and walks the flow, and
+the reply names the screens it went through. Where it cannot do that (a Figma
+link, a page that will not open), it falls back to reviewing what it can capture.
+
+When it captures instead of driving, that happens per link:
 
 - A **web page** is opened in a hosted browser and captured from the top down,
   several screens' worth. Deliberately not the full page: a page capture 20,000
@@ -164,15 +188,18 @@ order:
 
 1. **The message has no link, or no request phrase.** Both are required on every
    surface. Add "can I get some feedback on this?" and post it again.
-2. **It was a reply in a thread.** Only a new top-level message starts a review.
+2. **It was a reply in a thread nobody has reviewed yet.** A reply only starts a
+   review when the thread already holds one. Post the link as a new message.
 3. **The bot is not in the channel.** Run `/invite @Stunt Double` there.
 4. **The connection is missing a permission.** Settings > Design review names
    this against each configured channel, with a reconnect button.
 5. **The workspace is over a usage limit.** The thread says which limit was hit
    rather than going silent.
 
-Reviews and agent runs are metered against your plan like any other browser work:
-one session per link reviewed, plus the tokens the review spends.
+Reviews and agent runs are metered against your plan like any other browser work,
+plus the tokens the review spends. A review that drives the page uses one browser
+session for the whole thing, however many links the message carried; one that
+falls back to capturing screens uses one per link.
 
 ## Tips
 
