@@ -35,10 +35,66 @@ inbox after a signup, the dashboard after a plan change. If a flow has
 several outcomes worth confirming, write a check for each one rather than one
 check trying to cover all of them.
 
+## Choose what each check is worth
+
+Not every check deserves to stop a release. Each one has a type, set in the
+create dialog or the flow editor's inspector:
+
+- **Pass / fail** is blocking. One failure fails the whole run. Use it for the
+  things that must work: checkout completes, the signup email arrives.
+- **Weighted** contributes its weight to a run score rather than blocking.
+  Weights run from 0 to 100, default 1, so "checkout completes" can outweigh
+  "the footer year is current".
+- **Informational** is never judged. The actor records what it observed ("the
+  headline price is $29 per month") and that text is the deliverable, which is
+  how drift in prices, copy or plan names gets caught between runs.
+
+A checklist's **Passing score** decides the verdict for its weighted checks. It
+defaults to 100, which reproduces the old all or nothing rule, so a checklist
+you already have behaves exactly as it did until you lower it.
+
+The two hurdles are independent on purpose: no blocking check may fail, **and**
+the weighted score must reach the threshold. Folding pass/fail checks into the
+score would let "the user cannot check out" survive as long as enough cosmetic
+checks passed.
+
+A check that errors is inconclusive rather than failed. A check the run never
+reached says nothing about your product, so it stays out of the score.
+
+## Order the checks, and let one depend on the last
+
+Checks run top to bottom. Drag a check vertically to reorder it, or use Move up
+and Move down in the inspector.
+
+Order matters because a check can depend on how the one before it turned out.
+Set its run condition to:
+
+- **Always**, the default: it runs whatever the check before it found.
+- **If previous passed**, for a follow-up that only means anything once the
+  step before it worked ("the confirmation shows the right total").
+- **If previous failed**, for an inspection that is only reachable when the
+  step before it broke ("the error message explains what to fix").
+
+Without conditions, both shapes produce a misleading report: one failure
+counted twice, or a check that fails because the product worked.
+
+A check whose condition is unmet is recorded as **skipped**, naming the check it
+depended on, and left out of the score entirely. It did not fail, and it is not
+inconclusive either. A condition is only unmet when the previous check's verdict
+contradicts it: an antecedent that errored, or an informational one with no
+verdict at all, leaves the condition undecidable, and the check runs. Quietly
+testing less is the one outcome a testing product must never produce.
+
+One thing to know before you reach for informational checks: they need the
+actor to read the page, so a checklist containing one always runs the full
+agent rather than replaying its recorded script.
+
 ## Read the evidence, not just the pass/fail badge
 
-Every check reports a status alongside the evidence behind it. A run report
-has tabs for:
+A run reports a verdict, a score for its weighted checks, and the evidence
+behind every check. Each check carries its own screenshot, taken on the page
+the actor was actually on when it reached its verdict. A run report has tabs
+for:
 
 - **Results**, each check's status and a short explanation.
 - **Screenshots**, the page as the actor saw it at each step.
@@ -49,6 +105,18 @@ When a check fails, read the explanation and screenshot before deciding
 whether it's a real regression or an ambiguous instruction. A surprising
 number of "failures" turn out to be a check that needs to be more specific
 about what counts as success.
+
+## Read a run against the one before it
+
+A finished run is compared with the previous completed run of the same
+checklist, under **Since the previous run** on the report. It names what
+changed rather than what is red, which is the difference between a report you
+read every time and one you stop opening. Informational checks are compared as
+text, so "$29 per month" becoming "$39 per month" shows up even though no
+pass or fail state moved.
+
+Editing a checklist keeps its history: checks you did not touch keep their ids
+and their past results, so a comparison still has something to compare against.
 
 ## Re-run before you trust a result
 
