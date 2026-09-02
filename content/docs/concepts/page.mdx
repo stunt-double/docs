@@ -21,18 +21,17 @@ several products keep them separated by using a project per product.
 
 ## Actors
 
-An **actor** is an AI assistant you create. It is defined by its instructions,
-its knowledge, and its capabilities:
+An **actor** is an AI assistant you create. It is defined by its instructions
+and its knowledge:
 
 - **Instructions** describe the actor's role and how it should behave.
 - **Knowledge** is the reference material the actor can draw on, such as facts
   about your product or test credentials.
-- **Capabilities** decide what the actor can do, for example browsing the web or
-  reading email.
 
 Under the hood, an actor drives a real browser and works through your product
 the way a person would, observing the page, taking an action, observing the
-result, and repeating until the task is done.
+result, and repeating until the task is done. It can also read email sent to
+its own inbox, which is what makes signup and verification flows testable.
 
 ## Checklists
 

@@ -2,18 +2,17 @@ export const metadata = {
   alternates: {
     canonical: '/support/docs/tutorials/first-actor',
   },
-  title: 'Build an actor with the right capabilities',
+  title: 'Build an actor that behaves like your audience',
   description:
-    'Write instructions and knowledge that make an actor behave like a real member of your audience, and turn on only the capabilities it needs.',
+    'Write instructions and knowledge that make an actor behave like a real member of your audience.',
 };
 
-# Build an actor with the right capabilities
+# Build an actor that behaves like your audience
 
 The **[Quickstart](/support/docs/getting-started)** has you create a minimal
 actor to run one checklist. This tutorial goes further: writing instructions
 and knowledge that make an actor behave like a genuine member of your
-audience, and choosing capabilities deliberately instead of turning everything
-on.
+audience.
 
 ## Start with a persona, not a checklist
 
@@ -41,22 +40,20 @@ Keep entries short and specific. A dozen focused entries work better than one
 long document, since the actor only needs to draw on what's relevant to the
 step it's on.
 
-## Turn on only the capabilities it needs
+## What an actor can do
 
-Capabilities are opt-in toggles on the actor's page and decide what it's
-allowed to do:
+Out of the box an actor works through your product the way a real visitor
+would:
 
-- **Use browser**, drives a real browser through your product.
-- **Receive email**, reads codes and notifications sent to the actor's inbox,
-  useful for signup and verification flows.
-- **Web search**, looks things up beyond your product.
-- **Browser context** and **Memory**, carry state between runs.
-- **Code sandbox**, runs and checks code.
+- **Drives a real browser** through your product, observing each page and
+  deciding what to do next.
+- **Reads email** sent to its own inbox, so it can pick up verification codes
+  and magic links during signup and verification flows.
+- **Searches the web** when it needs information beyond your product.
+- **Remembers context** it has seen before, carrying useful state between runs.
 
-An actor that only needs to browse your marketing site doesn't need email
-access, and one that never verifies an account doesn't need it either. Fewer
-capabilities also means a smaller surface to reason about when you're
-debugging an unexpected result.
+You don't have to wire any of this up. Give the actor a clear persona and the
+knowledge it needs, and it draws on whatever is relevant to the step it's on.
 
 ## Test it before you rely on it
 

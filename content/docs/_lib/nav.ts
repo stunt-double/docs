@@ -54,9 +54,9 @@ export const docsNav: DocsSection[] = [
         description: 'The full series, and where to start.',
       },
       {
-        title: 'Build an actor with the right capabilities',
+        title: 'Build an actor that behaves like your audience',
         href: '/support/docs/tutorials/first-actor',
-        description: 'Instructions, knowledge, and capabilities that fit the job.',
+        description: 'Instructions and knowledge that make an actor feel real.',
       },
       {
         title: 'Write checklists that catch real regressions',
