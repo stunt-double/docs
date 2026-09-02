@@ -47,7 +47,7 @@ create dialog or the flow editor's inspector:
   "the footer year is current". A weight below zero is a **penalty**: it adds
   nothing when the check passes and deducts that many points when it fails,
   without raising the maximum. Phrase a penalty as what should be true ("no
-  generic bank icon is used"), so passed still means good.
+  placeholder text is left in the copy"), so passed still means good.
 - **Informational** is never judged. The actor records what it observed ("the
   headline price is $29 per month") and that text is the deliverable, which is
   how drift in prices, copy or plan names gets caught between runs.
@@ -66,15 +66,14 @@ reached says nothing about your product, so it stays out of the score.
 
 ### Writing a scoring rubric as a checklist
 
-A rubric like "30 points for the right label, 30 for perspective logos, 10 for
-the icon, 10 for the colour, minus 30 for a generic bank icon, out of 80" is
-five weighted checks: four with those weights and one with a weight of -30. The
-maximum is the positive weights only, so the run really is out of 80. Partial
-credit ("15 if the logos are only partly in perspective") is two checks of 15
-rather than one of 30, since a check has one verdict.
+A rubric like "40 points for the core flow, 30 for clear messaging, 20 for
+accessible controls, 10 for visual polish, minus 20 for a blocking error, out
+of 100" is five weighted checks: four with those weights and one with a weight
+of -20. The maximum is the positive weights only, so the run really is out of 100. Partial credit ("15 if the messaging is only partly clear") is two checks
+of 15 rather than one of 30, since a check has one verdict.
 
 The passing score is a percentage, and the editor shows the points it works out
-to at the current weights (75% of 80 is 60 points). Under **Grades**, name the
+to at the current weights (75% of 100 is 75 points). Under **Grades**, name the
 ranges a score can land in, best first: Optimal from 75%, Partial adoption from
 37.5%, Pushed back below that. A run then reports its grade next to its score.
 Grades only label the score; the passing score still decides whether it passed.
