@@ -43,33 +43,50 @@ The first time you connect, the client runs the OAuth flow and asks you to sign
 in to your Stunt Double workspace. After you approve, the client can list and
 call tools on your behalf.
 
-## Authentication and scopes
+## Authentication
 
 Access is authorised with **OAuth 2.1**:
 
 - Authorization URL: `https://app.stuntdouble.io/oauth/authorize`
 - Token URL: `https://app.stuntdouble.io/oauth/token`
 
-Tokens are scoped to the minimum a client needs. The supported scopes are:
-
-```
-workspaces:read
-actors:read        actors:write
-knowledge:read     knowledge:write
-conversations:read
-checklists:read    checklists:run
-workflows:read     workflows:run
-feedback:read      feedback:write
-interviews:read    interviews:write   interviews:run
-```
+There are no granular scopes. A token acts as the person who approved it, and
+every tool checks that they are a member of the workspace it was asked about,
+so a connected client reaches exactly what that person reaches in the
+dashboard, and nothing else. Revoke a connection from Settings > Connections.
 
 ## Available tools
 
-The server exposes tools grouped by resource:
+The server exposes 61 tools, grouped by resource. Start with `search`: it
+covers every resource type below, so it is usually a shorter path to the thing
+you want than listing one type and filtering it yourself.
+
+### Account and search
+
+- `get_me`, `search`
 
 ### Workspaces
 
 - `list_workspaces`, `get_workspace`, `list_workspace_members`
+
+### Projects
+
+- `list_projects`, `get_project`, `create_project`, `list_project_mcp_servers`
+
+A project is the product a checklist, workflow or piece of feedback is tracked
+against. `list_project_mcp_servers` reports the MCP servers a project's runs
+can reach: a server that is not listed is not available to the run.
+
+### Guidelines
+
+- `list_workspace_guidelines`, `add_workspace_guideline`,
+  `update_workspace_guideline`, `remove_workspace_guideline`
+- `list_project_guidelines`, `add_project_guideline`, `set_project_guideline`
+
+Guidelines are the standing rules a project is held to: a design system, tone
+of voice, brand, compliance, accessibility. Rules live in a workspace library
+and are attached to the projects they apply to, so one rule can be held by
+several projects and edited in one place.
 
 ### Actors
 
@@ -85,15 +102,30 @@ The server exposes tools grouped by resource:
 
 ### Checklists
 
-- `list_checklists`, `get_checklist`, `get_checklist_run`, `run_checklist`
+- `list_checklists`, `get_checklist`, `get_checklist_run`, `run_checklist`,
+  `create_checklist`, `update_checklist`, `delete_checklist`
+
+`delete_checklist` discards run history, which is the regression signal for
+that flow. Prefer re-running an existing checklist over creating a second one
+covering the same ground.
 
 ### Workflows
 
-- `list_workflows`, `get_workflow`, `run_workflow`, `get_workflow_run`
+- `list_workflows`, `get_workflow`, `run_workflow`, `get_workflow_run`,
+  `create_workflow`, `update_workflow`, `toggle_workflow`, `delete_workflow`
+- `add_workflow_step`, `update_workflow_step`, `remove_workflow_step`
+
+A workflow is a multi-step automation that re-runs checks on a schedule or on
+an event. Steps are managed separately from the workflow itself.
 
 ### Feedback
 
-- `list_feedback`, `get_feedback`, `update_feedback_status`
+- `list_feedback`, `get_feedback`, `update_feedback_status`,
+  `summarise_feedback`
+
+`summarise_feedback` turns a project's comments into themes ranked by severity
+and an implementation brief written to be handed to a coding agent. Read the
+brief before proposing changes rather than reasoning over the raw comments.
 
 ### Interviews
 
@@ -101,6 +133,27 @@ The server exposes tools grouped by resource:
   `add_interview_section`, `add_interview_item`, `add_interview_participant`,
   `get_interview_participant`, `get_interview_report`, `launch_interview`,
   `regenerate_interview_report`
+
+### GitHub
+
+- `list_pull_requests`, `get_pull_request`, `comment_on_pr`
+
+These need the workspace GitHub connection. Pair them with a checklist run
+against a preview deployment to report what an actor found back onto the pull
+request.
+
+## Prompts
+
+The server also ships ten prompts, which most clients surface as slash commands
+or starters:
+
+- `stuntdouble_guide`, `validate_design`, `verify_change`, `run_user_research`,
+  `triage_feedback`, `setup_guardrails`
+- `check_brand`, `check_design_system`, `check_compliance`, `check_continuity`
+
+The four `check_*` prompts are the standards side of the same machinery: they
+codify a rule, assert it as observable checks, and re-run it rather than asking
+a model to eyeball a page each time.
 
 ## Discovery manifest
 
