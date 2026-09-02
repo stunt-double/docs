@@ -22,12 +22,26 @@ it, both from the dashboard and programmatically over the API.
 
 If you are new to Stunt Double, read these in order:
 
-- **[Quickstart](/support/docs/getting-started)** walks you from an empty workspace to
-  your first actor and a checklist run.
-- **[Core concepts](/support/docs/concepts)** explains actors, checklists, interviews,
-  workflows, and insights, and how they relate.
-- **[API overview](/support/docs/api)** and the **[MCP server](/support/docs/api/mcp)** show how
-  to automate Stunt Double from your own tools, or from Claude.
+<CardGrid
+  columns={3}
+  items={[
+    {
+      title: 'Quickstart',
+      description: 'Go from an empty workspace to your first actor and a checklist run.',
+      href: '/support/docs/getting-started',
+    },
+    {
+      title: 'Core concepts',
+      description: 'Actors, checklists, interviews, workflows, and insights, and how they relate.',
+      href: '/support/docs/concepts',
+    },
+    {
+      title: 'API overview',
+      description: 'Automate Stunt Double from your own tools, or from Claude, over MCP.',
+      href: '/support/docs/api',
+    },
+  ]}
+/>
 
 ## How the pieces fit together
 
@@ -53,11 +67,12 @@ staging build, or live site so stakeholders can pin a comment directly on a
 page; each one arrives with a screenshot and page context, ready to triage. See
 **[Collect stakeholder feedback on a prototype](/support/docs/tutorials/feedback-widget)**.
 
-None of this has to start in the dashboard. Connect Slack and a link shared with
-a request for feedback is reviewed in the thread it was posted in, and the same
-app answers questions about the workspace and starts checklist and workflow runs
-from a message. See
-**[Review designs from Slack](/support/docs/tutorials/slack-design-review)**.
+<Callout variant="tip" title="You don't need to start in the dashboard">
+  Connect Slack and a link shared with a request for feedback is reviewed in the thread it was
+  posted in, and the same app answers questions about the workspace and starts checklist and
+  workflow runs from a message. See **[Review designs from
+  Slack](/support/docs/tutorials/slack-design-review)**.
+</Callout>
 
 ## Getting help
 

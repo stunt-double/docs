@@ -69,11 +69,12 @@ device details, and lands in the project's Comments view grouped by page. From
 there you reply in the thread and move each one through **new**, **reviewed**,
 **resolved**, or **dismissed**.
 
-The widget is identified by a per-project API key that lives in your page
-source, so the real access control is the **domain allowlist** on the project:
-the widget API only answers requests from domains you have approved. Workspace
-admins can narrow that further, or switch the widget off across the whole
-workspace, from Settings → Security.
+<Callout variant="note" title="Security boundary">
+  The widget is identified by a per-project API key that lives in your page source, so the real
+  access control is the **domain allowlist** on the project: the widget API only answers requests
+  from domains you have approved. Workspace admins can narrow that further, or switch the widget off
+  across the whole workspace, from Settings → Security.
+</Callout>
 
 See **[Collect stakeholder feedback on a prototype](/support/docs/tutorials/feedback-widget)**
 for installation and triage.

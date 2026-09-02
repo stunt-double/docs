@@ -19,18 +19,18 @@ export function DocsSidebar({ className }: { className?: string }) {
     <nav aria-label="Documentation" className={cn('text-sm', className)}>
       <Link
         href="/support"
-        className="text-muted-foreground hover:text-foreground mb-7 inline-flex items-center gap-1.5 transition-colors"
+        className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-1.5 transition-colors"
       >
         <ArrowLeft className="size-3.5" />
         Support
       </Link>
-      <ul className="flex flex-col gap-7">
+      <ul className="flex flex-col gap-8">
         {docsNav.map((section) => (
           <li key={section.title}>
             <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wider uppercase">
               {section.title}
             </p>
-            <ul className="border-border/60 flex flex-col gap-0.5 border-l">
+            <ul className="flex flex-col gap-0.5">
               {section.links.map((link) => {
                 const active = pathname === link.href;
                 return (
@@ -39,10 +39,10 @@ export function DocsSidebar({ className }: { className?: string }) {
                       href={link.href}
                       aria-current={active ? 'page' : undefined}
                       className={cn(
-                        '-ml-px block border-l py-1.5 pl-4 transition-colors',
+                        'block rounded-md px-3 py-1.5 transition-colors',
                         active
-                          ? 'border-foreground text-foreground font-medium'
-                          : 'text-muted-foreground hover:text-foreground border-transparent hover:border-foreground/40'
+                          ? 'bg-primary/10 text-primary font-medium'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                       )}
                     >
                       {link.title}
