@@ -176,6 +176,22 @@ The four `check_*` prompts are the standards side of the same machinery: they
 codify a rule, assert it as observable checks, and re-run it rather than asking
 a model to eyeball a page each time.
 
+## Resources
+
+Resources are read-only context a client can attach without calling a tool:
+
+| URI                                                | Type               | What                                                                                      |
+| -------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------------------- |
+| `stuntdouble://guide`                              | `text/markdown`    | What Stunt Double does, when to reach for it, the tool catalogue and how to poll a run.   |
+| `stuntdouble://connection`                         | `application/json` | Who the connection acts as, the scopes it holds, the tools each unlocks and any it lacks. |
+| `stuntdouble://workspaces`                         | `application/json` | The workspaces the connection can reach, with your role. Needs `mcp:read`.                |
+| `stuntdouble://workspaces/{workspace_id}/projects` | `application/json` | The live projects in one workspace, most recently opened first. Needs `mcp:read`.         |
+
+The guide and the connection are always listed. The workspace resources carry
+the same data as `list_workspaces` and `list_projects`, and `resources/list`
+includes one projects entry per workspace, so a client can browse them without
+expanding the template.
+
 ## Discovery manifest
 
 Registries and clients can discover the server from its published manifest:
