@@ -24,6 +24,11 @@ answers MCP discovery probes at `/`, `/mcp`, and `/jsonrpc` and redirects real
 requests to the endpoint above, so pointing a client at `www.stuntdouble.io`
 also resolves to the canonical server.
 
+For agents that have not signed in, a separate read-only
+[public docs server](/support/docs/api#public-docs-mcp-server) at
+`https://www.stuntdouble.io/api/docs-mcp` serves the documentation as MCP
+resources, without authentication.
+
 ## Connecting a client
 
 Most MCP clients accept a remote server by URL. In a client that uses a JSON
@@ -50,14 +55,27 @@ Access is authorised with **OAuth 2.1**:
 - Authorization URL: `https://app.stuntdouble.io/oauth/authorize`
 - Token URL: `https://app.stuntdouble.io/oauth/token`
 
-There are no granular scopes. A token acts as the person who approved it, and
-every tool checks that they are a member of the workspace it was asked about,
-so a connected client reaches exactly what that person reaches in the
-dashboard, and nothing else. Revoke a connection from Settings > Connections.
+Clients register themselves (dynamic client registration) and use PKCE, and
+discover all of this from the
+[authorization server metadata](https://app.stuntdouble.io/.well-known/oauth-authorization-server).
+
+Tokens carry scopes, and a token lists only the tools its scopes cover:
+
+- `mcp:read`: the `get_*`, `list_*` and `search` tools.
+- `mcp:write`: tools that create, edit or delete, plus `comment_on_pr`,
+  `summarise_feedback` and `regenerate_interview_report`.
+- `mcp:run`: `run_checklist`, `run_workflow` and `launch_interview`, which use
+  the workspace run allowance.
+
+A client that requests no scope is granted all three. A token acts as the person
+who approved it, and every tool also checks that they are a member of the
+workspace it was asked about, so a connected client never reaches more than that
+person reaches in the dashboard. Revoke a connection from Settings >
+Connections.
 
 ## Available tools
 
-The server exposes 61 tools, grouped by resource. Start with `search`: it
+The server exposes 63 tools, grouped by resource. Start with `search`: it
 covers every resource type below, so it is usually a shorter path to the thing
 you want than listing one type and filtering it yourself.
 
@@ -113,10 +131,13 @@ covering the same ground.
 
 - `list_workflows`, `get_workflow`, `run_workflow`, `get_workflow_run`,
   `create_workflow`, `update_workflow`, `toggle_workflow`, `delete_workflow`
-- `add_workflow_step`, `update_workflow_step`, `remove_workflow_step`
+- `add_workflow_step`, `update_workflow_step`, `remove_workflow_step`,
+  `connect_workflow_steps`, `reorder_workflow_steps`
 
 A workflow is a multi-step automation that re-runs checks on a schedule or on
-an event. Steps are managed separately from the workflow itself.
+an event. Steps are managed separately from the workflow itself, and run by
+following the connections between them, which `connect_workflow_steps` and
+`reorder_workflow_steps` set.
 
 ### Feedback
 

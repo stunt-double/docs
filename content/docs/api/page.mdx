@@ -2,12 +2,12 @@ export const metadata = {
   alternates: {
     canonical: '/support/docs/api',
   },
-  title: 'API overview',
+  title: 'API documentation',
   description:
-    'How to talk to Stunt Double programmatically: the MCP server, authentication, and the resources you can manage.',
+    'The Stunt Double API: the MCP server, OAuth 2.1 scopes, versioning and deprecation, rate limits, and the resources you can manage.',
 };
 
-# API overview
+# Stunt Double API
 
 Stunt Double exposes its platform programmatically through a
 **Model Context Protocol (MCP)** server. MCP is an open standard for connecting
@@ -48,11 +48,57 @@ Access is authorised with **OAuth 2.1**. MCP clients that support OAuth will
 discover the authorization and token endpoints automatically and prompt you to
 sign in to your Stunt Double workspace the first time you connect.
 
-<Callout variant="tip">
-  Tokens are scoped, so a client only gets the permissions it needs, for example `checklists:run` to
-  start a checklist or `actors:write` to create one. See the [MCP server](/support/docs/api/mcp)
-  page for the full list of scopes.
-</Callout>
+Tokens are scoped, so a client can ask for only the access it needs:
+
+| Scope       | What it allows                                                                                      |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| `mcp:read`  | Read workspaces and their contents: projects, actors, checklists, interviews, workflows and results |
+| `mcp:write` | Create and edit projects, actors, knowledge, guidelines, checklists, interviews and workflows       |
+| `mcp:run`   | Start checklist runs, workflow runs and interviews, which use the workspace run allowance           |
+
+A client that requests no scope is granted all three. A token only lists the
+tools its scopes cover, and every tool also checks that you are a member of the
+workspace it was asked about. The authorization server publishes its
+[RFC 8414 metadata](https://app.stuntdouble.io/.well-known/oauth-authorization-server),
+including `scopes_supported`.
+
+## Versioning and deprecation
+
+The MCP server is versioned by the protocol itself: a client negotiates a
+version at `initialize` and sends it on every later request in the
+`MCP-Protocol-Version` header. The public HTTP endpoints follow semantic
+versioning (`info.version` in the OpenAPI spec). A breaking change ships under a
+new path or header value alongside the old one, never in place.
+
+When something is deprecated, it is marked `deprecated: true` in the OpenAPI
+spec, its responses carry a `Deprecation` header (RFC 9745) and a `Sunset`
+header (RFC 8594) with the removal date, and the change is announced in the
+[changelog](/changelog) at least 90 days before removal. Nothing is deprecated
+today.
+
+## Rate limits
+
+Uncached endpoints on `www.stuntdouble.io` (health, the public docs MCP server,
+and error responses under `/api`) allow 120 requests per minute per client, and
+say so on every response with the IETF `RateLimit` headers:
+
+```
+RateLimit-Policy: "public-api";q=120;w=60
+RateLimit: "public-api";r=119;t=60
+```
+
+`r` is the requests left and `t` the seconds until the window resets. Over the
+limit, the response is a `429` with a `Retry-After` header and a JSON body whose
+`error.code` is `rate_limited`. Wait that many seconds before retrying.
+
+## Public docs MCP server
+
+Agents that have not signed in can still connect over MCP. A read-only server at
+`https://www.stuntdouble.io/api/docs-mcp` needs no authentication and exposes
+Stunt Double's documentation as resources: `llms.txt`, the homepage as
+Markdown, the OpenAPI spec and the MCP manifest. It has no tools; to act on a
+workspace, connect to the product server above. A POST to
+`https://www.stuntdouble.io/.well-known/mcp` reaches the same docs server.
 
 ## Discovery
 
