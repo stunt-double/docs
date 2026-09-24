@@ -59,4 +59,13 @@ sign in to your Stunt Double workspace the first time you connect.
 The platform publishes a manifest at
 `https://www.stuntdouble.io/.well-known/mcp.json` describing the server, its
 transport, authentication, and tools. MCP registries and clients use this to
-discover the integration.
+discover the integration. The same manifest is served at
+`https://www.stuntdouble.io/.well-known/mcp`.
+
+The public HTTP endpoints on this site (discovery files, health, the desktop
+release feed, and the MCP entry point) are described by the Stunt Double
+OpenAPI spec at
+[`https://www.stuntdouble.io/openapi.json`](https://www.stuntdouble.io/openapi.json).
+Agents can also read the site as Markdown: [`/llms.txt`](/llms.txt) says when to
+use Stunt Double and how to connect, and the homepage returns Markdown to
+requests that send `Accept: text/markdown`.
