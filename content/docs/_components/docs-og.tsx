@@ -26,7 +26,7 @@ export const DOCS_OG_SIZE = { width: 1200, height: 630 };
 const INK = '#0e1119';
 const DEFAULT_ACCENT = '#3555e5';
 const PAPER_BACKGROUND =
-  'radial-gradient(ellipse 70% 55% at 28% 20%, #dce6fe 0%, transparent 60%), linear-gradient(180deg, #f8fafd 0%, #edf0f6 100%)';
+  'radial-gradient(ellipse 70% 55% at 28% 20%, #dce6fe 0%, rgba(220, 230, 254, 0) 60%), linear-gradient(180deg, #f8fafd 0%, #edf0f6 100%)';
 
 // Mirror the path style used by the blog/guide OG routes so Turbopack's file
 // tracer can statically bundle the font/image assets into the lambda.
