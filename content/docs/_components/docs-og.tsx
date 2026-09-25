@@ -89,16 +89,16 @@ export async function renderDocsOgImage(href: string) {
     // Keep the defaults and let the composition fall back gracefully.
   }
 
-  const [bgDataUrl, tiemposMedium, tiemposMediumItalic, untitledRegular, untitledMedium] =
+  const [bgDataUrl, tiemposRegular, tiemposRegularItalic, untitledRegular, untitledMedium] =
     await Promise.all([
       readFile(join(process.cwd(), 'public', 'og', 'bg-default.png'))
         .then((buf) => `data:image/png;base64,${buf.toString('base64')}`)
         .catch(() => undefined),
-      readFile(join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-medium.ttf')).catch(
+      readFile(join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular.ttf')).catch(
         () => undefined
       ),
       readFile(
-        join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-medium-italic.ttf')
+        join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular-italic.ttf')
       ).catch(() => undefined),
       readFile(join(process.cwd(), 'public', 'og-fonts', 'untitled-sans-regular.ttf')).catch(
         () => undefined
@@ -116,8 +116,8 @@ export async function renderDocsOgImage(href: string) {
   }[] = [
     { name: 'Untitled Sans', data: untitledRegular, weight: 400, style: 'normal' },
     { name: 'Untitled Sans', data: untitledMedium, weight: 500, style: 'normal' },
-    { name: 'Tiempos Headline', data: tiemposMedium, weight: 500, style: 'normal' },
-    { name: 'Tiempos Headline', data: tiemposMediumItalic, weight: 500, style: 'italic' },
+    { name: 'Tiempos Headline', data: tiemposRegular, weight: 400, style: 'normal' },
+    { name: 'Tiempos Headline', data: tiemposRegularItalic, weight: 400, style: 'italic' },
   ];
   const fonts = fontCandidates.filter(
     (f): f is { name: string; data: Buffer; weight: FontWeight; style: 'normal' | 'italic' } =>
@@ -260,7 +260,7 @@ export async function renderDocsOgImage(href: string) {
           <div
             style={{
               fontSize: title.length > 42 ? 50 : 60,
-              fontWeight: 500,
+              fontWeight: 400,
               color: INK,
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
