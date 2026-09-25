@@ -24,7 +24,7 @@ import { docsNav } from '../_lib/nav';
 export const DOCS_OG_SIZE = { width: 1200, height: 630 };
 
 const INK = '#0e1119';
-const DEFAULT_ACCENT = '#4564d0';
+const DEFAULT_ACCENT = '#3555e5';
 const PAPER_BACKGROUND =
   'radial-gradient(ellipse 70% 55% at 28% 20%, #dce6fe 0%, transparent 60%), linear-gradient(180deg, #f8fafd 0%, #edf0f6 100%)';
 
