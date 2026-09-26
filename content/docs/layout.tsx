@@ -3,11 +3,11 @@ import type { ReactNode } from 'react';
 import { Container } from '../../components/layout';
 import { DocsSidebar } from './_components/docs-sidebar';
 
-/** Prose styling for docs bodies. Headings use the Geist Pixel display
- * voice (`font-pixel`, the same face that powers `.font-display`) rather
- * than the blog's editorial serif, tuned for reference material. Pixel
- * glyphs sit on a fixed square grid, so headings keep normal tracking and
- * weight 400 (negative tracking collapses the cells).
+/** Prose styling for docs bodies. Headings are Tiempos Headline
+ * (`font-serif`, weight 400), the same voice as every headline below a page
+ * title: Geist Pixel is for the page h1 only, once per page. Tiempos is drawn
+ * for 20px and up, so `h3` (a sub-topic inside a section, set smaller) is a
+ * sans 500 title rather than a small serif.
  *
  * `max-w-none` hands width control to the layout below rather than
  * Typography's own 65ch cap: the wrapper around `{children}` in `DocsLayout`
@@ -17,10 +17,10 @@ import { DocsSidebar } from './_components/docs-sidebar';
  * the next. */
 const docsProse =
   'prose dark:prose-invert max-w-none ' +
-  'prose-headings:font-pixel prose-headings:font-normal prose-headings:tracking-normal prose-headings:scroll-mt-28 ' +
+  'prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-normal prose-headings:text-balance prose-headings:scroll-mt-28 ' +
   'prose-h1:text-2xl prose-h1:sm:text-3xl prose-h1:mb-4 ' +
   'prose-h2:text-xl prose-h2:sm:text-2xl prose-h2:mt-16 prose-h2:mb-5 prose-h2:pt-10 prose-h2:border-t prose-h2:border-border ' +
-  'prose-h3:text-base prose-h3:sm:text-lg prose-h3:mt-10 prose-h3:mb-3 ' +
+  'prose-h3:font-sans prose-h3:font-medium prose-h3:tracking-[-0.012em] prose-h3:text-base prose-h3:sm:text-lg prose-h3:mt-10 prose-h3:mb-3 ' +
   'prose-p:font-sans prose-p:text-[0.9375rem] prose-p:leading-[1.8] prose-p:my-5 ' +
   'prose-a:text-foreground prose-a:font-medium prose-a:underline prose-a:underline-offset-[3px] prose-a:decoration-foreground/30 hover:prose-a:decoration-foreground ' +
   'prose-strong:font-semibold prose-strong:text-foreground ' +

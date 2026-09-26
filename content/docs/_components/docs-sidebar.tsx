@@ -74,7 +74,7 @@ export function DocsSidebar({ className }: { className?: string }) {
         <ul className="flex flex-col gap-7">
           {docsNav.map((section) => (
             <li key={section.title}>
-              <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wider uppercase">
+              <p className="text-muted-foreground mb-3 font-mono text-xs uppercase">
                 {section.title}
               </p>
               <ul className="border-border/60 flex flex-col gap-0.5 border-l">
