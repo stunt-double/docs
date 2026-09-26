@@ -110,25 +110,25 @@ export async function renderDocsOgImage(href: string) {
     untitledMedium,
     geistMonoRegular,
   ] = await Promise.all([
-      readFile(join(process.cwd(), 'public', 'og', 'bg-default.png'))
-        .then((buf) => `data:image/png;base64,${buf.toString('base64')}`)
-        .catch(() => undefined),
-      readFile(join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular.ttf')).catch(
-        () => undefined
-      ),
-      readFile(
-        join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular-italic.ttf')
-      ).catch(() => undefined),
-      readFile(join(process.cwd(), 'public', 'og-fonts', 'untitled-sans-regular.ttf')).catch(
-        () => undefined
-      ),
-      readFile(join(process.cwd(), 'public', 'og-fonts', 'untitled-sans-medium.ttf')).catch(
-        () => undefined
-      ),
-      readFile(join(process.cwd(), 'public', 'og-fonts', 'geist-mono-regular.ttf')).catch(
-        () => undefined
-      ),
-    ]);
+    readFile(join(process.cwd(), 'public', 'og', 'bg-default.png'))
+      .then((buf) => `data:image/png;base64,${buf.toString('base64')}`)
+      .catch(() => undefined),
+    readFile(join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular.ttf')).catch(
+      () => undefined
+    ),
+    readFile(
+      join(process.cwd(), 'public', 'og-fonts', 'tiempos-headline-regular-italic.ttf')
+    ).catch(() => undefined),
+    readFile(join(process.cwd(), 'public', 'og-fonts', 'untitled-sans-regular.ttf')).catch(
+      () => undefined
+    ),
+    readFile(join(process.cwd(), 'public', 'og-fonts', 'untitled-sans-medium.ttf')).catch(
+      () => undefined
+    ),
+    readFile(join(process.cwd(), 'public', 'og-fonts', 'geist-mono-regular.ttf')).catch(
+      () => undefined
+    ),
+  ]);
 
   const fontCandidates: {
     name: string;
