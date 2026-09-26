@@ -23,7 +23,7 @@ const docsProse =
   'prose-h3:font-sans prose-h3:font-medium prose-h3:tracking-[-0.012em] prose-h3:text-base prose-h3:sm:text-lg prose-h3:mt-10 prose-h3:mb-3 ' +
   'prose-p:font-sans prose-p:text-[0.9375rem] prose-p:leading-[1.8] prose-p:my-5 ' +
   'prose-a:text-foreground prose-a:font-medium prose-a:underline prose-a:underline-offset-[3px] prose-a:decoration-foreground/30 hover:prose-a:decoration-foreground ' +
-  'prose-strong:font-semibold prose-strong:text-foreground ' +
+  'prose-strong:font-medium prose-strong:text-foreground ' +
   'prose-code:text-sm prose-code:font-mono prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:bg-secondary prose-code:text-secondary-foreground prose-code:before:content-none prose-code:after:content-none ' +
   'prose-pre:bg-muted prose-pre:text-muted-foreground prose-pre:rounded-md prose-pre:p-5 prose-pre:border prose-pre:border-border prose-pre:overflow-x-auto prose-pre:text-sm prose-pre:my-6 ' +
   'prose-li:my-2 prose-li:font-sans prose-li:text-[0.9375rem] prose-li:leading-[1.8] prose-ol:list-decimal prose-ol:pl-6 prose-ol:my-5 prose-ul:list-disc prose-ul:pl-6 prose-ul:my-5 ' +
