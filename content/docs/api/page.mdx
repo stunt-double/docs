@@ -108,6 +108,13 @@ transport, authentication, and tools. MCP registries and clients use this to
 discover the integration. The same manifest is served at
 `https://www.stuntdouble.io/.well-known/mcp`.
 
+Each MCP server also has a server card on the host that serves it: the docs
+server's at `https://www.stuntdouble.io/.well-known/mcp/server-card.json`, the
+product server's at `https://app.stuntdouble.io/.well-known/mcp/server-card.json`.
+The AI Catalog at `https://www.stuntdouble.io/.well-known/ai-catalog.json` lists
+both. The OAuth metadata documents are served on this site as well as on
+`app.stuntdouble.io`, and name `app.stuntdouble.io` as the issuer either way.
+
 The public HTTP endpoints on this site (discovery files, health, the desktop
 release feed, and the MCP entry point) are described by the Stunt Double
 OpenAPI spec at
