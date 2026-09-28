@@ -65,7 +65,7 @@ Tokens carry scopes, and a token lists only the tools its scopes cover:
 - `mcp:write`: tools that create, edit or delete, plus `comment_on_pr`,
   `summarise_feedback` and `regenerate_interview_report`.
 - `mcp:run`: `run_checklist`, `run_workflow` and `launch_interview`, which use
-  the workspace run allowance.
+  the workspace run allowance, and `request_index_rerun`.
 
 A client that requests no scope is granted all three. A token acts as the person
 who approved it, and every tool also checks that they are a member of the
@@ -75,7 +75,7 @@ Connections.
 
 ## Available tools
 
-The server exposes 66 tools, grouped by resource. Start with `search`: it
+The server exposes 67 tools, grouped by resource. Start with `search`: it
 covers every resource type below, so it is usually a shorter path to the thing
 you want than listing one type and filtering it yourself.
 
@@ -165,7 +165,8 @@ request.
 
 ### Index
 
-- `get_index_report`, `list_index_sessions`, `search_index_domains`
+- `get_index_report`, `list_index_sessions`, `search_index_domains`,
+  `request_index_rerun`
 
 Reads from the [Stunt Double Index](https://index.stuntdouble.io), the public
 ranking of how AI agents experience websites. `get_index_report` takes a domain,
@@ -173,6 +174,12 @@ or a `project_id` to use the domain linked to that project, and returns the
 overall score, category and provider scores, frictions and failing checks.
 `list_index_sessions` returns the agent sessions behind a score. Index data is
 public, so these read any tracked site, not only your own.
+
+`request_index_rerun` re-scores a domain you own: a platform admin, the person
+who claimed it, or, while it is unclaimed, someone signed in with a work email
+on that exact domain. It refreshes the probes straight away and starts about 24
+agent sessions that finish over a few minutes, and a domain can be re-run once
+every 10 minutes.
 
 ## Prompts
 
