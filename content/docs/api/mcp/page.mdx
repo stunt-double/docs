@@ -61,7 +61,7 @@ discover all of this from the
 
 Tokens carry scopes, and a token lists only the tools its scopes cover:
 
-- `mcp:read`: the `get_*`, `list_*` and `search` tools.
+- `mcp:read`: the `get_*`, `list_*`, `search` and `search_index_domains` tools.
 - `mcp:write`: tools that create, edit or delete, plus `comment_on_pr`,
   `summarise_feedback` and `regenerate_interview_report`.
 - `mcp:run`: `run_checklist`, `run_workflow` and `launch_interview`, which use
@@ -75,7 +75,7 @@ Connections.
 
 ## Available tools
 
-The server exposes 63 tools, grouped by resource. Start with `search`: it
+The server exposes 66 tools, grouped by resource. Start with `search`: it
 covers every resource type below, so it is usually a shorter path to the thing
 you want than listing one type and filtering it yourself.
 
@@ -162,6 +162,17 @@ brief before proposing changes rather than reasoning over the raw comments.
 These need the workspace GitHub connection. Pair them with a checklist run
 against a preview deployment to report what an actor found back onto the pull
 request.
+
+### Index
+
+- `get_index_report`, `list_index_sessions`, `search_index_domains`
+
+Reads from the [Stunt Double Index](https://index.stuntdouble.io), the public
+ranking of how AI agents experience websites. `get_index_report` takes a domain,
+or a `project_id` to use the domain linked to that project, and returns the
+overall score, category and provider scores, frictions and failing checks.
+`list_index_sessions` returns the agent sessions behind a score. Index data is
+public, so these read any tracked site, not only your own.
 
 ## Prompts
 
