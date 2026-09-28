@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeftIcon } from '@stuntdouble/ui/icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -62,7 +62,7 @@ export function DocsSidebar({ className }: { className?: string }) {
         href="/support"
         className="text-muted-foreground hover:text-foreground mb-7 inline-flex items-center gap-1.5 transition-colors lg:shrink-0"
       >
-        <ArrowLeft className="size-3.5" />
+        <ArrowLeftIcon className="size-3.5" />
         Support
       </Link>
       <div
