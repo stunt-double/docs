@@ -50,7 +50,7 @@ call tools on your behalf.
 
 ## Authentication
 
-Access is authorised with **OAuth 2.1**:
+Access is authorized with **OAuth 2.1**:
 
 - Authorization URL: `https://app.stuntdouble.io/oauth/authorize`
 - Token URL: `https://app.stuntdouble.io/oauth/token`
@@ -200,7 +200,7 @@ Resources are read-only context a client can attach without calling a tool:
 
 | URI                                                | Type               | What                                                                                      |
 | -------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------------------- |
-| `stuntdouble://guide`                              | `text/markdown`    | What Stunt Double does, when to reach for it, the tool catalogue and how to poll a run.   |
+| `stuntdouble://guide`                              | `text/markdown`    | What Stunt Double does, when to reach for it, the tool catalog and how to poll a run.   |
 | `stuntdouble://connection`                         | `application/json` | Who the connection acts as, the scopes it holds, the tools each unlocks and any it lacks. |
 | `stuntdouble://workspaces`                         | `application/json` | The workspaces the connection can reach, with your role. Needs `mcp:read`.                |
 | `stuntdouble://workspaces/{workspace_id}/projects` | `application/json` | The live projects in one workspace, most recently opened first. Needs `mcp:read`.         |
