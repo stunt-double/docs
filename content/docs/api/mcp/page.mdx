@@ -48,6 +48,61 @@ The first time you connect, the client runs the OAuth flow and asks you to sign
 in to your Stunt Double workspace. After you approve, the client can list and
 call tools on your behalf.
 
+In Claude Code, add it from the terminal:
+
+```bash
+claude mcp add --transport http stuntdouble https://app.stuntdouble.io/api/mcp
+```
+
+Or install the Stunt Double plugin, which bundles the server with the skills
+and agents below:
+
+```bash
+claude plugin marketplace add stunt-double/stuntdouble-mcp
+claude plugin install stuntdouble@stuntdouble
+```
+
+## Skills
+
+Skills teach an agent how to use the server well for a particular job: which
+tools to call in what order, what makes a good check, and when to stop and
+report. They install into Claude Code, Cursor, Codex, OpenCode and other agents
+that read `SKILL.md` files, using the [skills CLI](https://skills.sh), and work
+alongside the server rather than replacing it, so connect the server too.
+
+Install the task skills from the
+[stuntdouble-mcp](https://github.com/stunt-double/stuntdouble-mcp) repository:
+
+```bash
+npx skills add stunt-double/stuntdouble-mcp
+```
+
+The CLI lists them so you can pick; add `--skill <name>` to install one.
+
+| Skill                   | Use it to                                                                                     |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| `verify-change`         | Check a code change on its preview URL and report back on the pull request                    |
+| `setup-guardrails`      | Re-run checklists for critical flows on a schedule or on every deploy                         |
+| `maintain-automations`  | Retime, rewire or branch an existing automation, and update checks without losing history     |
+| `run-qa-suite`          | Run every workflow and checklist and produce a release-readiness report                       |
+| `run-ux-validation`     | Validate a user journey and report where users get stuck                                      |
+| `run-user-interview`    | Plan and launch a structured interview with AI participants, then read the report             |
+| `design-review`         | Gather reactions from several actors on a proposed design or flow                             |
+| `create-actor-panel`    | Create actors with the knowledge a realistic user would have                                  |
+| `triage-feedback`       | Review, categorize and resolve feedback across projects                                       |
+| `check-brand`           | Audit a product against brand and tone-of-voice guidelines                                    |
+| `check-design-system`   | Audit rendered pages against the design system                                                |
+| `check-compliance`      | Check consent, disclosures and other legal requirements, with evidence for counsel            |
+| `check-continuity`      | Check that pricing, terminology and promises match across surfaces                            |
+| `check-agent-readiness` | Read a site's [Index](#index) score, explain it from agent sessions, and re-score after fixes |
+
+For a single general-purpose skill instead, install the one this site
+publishes for [Agent Skills discovery](/.well-known/agent-skills/index.json):
+
+```bash
+npx skills add https://www.stuntdouble.io
+```
+
 ## Authentication
 
 Access is authorized with **OAuth 2.1**:
@@ -200,7 +255,7 @@ Resources are read-only context a client can attach without calling a tool:
 
 | URI                                                | Type               | What                                                                                      |
 | -------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------------------- |
-| `stuntdouble://guide`                              | `text/markdown`    | What Stunt Double does, when to reach for it, the tool catalog and how to poll a run.   |
+| `stuntdouble://guide`                              | `text/markdown`    | What Stunt Double does, when to reach for it, the tool catalog and how to poll a run.     |
 | `stuntdouble://connection`                         | `application/json` | Who the connection acts as, the scopes it holds, the tools each unlocks and any it lacks. |
 | `stuntdouble://workspaces`                         | `application/json` | The workspaces the connection can reach, with your role. Needs `mcp:read`.                |
 | `stuntdouble://workspaces/{workspace_id}/projects` | `application/json` | The live projects in one workspace, most recently opened first. Needs `mcp:read`.         |
@@ -220,3 +275,11 @@ https://www.stuntdouble.io/.well-known/mcp.json
 
 It describes the server name, transport, authentication, and the tool list
 above, following the MCP manifest schema.
+
+The server is also listed in the official
+[MCP Registry](https://registry.modelcontextprotocol.io) as
+`io.stuntdouble/mcp-server`, which registry-backed clients and directories read:
+
+```
+https://registry.modelcontextprotocol.io/v0.1/servers?search=io.stuntdouble/mcp-server
+```
