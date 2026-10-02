@@ -176,11 +176,16 @@ several projects and edited in one place.
 ### Checklists
 
 - `list_checklists`, `get_checklist`, `get_checklist_run`, `run_checklist`,
-  `create_checklist`, `update_checklist`, `delete_checklist`
+  `create_checklist`, `update_checklist`, `delete_checklist`, `flag_check_verdict`
 
 `delete_checklist` discards run history, which is the regression signal for
 that flow. Prefer re-running an existing checklist over creating a second one
 covering the same ground.
+
+When a run got a verdict wrong, `flag_check_verdict` records the correction
+(should have passed, or should have failed) with a note on what was actually
+true. Later runs of the checklist read it, and `get_checklist_run` returns it
+beside the verdict as `verdict_correction`.
 
 ### Workflows
 
