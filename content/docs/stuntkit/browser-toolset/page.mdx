@@ -1,0 +1,143 @@
+export const metadata = {
+  alternates: {
+    canonical: '/support/docs/stuntkit/browser-toolset',
+  },
+  title: 'Give an AI agent a safe browser',
+  description:
+    'Use @stdbl/browser-toolset to let Claude or any function-calling model read and act on real pages, with guards that refuse payments, sign-ups, passwords and card numbers.',
+};
+
+# Give an AI agent a safe browser
+
+Your agent needs to book a demo on a site it has never seen. It reads the
+page, finds the form, fills it in, and stops at the button that would start a
+paid trial. `@stdbl/browser-toolset` is the set of tools that makes that last
+step a rule rather than a hope.
+
+It is the same code that drives every Stunt Double actor and every
+[Stunt Double Index](https://index.stuntdouble.io) session, published from
+[Stuntkit](/support/docs/stuntkit).
+
+## What you get
+
+- **An executor for Anthropic's browser use toolset.** Claude asks for
+  `navigate`, `read_page`, `left_click` or `type`, and the executor runs it
+  against your browser and returns the results the API expects.
+- **The same tools for any model.** Eleven plain function tools with flat
+  parameters, so Claude, Gemini, GPT and open models all get the same
+  vocabulary.
+- **Safety guards in the tools, not the prompt.** Opt in and the tools refuse
+  to pay, subscribe, create accounts or type passwords and card numbers.
+- **A screenshot pruner** that keeps long agent loops inside the context
+  window.
+
+The tools never call a model themselves. Pages are read as a tree of elements
+with `ref` handles, so your agent's own model does all of the reasoning. There
+are no runtime dependencies: you bring the browser.
+
+## Install
+
+```sh
+npm install @stdbl/browser-toolset
+```
+
+Node 20 or later, or any runtime with `Buffer` (Bun, Deno, Cloudflare Workers
+with `nodejs_compat`).
+
+## Connect your browser
+
+The toolset talks to a browser through a small `BrowserDriver` interface:
+open a page, take a screenshot, click, type, evaluate a script. Implement it
+over Playwright, a hosted browser or a raw CDP client. The repository has a
+complete
+[Playwright driver](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset/examples)
+you can copy.
+
+## Run Claude on the browser use toolset
+
+```ts
+import Anthropic from '@anthropic-ai/sdk';
+import {
+  BROWSER_TOOLSET,
+  BrowserToolsetExecutor,
+  INDEX_SESSION_SAFETY,
+  isBrowserToolsetCall,
+} from '@stdbl/browser-toolset';
+
+const client = new Anthropic();
+const executor = new BrowserToolsetExecutor(driver, { safety: INDEX_SESSION_SAFETY });
+const messages: Anthropic.Messages.MessageParam[] = [{ role: 'user', content: task }];
+
+for (;;) {
+  const response = await client.messages.create({
+    model: 'claude-opus-5-5',
+    max_tokens: 16000,
+    tools: [BROWSER_TOOLSET],
+    messages,
+  });
+  messages.push({ role: 'assistant', content: response.content });
+  const calls = response.content.filter((b): b is Anthropic.Messages.ToolUseBlock =>
+    isBrowserToolsetCall(b)
+  );
+  if (calls.length === 0) break;
+  const { results } = await executor.runTurn(calls);
+  messages.push({ role: 'user', content: results });
+}
+```
+
+## Run any other model on the direct tools
+
+```ts
+import { DIRECT_TOOL_SPECS, DirectBrowserTools } from '@stdbl/browser-toolset';
+
+const tools = new DirectBrowserTools(driver, {
+  viewport: { width: 1280, height: 800 },
+  safety: INDEX_SESSION_SAFETY,
+});
+
+// Offer DIRECT_TOOL_SPECS to your model in its SDK's tool format, then for each call:
+const result = await tools.run(call.name, call.input);
+```
+
+`run` never throws. A failure comes back as text the model can act on, and
+every call has a 45 second ceiling.
+
+## Turn on the safety guards
+
+If your agent browses sites that are not yours, turn the guards on.
+`INDEX_SESSION_SAFETY` enables all of them:
+
+| Guard                  | What it refuses                                                                                                                                                       |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `refuseSensitiveInput` | Typing into a password or payment card field, including card fields inside Stripe, PayPal, Adyen and other payment iframes, and any value that is a valid card number |
+| `blockSubmit`          | Submitting a form that pays, subscribes, signs up or starts a trial, and pressing a payment button such as "Place order" anywhere on the page                         |
+
+A link that only navigates, like a "Sign up" link to the sign-up page, is
+always allowed: reaching the form is often the task.
+
+When a guard refuses, the action never reaches the page. The model gets an
+ordinary result telling it what was refused, so it reports what it saw
+instead of retrying.
+
+<Callout variant="note" title="Guards, not a sandbox">
+  The guards read the page the way a person would, so a page built to disguise a payment form can
+  still get past them. Pair them with a network block on payment providers (`paymentBlocklistFor`)
+  and test accounts that hold no real payment details.
+</Callout>
+
+Everything is off by default. An agent testing your own product, filling a
+sign-up form with test data or completing a sandbox checkout, should keep
+doing exactly that.
+
+## Keep private hosts private
+
+`navigate` refuses anything but `http` and `https`, and by default refuses
+loopback, private and cloud metadata addresses. A page can't talk your agent
+into probing the machine the browser runs on. Pass `allowPrivateHosts: true`
+when an intranet or a local dev server is the point.
+
+## Next steps
+
+- **[Read the full API](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset)** on GitHub
+- **[See what else is in Stuntkit](/support/docs/stuntkit)**
+- **[Test a product behind your firewall](/support/docs/tutorials/self-hosted-worker)**

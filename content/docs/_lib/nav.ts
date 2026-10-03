@@ -101,6 +101,21 @@ export const docsNav: DocsSection[] = [
     ],
   },
   {
+    title: 'Open source',
+    links: [
+      {
+        title: 'Stuntkit',
+        href: '/support/docs/stuntkit',
+        description: 'The open source tools behind Stunt Double, for your own agents.',
+      },
+      {
+        title: 'Give an AI agent a safe browser',
+        href: '/support/docs/stuntkit/browser-toolset',
+        description: 'Browser tools for any model, with guards against paying and signing up.',
+      },
+    ],
+  },
+  {
     title: 'Guides',
     links: [
       {
