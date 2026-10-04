@@ -22,6 +22,11 @@ connection, so there are no firewall changes needed on your end. Once it's
 running, use Test connection to confirm it can reach Stunt Double and your
 target product before assigning any actors to it.
 
+The worker is open source, part of [Stuntkit](/support/docs/stuntkit). Its
+code, CLI reference and releases live in
+[stunt-double/worker](https://github.com/stunt-double/worker) on GitHub, so
+your security team can read exactly what runs inside your network.
+
 ## Control what it can reach
 
 Each worker has an Access setting with three modes:
@@ -30,10 +35,9 @@ Each worker has an Access setting with three modes:
 - **Allow specific domains**, only the domains you list.
 - **Block specific domains**, everything except the domains you list.
 
-A new worker defaults to Allow specific domains with an empty list, which
-denies everything until you explicitly add the domains it needs. Start narrow
-and widen it only as required, rather than opening it up and locking it down
-later.
+A new worker defaults to Allow all domains, so it works as soon as it
+connects. To restrict it, switch to Allow specific domains and list only what
+your actors need to reach.
 
 ## Pin actors and checklists to a worker
 
