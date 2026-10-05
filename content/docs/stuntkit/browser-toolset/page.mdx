@@ -4,14 +4,14 @@ export const metadata = {
   },
   title: 'Give an AI agent a safe browser',
   description:
-    'Use @stdbl/browser-toolset to let Claude or any function-calling model read and act on real pages, with guards that refuse payments, sign-ups, passwords and card numbers.',
+    'Use @stunt-double/browser-toolset to let Claude or any function-calling model read and act on real pages, with guards that refuse payments, sign-ups, passwords and card numbers.',
 };
 
 # Give an AI agent a safe browser
 
 Your agent needs to book a demo on a site it has never seen. It reads the
 page, finds the form, fills it in, and stops at the button that would start a
-paid trial. `@stdbl/browser-toolset` is the set of tools that makes that last
+paid trial. `@stunt-double/browser-toolset` is the set of tools that makes that last
 step a rule rather than a hope.
 
 It is the same code that drives every Stunt Double actor and every
@@ -37,8 +37,19 @@ are no runtime dependencies: you bring the browser.
 
 ## Install
 
+Until the `@stunt-double` scope is available on npm, the package is published
+to GitHub Packages. Point the scope at GitHub Packages in your project's
+`.npmrc`, with a GitHub token that has the `read:packages` scope:
+
+```ini
+@stunt-double:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Then install it:
+
 ```sh
-npm install @stdbl/browser-toolset
+npm install @stunt-double/browser-toolset
 ```
 
 Node 20 or later, or any runtime with `Buffer` (Bun, Deno, Cloudflare Workers
@@ -62,7 +73,7 @@ import {
   BrowserToolsetExecutor,
   INDEX_SESSION_SAFETY,
   isBrowserToolsetCall,
-} from '@stdbl/browser-toolset';
+} from '@stunt-double/browser-toolset';
 
 const client = new Anthropic();
 const executor = new BrowserToolsetExecutor(driver, { safety: INDEX_SESSION_SAFETY });
@@ -88,7 +99,7 @@ for (;;) {
 ## Run any other model on the direct tools
 
 ```ts
-import { DIRECT_TOOL_SPECS, DirectBrowserTools } from '@stdbl/browser-toolset';
+import { DIRECT_TOOL_SPECS, DirectBrowserTools } from '@stunt-double/browser-toolset';
 
 const tools = new DirectBrowserTools(driver, {
   viewport: { width: 1280, height: 800 },

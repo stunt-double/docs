@@ -13,8 +13,9 @@ Give your AI agent a browser it can use safely. Stuntkit is the code Stunt
 Double runs on every agent session, extracted and published so you can use it
 in your own agents, read exactly what it does and send fixes back.
 
-It is open source under the Apache-2.0 license and published to npm under the
-`@stdbl` scope.
+It is open source under the Apache-2.0 license. Stuntkit packages are
+published under the `@stunt-double` scope, on GitHub Packages until that scope
+is available on npm. The self-hosted worker packages keep the `@stdbl` scope.
 
 ## What's in it
 
@@ -36,11 +37,11 @@ It is open source under the Apache-2.0 license and published to npm under the
   ]}
 />
 
-| Package                  | What it does                                                                                              | Source                                                                                               |
-| ------------------------ | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `@stdbl/browser-toolset` | Browser tools for AI agents over any browser you bring, with opt-in safety guards                         | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset) |
-| `@stdbl/worker`          | The self-hosted worker CLI and Docker image that runs Stunt Double sessions inside your network           | [stunt-double/worker](https://github.com/stunt-double/worker)                                        |
-| `@stdbl/relay`           | The WebSocket relay that pairs a worker with the cloud agent, so neither side accepts inbound connections | [stunt-double/worker](https://github.com/stunt-double/worker/tree/main/packages/relay)               |
+| Package                         | What it does                                                                                              | Source                                                                                               |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `@stunt-double/browser-toolset` | Browser tools for AI agents over any browser you bring, with opt-in safety guards                         | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset) |
+| `@stdbl/worker`                 | The self-hosted worker CLI and Docker image that runs Stunt Double sessions inside your network           | [stunt-double/worker](https://github.com/stunt-double/worker)                                        |
+| `@stdbl/relay`                  | The WebSocket relay that pairs a worker with the cloud agent, so neither side accepts inbound connections | [stunt-double/worker](https://github.com/stunt-double/worker/tree/main/packages/relay)               |
 
 More packages are on the way to Stuntkit, starting with the American and
 British spelling localizer this site uses and the Continuity icon set.
