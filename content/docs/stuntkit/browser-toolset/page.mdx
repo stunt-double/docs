@@ -16,7 +16,7 @@ step a rule rather than a hope.
 
 It is the same code that drives every Stunt Double actor and every
 [Stunt Double Index](https://index.stuntdouble.io) session, published from
-[Stuntkit](/support/docs/stuntkit).
+[StuntKit](/support/docs/stuntkit).
 
 ## What you get
 
@@ -37,9 +37,12 @@ are no runtime dependencies: you bring the browser.
 
 ## Install
 
+The source is public on
+[GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset).
 Until the `@stunt-double` scope is available on npm, the package is published
-to GitHub Packages. Point the scope at GitHub Packages in your project's
-`.npmrc`, with a GitHub token that has the `read:packages` scope:
+to GitHub Packages, which asks for a token to install any package, public ones
+included. Point the scope at GitHub Packages in your project's `.npmrc`, with a
+GitHub token that has the `read:packages` scope:
 
 ```ini
 @stunt-double:registry=https://npm.pkg.github.com
@@ -50,6 +53,15 @@ Then install it:
 
 ```sh
 npm install @stunt-double/browser-toolset
+```
+
+To skip the token, build it from the repository and install the tarball:
+
+```sh
+git clone https://github.com/stunt-double/stuntkit.git
+cd stuntkit && pnpm install
+pnpm --filter @stunt-double/browser-toolset build
+pnpm --filter @stunt-double/browser-toolset pack
 ```
 
 Node 20 or later, or any runtime with `Buffer` (Bun, Deno, Cloudflare Workers
@@ -150,5 +162,5 @@ when an intranet or a local dev server is the point.
 ## Next steps
 
 - **[Read the full API](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset)** on GitHub
-- **[See what else is in Stuntkit](/support/docs/stuntkit)**
+- **[See what else is in StuntKit](/support/docs/stuntkit)**
 - **[Test a product behind your firewall](/support/docs/tutorials/self-hosted-worker)**

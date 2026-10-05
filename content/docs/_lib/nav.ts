@@ -104,7 +104,7 @@ export const docsNav: DocsSection[] = [
     title: 'Open source',
     links: [
       {
-        title: 'Stuntkit',
+        title: 'StuntKit',
         href: '/support/docs/stuntkit',
         description: 'The open source tools behind Stunt Double, for your own agents.',
       },
