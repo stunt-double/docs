@@ -136,7 +136,7 @@ export const docsNav: DocsSection[] = [
       {
         title: 'MCP server',
         href: '/support/docs/api/mcp',
-        description: 'Connect Claude and other MCP clients to your workspace.',
+        description: 'Connect Claude, Cursor and other MCP clients to your workspace.',
       },
     ],
   },

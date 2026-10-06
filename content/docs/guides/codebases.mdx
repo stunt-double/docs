@@ -5,21 +5,38 @@ change that reaches a preview deployment can be walked end to end by an AI
 persona before merge, with results reported where engineers already look.
 
 <Callout variant="who">
-  Engineers using Claude Code, Cursor, Windsurf, or any MCP-capable coding
-  agent, and teams that want user-level verification in their PR flow.
+  Engineers using Claude Code, Cursor, Windsurf, or any MCP-capable coding agent, and teams that
+  want user-level verification in their PR flow.
 </Callout>
 
 ## Setup
 
-1. **Add the MCP server to your agent:**
+1. **Connect your coding agent** (plugin preferred, MCP config as a fallback):
+
+   **Claude Code:** add the server, or install the plugin (server plus skills and
+   agents):
 
    ```bash
-   # Claude Code
    claude mcp add --transport http stuntdouble https://app.stuntdouble.io/api/mcp
    ```
 
+   ```bash
+   claude plugin marketplace add stunt-double/stuntdouble-mcp
+   claude plugin install stuntdouble@stuntdouble
+   ```
+
+   **Cursor:** install the
+   [Stunt Double Cursor plugin](https://github.com/stunt-double/stuntdouble-mcp)
+   (MCP server plus skills, rules and agents). From the
+   [Cursor marketplace](https://cursor.com/marketplace) once listed, or add the
+   repo as a team marketplace (Dashboard → Plugins → Team Marketplaces → Add
+   Marketplace → Import from Repo), then install `stuntdouble` from Customize.
+
+   **MCP only** (Cursor without the plugin, Windsurf, or any other JSON-config
+   client):
+
    ```json
-   // Cursor / Windsurf mcp.json
+   // .cursor/mcp.json or ~/.cursor/mcp.json
    { "mcpServers": { "stuntdouble": { "url": "https://app.stuntdouble.io/api/mcp" } } }
    ```
 

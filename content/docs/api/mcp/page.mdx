@@ -4,7 +4,7 @@ export const metadata = {
   },
   title: 'MCP server',
   description:
-    'Connect Claude and other MCP clients to your Stunt Double workspace: endpoint, authentication, scopes, and the full tool list.',
+    'Connect Claude, Cursor and other MCP clients to your Stunt Double workspace: endpoint, plugins, authentication, scopes, and the full tool list.',
 };
 
 # MCP server
@@ -62,13 +62,52 @@ claude plugin marketplace add stunt-double/stuntdouble-mcp
 claude plugin install stuntdouble@stuntdouble
 ```
 
+### Cursor
+
+The same
+[stuntdouble-mcp](https://github.com/stunt-double/stuntdouble-mcp) repository
+is a [Cursor plugin](https://cursor.com/docs/plugins): the hosted MCP server
+plus skills, rules and agents. Auth is OAuth 2.1 with PKCE; no API keys.
+
+**Install as a plugin (recommended):**
+
+1. From the [Cursor marketplace](https://cursor.com/marketplace), install
+   **Stunt Double** once it is listed.
+2. Or add the repo as a team marketplace: open the Cursor dashboard, go to
+   **Plugins → Team Marketplaces → Add Marketplace → Import from Repo**, paste
+   `https://github.com/stunt-double/stuntdouble-mcp`, then install
+   **stuntdouble** from **Customize** in the sidebar.
+
+Cursor discovers the MCP server, skills, rules and agents from the default
+folders. The first tool call opens a browser for you to sign in.
+
+**MCP only** (no skills, rules or agents): add this to a Cursor MCP config.
+Use project-local `.cursor/mcp.json`, or global `~/.cursor/mcp.json` on
+macOS/Linux. Windsurf and other JSON-config clients take the same block.
+
+```json
+{
+  "mcpServers": {
+    "stuntdouble": {
+      "url": "https://app.stuntdouble.io/api/mcp"
+    }
+  }
+}
+```
+
+Use only `url` for remote servers. Extra keys such as
+`"type": "streamable-http"` are not part of Cursor's documented `mcp.json`
+shape and can break plugin validation.
+
 ## Skills
 
 Skills teach an agent how to use the server well for a particular job: which
 tools to call in what order, what makes a good check, and when to stop and
 report. They install into Claude Code, Cursor, Codex, OpenCode and other agents
 that read `SKILL.md` files, using the [skills CLI](https://skills.sh), and work
-alongside the server rather than replacing it, so connect the server too.
+alongside the server rather than replacing it, so connect the server too. The
+Cursor plugin above already includes them; use the CLI when you want skills
+without the rest of the plugin.
 
 Install the task skills from the
 [stuntdouble-mcp](https://github.com/stunt-double/stuntdouble-mcp) repository:
