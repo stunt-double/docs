@@ -45,11 +45,13 @@ persona before merge, with results reported where engineers already look.
    { "mcpServers": { "stuntdouble": { "url": "https://app.stuntdouble.io/api/mcp" } } }
    ```
 
-   You authorize via browser on first use; no API keys.
+   You authorize via browser on first use; no API keys. **[MCP](/support/docs/mcp)** has
+   setup for more clients.
 
-2. **Connect GitHub** to your workspace (Settings -> Connections) so
-   agents can read PRs and post results, and workflows can trigger on GitHub
-   events.
+2. **Connect GitHub** to your workspace (**Integrations** > GitHub >
+   **Connect GitHub**, then **Install GitHub App** for the repositories you
+   choose) so agents can read PRs and post results, and workflows can trigger
+   on GitHub events. See **[GitHub](/support/docs/integrations/github)**.
 
 3. **Teach your agent the habit.** Add a note to your repo's agent
    instructions (`CLAUDE.md`, `.cursorrules`, etc.) so verification happens by

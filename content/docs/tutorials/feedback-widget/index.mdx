@@ -206,8 +206,8 @@ grouped by page and version, in a queue rather than a support inbox.
 Feedback is available through the MCP server, so an assistant can triage it with
 you: `list_feedback` (filter by status when working the new queue), `get_feedback`
 for one item and its replies, and `update_feedback_status` to resolve or dismiss.
-The relevant scopes are `feedback:read` and `feedback:write`. See the
-**[MCP server](/support/docs/api/mcp)** page for connecting a client.
+Reading needs the `mcp:read` scope and changing a status needs `mcp:write`. See
+**[MCP](/support/docs/mcp)** for connecting a client.
 
 A natural pairing: read the open comments for a page, then run a checklist
 against that page to reproduce what your reviewers reported before deciding what

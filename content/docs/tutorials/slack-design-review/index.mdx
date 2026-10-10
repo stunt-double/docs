@@ -22,15 +22,19 @@ workspace and starts checklists and workflows for you.
 
 ## 1. Connect Slack
 
-Open **Settings > Design review** and connect Slack for the workspace. That is
-the whole setup. The Slack app already declares the events and permissions it
-needs, so nothing has to be wired up by hand.
+Open **Integrations** > Slack and select **Install Slack agent**, then **Add**
+your Slack team to the workspace (a workspace owner or admin does this step).
+That is the whole setup. The Slack app already asks for the permissions it
+needs, so nothing has to be wired up by hand. Review settings live under
+**Design reviews > Settings**. The **[Slack](/support/docs/integrations/slack)** page covers
+permissions, and the difference between **Remove** (one workspace) and
+**Disconnect** (your account, every workspace).
 
 From the moment the connection exists, anyone in your Slack workspace can
 message Stunt Double directly and ask for a review. Channels are optional and
 covered in [step 4](#4-turn-it-on-in-a-channel).
 
-Figma is the one extra, and only for Figma links. Connect it from the same page
+Figma is the one extra, and only for Figma links. Connect it from **Integrations** ([Figma](/support/docs/integrations/figma))
 and Figma frames are rendered and reviewed. Without it, a Figma link comes back
 with a **Connect Figma** button instead of feedback. Web links are reviewed
 either way.
@@ -130,7 +134,7 @@ come back, and the thread says which one failed and why.
 Direct messages work on their own. A channel is for teams that share work in the
 open, where nobody should have to remember to mention a bot.
 
-Under **Settings > Design review > Channels**, add the channel. Every message
+Under **Design reviews > Settings**, add the channel. Every message
 posted there that carries a link and asks for feedback then starts a review, with
 no mention needed.
 
@@ -156,7 +160,7 @@ been invited.
 
 Anything that is not a link plus a request for feedback goes to the agent. It
 runs against one workspace, with the same read and dispatch surface as the
-[MCP server](/support/docs/api/mcp):
+[MCP server](/support/docs/mcp):
 
 - List the projects, actors, checklists, and workflows in the workspace.
 - Start a checklist run and hand back the run it created.
@@ -187,7 +191,7 @@ order:
 2. **It was a reply in a thread nobody has reviewed yet.** A reply only starts a
    review when the thread already holds one. Post the link as a new message.
 3. **The bot is not in the channel.** Run `/invite @Stunt Double` there.
-4. **The connection is missing a permission.** Settings > Design review names
+4. **The connection is missing a permission.** **Design reviews > Settings** names
    this against each configured channel, with a reconnect button.
 5. **The workspace is over a usage limit.** The thread says which limit was hit
    rather than going silent.

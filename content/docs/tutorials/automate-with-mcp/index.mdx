@@ -44,11 +44,12 @@ checklists, workflows, interviews, and reads back the result.
 
 ## Scope tokens to least privilege
 
-Grant only the scopes a given client actually needs, for example
-`checklists:run` for a client that should trigger runs but never change what
-an actor does, or `actors:write` only for a client responsible for
-provisioning actors. See the full scope list on the
-**[MCP server](/support/docs/api/mcp)** page.
+Grant only the scopes a given client needs. There are three: `mcp:read` to
+read a workspace, `mcp:write` to create and edit, and `mcp:run` to start runs.
+A client that only reports on results needs `mcp:read`, and nothing more. A
+client that requests no scope gets all three. See the
+**[API overview](/support/docs/api)** for what each covers, and **[MCP](/support/docs/mcp)** for client
+setup.
 
 ## Next steps
 

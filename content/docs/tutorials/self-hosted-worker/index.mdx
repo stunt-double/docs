@@ -10,35 +10,44 @@ hosted browser session can't reach it. A self-hosted worker runs on your side
 of the firewall instead, so actors can reach an internal product without
 opening anything up.
 
+<Callout variant="note" title="Enterprise plan, workspace admins">
+  Self-hosted workers are part of the Enterprise plan, and only a workspace
+  owner or admin can turn them on and add workers. The page is marked
+  **Experimental** in the app.
+</Callout>
+
 ## Add a worker
 
-From Settings → Workers, add a worker either as a Docker container or with
-the CLI. Both dial out to Stunt Double rather than waiting for an inbound
-connection, so there are no firewall changes needed on your end. Once it's
-running, use Test connection to confirm it can reach Stunt Double and your
-target product before assigning any actors to it.
+1. Open **Settings > Workers** and select **Enable for this workspace**.
+2. Select **Add worker**, name it, then **Create worker**.
+3. Copy the Docker snippet the app shows. It runs the published image
+   `ghcr.io/stunt-double/worker:latest` with your worker's API key in
+   `SD_WORKER_API_KEY`. The key is shown once, so store it somewhere safe
+   before you close the dialog. The snippet can also add Watchtower to keep
+   the image up to date.
+4. Run it on a machine inside your network, then select **Test connection**
+   to confirm it reaches Stunt Double and your target product.
 
-The worker is open source, part of [StuntKit](/support/docs/stuntkit). Its
-code, CLI reference and releases live in
-[stunt-double/worker](https://github.com/stunt-double/worker) on GitHub, so
-your security team can read exactly what runs inside your network.
+The worker dials out to Stunt Double rather than waiting for an inbound
+connection, so your firewall needs no changes. Your security team can pull
+and inspect the image before it runs.
 
 ## Control what it can reach
 
-Each worker has an Access setting with three modes:
+Each worker has an access setting with three modes:
 
-- **Allow all domains**, no restriction.
-- **Allow specific domains**, only the domains you list.
-- **Block specific domains**, everything except the domains you list.
+- **Allow all domains**: no restriction.
+- **Allow specific domains**: only the domains you list.
+- **Block specific domains**: everything except the domains you list.
 
-A new worker defaults to Allow all domains, so it works as soon as it
+A new worker starts on Allow all domains, so it works as soon as it
 connects. To restrict it, switch to Allow specific domains and list only what
 your actors need to reach.
 
 ## Pin actors and checklists to a worker
 
 Once a worker is connected, assign the actors and checklists that need to
-reach your internal product to it from Settings → Workers. Everything else
+reach your internal product to it. Everything else
 keeps running on hosted browser sessions as normal, a workspace can mix both
 freely.
 
@@ -47,6 +56,12 @@ freely.
 The Workers page reflects connection status live: a worker's heartbeat flips
 its status without needing a page refresh, so you can tell at a glance
 whether it's online before kicking off a run that depends on it.
+
+## Run a worker on your Mac
+
+The Stunt Double desktop app for Mac can act as a worker too. With Workers
+enabled, open **Settings > Workers**, select **Use this device as a worker**,
+then **Enable this device**.
 
 ## Next steps
 

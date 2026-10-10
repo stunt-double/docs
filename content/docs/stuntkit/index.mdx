@@ -1,6 +1,6 @@
 ---
 title: "StuntKit: open source tools for AI agents"
-description: "StuntKit is the open source code behind Stunt Double: browser tools for AI agents with built-in guards against paying and signing up, and the self-hosted worker that runs them behind your firewall."
+description: "StuntKit is the open source code behind Stunt Double: browser tools for AI agents with built-in guards against paying and signing up."
 ---
 
 # StuntKit
@@ -13,8 +13,8 @@ It is open source under the Apache-2.0 license, at
 [github.com/stunt-double/stuntkit](https://github.com/stunt-double/stuntkit).
 StuntKit packages are published under the `@stunt-double` scope, on GitHub
 Packages until that scope is available on npm (GitHub Packages asks for a token
-even for public packages). The self-hosted worker packages keep the `@stdbl`
-scope, at [github.com/stunt-double/worker](https://github.com/stunt-double/worker).
+even for public packages). The self-hosted worker ships as the Docker image
+`ghcr.io/stunt-double/worker:latest`.
 
 ## What's in it
 
@@ -27,12 +27,6 @@ scope, at [github.com/stunt-double/worker](https://github.com/stunt-double/worke
         'Let Claude or any model with function calling read and act on a real page, with guards that refuse payments, sign-ups and passwords.',
       href: '/support/docs/stuntkit/browser-toolset',
     },
-    {
-      title: 'Self-hosted worker',
-      description:
-        'Run agent sessions inside your own network, so they can reach an internal product without opening a port.',
-      href: '/support/docs/tutorials/self-hosted-worker',
-    },
   ]}
 />
 
@@ -44,8 +38,6 @@ scope, at [github.com/stunt-double/worker](https://github.com/stunt-double/worke
 | `@stunt-double/icons`           | The Continuity icon pack: 235 stroked icons as geometry, standalone SVG files and React components                                       | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/icons)           |
 | `@stunt-double/spelling`        | Whole-word American, British and Canadian spelling localization, from American or British source text                                    | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)        |
 | `@stunt-double/wao`             | Web Agent Optimiser: a drop-in script that repairs the accessibility tree agents read, so legacy sites work for agents without a rebuild | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/wao)             |
-| `@stdbl/worker`                 | The self-hosted worker CLI and Docker image that runs Stunt Double sessions inside your network                                          | [stunt-double/worker](https://github.com/stunt-double/worker)                                        |
-| `@stdbl/relay`                  | The WebSocket relay that pairs a worker with the cloud agent, so neither side accepts inbound connections                                | [stunt-double/worker](https://github.com/stunt-double/worker/tree/main/packages/relay)               |
 
 </div>
 
@@ -57,12 +49,12 @@ request it can ignore. StuntKit puts that rule in the tools instead: when a
 guard refuses, the click never reaches the page. You can read every guard,
 test it and change it.
 
-The worker runs inside your network, so your security team should be able to
-read it before it does. Now they can.
+Your security team should be able to read what an agent will do before it
+does. Now they can.
 
 ## Contribute
 
-Issues and pull requests are welcome on both repositories. Each has a
+Issues and pull requests are welcome on the repository. It has a
 `CONTRIBUTING.md` with the local setup, and every commit needs a
 [Developer Certificate of Origin](https://developercertificate.org) sign-off
 (`git commit -s`). Report security issues privately through GitHub rather than
