@@ -13,6 +13,7 @@ import { join } from "node:path";
 import { JsonLd } from "@/components/json-ld";
 import { getMDXComponents } from "@/components/mdx";
 import { SiteFooter } from "@/components/site-footer";
+import { markdownUrl } from "@/lib/agents";
 import { absoluteUrl } from "@/lib/site";
 import { source } from "@/lib/source";
 import { editUrl, sectionFor, uniqueTitle } from "../../section";
@@ -90,11 +91,16 @@ export default async function Page({ params }: Props) {
       <DocsBody>
         <MDX components={getMDXComponents()} />
       </DocsBody>
-      {edit ? (
-        <a href={edit} className="sd-edit" target="_blank" rel="noreferrer noopener">
-          Edit this page on GitHub
+      <div className="sd-page-links">
+        {edit ? (
+          <a href={edit} className="sd-edit" target="_blank" rel="noreferrer noopener">
+            Edit this page on GitHub
+          </a>
+        ) : null}
+        <a href={`${page.url === "/" ? "/index" : page.url}.md`} className="sd-edit" type="text/markdown">
+          View as Markdown
         </a>
-      ) : null}
+      </div>
       <PageFooter />
       <SiteFooter />
     </DocsPage>
@@ -122,7 +128,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: page.data.description,
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: { "text/markdown": markdownUrl(page.url) },
+    },
     openGraph: {
       type: "article",
       url,

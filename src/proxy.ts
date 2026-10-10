@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   // Markdown for agents: a `.md` path, or a page request that prefers
   // `text/markdown`, is served from the `/md` route (same rule as marketing).
-  if (!pathname.startsWith('/md') && (pathname.endsWith('.md') || prefersMarkdown(request.headers.get('accept')))) {
+  if (!pathname.startsWith('/md') && !pathname.startsWith('/.well-known/') && (pathname.endsWith('.md') || prefersMarkdown(request.headers.get('accept')))) {
     const url = request.nextUrl.clone();
     url.pathname = markdownPath(pathname);
     const rewritten = NextResponse.rewrite(url);

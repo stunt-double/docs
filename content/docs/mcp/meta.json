@@ -1,4 +1,5 @@
 {
   "title": "MCP server",
-  "pages": ["index", "connect", "clients", "tools", "skills", "rules", "agents"]
+  "icon": "terminal",
+  "pages": ["connect", "clients", "tools", "skills", "rules", "agents"]
 }

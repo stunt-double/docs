@@ -1,4 +1,5 @@
 {
   "title": "StuntKit",
-  "pages": ["index", "browser-toolset"]
+  "icon": "Package",
+  "pages": ["...browser-toolset"]
 }

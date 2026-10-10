@@ -1,5 +1,6 @@
 ---
 title: "Feedback widget"
+icon: "feedback"
 description: "Let visitors pin comments to the exact spot on your site, with a screenshot, URL and viewport attached."
 ---
 
@@ -9,9 +10,9 @@ Add one script tag to your site and anyone looking at a page can drop a pin on
 the spot that confused them and say why. Each comment arrives in your project
 with a screenshot of the page as they saw it, the URL and the viewport.
 
-For the full walkthrough, read
-[Collect comments straight from your site](/tutorials/feedback-widget). For
-running reviews with it, read the [feedback widget guide](/guides/feedback-widget).
+This page is the reference for installing and locking it down. For a
+walkthrough on a prototype, read the [tutorial](/tutorials/feedback-widget); for
+running reviews with it, read the [guide](/guides/feedback-widget).
 
 ## Before you start
 
@@ -30,21 +31,51 @@ running reviews with it, read the [feedback widget guide](/guides/feedback-widge
    staging or custom domain, add it under **Allowed domains** in the project's
    feedback settings. Requests from anywhere else are refused.
 
-## Settings
+## The snippet
 
-| Setting                     | What it does                                                         |
-| --------------------------- | -------------------------------------------------------------------- |
-| **Toolbar visible**         | Shows or hides the feedback button on your site                      |
-| **Show comments on page**   | Shows existing comment pins on the page                              |
-| **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment                   |
-| **Allowed domains**         | Extra sites the widget may run on, beyond your project URL           |
-| **Require sign in**         | Only signed-in members of this workspace can read or leave comments  |
-| **Allow local development** | Lets `localhost` and private network addresses use the widget        |
-| **API Key**                 | Click **Rotate** to issue a new key                                  |
+```html
+<script src="https://app.stuntdouble.io/api/feedback/widget"
+  data-sd-key="YOUR_PROJECT_KEY"
+  data-sd-url="https://app.stuntdouble.io"
+  defer></script>
+```
 
-The API key in the snippet identifies your project. It is not a secret: the
-allowed domains are what control access. Rotating it stops the widget on your
-site until you update the snippet with the new key.
+- **`data-sd-key`** (required) is your project's feedback API key. Without it
+  the widget logs a warning and does nothing.
+- **`data-sd-url`** (required in practice) points at Stunt Double. It must be
+  `https`; the widget refuses to run otherwise.
+- **`data-sd-version`** (optional) pins comments to a version string you
+  control, such as a build ID, release tag or commit SHA. Without it, comments
+  are grouped by page content.
+
+There is no package to install and no build step. Screenshot capture loads
+`html2canvas` on demand from a pinned, integrity-checked URL, so one tag is
+enough.
+
+## Control who can use it
+
+The API key sits in your page source, so treat it as an identifier, not a
+secret. The real access control is the domain allowlist, which every widget
+endpoint checks before it answers.
+
+| Setting                     | What it does                                                                                                                                                                |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Allowed domains**         | Hosts the widget may run on, beyond your project URL (always accepted). Up to 20. An entry matches an exact host; `*.example.com` covers every subdomain, such as previews. |
+| **Allow local development** | Lets `localhost` and private network addresses use the widget. On by default.                                                                                               |
+| **Require sign in**         | Only signed-in members of this workspace can read or leave comments. Use it for staging and internal reviews.                                                              |
+| **Toolbar visible**         | Shows or hides the feedback button on your site                                                                                                                             |
+| **Show comments on page**   | Shows existing comment pins on the page                                                                                                                                     |
+| **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment                                                                                                                          |
+| **API Key**                 | **Rotate** issues a new key and stops every install of the old one until its snippet is updated                                                                             |
+
+The allowlist **fails closed**: a project with no URL and an empty allowlist
+serves nothing at all, and the settings page says so, so you can tell "locked
+down" apart from "broken".
+
+Workspace admins hold a ceiling above every project under **Settings**, then
+**Security**: a workspace-wide **allowed origins** list that projects can only
+narrow, and a **Feedback widget** switch that turns the widget off for every
+project, including sites where the key is already installed.
 
 ## Remove it
 

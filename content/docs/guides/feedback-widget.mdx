@@ -1,5 +1,6 @@
 ---
-title: "Collect comments straight from your site"
+title: "Stakeholder feedback"
+icon: "feedback"
 description: "Install the feedback widget so visitors pin comments in context, then triage them alongside what your actors find."
 ---
 
@@ -30,26 +31,12 @@ saw it, the URL, the viewport, and which version of the page they were on.
   ]}
 />
 
-1. **Enable comments.** In the project you want feedback on, open **Comments**
-   and enable it. That mints the project's feedback API key.
-2. **Install the widget.** The install step offers a prompt to hand Claude (or
-   any coding agent) and the raw snippet if you would rather paste it yourself.
-   It goes just before `</body>`:
-
-   ```html
-   <script src="https://app.stuntdouble.io/api/feedback/widget"
-     data-sd-key="YOUR_PROJECT_KEY"
-     data-sd-url="https://app.stuntdouble.io"
-     defer></script>
-   ```
-
-   There is no package to install and no build step. Screenshot capture pulls
-   in `html2canvas` on demand from a pinned, integrity-checked URL, so a single
-   tag is enough.
-3. **Watch it connect.** The install screen polls while you deploy. Load a page
-   carrying the snippet and it flips to **Widget detected** on its own.
-4. **Set your allowed domains** before you point anyone at it. See
-   [Who can actually use it](#who-can-actually-use-it).
+Enable **Comments** on the project, paste one script tag before `</body>` (or
+hand the install prompt to a coding agent), and the install screen flips to
+**Widget detected** once a page loads it. Then set your allowed domains before
+you point anyone at it. The
+[integration reference](/integrations/feedback-widget) has the snippet and
+every setting.
 
 ## What a visitor does
 
@@ -125,29 +112,11 @@ The widget then uses that verbatim.
 
 ## Who can actually use it
 
-<Callout variant="note" title="Your API key is not a secret">
-  It sits in your page source, where anyone can read it. Stunt Double treats it
-  as an identifier. The control that actually matters is the domain allowlist,
-  which every widget endpoint checks before it answers anything.
-</Callout>
-
-From **Comments -> settings**:
-
-- **Allowed domains.** Your project URL is always accepted; add up to 20 more.
-  Entries match an exact host, and `*.example.com` covers every subdomain.
-  Everything else is refused. The list **fails closed**: a project with no URL
-  and nothing allowed serves nothing, and the settings page tells you so rather
-  than letting you assume it is working.
-- **Allow local development** (on by default) additionally permits `localhost`
-  and private addresses while you build.
-- **Require sign in** limits reading and writing to members of the owning
-  workspace.
-- **Rotate** the key to cut off an install you no longer control.
-
-Workspace admins hold a ceiling above all of this in **Settings -> Security**: a
-workspace-wide allowed-origins list that projects cannot widen, and a single
-switch that disables the widget across every project, including sites where the
-key is already deployed.
+The API key in your page source is an identifier, not a secret. The domain
+allowlist decides which sites the widget answers, **Require sign in** limits it
+to workspace members, and workspace admins can narrow or switch it off for
+every project. See
+[Control who can use it](/integrations/feedback-widget#control-who-can-use-it).
 
 <TextureBreak />
 

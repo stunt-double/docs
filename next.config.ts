@@ -6,7 +6,11 @@ const withMDX = createMDX();
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   async redirects() {
-    return [{ source: '/reference/stuntdouble-mcp', destination: '/mcp', permanent: true }];
+    return [
+      { source: '/reference/stuntdouble-mcp', destination: '/mcp', permanent: true },
+      { source: '/reference/stuntkit', destination: '/stuntkit', permanent: true },
+      { source: '/api/mcp', destination: '/mcp', permanent: true },
+    ];
   },
 };
 

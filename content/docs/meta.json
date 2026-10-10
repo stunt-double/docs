@@ -5,16 +5,13 @@
     "...getting-started",
     "...concepts",
     "---Learn---",
-    "...tutorials",
-    "---Guides by workflow---",
-    "...guides",
+    "tutorials",
+    "guides",
     "---Connect your tools---",
-    "...integrations",
+    "integrations",
     "---Build on Stunt Double---",
-    "...mcp",
+    "mcp",
     "...api",
-    "...stuntkit",
-    "---Reference---",
-    "_generated"
+    "stuntkit"
   ]
 }

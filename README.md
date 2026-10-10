@@ -22,7 +22,7 @@ This is the source for [docs.stuntdouble.io](https://docs.stuntdouble.io): guide
 
 ```bash
 pnpm install
-node scripts/fetch-sources.mjs && node scripts/generate.mjs   # the linked MCP and StuntKit pages
+node scripts/fetch-sources.mjs && node scripts/generate.mjs   # the linked MCP pages
 pnpm dev          # http://localhost:3000
 pnpm test         # node --test
 pnpm type-check
@@ -32,7 +32,7 @@ pnpm build        # fetches linked sources, generates their pages, then builds
 ## Where content lives
 
 - `content/docs/`: pages written here. Edit these directly.
-- Linked sources: the MCP server reference, skills and rules come from [`stunt-double/stuntdouble-mcp`](https://github.com/stunt-double/stuntdouble-mcp), and StuntKit from [`stunt-double/stuntkit`](https://github.com/stunt-double/stuntkit). `sources.json` lists them. The build reads each at its latest release tag (or a pinned commit) into `.sources/`, which is never committed. To change those pages, change the source repo.
+- Linked sources: the MCP server reference, skills and rules come from [`stunt-double/stuntdouble-mcp`](https://github.com/stunt-double/stuntdouble-mcp). `sources.json` lists them. The build reads each at its latest release tag (or a pinned commit) into `.sources/`, which is never committed. To change those pages, change the source repo.
 
 ## Screenshots
 
@@ -46,6 +46,13 @@ them through `<Screenshot name="..." alt="..." caption="..." />`, which swaps
 the file with the site theme. The README header (`.github/readme/header-light.png`
 and `header-dark.png`) lives in the same file, exported at 2x. To update one, edit the light frame, re-clone its
 dark twin, and re-export both.
+
+## For agents
+
+- `/llms.txt` indexes every page and `/llms-full.txt` holds them all; both are linked from the sidebar.
+- `/.well-known/agents.md` says when to use the docs and how to act through the MCP server.
+- Any page is Markdown at its path plus `.md`, or with `Accept: text/markdown`.
+- `robots.txt` names the AI crawlers it allows.
 
 ## Contributing
 
