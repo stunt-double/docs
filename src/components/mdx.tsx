@@ -246,7 +246,7 @@ function DocsLink({ href, ...props }: ComponentProps<'a'>) {
   return <A href={href ? docsHref(href) : href} {...props} />;
 }
 
-/** The page title, in the pixel face (`.sd-title` in `global.css`). */
+/** The page title, in the display face (`.sd-title` in `global.css`). */
 function H1({ className, ...props }: ComponentProps<'h1'>) {
   return <h1 className={`sd-title ${className ?? ''}`} {...props} />;
 }

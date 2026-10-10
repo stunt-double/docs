@@ -8,7 +8,7 @@ import { JsonLd } from '@/components/json-ld';
 import { DocsSearchDialog, OpenSearchFromUrl } from '@/components/search';
 import { CONSENT_DEFAULTS_SCRIPT } from '@/lib/consent';
 import { SITE_URL } from '@/lib/source';
-import { GeistMono, GeistPixelSquare, GeistSans } from './fonts';
+import { GeistMono, GeistSans, SpaceGrotesk } from './fonts';
 import './global.css';
 
 // Set on Production only, so previews and local dev stay out of the reports. The id is public.
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     // Font variables sit on <html>, where the `@theme` tokens that read them resolve.
     <html
       lang="en-US"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${SpaceGrotesk.variable}`}
       suppressHydrationWarning
     >
       <head>

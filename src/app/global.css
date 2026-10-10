@@ -26,7 +26,7 @@
   --font-serif: 'Iowan Old Style', 'Palatino Linotype', ui-serif, Georgia, serif;
   --font-mono:
     var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
-  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-space-grotesk, 'Space Grotesk'), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   --tracking-display: -0.025em;
   --tracking-tight: -0.012em;
@@ -200,13 +200,13 @@
   }
 }
 
-/* The page title, once per page, in the pixel face: normal tracking (the
-   glyphs sit on a square grid), weight 400. Set by `DocsTitle` and the MDX
-   `# ` heading (both in `components/mdx.tsx` / the page route). */
+/* The page title, once per page, in the display face (Space Grotesk 400) with
+   the display tracking. Set by `DocsTitle` and the MDX `# ` heading (both in
+   `components/mdx.tsx` / the page route). */
 .sd-title {
-  font-family: var(--font-pixel);
+  font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: normal;
+  letter-spacing: var(--tracking-display);
   line-height: var(--leading-tight);
   font-size: 2rem;
   color: var(--color-foreground);
