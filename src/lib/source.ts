@@ -13,8 +13,8 @@ const docs = defineDocs({
 
 // Pages sit at the root (`/getting-started`, `/guides/figma`), matching the
 // old `/support/docs` and `/guides` paths with the docs prefix dropped. The
-// pages generated from the source repos (`_generated/`) serve under
-// `/reference`.
+// overview pages generated from the source repos (`_generated/`) serve under
+// `/reference`; the /mcp section is generated straight into `content/docs/mcp`.
 export const source = loader({
   baseUrl: '/',
   source: docs.toFumadocsSource(),

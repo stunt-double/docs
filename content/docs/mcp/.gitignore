@@ -1,0 +1,8 @@
+# Written by scripts/generate.mjs from stunt-double/stuntdouble-mcp at its
+# release tag (MCP_GENERATED there). Edit that repo, not these files.
+/index.mdx
+/tools.mdx
+/rules.mdx
+/agents.mdx
+/clients/
+/skills/

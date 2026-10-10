@@ -1,0 +1,38 @@
+---
+title: "Connect from the Stunt Double app"
+description: "Add the MCP server to Claude, Cursor or ChatGPT from Integrations in your workspace, and revoke a client's access when you are done with it."
+---
+
+Every client connects to the same endpoint, `https://app.stuntdouble.io/api/mcp`, and signs in with OAuth the first time it calls a tool. No API keys. The app gives you a shorter path for the clients below. For the rest, follow the [client pages](/mcp/clients/claude-code).
+
+## Claude Desktop
+
+1. In your workspace, open **Integrations** and choose **Claude**.
+2. Select **Download .mcpb** and open the file. Claude Desktop installs the server as an extension. It needs Node 18 or later on your machine.
+3. Call any Stunt Double tool. Claude opens a browser window so you can sign in and approve the connection.
+
+If you would rather not install an extension, select **Add it manually instead**. In Claude, go to **Settings**, then **Connectors**, choose **Add**, and paste the endpoint URL. The [Claude page](/mcp/clients/claude) covers the same steps for Claude on the web and mobile.
+
+For Claude Code, run the command on the [Claude Code page](/mcp/clients/claude-code) instead.
+
+## Cursor, Windsurf and other MCP clients
+
+Open **Integrations** and choose **MCP**. Install Stunt Double from the Cursor marketplace, or import `stunt-double/stuntdouble-mcp` into your team marketplace. To add only the server, put it in `.cursor/mcp.json` under `mcpServers.stuntdouble.url`, as the [Cursor and Windsurf page](/mcp/clients/cursor-windsurf) shows.
+
+## ChatGPT
+
+The Stunt Double app is not in the ChatGPT app directory yet. You can connect it in developer mode:
+
+1. In ChatGPT, open **Settings**, then **Apps**, then **Advanced**, and turn on developer mode.
+2. Create a custom connector and paste the endpoint URL.
+3. Sign in to Stunt Double when ChatGPT asks.
+
+Checklist runs and Stunt Double Index results show up as cards in the conversation.
+
+## What a client can do
+
+A client asks for some or all of three scopes: `mcp:read`, `mcp:write` and `mcp:run`. A client that asks for none gets all three. Whatever it holds, it acts as you and reaches only the workspaces you belong to. The [overview](/mcp#authentication) explains each scope, and [tools](/mcp/tools) lists what they unlock.
+
+## Revoke access
+
+Go to **Account**, then **Security**, and find the client under **connected apps**. Revoke it there to end that client's access to your account.

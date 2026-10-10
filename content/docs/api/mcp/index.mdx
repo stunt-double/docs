@@ -7,7 +7,9 @@ description: "Connect Claude, Cursor and other MCP clients to your Stunt Double 
 
 The Stunt Double MCP server lets an AI client manage your workspace directly:
 create actors, run checklists, launch interviews, and read the results. This
-page covers how to connect and what the server can do.
+page covers how to connect and what the server can do. For step-by-step setup in
+each client, and the full skills, rules and agents, see the
+[MCP server section](/mcp).
 
 ## Endpoint
 
@@ -160,8 +162,9 @@ Tokens carry scopes, and a token lists only the tools its scopes cover:
 A client that requests no scope is granted all three. A token acts as the person
 who approved it, and every tool also checks that they are a member of the
 workspace it was asked about, so a connected client never reaches more than that
-person reaches in the dashboard. Revoke a connection from Settings >
-Connections.
+person reaches in the dashboard. To revoke a connection, go to **Account**,
+then **Security**, and remove the client under **connected apps**. See
+[Connect from the Stunt Double app](/mcp/connect#revoke-access).
 
 ## Available tools
 
