@@ -5,7 +5,7 @@ description: "Connect the MCP server to Claude and drive actors, checklists, and
 
 # Automate Stunt Double from Claude
 
-The **[API overview](/support/docs/api)** and **[MCP server](/support/docs/api/mcp)**
+The **[API overview](/api)** and **[MCP server](/api/mcp)**
 pages cover the endpoint, authentication, and full tool list. This tutorial
 walks through actually connecting Claude and using it to run your workspace
 from a conversation.
@@ -13,7 +13,7 @@ from a conversation.
 ## Connect Claude to your workspace
 
 Add the Stunt Double server to Claude using the endpoint from the
-**[MCP server](/support/docs/api/mcp)** page:
+**[MCP server](/api/mcp)** page:
 
 ```
 https://app.stuntdouble.io/api/mcp
@@ -25,7 +25,7 @@ on your behalf for the rest of the session.
 
 For Cursor, install the plugin from the same repository (marketplace or team
 marketplace), or add the MCP URL alone. Full steps are on the
-**[MCP server](/support/docs/api/mcp)** page.
+**[MCP server](/api/mcp)** page.
 
 ## What you can ask Claude to do
 
@@ -48,12 +48,12 @@ Grant only the scopes a given client needs. There are three: `mcp:read` to
 read a workspace, `mcp:write` to create and edit, and `mcp:run` to start runs.
 A client that only reports on results needs `mcp:read`, and nothing more. A
 client that requests no scope gets all three. See the
-**[API overview](/support/docs/api)** for what each covers, and **[MCP](/support/docs/mcp)** for client
+**[API overview](/api)** for what each covers, and **[MCP](/mcp)** for client
 setup.
 
 ## Next steps
 
-- **[Automate multi-step workflows](/support/docs/tutorials/building-workflows)**,
+- **[Automate multi-step workflows](/tutorials/building-workflows)**,
   for automations that don't need a human in the loop at all.
-- **[API overview](/support/docs/api)**, for driving Stunt Double from your
+- **[API overview](/api)**, for driving Stunt Double from your
   own tools instead of Claude.

@@ -26,7 +26,7 @@ Open **Integrations** > Slack and select **Install Slack agent**, then **Add**
 your Slack team to the workspace (a workspace owner or admin does this step).
 That is the whole setup. The Slack app already asks for the permissions it
 needs, so nothing has to be wired up by hand. Review settings live under
-**Design reviews > Settings**. The **[Slack](/support/docs/integrations/slack)** page covers
+**Design reviews > Settings**. The **[Slack](/integrations/slack)** page covers
 permissions, and the difference between **Remove** (one workspace) and
 **Disconnect** (your account, every workspace).
 
@@ -34,7 +34,7 @@ From the moment the connection exists, anyone in your Slack workspace can
 message Stunt Double directly and ask for a review. Channels are optional and
 covered in [step 4](#4-turn-it-on-in-a-channel).
 
-Figma is the one extra, and only for Figma links. Connect it from **Integrations** ([Figma](/support/docs/integrations/figma))
+Figma is the one extra, and only for Figma links. Connect it from **Integrations** ([Figma](/integrations/figma))
 and Figma frames are rendered and reviewed. Without it, a Figma link comes back
 with a **Connect Figma** button instead of feedback. Web links are reviewed
 either way.
@@ -160,7 +160,7 @@ been invited.
 
 Anything that is not a link plus a request for feedback goes to the agent. It
 runs against one workspace, with the same read and dispatch surface as the
-[MCP server](/support/docs/mcp):
+[MCP server](/mcp):
 
 - List the projects, actors, checklists, and workflows in the workspace.
 - Start a checklist run and hand back the run it created.
@@ -215,10 +215,10 @@ falls back to capturing screens uses one per link.
 
 ## Next steps
 
-- **[Write checklists that catch real regressions](/support/docs/tutorials/effective-checklists)**
+- **[Write checklists that catch real regressions](/tutorials/effective-checklists)**
   to turn a review finding that keeps coming back into a check that runs on every
   deploy.
-- **[Collect stakeholder feedback on a prototype](/support/docs/tutorials/feedback-widget)**
+- **[Collect stakeholder feedback on a prototype](/tutorials/feedback-widget)**
   to gather comments in context from the people reviewing the same screens.
-- **[Automate Stunt Double from Claude](/support/docs/tutorials/automate-with-mcp)**
+- **[Automate Stunt Double from Claude](/tutorials/automate-with-mcp)**
   for the same read and dispatch surface in an assistant rather than in Slack.

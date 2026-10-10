@@ -405,3 +405,73 @@ html {
 .prose :where(pre, table) {
   overflow-wrap: normal;
 }
+
+/* Steps: a hairline rail with a mono, zero-padded number per step (`01`,
+   `02`). The number is the order, so step headings never repeat it. */
+.sd-steps {
+  counter-reset: sd-step;
+  margin-block: 2rem;
+  border-left: 1px solid color-mix(in oklab, var(--color-border) 60%, transparent);
+  padding-left: 1.75rem;
+}
+
+.sd-step {
+  counter-increment: sd-step;
+  position: relative;
+}
+
+.sd-step + .sd-step {
+  margin-top: 2rem;
+}
+
+.sd-step::before {
+  content: counter(sd-step, decimal-leading-zero);
+  position: absolute;
+  left: -1.75rem;
+  top: 0.3rem;
+  transform: translateX(-50%);
+  padding-block: 0.25rem;
+  background-color: var(--color-background);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}
+
+.sd-step > :first-child {
+  margin-top: 0;
+}
+
+.sd-step > :is(h3, h4) {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--color-foreground);
+}
+
+.sd-step > :is(p, ul, ol) {
+  max-width: 70ch;
+  color: color-mix(in oklab, var(--color-foreground) 88%, transparent);
+}
+
+/* Figures: a mono figure number ahead of each screenshot caption. */
+.prose {
+  counter-reset: sd-figure;
+}
+
+.sd-figure {
+  counter-increment: sd-figure;
+}
+
+.sd-figure figcaption::before {
+  content: 'Fig. ' counter(sd-figure, decimal-leading-zero);
+  flex: none;
+  padding-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted-foreground);
+}

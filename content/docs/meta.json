@@ -1,22 +1,19 @@
 {
   "pages": [
-    "---Getting started---",
+    "---Start here---",
     "index",
     "...getting-started",
-    "---Concepts---",
     "...concepts",
-    "---Tutorials---",
+    "---Learn---",
     "...tutorials",
-    "---Open source---",
-    "...stuntkit",
-    "---Guides---",
+    "---Guides by workflow---",
     "...guides",
-    "---Integrations---",
+    "---Connect your tools---",
     "...integrations",
-    "---MCP server---",
+    "---Build on Stunt Double---",
     "...mcp",
-    "---API---",
     "...api",
+    "...stuntkit",
     "---Reference---",
     "_generated"
   ]

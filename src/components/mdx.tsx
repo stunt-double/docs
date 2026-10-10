@@ -1,8 +1,10 @@
+import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import type { ComponentProps, ReactNode } from 'react';
 
+import { ProductIcon, type ProductIconName } from '@/components/icons';
 import { docsHref } from '@/lib/links';
 
 /**
@@ -114,6 +116,8 @@ export interface CardGridItem {
   title: string;
   description: string;
   href: string;
+  /** A Continuity product icon, for hub pages where each row is one of Stunt Double's own things. */
+  icon?: ProductIconName;
 }
 
 /** A hub page's "read next" list: hairline rows, each whole row a link, the arrow nudging on hover. */
@@ -127,6 +131,9 @@ export function CardGrid({ items, columns = 2 }: { items: CardGridItem[]; column
       {items.map((item) => (
         <li key={item.href} className="border-border/60 border-b">
           <Link href={docsHref(item.href)} className="group flex flex-col py-4">
+            {item.icon && (
+              <ProductIcon name={item.icon} className="text-foreground/70 mb-3 h-5 w-5" />
+            )}
             <span className="text-foreground text-sm font-medium underline-offset-4 group-hover:underline">
               {labelWithArrow(
                 item.title,
@@ -241,6 +248,178 @@ export function TextureBreak() {
   );
 }
 
+/**
+ * A product screen, redrawn faithfully in Figma ("Docs screenshots") from the
+ * shipped dashboard and exported in both themes to `public/screens/`. The
+ * light and dark files swap with the site theme, click to zoom, and the
+ * caption carries a mono figure number (`.sd-figure` in `global.css`). The
+ * screen is the evidence, so the frame is one hairline and nothing else.
+ */
+export function Screenshot({
+  name,
+  alt,
+  caption,
+  width = 1440,
+  height = 900,
+}: {
+  /** File stem in `public/screens/`: `<name>-light.png` and `<name>-dark.png`. */
+  name: string;
+  alt: string;
+  caption?: ReactNode;
+  width?: number;
+  height?: number;
+}) {
+  const img = (theme: 'light' | 'dark', className: string) => (
+    <ImageZoom
+      src={`/screens/${name}-${theme}.png`}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes="(min-width: 1024px) 760px, 100vw"
+      className={`m-0! block w-full rounded-none! ${className}`}
+    />
+  );
+  return (
+    <figure className="sd-figure not-prose my-10">
+      <div className="border-border overflow-hidden rounded-lg border">
+        {img('light', 'dark:hidden')}
+        {img('dark', 'hidden dark:block')}
+      </div>
+      {caption && (
+        <figcaption className="text-muted-foreground mt-3 flex gap-3 text-sm leading-relaxed">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+/**
+ * Numbered steps on a hairline rail. The mono numbers (`01`, `02`) carry the
+ * order, so a step's own heading never repeats it. Write each step's title as
+ * a `###` heading so it lands in the table of contents.
+ */
+export function Steps({ children }: { children: ReactNode }) {
+  return <div className="sd-steps">{children}</div>;
+}
+
+export function Step({ children }: { children: ReactNode }) {
+  return <div className="sd-step">{children}</div>;
+}
+
+/**
+ * The facts a reader checks before committing to a page (how long, which
+ * plan, who can do it), as one mono record line between hairlines.
+ */
+export function PageFacts({ items }: { items: { label: string; value: string }[] }) {
+  return (
+    <dl className="not-prose border-border/60 divide-border/60 my-8 grid grid-cols-2 divide-x border-y sm:flex">
+      {items.map((item) => (
+        <div key={item.label} className="py-3 pr-4 pl-4 first:pl-0 sm:flex-1">
+          <dt className="text-muted-foreground font-mono text-[0.6875rem] tracking-[0.12em] uppercase">
+            {item.label}
+          </dt>
+          <dd className="text-foreground mt-1 text-sm">{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+const CONCEPT_WORK: { icon: ProductIconName; name: string; does: string; href: string }[] = [
+  {
+    icon: 'checklist',
+    name: 'Checklist',
+    does: 'Verifies a flow, check by check',
+    href: '/concepts#checklists',
+  },
+  {
+    icon: 'interview',
+    name: 'Interview',
+    does: 'Reports how personas got on',
+    href: '/concepts#interviews',
+  },
+  {
+    icon: 'automation',
+    name: 'Automation',
+    does: 'Runs both on a schedule or event',
+    href: '/concepts#workflows',
+  },
+];
+
+/**
+ * How the building blocks nest, drawn as hairline tiers: where things live,
+ * who does the work, the work they do, and what comes back. Each tier links
+ * to its section of Core concepts.
+ */
+export function ConceptMap() {
+  const tier = 'border-border/60 border-b py-4 sm:grid sm:grid-cols-[9rem_1fr] sm:gap-6';
+  const label =
+    'text-muted-foreground mb-2 block font-mono text-[0.6875rem] tracking-[0.12em] uppercase sm:mb-0 sm:pt-0.5';
+  const chip = 'text-foreground inline-flex items-center gap-2 text-sm font-medium';
+  return (
+    <div className="not-prose border-border/60 my-10 border-t" role="figure" aria-label="How Stunt Double's building blocks fit together">
+      <div className={tier}>
+        <span className={label}>Where</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <Link href="/concepts#workspaces-and-projects" className={chip}>
+            <ProductIcon name="users" className="text-foreground/70 h-4 w-4" />
+            Workspace
+          </Link>
+          <span className="text-muted-foreground font-mono text-xs" aria-hidden="true">
+            /
+          </span>
+          <Link href="/concepts#workspaces-and-projects" className={chip}>
+            <ProductIcon name="project" className="text-foreground/70 h-4 w-4" />
+            Project
+          </Link>
+          <span className="text-muted-foreground text-sm">your team, then one product or surface</span>
+        </div>
+      </div>
+      <div className={tier}>
+        <span className={label}>Who</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <Link href="/concepts#actors" className={chip}>
+            <ProductIcon name="actor" className="text-foreground/70 h-4 w-4" />
+            Actor
+          </Link>
+          <span className="text-muted-foreground text-sm">
+            an AI user with instructions and knowledge, driving a real browser
+          </span>
+        </div>
+      </div>
+      <div className={tier}>
+        <span className={label}>Work</span>
+        <ul className="grid gap-3 sm:grid-cols-3">
+          {CONCEPT_WORK.map((w) => (
+            <li key={w.name}>
+              <Link href={w.href} className={chip}>
+                <ProductIcon name={w.icon} className="text-foreground/70 h-4 w-4" />
+                {w.name}
+              </Link>
+              <span className="text-muted-foreground mt-0.5 block text-xs leading-relaxed">{w.does}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={tier}>
+        <span className={label}>Evidence</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <Link href="/concepts#recordings-and-replays" className={chip}>
+            <ProductIcon name="run" className="text-foreground/70 h-4 w-4" />
+            Run
+          </Link>
+          <span className="text-muted-foreground text-sm">recording, screenshots and steps, which roll up into</span>
+          <Link href="/concepts#insights" className={chip}>
+            <ProductIcon name="insight" className="text-foreground/70 h-4 w-4" />
+            Insights
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DocsLink({ href, ...props }: ComponentProps<'a'>) {
   const A = defaultMdxComponents.a as (p: ComponentProps<'a'>) => ReactNode;
   return <A href={href ? docsHref(href) : href} {...props} />;
@@ -262,6 +441,11 @@ export function getMDXComponents(components?: MDXComponents) {
     RoleGrid,
     Pullquote,
     TextureBreak,
+    Screenshot,
+    Steps,
+    Step,
+    PageFacts,
+    ConceptMap,
     ...components,
   } satisfies MDXComponents;
 }
