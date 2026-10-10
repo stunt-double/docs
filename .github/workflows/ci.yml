@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: No em dashes
+        run: |
+          if git grep -nIP '\xE2\x80\x94' -- . ':!pnpm-lock.yaml'; then
+            echo "Em dash found. Use commas, colons, parentheses or full stops."; exit 1
+          fi
+      - run: pnpm test
+      - run: pnpm type-check
+      - run: pnpm build
