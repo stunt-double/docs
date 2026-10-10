@@ -2,15 +2,6 @@
 
 The source for [docs.stuntdouble.io](https://docs.stuntdouble.io): guides, tutorials, concepts, and the API, MCP and StuntKit reference for [Stunt Double](https://stuntdouble.io).
 
-## Run it locally
-
-Needs Node 22+ and pnpm 11.
-
-```sh
-pnpm install
-pnpm build   # fetches linked sources, generates pages, builds the site
-pnpm dev     # http://localhost:3000
-```
 
 ## Where content lives
 
