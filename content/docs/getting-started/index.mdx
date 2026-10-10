@@ -5,65 +5,131 @@ description: "Create a workspace, add your first actor, and run a checklist agai
 
 # Quickstart
 
-This guide takes you from a new account to your first checklist run. It should
-take a few minutes.
+This guide takes you from a new account to your first checklist run.
 
-## 1. Create a workspace
+<PageFacts
+  items={[
+    { label: "Time", value: "About 5 minutes" },
+    { label: "Who", value: "Anyone in a workspace" },
+    { label: "You need", value: "A URL an actor can reach" },
+  ]}
+/>
 
-When you first sign in, Stunt Double prompts you to create a **workspace**. A
-workspace holds your projects, members, and billing. Give it a name that matches
-your team or company.
+<Steps>
+<Step>
 
-<Callout variant="tip">
-  Sign-in is passwordless: request a magic link by email, or continue with Google.
-</Callout>
+### Create a workspace
 
-## 2. Create a project
+When you first sign in, Stunt Double asks you to create a **workspace**. It
+holds your projects, members and billing, so name it after your team or
+company.
 
-Inside the workspace, create a **project** for the product or surface you want to
-test. A project keeps related actors, checklists, and runs together, so a team
-working on several products can keep them cleanly separated.
+Sign-in is passwordless: enter the six-digit code sent to your email, or
+continue with Google.
 
-## 3. Create an actor
+</Step>
+<Step>
 
-An **actor** is the AI assistant that does the work. When you create one you
-give it:
+### Create a project
 
-- **Instructions** that describe who the actor is and how it should behave.
-- **Knowledge** the actor can draw on (facts about your product, test accounts,
-  conventions to follow).
+Inside the workspace, create a **project** for the product or surface you
+want to test. A project keeps related actors, checklists and runs together, so
+a team with several products keeps them apart.
 
-Out of the box an actor can drive a real browser and read email sent to its own
-inbox, so it works through your product the way a person would.
+<Screenshot
+  name="dashboard"
+  alt="A project in the Stunt Double dashboard: the sidebar lists interviews, comments, checklists and automations, beside the project's checklists and their latest results."
+  caption="A project's home. Everything you create from here on lives inside it."
+/>
 
-For a first run, a one-paragraph description of your product is plenty.
+</Step>
+<Step>
 
-## 4. Run a checklist
+### Create an actor
 
-A **checklist** is a set of steps you want verified, written in plain language,
-for example:
+An **actor** is an AI user that does the work. Open **Actors** in the
+sidebar, choose **Create actor**, and pick a template or start from scratch.
+Then give it:
+
+- **Instructions** that describe who it is and how it behaves.
+- **Knowledge** it can draw on: facts about your product, test accounts,
+  conventions to follow.
+
+Out of the box an actor drives a real browser and reads email sent to its own
+inbox, so it works through your product the way a person would. For a first
+run, a one-paragraph description of your audience is plenty.
+
+<Screenshot
+  name="actor-create"
+  alt="An actor's Overview tab, with its name, description, instructions and location."
+  caption="Name the actor by role, not as a person. Instructions say who it is; knowledge is what it knows."
+/>
+
+</Step>
+<Step>
+
+### Write and run a checklist
+
+In the project, open **Checklists** and choose **Create checklist**. A
+checklist is a set of checks written in plain language, for example:
 
 1. Open the pricing page.
 2. Confirm the Pro plan shows a monthly and an annual price.
-3. Start the signup flow and confirm it reaches the email step.
+3. Start sign-up and confirm it reaches the email step.
 
-When you run the checklist, the actor opens a hosted browser, works through each
-step, and reports whether it passed or failed, with a screenshot and a short
-explanation for each one.
+<Screenshot
+  name="checklist-editor"
+  alt="A checklist being edited, with three plain-language checks listed in order and a Run button."
+  caption="One check per outcome. The actor works out the clicks."
+/>
 
-## 5. Review the run
+Create the checklist, then press **Run** on its page. The actor opens a
+hosted browser and works through each check.
 
-Every run is recorded. Open the run to:
+</Step>
+<Step>
 
-- **Replay** the session and watch what the actor did.
-- Inspect each **step**, its result, and the screenshot at that moment.
-- See any **insights** the platform surfaced from the run.
+### Review the run
+
+Every run is recorded. Open it to replay the session, inspect each check's
+result and screenshot, and see any **insights** the platform surfaced.
+
+<Screenshot
+  name="checklist-run"
+  alt="A finished checklist run: two checks passed and one failed, with the failed check open to show its screenshot and the actor's explanation."
+  caption="A failed check opens on the moment it failed, with the actor's reasoning beside the screenshot."
+/>
+
+</Step>
+</Steps>
 
 ## Next steps
 
-- Read **[Core concepts](/support/docs/concepts)** to understand interviews, workflows,
-  and insights.
-- Automate runs from your own tooling with the **[API](/support/docs/api)**, or connect
-  Claude, Cursor or ChatGPT through **[MCP](/support/docs/mcp)**.
-- Connect GitHub, Slack, Linear, Figma and Vercel from
-  **[Integrations](/support/docs/integrations)**.
+<CardGrid
+  items={[
+    {
+      icon: "actor",
+      title: "Build an actor that behaves like your audience",
+      description: "Instructions and knowledge that make an actor act like a real member of your audience.",
+      href: "/tutorials/first-actor",
+    },
+    {
+      icon: "checklist",
+      title: "Write checklists that catch real regressions",
+      description: "Check outcomes, not clicks, and read the evidence behind the badge.",
+      href: "/tutorials/effective-checklists",
+    },
+    {
+      icon: "plug",
+      title: "Connect your tools",
+      description: "Run checks on pull requests, deploys and design changes.",
+      href: "/integrations",
+    },
+    {
+      icon: "terminal",
+      title: "Drive it from an assistant",
+      description: "Connect Claude, Cursor or ChatGPT through the MCP server.",
+      href: "/mcp",
+    },
+  ]}
+/>

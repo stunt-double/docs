@@ -6,95 +6,115 @@ description: "Find where people get stuck before they do. Learn how to set up ac
 # Stunt Double documentation
 
 You ship a change on Friday and find out on Monday that sign-up broke. Stunt
-Double finds that first. You create **actors**, AI personas that drive a real
-browser through your product, and give them work: **checklists** that verify a
-flow, **interviews** that report how a persona got on, and **workflows** that
-run both on a schedule or on every deploy. Every run comes back with a
-recording, screenshots and the steps behind each result.
+Double finds that first. **Actors**, AI users you describe, drive a real
+browser through your product and come back with a recording, screenshots and
+the steps behind every result.
+
+<Screenshot
+  name="checklist-run"
+  alt="A checklist run in Stunt Double: each check marked passed or failed, with the screenshot the actor took at that step and its explanation."
+  caption="A checklist run. Every check carries the screenshot and the reasoning behind its result."
+/>
+
+## What do you want to do?
 
 <CardGrid
   columns={2}
   items={[
     {
-      title: "Getting started",
-      description:
-        "Go from an empty workspace to your first actor and a checklist run in minutes.",
-      href: "/support/docs/getting-started",
+      icon: "rocket",
+      title: "Run my first check in five minutes",
+      description: "Create a workspace, an actor and a checklist, then read the run.",
+      href: "/getting-started",
     },
     {
-      title: "Concepts",
-      description:
-        "Workspaces, projects, actors, checklists, interviews, workflows and insights, and how they fit.",
-      href: "/support/docs/concepts",
+      icon: "checklist",
+      title: "Catch regressions before users do",
+      description: "Write checks around outcomes and read the evidence behind each result.",
+      href: "/tutorials/effective-checklists",
     },
     {
-      title: "Tutorials",
-      description:
-        "Step-by-step walkthroughs: catch real regressions, run an interview, review designs from Slack.",
-      href: "/support/docs/tutorials",
+      icon: "interview",
+      title: "Find out how people get on with a design",
+      description: "Run an interview with persona participants and act on the report.",
+      href: "/tutorials/running-an-interview",
     },
     {
-      title: "Guides",
-      description:
-        "Validate designs from Figma, Claude and your codebase before they reach users.",
-      href: "/guides",
+      icon: "automation",
+      title: "Re-check every deploy automatically",
+      description: "Chain checklists into an automation that runs on a schedule, a PR or a deploy.",
+      href: "/tutorials/building-workflows",
     },
     {
-      title: "Integrations",
-      description:
-        "Connect GitHub, Slack, Linear, Figma and Vercel so results land where your team works.",
-      href: "/support/docs/integrations",
+      icon: "feedback",
+      title: "Collect comments on a prototype",
+      description: "Add the feedback widget so reviewers pin comments where they apply.",
+      href: "/tutorials/feedback-widget",
     },
     {
-      title: "MCP",
-      description:
-        "Run checklists and interviews from Claude, Cursor, ChatGPT or any MCP client.",
-      href: "/support/docs/mcp",
-    },
-    {
-      title: "API",
-      description:
-        "OAuth scopes, versioning, rate limits and the resources you can automate.",
-      href: "/support/docs/api",
-    },
-    {
-      title: "StuntKit",
-      description:
-        "The open source browser tools and icons behind Stunt Double, ready to use in your own agents.",
-      href: "/support/docs/stuntkit",
+      icon: "terminal",
+      title: "Drive it from Claude, Cursor or ChatGPT",
+      description: "Connect the MCP server and run checklists and interviews from a conversation.",
+      href: "/mcp",
     },
   ]}
 />
 
 ## How the pieces fit together
 
-A **workspace** holds your team. Inside it you create **projects**, and inside
-a project you create **actors**. An actor has instructions and knowledge, and
-can drive a real browser and read email.
+A workspace holds your team, and a project holds one product. Inside it,
+actors do three kinds of work, and every run comes back as evidence.
 
-Once you have an actor, you give it work:
+<ConceptMap />
 
-- A **checklist** walks a flow in a hosted browser and reports what passed or
-  failed, with the evidence for each check.
-- An **interview** runs a structured study with persona participants and
-  produces a report you can act on.
-- A **workflow** chains steps into an automation that runs on a schedule, on a
-  webhook, or on events from GitHub, Linear, Figma or Vercel.
+Read **[Core concepts](/concepts)** for each building block in detail.
 
-A project can also collect **comments** from the people reviewing your work.
-Add the feedback widget to a prototype, staging build or live site and
-stakeholders pin comments on the page, each with a screenshot and page context.
-See **[Collect stakeholder feedback on a prototype](/support/docs/tutorials/feedback-widget)**.
+## Browse by section
+
+<CardGrid
+  columns={3}
+  items={[
+    {
+      title: "Tutorials",
+      description: "Step by step, from your first actor to a review in Slack.",
+      href: "/tutorials",
+    },
+    {
+      title: "Guides by workflow",
+      description: "Validate designs from Figma, Claude and your codebase before they reach users.",
+      href: "/guides",
+    },
+    {
+      title: "Integrations",
+      description: "GitHub, Vercel, Slack, Linear, Figma, webhooks and self-hosted workers.",
+      href: "/integrations",
+    },
+    {
+      title: "MCP server",
+      description: "Endpoint, clients, scopes, and every tool, prompt and resource.",
+      href: "/mcp",
+    },
+    {
+      title: "API",
+      description: "OAuth scopes, versioning, rate limits and what you can automate.",
+      href: "/api",
+    },
+    {
+      title: "StuntKit",
+      description: "The open source browser tools and icons behind Stunt Double.",
+      href: "/stuntkit",
+    },
+  ]}
+/>
 
 <Callout variant="tip" title="You don't need to start in the dashboard">
-  Connect **[Slack](/support/docs/integrations/slack)** and a link shared with a
-  request for feedback is reviewed in the thread it was posted in. See **[Review
-  designs from Slack](/support/docs/tutorials/slack-design-review)**. Or connect
-  an assistant through **[MCP](/support/docs/mcp)** and ask it to run a
-  checklist.
+  Connect **[Slack](/integrations/slack)** and a link shared with a request for
+  feedback is reviewed in the thread it was posted in. Or connect an assistant
+  through **[MCP](/mcp)** and ask it to run a checklist.
 </Callout>
 
 ## Getting help
 
-If something here is unclear or missing, reach out from the
+Press <kbd>⌘</kbd> <kbd>K</kbd> (<kbd>Ctrl</kbd> <kbd>K</kbd> on Windows and Linux) to search every page. If something here is
+unclear or missing, reach out from the
 [support page](https://www.stuntdouble.io/support).

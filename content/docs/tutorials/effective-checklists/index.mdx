@@ -9,6 +9,20 @@ A checklist is only as useful as the checks inside it. This tutorial covers
 how to write checks that hold up over time, and how to read a run so a
 "failed" badge tells you something you can act on.
 
+<PageFacts
+  items={[
+    { label: "Time", value: "20 minutes" },
+    { label: "You need", value: "An actor and a URL" },
+    { label: "Next", value: "Turn runs into insights" },
+  ]}
+/>
+
+<Screenshot
+  name="checklist-editor"
+  alt="The new checklist dialog on its Checks step: four plain-language checks in order, each with a check type, when it runs and what happens on failure."
+  caption="Each check says what should be true. Under it: its type, when it runs, and whether a failure stops the run."
+/>
+
 ## Write one check per outcome, not per click
 
 A check is a single description of what should be true. It's tempting to
@@ -119,6 +133,12 @@ whether it's a real regression or an ambiguous instruction. A surprising
 number of "failures" turn out to be a check that needs to be more specific
 about what counts as success.
 
+<Screenshot
+  name="checklist-run"
+  alt="A checklist run report with one failed check open, showing the actor's explanation and the screenshot of the form error, above three passed checks."
+  caption="The failed check leads, with what the actor did, what it saw, and the step and time it happened."
+/>
+
 ## Read a run against the one before it
 
 A finished run is compared with the previous completed run of the same
@@ -140,5 +160,5 @@ that reproduces consistently is worth acting on immediately.
 
 ## Next steps
 
-- **[Turn runs into insights](/support/docs/tutorials/reviewing-runs)**
-- **[Automate multi-step workflows](/support/docs/tutorials/building-workflows)**
+- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Automate multi-step workflows](/tutorials/building-workflows)**
