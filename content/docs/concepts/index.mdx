@@ -49,6 +49,12 @@ want checked in plain language, and an actor runs through them in a hosted
 browser. Each step is reported as passed or failed, with a screenshot and a
 short explanation.
 
+<Screenshot
+  name="checklist-run"
+  alt="A checklist run: a failed check with the actor's explanation and a screenshot of the error, above the passed checks."
+  caption="A checklist run. Each result carries what the actor did and what it saw."
+/>
+
 Checklists are the fastest way to catch regressions in flows that are tedious to
 test by hand, such as signup, checkout, or onboarding.
 
@@ -61,9 +67,15 @@ research and feedback gathering at a scale that manual interviews cannot reach.
 
 ## Workflows
 
-A **workflow** chains steps into a single repeatable automation. Where a
+A **workflow** (an **automation** in the dashboard) chains steps into a single repeatable automation. Where a
 checklist verifies a flow, a workflow is meant to get something done end to end,
 and can combine several actions into one run.
+
+<Screenshot
+  name="automation-builder"
+  alt="The automation flow editor: a GitHub trigger, a Run Checklist step, and a condition that branches to a GitHub comment or a notification."
+  caption="An automation is a graph of steps, started by a trigger: a schedule, a webhook, or an event from GitHub, Vercel, Slack, Linear or Figma."
+/>
 
 ## Comments and the feedback widget
 
