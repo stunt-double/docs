@@ -1,0 +1,54 @@
+---
+title: "Test a product behind your firewall"
+description: "Run actors against an internal product with a self-hosted worker, no inbound firewall changes required."
+---
+
+# Test a product behind your firewall
+
+If the product you want to test is only reachable inside your network, a
+hosted browser session can't reach it. A self-hosted worker runs on your side
+of the firewall instead, so actors can reach an internal product without
+opening anything up.
+
+## Add a worker
+
+From Settings → Workers, add a worker either as a Docker container or with
+the CLI. Both dial out to Stunt Double rather than waiting for an inbound
+connection, so there are no firewall changes needed on your end. Once it's
+running, use Test connection to confirm it can reach Stunt Double and your
+target product before assigning any actors to it.
+
+The worker is open source, part of [StuntKit](/support/docs/stuntkit). Its
+code, CLI reference and releases live in
+[stunt-double/worker](https://github.com/stunt-double/worker) on GitHub, so
+your security team can read exactly what runs inside your network.
+
+## Control what it can reach
+
+Each worker has an Access setting with three modes:
+
+- **Allow all domains**, no restriction.
+- **Allow specific domains**, only the domains you list.
+- **Block specific domains**, everything except the domains you list.
+
+A new worker defaults to Allow all domains, so it works as soon as it
+connects. To restrict it, switch to Allow specific domains and list only what
+your actors need to reach.
+
+## Pin actors and checklists to a worker
+
+Once a worker is connected, assign the actors and checklists that need to
+reach your internal product to it from Settings → Workers. Everything else
+keeps running on hosted browser sessions as normal, a workspace can mix both
+freely.
+
+## Watch connection status live
+
+The Workers page reflects connection status live: a worker's heartbeat flips
+its status without needing a page refresh, so you can tell at a glance
+whether it's online before kicking off a run that depends on it.
+
+## Next steps
+
+- **[Automate multi-step workflows](/support/docs/tutorials/building-workflows)**
+- **[Turn runs into insights](/support/docs/tutorials/reviewing-runs)**

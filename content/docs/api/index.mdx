@@ -1,0 +1,120 @@
+---
+title: "API documentation"
+description: "The Stunt Double API: the MCP server, OAuth 2.1 scopes, versioning and deprecation, rate limits, and the resources you can manage."
+---
+
+# Stunt Double API
+
+Stunt Double exposes its platform programmatically through a
+**Model Context Protocol (MCP)** server. MCP is an open standard for connecting
+AI clients to tools and data, which means you can drive your workspace from
+Claude, from your own agents, or from any MCP-compatible client, without writing
+a bespoke integration.
+
+## The MCP server
+
+The server is hosted by the product app at:
+
+```
+https://app.stuntdouble.io/api/mcp
+```
+
+It speaks the **Streamable HTTP** transport. Point any MCP client at that URL to
+list and call the available tools. For a full walkthrough, including client
+configuration, see the **[MCP server](/support/docs/api/mcp)** page.
+
+## What you can manage
+
+The server groups its tools by the resource they act on:
+
+| Resource          | What you can do                                                     |
+| ----------------- | ------------------------------------------------------------------- |
+| **Workspaces**    | List workspaces and members, read workspace details                 |
+| **Actors**        | List, read, create, and update actors                               |
+| **Knowledge**     | List, add, and remove an actor's knowledge                          |
+| **Conversations** | List and read conversations                                         |
+| **Checklists**    | List, read, run checklists, and read checklist runs                 |
+| **Workflows**     | List, read, run workflows, and read workflow runs                   |
+| **Feedback**      | List and read feedback, and update its status                       |
+| **Interviews**    | Create, read, update, launch interviews, and read interview reports |
+
+## Authentication
+
+Access is authorized with **OAuth 2.1**. MCP clients that support OAuth will
+discover the authorization and token endpoints automatically and prompt you to
+sign in to your Stunt Double workspace the first time you connect.
+
+Tokens are scoped, so a client can ask for only the access it needs:
+
+| Scope       | What it allows                                                                                      |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| `mcp:read`  | Read workspaces and their contents: projects, actors, checklists, interviews, workflows and results |
+| `mcp:write` | Create and edit projects, actors, knowledge, guidelines, checklists, interviews and workflows       |
+| `mcp:run`   | Start checklist runs, workflow runs and interviews, which use the workspace run allowance           |
+
+A client that requests no scope is granted all three. A token only lists the
+tools its scopes cover, and every tool also checks that you are a member of the
+workspace it was asked about. The authorization server publishes its
+[RFC 8414 metadata](https://app.stuntdouble.io/.well-known/oauth-authorization-server),
+including `scopes_supported`.
+
+## Versioning and deprecation
+
+The MCP server is versioned by the protocol itself: a client negotiates a
+version at `initialize` and sends it on every later request in the
+`MCP-Protocol-Version` header. The public HTTP endpoints follow semantic
+versioning (`info.version` in the OpenAPI spec). A breaking change ships under a
+new path or header value alongside the old one, never in place.
+
+When something is deprecated, it is marked `deprecated: true` in the OpenAPI
+spec, its responses carry a `Deprecation` header (RFC 9745) and a `Sunset`
+header (RFC 8594) with the removal date, and the change is announced in the
+[changelog](/changelog) at least 90 days before removal. Nothing is deprecated
+today.
+
+## Rate limits
+
+Uncached endpoints on `www.stuntdouble.io` (health, the public docs MCP server,
+and error responses under `/api`) allow 120 requests per minute per client, and
+say so on every response with the IETF `RateLimit` headers:
+
+```
+RateLimit-Policy: "public-api";q=120;w=60
+RateLimit: "public-api";r=119;t=60
+```
+
+`r` is the requests left and `t` the seconds until the window resets. Over the
+limit, the response is a `429` with a `Retry-After` header and a JSON body whose
+`error.code` is `rate_limited`. Wait that many seconds before retrying.
+
+## Public docs MCP server
+
+Agents that have not signed in can still connect over MCP. A read-only server at
+`https://www.stuntdouble.io/api/docs-mcp` needs no authentication and exposes
+Stunt Double's documentation as resources: `llms.txt`, the homepage as
+Markdown, the OpenAPI spec and the MCP manifest. It has no tools; to act on a
+workspace, connect to the product server above. A POST to
+`https://www.stuntdouble.io/.well-known/mcp` reaches the same docs server.
+
+## Discovery
+
+The platform publishes a manifest at
+`https://www.stuntdouble.io/.well-known/mcp.json` describing the server, its
+transport, authentication, and tools. MCP registries and clients use this to
+discover the integration. The same manifest is served at
+`https://www.stuntdouble.io/.well-known/mcp`.
+
+Each MCP server also has a server card on the host that serves it: the docs
+server's at `https://www.stuntdouble.io/.well-known/mcp/server-card.json`, the
+product server's at `https://app.stuntdouble.io/.well-known/mcp/server-card.json`.
+The AI Catalog at `https://www.stuntdouble.io/.well-known/ai-catalog.json` lists
+both. The OAuth metadata documents are served on this site as well as on
+`app.stuntdouble.io`, and name `app.stuntdouble.io` as the issuer either way.
+
+The public HTTP endpoints on this site (discovery files, health, the desktop
+release feed, and the MCP entry point) are described by the Stunt Double
+OpenAPI spec at
+[`https://www.stuntdouble.io/openapi.json`](https://www.stuntdouble.io/openapi.json).
+Agents can also read the site as Markdown: [`/llms.txt`](/llms.txt) says when to
+use Stunt Double and how to connect, and the homepage returns Markdown to
+requests that send `Accept: text/markdown`.

@@ -1,0 +1,67 @@
+---
+title: "Quickstart"
+description: "Create a workspace, add your first actor, and run a checklist against your product in a few minutes."
+---
+
+# Quickstart
+
+This guide takes you from a new account to your first checklist run. It should
+take a few minutes.
+
+## 1. Create a workspace
+
+When you first sign in, Stunt Double prompts you to create a **workspace**. A
+workspace holds your projects, members, and billing. Give it a name that matches
+your team or company.
+
+<Callout variant="tip">
+  Sign-in is passwordless: request a magic link by email, or continue with Google.
+</Callout>
+
+## 2. Create a project
+
+Inside the workspace, create a **project** for the product or surface you want to
+test. A project keeps related actors, checklists, and runs together, so a team
+working on several products can keep them cleanly separated.
+
+## 3. Create an actor
+
+An **actor** is the AI assistant that does the work. When you create one you
+give it:
+
+- **Instructions** that describe who the actor is and how it should behave.
+- **Knowledge** the actor can draw on (facts about your product, test accounts,
+  conventions to follow).
+
+Out of the box an actor can drive a real browser and read email sent to its own
+inbox, so it works through your product the way a person would.
+
+For a first run, a one-paragraph description of your product is plenty.
+
+## 4. Run a checklist
+
+A **checklist** is a set of steps you want verified, written in plain language,
+for example:
+
+1. Open the pricing page.
+2. Confirm the Pro plan shows a monthly and an annual price.
+3. Start the signup flow and confirm it reaches the email step.
+
+When you run the checklist, the actor opens a hosted browser, works through each
+step, and reports whether it passed or failed, with a screenshot and a short
+explanation for each one.
+
+## 5. Review the run
+
+Every run is recorded. Open the run to:
+
+- **Replay** the session and watch what the actor did.
+- Inspect each **step**, its result, and the screenshot at that moment.
+- See any **insights** the platform surfaced from the run.
+
+## Next steps
+
+- Read **[Core concepts](/support/docs/concepts)** to understand interviews, workflows,
+  and insights.
+- Automate runs from your own tooling with the **[API](/support/docs/api)**, or connect
+  Claude through the **[MCP server](/support/docs/api/mcp)**.

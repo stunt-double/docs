@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "index",
+    "first-actor",
+    "effective-checklists",
+    "running-an-interview",
+    "building-workflows",
+    "reviewing-runs",
+    "feedback-widget",
+    "slack-design-review",
+    "self-hosted-worker",
+    "automate-with-mcp"
+  ]
+}

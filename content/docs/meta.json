@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "---Getting started---",
+    "index",
+    "getting-started",
+    "---Concepts---",
+    "concepts",
+    "---Tutorials---",
+    "tutorials",
+    "---Open source---",
+    "stuntkit",
+    "---Guides---",
+    "guides",
+    "---API---",
+    "api",
+    "---Reference---",
+    "_generated"
+  ]
+}

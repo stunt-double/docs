@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.vercel
+
+# Fetched source repos and the pages generated from them
+.sources/
+content/docs/_generated/

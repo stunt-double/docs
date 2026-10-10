@@ -1,0 +1,239 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* System fonts only: nothing to license, nothing to download. */
+:root {
+  --sd-font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, sans-serif;
+  --sd-font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  --sd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sd-hairline: color-mix(in oklab, var(--color-fd-border) 60%, transparent);
+  --sd-ink: var(--color-fd-foreground);
+  --sd-quiet: var(--color-fd-muted-foreground);
+}
+
+body {
+  font-family: var(--sd-font-sans);
+}
+
+/* MDX blocks (src/components/mdx.tsx): hairlines, not cards. */
+.sd-block {
+  margin-block: 2.5rem;
+}
+.sd-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+}
+
+.sd-callout {
+  border-block: 1px solid var(--sd-hairline);
+  padding-block: 1.25rem;
+}
+.sd-callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sd-ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.sd-callout-title .sd-icon {
+  opacity: 0.7;
+}
+.sd-callout-body {
+  margin-top: 0.5rem;
+  color: var(--sd-quiet);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.sd-cardgrid {
+  display: grid;
+  column-gap: 2.5rem;
+  border-top: 1px solid var(--sd-hairline);
+  list-style: none;
+  padding: 0;
+}
+@media (min-width: 640px) {
+  .sd-cardgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .sd-cardgrid[data-columns='3'] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.sd-cardgrid li {
+  border-bottom: 1px solid var(--sd-hairline);
+}
+.sd-card {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+  text-decoration: none;
+}
+.sd-card-title {
+  color: var(--sd-ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+.sd-card-title .sd-icon {
+  display: inline-block;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-left: 0.375rem;
+  vertical-align: -0.125em;
+  opacity: 0.6;
+  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+.sd-card:hover .sd-card-title {
+  text-decoration: underline;
+}
+.sd-card:hover .sd-card-title .sd-icon {
+  transform: translateX(0.25rem);
+}
+.sd-card-description {
+  margin-top: 0.25rem;
+  color: var(--sd-quiet);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.sd-flow,
+.sd-rolegrid {
+  display: flex;
+  flex-direction: column;
+  border-block: 1px solid var(--sd-hairline);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sd-rolegrid {
+  border-bottom: 0;
+}
+.sd-flow > li,
+.sd-rolegrid > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-block: 1rem;
+}
+.sd-flow > li + li,
+.sd-rolegrid > div + div {
+  border-top: 1px solid var(--sd-hairline);
+}
+@media (min-width: 640px) {
+  .sd-flow {
+    flex-direction: row;
+  }
+  .sd-rolegrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .sd-flow > li,
+  .sd-rolegrid > div {
+    padding-inline: 1rem;
+  }
+  .sd-flow > li:first-child,
+  .sd-rolegrid > div:first-child {
+    padding-left: 0;
+  }
+  .sd-flow > li:last-child,
+  .sd-rolegrid > div:last-child {
+    padding-right: 0;
+  }
+  .sd-flow > li + li,
+  .sd-rolegrid > div + div {
+    border-top: 0;
+    border-left: 1px solid var(--sd-hairline);
+  }
+}
+.sd-flow-number {
+  margin-bottom: 0.5rem;
+  color: color-mix(in oklab, var(--sd-ink) 60%, transparent);
+  font-family: var(--sd-font-mono);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.sd-flow-label,
+.sd-role {
+  color: var(--sd-ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.sd-flow-sub,
+.sd-role-gets {
+  margin-top: 0.25rem;
+  color: var(--sd-quiet);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.sd-flow-loop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  color: var(--sd-quiet);
+  font-family: var(--sd-font-mono);
+  font-size: 0.75rem;
+}
+.sd-flow-loop .sd-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.sd-pullquote blockquote {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: var(--sd-ink);
+  font-family: var(--sd-font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+@media (min-width: 640px) {
+  .sd-pullquote blockquote {
+    font-size: 1.875rem;
+  }
+}
+.sd-pullquote-body > p {
+  display: inline;
+}
+.sd-pullquote-open {
+  position: absolute;
+  transform: translateX(-0.5em);
+  user-select: none;
+}
+.sd-pullquote figcaption {
+  margin-top: 1rem;
+  color: var(--sd-quiet);
+  font-family: var(--sd-font-mono);
+  font-size: 0.75rem;
+}
+
+.sd-texture {
+  margin-block: 3rem;
+  color: color-mix(in oklab, var(--sd-ink) 40%, transparent);
+}
+.sd-texture svg {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  height: 4rem;
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-card-title .sd-icon {
+    transition: none;
+  }
+}
