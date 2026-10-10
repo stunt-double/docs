@@ -1,0 +1,107 @@
+---
+title: "Vercel"
+description: "Re-check your flows on every deploy, so a broken preview is caught before it reaches production."
+---
+
+# Vercel
+
+A preview deployment finishes and the link lands in a pull request. With
+Vercel connected, that deploy can start an automation: actors open the
+preview, run your checklists and report back while the change is still in
+review.
+
+## What it does
+
+- **Deployment triggers.** Automations start when a deployment is created,
+  succeeds, fails, is canceled, becomes ready or is promoted to production.
+- **Deployment context.** Actors get the deployment's status and metadata,
+  so they test the build that just shipped.
+- **Per-project links.** Each Stunt Double project links its own Vercel
+  project.
+
+## Before you start
+
+- **Role.** Any member can connect their own Vercel account. Turning Vercel
+  on for the workspace takes an owner or admin.
+- **Plan.** Installing the integration is free. Runs it starts count toward
+  your Stunt Double plan as usual.
+- **Vercel access.** You need permission to add integrations to the Vercel
+  team that owns your projects.
+
+## Set it up
+
+There are two ways in. Both end with the same per-project link.
+
+### From Stunt Double
+
+1. In [app.stuntdouble.io](https://app.stuntdouble.io), open **Integrations**
+   from the sidebar and click **Vercel**.
+2. On **Your account**, click **Connect Vercel**. Vercel opens and asks which
+   team and projects to install the integration on. Approve it.
+3. On the step named after your workspace, an owner or admin turns the switch
+   on. It reads **On. Actors, checklists and automations here can use it.**
+4. On **Projects**, click **Choose for a project** and pick a project. Its
+   **Settings** open on the **Integrations** tab: choose the project's
+   **Vercel project** there.
+
+### From the Vercel Marketplace
+
+1. Find Stunt Double in the Vercel Marketplace and install it on your Vercel
+   team.
+2. Open the Vercel card under **Integrations**. **Your account** reads
+   **Installed from the Vercel Marketplace**, and the workspace step reads
+   **On for everyone in this workspace.** Nobody needs to connect their own
+   account.
+3. On **Projects**, click **Choose for a project** and pick the **Vercel
+   project** for each Stunt Double project.
+
+### Start an automation on deploy
+
+1. Open **Automations** and create a new one.
+2. Under **Trigger Type**, choose **Vercel Event**.
+3. Pick one or more events: **Deployment Created**, **Deployment Succeeded**,
+   **Deployment Error**, **Deployment Canceled**, **Deployment Ready** or
+   **Deployment Promoted**.
+4. Under **Deployment Environment**, choose **Any environment**, **Production
+   only** or **Preview only**.
+5. Optionally, set a **Project Filter** to one Vercel project. Leave it empty
+   to trigger for all of them.
+6. Click **Create automation**, then add the checklists it should run.
+
+**Deployment Succeeded** fires once the build completes and checks pass, which
+is the usual choice for testing previews.
+
+## What Stunt Double can access
+
+Vercel sets the integration's permissions, and shows them on the install
+screen before you approve. Stunt Double uses them to list your projects, read
+deployment status and metadata, and receive deployment events.
+
+## Disconnect
+
+Open **Integrations**, click **Vercel**, then click **Disconnect** on **Your
+account**. The **Disconnect Vercel?** dialog lists every workspace that loses
+Vercel. Confirm, and automations with a **Vercel Event** trigger stop firing
+in those workspaces.
+
+To stop one workspace from using Vercel and leave the rest, an owner or admin
+turns off the workspace switch instead. A Marketplace install is removed from
+the integrations page of your Vercel team.
+
+## Troubleshooting
+
+**Vercel shows "Set up Vercel" next to Vercel Event in the trigger list.**
+Vercel is not connected for this workspace yet. Choosing the trigger opens the
+connect dialog.
+
+**The workspace step reads "Off. Ask a workspace owner or admin to turn it
+on."** Only owners and admins can flip the switch.
+
+**An automation does not start on deploy.** Check that the automation is on,
+that its events and **Deployment Environment** match the deploy, and that any
+**Project Filter** names the right Vercel project. The integration also has to
+be installed on the Vercel team that owns that project.
+
+**Actors cannot open a preview.** Vercel's deployment protection blocks
+anonymous visitors to previews. Give actors a way past it, such as a
+protection bypass, or test a deployment they can reach.

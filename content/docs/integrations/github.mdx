@@ -1,0 +1,132 @@
+---
+title: "GitHub"
+description: "Have actors review pull requests, post results as PR comments and re-run checks on GitHub events."
+---
+
+# GitHub
+
+Connect GitHub and Stunt Double works where code review already happens.
+Actors review pull requests with their own knowledge and instructions,
+automations start on pull requests, pushes, issues and releases, and results
+land on the pull request as comments.
+
+For the full loop of preview deploys, checklists and PR reports, read the
+[codebases guide](/guides/codebases).
+
+## What it does
+
+- **Actor PR reviews.** Assign actors to review pull requests and post
+  suggestions from their knowledge and instructions.
+- **Workflow triggers.** Pull request, review, push, issue, check suite and
+  release events start automations automatically.
+- **PR comments.** Workflow results and checklist summaries post directly on
+  the pull request.
+
+## Before you start
+
+- **Role.** Any member can connect their GitHub account. Turning GitHub on for
+  the workspace and choosing watched repositories takes an owner or admin.
+- **Plan.** GitHub does not need a particular plan.
+- **GitHub permissions.** Installing the Stunt Double GitHub App on an
+  organization's repositories needs permission to install apps there, usually
+  an organization owner. If that is someone else, send them the install link
+  (see [below](#hand-setup-to-someone-else)).
+
+## Set it up
+
+GitHub takes one extra step compared with other integrations: signing in tells
+Stunt Double who you are, and installing the GitHub App decides which
+repositories it can see.
+
+1. In [app.stuntdouble.io](https://app.stuntdouble.io), open **Integrations**
+   from the sidebar and click **GitHub**.
+2. On **Your account**, click **Connect GitHub** and authorize Stunt Double in
+   GitHub.
+3. Still on **Your account**, click **Install GitHub App**. In GitHub, choose
+   the account or organization, then pick all repositories or only the ones
+   Stunt Double should see. The step changes to **Connected as** with your
+   GitHub name.
+4. On the step named after your workspace, an owner or admin turns the switch
+   on.
+5. Under **Settings**, find **Watched repositories** and click **Add
+   repository**. Pick each repository that automations and actor PR reviews
+   should listen to, then click **Done**.
+6. On **Projects**, click **Choose for a project** and pick a project. Its
+   **Settings** open on the **Integrations** tab: choose the project's
+   repository there.
+
+To start an automation from GitHub, create an automation, choose a GitHub
+trigger, and pick the events: **PR Opened**, **PR Merged**, **PR Updated**,
+**Review Requested**, **Push**, **Issue Opened**, **Check Suite Completed**,
+**Release Published** and more.
+
+### Watched repositories versus project repositories
+
+**Watched repositories** are a workspace setting: GitHub events from these
+repositories reach your automations and actor PR reviews. A **project's
+repository** says which codebase that project works with. A repository can
+be both.
+
+### Hand setup to someone else
+
+At the foot of the GitHub page, the **Install link** card has a link that
+walks someone through installing the GitHub App, turning it on for this
+workspace and choosing repositories. It picks up wherever they left off. Send
+it to the organization owner who can install apps.
+
+## What Stunt Double can access
+
+GitHub access comes in two parts.
+
+**Your account (OAuth).** Stunt Double requests:
+
+| Scope        | Used for                                                   |
+| ------------ | ---------------------------------------------------------- |
+| `read:user`  | Showing which GitHub account is connected                  |
+| `user:email` | Reading the email address on your GitHub account  |
+| `repo`       | Reading repositories and posting comments on pull requests |
+
+**The GitHub App.** The app can only see the repositories you chose when you
+installed it. Change that list at any time with **Manage app access** next to
+**Watched repositories**, or from the app's settings in GitHub.
+
+<Callout variant="note" title="About the repo scope">
+  GitHub's `repo` scope covers private repositories as well as public ones.
+  Choosing specific repositories when you install the GitHub App keeps what
+  Stunt Double watches to the ones you pick.
+</Callout>
+
+## Disconnect
+
+- **Stop watching one repository.** Under **Watched repositories**, click the
+  delete icon beside it (owners and admins).
+- **Stop one workspace using GitHub.** An owner or admin turns off the
+  workspace switch.
+- **Remove GitHub from your account.** Click **Disconnect** on **Your
+  account**. The **Disconnect GitHub?** dialog lists every workspace that loses
+  GitHub. Confirm to remove it.
+- **Remove the app from GitHub.** Uninstall the Stunt Double GitHub App from
+  your account or organization settings in GitHub. Stunt Double stops seeing
+  every repository at once.
+
+## Troubleshooting
+
+**"Install the GitHub App on the repositories Stunt Double should see."** You
+signed in but have not installed the app yet. Click **Install GitHub App**.
+
+**"No repositories found. Install the GitHub App on at least one
+repository."** The app is installed with no repositories. Click **Manage app
+access** and add some.
+
+**"The GitHub App installation is no longer linked to this account."** The app
+was uninstalled or moved. Click **Reconnect GitHub App**.
+
+**"Couldn't load repositories from GitHub."** The installation may have been
+revoked in GitHub. Click **Reconnect GitHub App**, then **Retry**.
+
+**Automations do not start on a pull request.** Check that the repository is
+under **Watched repositories**, the automation is on, and its trigger includes
+that event.
+
+**A repository is missing from the picker.** Stunt Double only lists
+repositories the GitHub App can see. Add it with **Manage app access**.

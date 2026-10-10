@@ -1,0 +1,94 @@
+---
+title: "Webhooks"
+description: "Start an automation from any system that can send an HTTP request: CI, a deploy script, a cron job or another tool."
+---
+
+# Webhooks
+
+Your CI pipeline finishes a staging deploy, but it is not on Vercel and there
+is no built-in trigger for it. A webhook trigger covers that case: the pipeline
+sends one HTTP request, and the automation runs its checklists against the
+build that just went out.
+
+This page is a reference for the **Webhook** trigger. For building the rest of
+an automation, read [Automate multi-step workflows](/tutorials/building-workflows).
+
+## Before you start
+
+- **Role.** Any workspace member who can create automations.
+- **Plan.** Webhook runs count toward your plan like any other run. A request
+  is refused if the workspace is out of runs or over its budget cap.
+
+## Create a webhook trigger
+
+1. Open **Automations** and create a new one.
+2. Choose the **Project**, and give it a **Name**.
+3. Under **Trigger Type**, choose **Webhook**. A webhook secret is generated
+   when the automation is created.
+4. Click **Create automation**, then add the steps it should run.
+5. Open the automation's **Settings** tab. Under **Trigger configuration**,
+   copy the **Webhook URL** and the **Webhook secret**.
+
+Treat the secret like a password. Store it in your CI system's secret store,
+not in a repository.
+
+## Send the request
+
+Send a `POST` to the **Webhook URL** with the secret in the `X-Webhook-Secret`
+header. The request body is ignored, so you can send none.
+
+```bash
+curl -X POST "$STUNTDOUBLE_WEBHOOK_URL" \
+  -H "X-Webhook-Secret: $STUNTDOUBLE_WEBHOOK_SECRET"
+```
+
+Here `STUNTDOUBLE_WEBHOOK_URL` and `STUNTDOUBLE_WEBHOOK_SECRET` are variables
+you set in your own CI, holding the two values you copied.
+
+The same request from a GitHub Actions step:
+
+```yaml
+- name: Run Stunt Double checks
+  run: |
+    curl --fail -X POST "${{ secrets.STUNTDOUBLE_WEBHOOK_URL }}" \
+      -H "X-Webhook-Secret: ${{ secrets.STUNTDOUBLE_WEBHOOK_SECRET }}"
+```
+
+## Responses
+
+A successful request starts a run and returns its id:
+
+```json
+{ "run_id": "3f2b8c1e-..." }
+```
+
+The run then shows on the automation's runs list like any other.
+
+| Status | Meaning                                                            |
+| ------ | ------------------------------------------------------------------ |
+| `200`  | The run started. The body carries `run_id`.                        |
+| `400`  | The automation is turned off, or its trigger is not **Webhook**.   |
+| `401`  | The `X-Webhook-Secret` header is missing or the secret is wrong.   |
+| `402`  | The workspace has no runs left on its plan, or hit its budget cap. |
+| `404`  | No automation exists at that URL.                                  |
+
+Errors return a JSON body with an `error` message.
+
+## Turn it off
+
+To stop accepting requests, turn the automation off. Requests then return
+`400` until you turn it back on. Deleting the automation makes its URL return
+`404`.
+
+## Troubleshooting
+
+**`401` with the right secret.** Check the header name is exactly
+`X-Webhook-Secret`, and that your CI is not adding quotes or a trailing
+newline to the stored value.
+
+**`400` straight after creating it.** The automation has to be on. Check its
+status, and that **Trigger Type** is still **Webhook**.
+
+**The run starts but does nothing useful.** The webhook only starts the
+automation. Check that it has steps, and that its checklists point at the
+environment your pipeline just deployed.

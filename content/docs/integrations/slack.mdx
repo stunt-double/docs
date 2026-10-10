@@ -1,0 +1,116 @@
+---
+title: "Slack"
+description: "Get design reviews, run results and answers about your workspace in the Slack thread where the question was asked."
+---
+
+# Slack
+
+Someone posts a staging link in the design channel and asks what everyone
+thinks. With Slack connected, Stunt Double answers in the thread: it opens the
+page in a real browser, reviews it and replies with ranked findings. The same
+Slack agent takes direct messages, answers questions about your workspace and
+starts checklists and automations for you.
+
+For the full design review walkthrough, read
+[Review designs from Slack](/tutorials/slack-design-review).
+
+## What it does
+
+- **Direct messages.** Anyone in your Slack team can DM Stunt Double. Send a
+  link and ask for feedback and it runs a design review. Ask about the
+  workspace and it can start checklists and automations.
+- **Design reviews in channels.** Once design review is set up for a channel,
+  Stunt Double picks up messages that carry a link and ask for feedback, and
+  replies in the thread.
+- **Notifications.** Each project can post to its own Slack channel.
+- **Workflow triggers.** Automations can start from Slack events with the
+  **Slack Event** trigger.
+
+## Before you start
+
+- **Role.** Any member can install the Slack agent. Adding it to a Stunt
+  Double workspace, or removing it, takes an owner or admin.
+- **Plan.** Slack does not need a particular plan.
+- **Slack access.** You need permission to install apps in your Slack team.
+  If your Slack admins approve apps first, ask them to approve Stunt Double.
+
+## Set it up
+
+1. In [app.stuntdouble.io](https://app.stuntdouble.io), open **Integrations**
+   from the sidebar and click **Slack**.
+2. On **Your account**, click **Install Slack agent** and approve Stunt Double
+   in Slack. The step changes to **Installed by you for** your Slack team.
+3. On the step named after your workspace, an owner or admin clicks **Add**
+   followed by your Slack team name. The step reads **On, through** your Slack
+   team. One install serves every workspace it is added to, so a second
+   workspace only needs **Add**, not another install.
+4. On **Projects**, click **Choose for a project** and pick a project. Its
+   **Settings** open on the **Integrations** tab: choose the project's
+   **channel** there.
+5. To have Stunt Double pick up review requests in a channel, open **Design
+   reviews**, then **Settings**, and choose the channels to watch.
+
+Setting Slack up for someone else? The card at the bottom of the Slack panel
+gives you a link to share. It walks them through installing the Slack agent
+for this workspace and choosing where notifications go.
+
+## What Stunt Double can access
+
+The Slack agent asks for these scopes:
+
+| Scope                                | Used for                                            |
+| ------------------------------------ | --------------------------------------------------- |
+| `channels:read`, `groups:read`       | Listing channels to choose from                     |
+| `channels:history`, `groups:history` | Reading messages in channels it watches for reviews |
+| `app_mentions:read`                  | Answering when someone @mentions Stunt Double       |
+| `chat:write`, `chat:write.customize` | Posting replies, reviews and notifications          |
+| `incoming-webhook`                   | Posting notifications to the channel you choose     |
+| `im:history`, `im:write`             | Reading and answering direct messages               |
+| `assistant:write`                    | Replying as an assistant in Slack's agent view      |
+| `commands`                           | Handling Stunt Double's slash commands              |
+| `users:read`                         | Showing who asked                                   |
+| `mcp:connect`                        | Letting Slack reach Stunt Double's MCP server    |
+
+Installs from before direct messages were supported lack `im:history` and
+`im:write`. Under **Settings**, **Direct messages** shows **Reinstall the
+Slack agent to turn this on** for those. Install again to grant them.
+
+## Remove versus disconnect
+
+Slack has two ways out, and they reach different distances.
+
+- **Remove** takes Slack out of one Stunt Double workspace. An owner or admin
+  clicks **Remove** on the workspace step and confirms **Remove Slack from**
+  the workspace name. Notifications and the Slack agent stop for that
+  workspace. The install stays, so other workspaces keep using it and this one
+  can be added back without installing again.
+- **Disconnect** removes the install from your account, which takes it out of
+  every workspace that uses it. The person who installed it clicks
+  **Disconnect** on **Your account**, and the **Disconnect Slack?** dialog
+  names each workspace that loses it. Notifications and the agent stop in all
+  of them until someone installs it again.
+
+To stop Slack in one workspace and leave the rest running, use Remove.
+
+## Troubleshooting
+
+**A red banner reads "Slack has stopped working for" your workspace.** Slack
+stopped renewing the install's token. Click **Reinstall the Slack agent**.
+Reinstalling keeps every workspace that uses it.
+
+**The workspace step reads "Not added here yet. Ask a workspace admin to add
+it."** The Slack agent is installed, but only owners and admins can add it to
+a workspace. Ask one of them to open the Slack card and click **Add**.
+
+**Your account reads "Slack is linked to your account, but the Slack agent
+install is gone."** The app was removed from Slack's side. Click **Install
+Slack agent** to install it again.
+
+**Stunt Double does not reply in a channel.** DMs work as soon as Slack is
+added. Channels need design review turned on for them under **Design
+reviews**, then **Settings**. Check that Stunt Double has been invited to the
+channel too.
+
+**Direct messages do not arrive.** Check **Direct messages** under
+**Settings** on the Slack panel. If it asks you to reinstall, the install
+predates DM support.

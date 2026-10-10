@@ -1,0 +1,16 @@
+{
+  "title": "Integrations",
+  "pages": [
+    "index",
+    "github",
+    "vercel",
+    "figma",
+    "figma-plugin",
+    "linear",
+    "slack",
+    "webhooks",
+    "feedback-widget",
+    "self-hosted-workers",
+    "desktop-app"
+  ]
+}

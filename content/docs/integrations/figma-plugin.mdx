@@ -1,0 +1,104 @@
+---
+title: "Figma plugin"
+description: "Review frames, run checklists, capture feedback and chat with actors without leaving Figma."
+---
+
+# Figma plugin
+
+The Stunt Double plugin brings actors into the Figma canvas. Select a frame
+and actors review it, run a checklist against it, or talk it through with you,
+and the findings land as numbered pins next to the design.
+
+<Callout variant="note" title="Not in the Figma Community yet">
+  The plugin is not listed in the Figma Community yet, so there is no public
+  install link. This page describes how it works so you know what to expect when
+  it arrives.
+</Callout>
+
+## What it does
+
+The plugin has four tabs:
+
+- **Review.** Select one or more frames and ask actors for design feedback.
+  The plugin exports the frames and the reviewers judge the image. Click
+  **Place on canvas** to draw numbered pins and a findings panel beside the
+  frame, **Resolve** findings as you fix them, and click **Re-check frame** to
+  ask the reviewers what is fixed. **Open in dashboard** takes you to the full
+  review.
+- **Checklists.** Run one of the project's checklists against the selected
+  frames and read the results.
+- **Feedback.** Create and triage feedback on the design, filtered to **This
+  file only** or across the project.
+- **Chat.** Talk to one of your actors about the selected frames, with
+  **Attach frame snapshot** to send the frame along.
+
+Pick a project in the plugin's header first: reviews, checklists and feedback
+all belong to a project.
+
+## Before you start
+
+- **A Stunt Double account** with access to the workspace and project you want
+  to work in.
+- **Actors in the workspace.** Reviews and chat need at least one actor.
+  Create one in the dashboard if the plugin says **No actors in this workspace
+  yet.**
+- **A project.** The plugin works inside a project, so create one in the
+  dashboard first.
+
+## Connect the plugin
+
+The plugin signs in through your browser, so it never asks for a password.
+
+1. Open the plugin in Figma and click **Connect to Stunt Double**. A browser
+   tab opens and the plugin reads **Approve the request in your browser.
+   Waiting...**
+2. In the browser, sign in to Stunt Double if you are not already. The
+   **Connect the Figma plugin** page lists what the plugin will be able to do.
+3. Click **Approve**. The plugin switches to **Connected to Stunt Double**.
+
+To cancel, click **Deny** in the browser or **Cancel** in the plugin.
+
+## What the plugin can access
+
+When you approve, the plugin can:
+
+- See your workspaces, projects and actors
+- Run checklists and view run results
+- Create and triage feedback on your designs
+- Chat with your actors about selected frames
+
+Approving issues a plugin token that lasts 90 days and is stored in Figma on
+your machine. The plugin can only reach `app.stuntdouble.io` and
+`stuntdouble.io`.
+
+The plugin does not need the [Figma workspace connection](/integrations/figma),
+and the connection does not need the plugin. Use either or both.
+
+## Disconnect
+
+Click **Sign out** in the plugin. That removes the token from Figma on your
+machine. The token also expires on its own after 90 days, and the plugin asks
+you to connect again.
+
+## Troubleshooting
+
+**"The connect request expired. Try again."** The browser approval took too
+long. Click **Connect to Stunt Double** again and approve within a few
+minutes.
+
+**"The request was denied."** Someone clicked **Deny** in the browser. Start
+the connection again and click **Approve**.
+
+**The browser says the connect request is no longer valid.** The request was
+already used or has expired. Return to Figma and start the connection again.
+
+**"Select one or more frames first."** Reviews and checklists run on frames,
+not groups or pages. Select at least one frame on the canvas.
+
+**"Pick a project in the header before running a review."** Choose a project
+from the plugin's header. If the list is empty, create a project in the
+dashboard.
+
+**"Could not reach Stunt Double."** Check your network connection. Figma only
+lets the plugin talk to stuntdouble.io, so a network that blocks it will stop
+the plugin.

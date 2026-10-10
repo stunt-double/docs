@@ -1,0 +1,91 @@
+---
+title: "Figma"
+description: "Let actors read your design files and re-check flows automatically when a file changes."
+---
+
+# Figma
+
+Connect Figma and actors can read the frames, components and tokens in your
+linked files, work through your prototypes the way a user would, and start
+automations when a file is saved, commented on, versioned or published as a
+library.
+
+This page covers the workspace connection, set up in the dashboard. To review
+frames and run checklists from inside Figma, see the
+[Figma plugin](/integrations/figma-plugin). For the testing workflow once you
+are connected, read the [Figma guide](/guides/figma).
+
+## What it does
+
+- **Design context.** Actors read frames, components and tokens from the
+  design file linked to their project.
+- **Prototype walkthroughs.** Actors work through your prototypes the way
+  real users would.
+- **Per-project files.** Each project links its own design file, so runs,
+  feedback and interviews stay attached to the design they came from.
+- **Workflow triggers.** Automations can start on four Figma events: **File
+  Update**, **File Comment**, **File Version Update** and **Library Publish**.
+
+## Before you start
+
+- **Role.** Any member can connect their own Figma account. Turning Figma on
+  for the workspace takes an owner or admin.
+- **Plan.** Figma does not need a particular plan.
+- **Figma access.** The Figma account you connect needs access to the files
+  you want actors to read.
+
+## Set it up
+
+1. In [app.stuntdouble.io](https://app.stuntdouble.io), open **Integrations**
+   from the sidebar and click **Figma**.
+2. On **Your account**, click **Connect Figma** and approve Stunt Double in
+   Figma. The step changes to **Connected as** with your Figma name.
+3. On the step named after your workspace, an owner or admin turns the switch
+   on. It reads **On. Actors, checklists and automations here can use it.**
+4. On **Projects**, click **Choose for a project** and pick a project. Its
+   **Settings** open on the **Integrations** tab: choose the project's design
+   file there. Repeat for each project that works from a Figma file.
+
+To re-check work when a file changes, create an automation, choose a Figma
+trigger, then pick from **Figma Events**.
+
+## What Stunt Double can access
+
+Stunt Double asks Figma for these scopes:
+
+| Scope                 | Used for                                                     |
+| --------------------- | ------------------------------------------------------------ |
+| `current_user:read`   | Showing which Figma account is connected                     |
+| `file_content:read`   | Reading frames, components and tokens from linked files      |
+| `file_metadata:read`  | Reading file names and versions                              |
+| `file_comments:read`  | Reading comments, including for the **File Comment** trigger |
+| `file_comments:write` | Writing comments on linked files                             |
+
+## Disconnect
+
+Open **Integrations**, click **Figma**, then click **Disconnect** on **Your
+account**. The **Disconnect Figma?** dialog lists every workspace that loses
+Figma. Confirm, and those workspaces stop using it until someone connects
+again.
+
+To stop one workspace from using Figma and leave the rest, an owner or admin
+turns off the workspace switch instead. You can also remove Stunt Double from
+the connected apps in your Figma account settings, which revokes access from
+Figma's side.
+
+## Troubleshooting
+
+**The workspace step reads "Off. Ask a workspace owner or admin to turn it
+on."** Only owners and admins can flip the switch. Ask one of them to open
+the Figma card, or send them this page.
+
+**The Projects step is greyed out.** It waits for the first two steps. Connect
+your account and turn the workspace switch on first.
+
+**Actors cannot see a file.** Check that the Figma account you connected can
+open that file, and that the file is linked on the project's **Integrations**
+tab.
+
+**Automations do not start on file changes.** Confirm the automation is on,
+its trigger lists the right **Figma Events**, and Figma is still on for the
+workspace.

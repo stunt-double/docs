@@ -1,0 +1,65 @@
+---
+title: "Feedback widget"
+description: "Let visitors pin comments to the exact spot on your site, with a screenshot, URL and viewport attached."
+---
+
+# Feedback widget
+
+Add one script tag to your site and anyone looking at a page can drop a pin on
+the spot that confused them and say why. Each comment arrives in your project
+with a screenshot of the page as they saw it, the URL and the viewport.
+
+For the full walkthrough, read
+[Collect comments straight from your site](/tutorials/feedback-widget). For
+running reviews with it, read the [feedback widget guide](/guides/feedback-widget).
+
+## Before you start
+
+- **Workspace limits.** Owners and admins set a workspace-wide ceiling for
+  the widget under **Settings**, then **Security**.
+- **A site you control.** You need to add a script tag to its HTML.
+
+## Set it up
+
+1. Open the project and go to **Comments**.
+2. Follow the install step. Copy the snippet and paste it just before
+   `</body>`, or choose **With Claude** to hand the job to a coding agent.
+3. Load your site. The install step shows **Widget detected** once the widget
+   checks in.
+4. If the widget also runs somewhere other than your project URL, such as a
+   staging or custom domain, add it under **Allowed domains** in the project's
+   feedback settings. Requests from anywhere else are refused.
+
+## Settings
+
+| Setting                     | What it does                                                         |
+| --------------------------- | -------------------------------------------------------------------- |
+| **Toolbar visible**         | Shows or hides the feedback button on your site                      |
+| **Show comments on page**   | Shows existing comment pins on the page                              |
+| **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment                   |
+| **Allowed domains**         | Extra sites the widget may run on, beyond your project URL           |
+| **Require sign in**         | Only signed-in members of this workspace can read or leave comments  |
+| **Allow local development** | Lets `localhost` and private network addresses use the widget        |
+| **API Key**                 | Click **Rotate** to issue a new key                                  |
+
+The API key in the snippet identifies your project. It is not a secret: the
+allowed domains are what control access. Rotating it stops the widget on your
+site until you update the snippet with the new key.
+
+## Remove it
+
+Delete the script tag from your site. To stop an old copy of the snippet
+working anywhere, rotate the API key.
+
+## Troubleshooting
+
+**"Widget detected" never appears.** Check the snippet is on the page you
+loaded, and that the domain is your project URL or under **Allowed
+domains**. For `localhost`, turn on **Allow local development**.
+
+**The widget stopped loading after a key rotation.** Every copy of the snippet
+needs the new key. Copy the snippet again from **Comments**.
+
+**The widget will not load even though the domain is allowed.** An owner or
+admin may have limited the widget workspace-wide under **Settings**, then
+**Security**.

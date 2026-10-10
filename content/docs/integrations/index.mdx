@@ -1,0 +1,176 @@
+---
+title: "Integrations"
+description: "Run checks where the work already happens: on pull requests, deploys, design updates and Linear issues."
+---
+
+# Integrations
+
+A design gets updated in Figma, a pull request opens on GitHub, a preview
+lands on Vercel. Each of those is a moment when someone should try the flow
+before it ships. Integrations let Stunt Double act at that moment instead of
+waiting for someone to remember to start a run.
+
+Actors drive real browsers through real products and report back with
+evidence. Anything with a reachable URL can be tested: production, staging, a
+Vercel preview, a published Figma Make prototype, a Claude design artifact or
+a v0 link. Integrations decide when that happens and where the results land.
+
+## How Stunt Double plugs in
+
+Three mechanisms connect Stunt Double to your other tools:
+
+1. **The MCP server** at `https://app.stuntdouble.io/api/mcp`. Any MCP client
+   (Claude, Claude Code, Cursor, Windsurf, ChatGPT and others) gets the full
+   toolset: create and run checklists, launch persona interviews, triage
+   feedback and comment on pull requests. Client setup lives in the
+   [MCP section](/mcp).
+2. **Connections and event triggers.** Connect GitHub, Figma, Linear, Slack or
+   Vercel and automations can start on pull requests, deploys, design updates,
+   Linear issues and Slack messages, so checks re-run without anyone asking.
+3. **The dashboard** at [app.stuntdouble.io](https://app.stuntdouble.io), for
+   anything visual: watching session recordings, reading interview reports and
+   managing actors and integrations.
+
+## How every connection works
+
+Every integration lives on the **Integrations** page of your workspace. Open
+the sidebar, choose **Integrations**, then click a card. Each one is set up in
+the same three steps, in the same order, so learning one teaches you all of
+them.
+
+<FlowStrip
+  nodes={[
+    {
+      label: "Your account",
+      sub: "Connect the account Stunt Double should use",
+    },
+    { label: "This workspace", sub: "An owner or admin turns it on" },
+    {
+      label: "Projects",
+      sub: "Each project picks its file, repository, team or channel",
+    },
+  ]}
+/>
+
+1. **Your account.** Click **Connect** followed by the tool's name (for
+   example **Connect GitHub**) and approve Stunt Double on the provider's
+   site. The step then reads **Connected as** with your account name, and
+   lists the workspaces already using it.
+2. **Your workspace.** The second step carries your workspace's name and a
+   switch. An owner or admin turns it on, and the step reads **On. Actors,
+   checklists and automations here can use it.** Members see **Off. Ask a
+   workspace owner or admin to turn it on.** until an admin does.
+3. **Projects.** Click **Choose for a project** and pick a project. That opens
+   the project's **Settings**, on the **Integrations** tab, where you choose
+   the design file, repository, Linear team, Slack channel or Vercel project
+   it works with. If the workspace has no projects yet, the button reads
+   **Create a project**.
+
+A step that depends on the one before it stays greyed out until that step is
+done, so the next thing to do is always the first step without a tick.
+
+Once an integration is on, its page grows a **Settings** section for anything
+that applies to the whole workspace, such as GitHub's watched repositories or
+the Linear agent's identity.
+
+<Callout variant="note" title="One account, several workspaces">
+  Your connection belongs to your account, not to one workspace. Turn it on in
+  as many workspaces as you like, and each one shows up on step one as a place
+  the connection is used.
+</Callout>
+
+### Disconnecting
+
+To remove a connection, open the integration and click **Disconnect** on the
+**Your account** step. A dialog titled **Disconnect** followed by the tool's
+name lists every workspace that loses the integration. Confirm, and those
+workspaces stop using it until someone connects again.
+
+To stop one workspace from using a connection while others keep it, an owner
+or admin turns off the switch on step two instead. Slack works a little
+differently: see [Slack](/integrations/slack) for **Remove** versus
+**Disconnect**.
+
+### Handing setup to someone else
+
+GitHub, Linear and Slack each show an **Install link** card at the foot of
+their page. Copy the link and send it to whoever should finish setup: a
+teammate who owns the GitHub organization, or an admin who has to flip the
+workspace switch. The link walks them through every step for that workspace
+and picks up wherever they left off.
+
+## Every integration
+
+| Integration                                              | What it does                                                                   | Who sets it up                                                             | What Stunt Double requests                                                                                                                                                                                                                |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [GitHub](/integrations/github)                           | Actor pull request reviews, PR comments, automations on GitHub events          | Anyone connects; an owner or admin turns it on                             | OAuth: `read:user`, `user:email`, `repo`. GitHub App: access to the repositories you choose                                                                                                                                               |
+| [Vercel](/integrations/vercel)                           | Automations on deployment events                                               | Anyone connects, or install from the Vercel Marketplace                    | The permissions the Vercel integration asks for at install                                                                                                                                                                                |
+| [Figma](/integrations/figma)                             | Design context for actors, automations on file events                          | Anyone connects; an owner or admin turns it on                             | `current_user:read`, `file_content:read`, `file_metadata:read`, `file_comments:read`, `file_comments:write`                                                                                                                               |
+| [Figma plugin](/integrations/figma-plugin)               | Design reviews, checklists, feedback and actor chat inside Figma               | Each designer, from Figma                                                  | A plugin token valid for 90 days. The plugin only talks to stuntdouble.io                                                                                                                                                                 |
+| [Linear](/integrations/linear)                           | The Stunt Double agent on Linear issues, automations on issue events           | Anyone connects; an owner or admin turns it on and picks the agent's actor | `read`, `write`, `issues:create`, `comments:create`, `app:assignable`, `app:mentionable`                                                                                                                                                  |
+| [Slack](/integrations/slack)                             | Design reviews in threads, notifications, a workspace agent in direct messages | An owner or admin adds it to the workspace                                 | `channels:read`, `groups:read`, `channels:history`, `groups:history`, `chat:write`, `chat:write.customize`, `mcp:connect`, `commands`, `users:read`, `app_mentions:read`, `incoming-webhook`, `assistant:write`, `im:history`, `im:write` |
+| [Webhooks](/integrations/webhooks)                       | Start an automation from any system that can send an HTTP request              | Anyone who can edit automations                                            | A secret per automation, sent as `X-Webhook-Secret`                                                                                                                                                                                       |
+| [Feedback widget](/integrations/feedback-widget)         | Collect comments on your live site into a project                              | Project members; owners and admins set workspace limits                    | A project key that identifies the project, limited to your allowed domains                                                                                                                                                                |
+| [Self-hosted workers](/integrations/self-hosted-workers) | Run actors on your own network, against sites the public internet cannot reach | Owners and admins, on Enterprise                                           | A worker API key, shown once                                                                                                                                                                                                              |
+| [Desktop app](/integrations/desktop-app)                 | Use your Mac as a worker                                                       | Owners and admins, where workers are available                             | Your Stunt Double sign-in                                                                                                                                                                                                                 |
+
+MCP clients (Claude, Claude Code, Cursor, Windsurf, ChatGPT) request
+`mcp:read`, `mcp:write` and `mcp:run`. Their setup is in the [MCP section](/mcp).
+
+## Guides by workflow
+
+The pages above cover setup. The guides cover what to do once you are
+connected:
+
+<CardGrid
+  items={[
+    {
+      title: "Design in Claude, validate with personas",
+      description:
+        "Design an artifact, publish it, test it with personas and iterate in the same chat.",
+      href: "/guides/claude-design",
+    },
+    {
+      title: "Test Figma prototypes with AI personas",
+      description:
+        "Walk prototypes with personas and re-check the built flows when a file changes.",
+      href: "/guides/figma",
+    },
+    {
+      title: "Idea to evidence with Figma Make",
+      description:
+        "Publish a Make site, interview personas against it and feed findings back.",
+      href: "/guides/figma-make",
+    },
+    {
+      title: "Verify every change with Claude Code, Cursor and GitHub",
+      description:
+        "Ship to a preview, verify flows with a checklist and report on the pull request.",
+      href: "/guides/codebases",
+    },
+    {
+      title: "Validate brand, compliance and design systems",
+      description:
+        "Codify a standard as actor knowledge, assert it with checks and re-run on events.",
+      href: "/guides/validation",
+    },
+  ]}
+/>
+
+## Where each role feels it
+
+- **Designers** find usability problems while the design is still cheap to
+  change: persona interviews against prototypes, with transcripts and
+  evidence.
+- **Product managers** get research at decision speed: a structured study
+  with a brief, a discussion guide, varied personas and a synthesized report,
+  plus feedback triage that clusters and reproduces what users report.
+- **Engineers** get a user-level regression net: checklists that walk real
+  flows on preview deployments, results as PR comments, and re-runs on every
+  deploy.
+- **Leadership** gets scheduled checks over the critical paths (signup,
+  checkout, the core action), with failures reaching Slack or Linear before
+  they reach support.
+- **Brand, legal and design-system owners** get enforcement instead of
+  periodic review: standards written down once and checked on every deploy or
+  design update.
