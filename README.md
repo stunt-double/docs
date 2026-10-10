@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/readme/header-dark.png">
-  <img alt="Stunt Double Docs: find where people get stuck, before they do. Beside it, a checklist run with a failed check and its evidence." src=".github/readme/header-light.png" width="100%">
+  <img alt="Stunt Double Docs: authentic user insights from autonomous AI agents, backed by evidence. Beside it, a checklist run with a failed check and its evidence." src=".github/readme/header-light.png" width="100%">
 </picture>
 
 <p>
@@ -14,7 +14,9 @@
 
 # Stunt Double docs
 
-The source for [docs.stuntdouble.io](https://docs.stuntdouble.io): guides, tutorials, concepts, and the API, MCP and StuntKit reference for [Stunt Double](https://stuntdouble.io).
+[Stunt Double](https://stuntdouble.io): authentic user insights from autonomous AI agents, backed by evidence.
+
+This is the source for [docs.stuntdouble.io](https://docs.stuntdouble.io): guides, tutorials, concepts, and the API, MCP and StuntKit reference.
 
 ## Run it locally
 
