@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { getMDXComponents } from '@/components/mdx';
+import { absoluteUrl } from '@/lib/site';
 import { source } from '@/lib/source';
 
 type Props = { params: Promise<{ slug?: string[] }> };
@@ -29,7 +30,7 @@ export default async function Page({ params }: Props) {
     <DocsPage toc={page.data.toc} full={page.data.full}>
       {!hasOwnH1(page.path) && (
         <>
-          <DocsTitle>{page.data.title}</DocsTitle>
+          <DocsTitle className="sd-title">{page.data.title}</DocsTitle>
           <DocsDescription>{page.data.description}</DocsDescription>
         </>
       )}
@@ -51,6 +52,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: page.data.title,
     description: page.data.description,
-    alternates: { canonical: page.url },
+    alternates: { canonical: absoluteUrl(page.url) },
   };
 }

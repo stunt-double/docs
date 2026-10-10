@@ -2,238 +2,267 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
-/* System fonts only: nothing to license, nothing to download. */
+/* ─────────────────────────────────────────────────────────────
+   docs.stuntdouble.io, drawn in Continuity, the Stunt Double
+   design system. The design system package is private, so the
+   tokens this site needs are copied here verbatim from
+   packages/ui/src/styles/globals.css (colour, type, radii,
+   shadows) and motion.css (easing, durations). Copy, never
+   tweak: OKLCH is the source of truth, so a changed value
+   belongs in the design system first.
+
+   The Fumadocs chrome (sidebar, TOC, search, code blocks) draws
+   with `--color-fd-*`; those are mapped onto the Continuity
+   tokens below, the way apps/brand maps them.
+   ───────────────────────────────────────────────────────────── */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Type: open faces only (see `app/fonts.ts`). Geist Sans stands in for
+     Untitled Sans; the serif keeps the token's system fallbacks. */
+  --font-sans:
+    var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', ui-serif, Georgia, serif;
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-mono), ui-monospace, monospace;
+
+  --tracking-display: -0.025em;
+  --tracking-tight: -0.012em;
+  --leading-tight: 1.1;
+
+  /* Radii: architectural, not pillowy. */
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.75rem;
+
+  /* Light, "Paper and Ink". */
+  --color-background: oklch(0.985 0.005 250);
+  --color-foreground: oklch(0.18 0.016 268);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.18 0.016 268);
+  --color-popover: oklch(0.994 0.003 250);
+  --color-popover-foreground: oklch(0.18 0.016 268);
+  --color-primary: oklch(0.52 0.22 268);
+  --color-primary-foreground: oklch(0.985 0.005 250);
+  --color-secondary: oklch(0.945 0.009 255);
+  --color-secondary-foreground: oklch(0.22 0.016 268);
+  --color-muted: oklch(0.955 0.007 255);
+  --color-muted-foreground: oklch(0.46 0.017 268);
+  --color-accent: oklch(0.945 0.02 255);
+  --color-accent-foreground: oklch(0.22 0.016 268);
+  --color-destructive: oklch(0.53 0.215 22);
+  --color-border: oklch(0.88 0.01 255);
+  --color-input: oklch(0.86 0.01 255);
+  --color-ring: oklch(0.52 0.22 268);
+
+  --color-sidebar: oklch(0.97 0.008 252);
+  --color-sidebar-accent: oklch(0.18 0.016 268 / 0.05);
+  --color-sidebar-accent-foreground: oklch(0.22 0.016 268);
+  --color-sidebar-active-foreground: oklch(0.46 0.2 268);
+
+  --color-success: oklch(0.6 0.13 160);
+  --color-warning: oklch(0.75 0.15 75);
+
+  /* Elevation: overlays only (the consent card, search dialog). */
+  --shadow-raised:
+    0 1px 1px oklch(0.18 0.016 268 / 0.04), 0 2px 6px -2px oklch(0.18 0.016 268 / 0.08);
+  --shadow-floating:
+    0 1px 2px oklch(0.18 0.016 268 / 0.05), 0 12px 32px -16px oklch(0.25 0.03 265 / 0.2);
+  --shadow-overlay:
+    0 2px 8px -2px oklch(0.55 0.13 272 / 0.1), 0 24px 56px -20px oklch(0.25 0.03 265 / 0.26);
+
+  /* Motion curves (motion.css). */
+  --ease-snap: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-glide: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-rise: sd-rise var(--duration-slow) var(--ease-snap) backwards;
+}
+
+/* Duration tiers (motion.css). Product UI stays at or under `slow`. */
 :root {
-  --sd-font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    Arial, sans-serif;
-  --sd-font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', serif;
-  --sd-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --sd-hairline: color-mix(in oklab, var(--color-fd-border) 60%, transparent);
-  --sd-ink: var(--color-fd-foreground);
-  --sd-quiet: var(--color-fd-muted-foreground);
+  --duration-press: 140ms;
+  --duration-quick: 180ms;
+  --duration-base: 250ms;
+  --duration-slow: 360ms;
 }
 
-body {
-  font-family: var(--sd-font-sans);
+/* Dark, "Midnight Print". */
+.dark {
+  --color-background: oklch(0.14 0.014 265);
+  --color-foreground: oklch(0.95 0.006 250);
+  --color-card: oklch(0.17 0.014 265);
+  --color-card-foreground: oklch(0.95 0.006 250);
+  --color-popover: oklch(0.185 0.014 265);
+  --color-popover-foreground: oklch(0.95 0.006 250);
+  --color-primary: oklch(0.68 0.165 276);
+  --color-primary-foreground: oklch(0.14 0.014 265);
+  --color-secondary: oklch(0.22 0.014 265);
+  --color-secondary-foreground: oklch(0.95 0.006 250);
+  --color-muted: oklch(0.22 0.014 265);
+  --color-muted-foreground: oklch(0.68 0.014 250);
+  --color-accent: oklch(0.24 0.018 265);
+  --color-accent-foreground: oklch(0.95 0.006 250);
+  --color-destructive: oklch(0.64 0.2 22);
+  --color-border: oklch(0.95 0.006 250 / 0.1);
+  --color-input: oklch(0.95 0.006 250 / 0.12);
+  --color-ring: oklch(0.68 0.165 276);
+
+  --color-sidebar: oklch(0.125 0.014 265);
+  --color-sidebar-accent: oklch(0.95 0.006 250 / 0.06);
+  --color-sidebar-accent-foreground: oklch(0.95 0.006 250);
+  --color-sidebar-active-foreground: oklch(0.78 0.1 275);
+
+  --color-success: oklch(0.68 0.14 160);
+  --color-warning: oklch(0.82 0.15 75);
 }
 
-/* MDX blocks (src/components/mdx.tsx): hairlines, not cards. */
-.sd-block {
-  margin-block: 2.5rem;
-}
-.sd-icon {
-  width: 1rem;
-  height: 1rem;
-  flex: none;
-}
-
-.sd-callout {
-  border-block: 1px solid var(--sd-hairline);
-  padding-block: 1.25rem;
-}
-.sd-callout-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--sd-ink);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-.sd-callout-title .sd-icon {
-  opacity: 0.7;
-}
-.sd-callout-body {
-  margin-top: 0.5rem;
-  color: var(--sd-quiet);
-  font-size: 0.9375rem;
-  line-height: 1.65;
+/* Fumadocs onto Continuity (as apps/brand/src/app/global.css). */
+:root,
+.dark {
+  --color-fd-background: var(--color-background);
+  --color-fd-foreground: var(--color-foreground);
+  --color-fd-muted: var(--color-muted);
+  --color-fd-muted-foreground: var(--color-muted-foreground);
+  --color-fd-popover: var(--color-popover);
+  --color-fd-popover-foreground: var(--color-popover-foreground);
+  --color-fd-card: var(--color-card);
+  --color-fd-card-foreground: var(--color-card-foreground);
+  --color-fd-border: var(--color-border);
+  --color-fd-primary: var(--color-primary);
+  --color-fd-primary-foreground: var(--color-primary-foreground);
+  --color-fd-secondary: var(--color-secondary);
+  --color-fd-secondary-foreground: var(--color-secondary-foreground);
+  --color-fd-accent: var(--color-accent);
+  --color-fd-accent-foreground: var(--color-accent-foreground);
+  --color-fd-ring: var(--color-ring);
+  /* Modal scrim: tint only, `bg-foreground/35` in light. */
+  --color-fd-overlay: color-mix(in oklab, var(--color-foreground) 35%, transparent);
+  /* Callout and diff colours: status only. Info is the arc. */
+  --color-fd-info: var(--color-primary);
+  --color-fd-success: var(--color-success);
+  --color-fd-warning: var(--color-warning);
+  --color-fd-error: var(--color-destructive);
+  --color-fd-idea: var(--color-primary);
 }
 
-.sd-cardgrid {
-  display: grid;
-  column-gap: 2.5rem;
-  border-top: 1px solid var(--sd-hairline);
-  list-style: none;
-  padding: 0;
-}
-@media (min-width: 640px) {
-  .sd-cardgrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (min-width: 1024px) {
-  .sd-cardgrid[data-columns='3'] {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-.sd-cardgrid li {
-  border-bottom: 1px solid var(--sd-hairline);
-}
-.sd-card {
-  display: flex;
-  flex-direction: column;
-  padding-block: 1rem;
-  text-decoration: none;
-}
-.sd-card-title {
-  color: var(--sd-ink);
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-underline-offset: 4px;
-}
-.sd-card-title .sd-icon {
-  display: inline-block;
-  width: 0.875rem;
-  height: 0.875rem;
-  margin-left: 0.375rem;
-  vertical-align: -0.125em;
-  opacity: 0.6;
-  transition: transform 160ms cubic-bezier(0.2, 0, 0, 1);
-}
-.sd-card:hover .sd-card-title {
-  text-decoration: underline;
-}
-.sd-card:hover .sd-card-title .sd-icon {
-  transform: translateX(0.25rem);
-}
-.sd-card-description {
-  margin-top: 0.25rem;
-  color: var(--sd-quiet);
-  font-size: 0.875rem;
-  line-height: 1.65;
+.dark {
+  --color-fd-overlay: color-mix(in oklab, var(--color-background) 60%, transparent);
 }
 
-.sd-flow,
-.sd-rolegrid {
-  display: flex;
-  flex-direction: column;
-  border-block: 1px solid var(--sd-hairline);
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.sd-rolegrid {
-  border-bottom: 0;
-}
-.sd-flow > li,
-.sd-rolegrid > div {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding-block: 1rem;
-}
-.sd-flow > li + li,
-.sd-rolegrid > div + div {
-  border-top: 1px solid var(--sd-hairline);
-}
-@media (min-width: 640px) {
-  .sd-flow {
-    flex-direction: row;
-  }
-  .sd-rolegrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .sd-flow > li,
-  .sd-rolegrid > div {
-    padding-inline: 1rem;
-  }
-  .sd-flow > li:first-child,
-  .sd-rolegrid > div:first-child {
-    padding-left: 0;
-  }
-  .sd-flow > li:last-child,
-  .sd-rolegrid > div:last-child {
-    padding-right: 0;
-  }
-  .sd-flow > li + li,
-  .sd-rolegrid > div + div {
-    border-top: 0;
-    border-left: 1px solid var(--sd-hairline);
-  }
-}
-.sd-flow-number {
-  margin-bottom: 0.5rem;
-  color: color-mix(in oklab, var(--sd-ink) 60%, transparent);
-  font-family: var(--sd-font-mono);
-  font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
-}
-.sd-flow-label,
-.sd-role {
-  color: var(--sd-ink);
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.35;
-}
-.sd-flow-sub,
-.sd-role-gets {
-  margin-top: 0.25rem;
-  color: var(--sd-quiet);
-  font-size: 0.75rem;
-  line-height: 1.5;
-}
-.sd-flow-loop {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 0.75rem;
-  color: var(--sd-quiet);
-  font-family: var(--sd-font-mono);
-  font-size: 0.75rem;
-}
-.sd-flow-loop .sd-icon {
-  width: 0.75rem;
-  height: 0.75rem;
+#nd-sidebar,
+.dark #nd-sidebar {
+  --color-fd-muted: var(--color-sidebar-accent);
+  --color-fd-secondary: var(--color-sidebar-accent);
+  --color-fd-muted-foreground: var(--color-muted-foreground);
+  --color-fd-accent: var(--color-sidebar-accent);
+  --color-fd-accent-foreground: var(--color-sidebar-accent-foreground);
+  --color-fd-primary: var(--color-sidebar-active-foreground);
+  background-color: var(--color-sidebar);
 }
 
-.sd-pullquote blockquote {
-  position: relative;
-  margin: 0;
-  border: 0;
-  padding: 0;
-  color: var(--sd-ink);
-  font-family: var(--sd-font-serif);
-  font-size: 1.5rem;
-  font-style: italic;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+@keyframes sd-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  body {
+    font-feature-settings: 'calt' on;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-primary) 22%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      animation-delay: 0s !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0s !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* The page title, once per page, in the pixel face: normal tracking (the
+   glyphs sit on a square grid), weight 400. Set by `DocsTitle` and the MDX
+   `# ` heading (both in `components/mdx.tsx` / the page route). */
+.sd-title {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: var(--leading-tight);
+  font-size: 2rem;
+  color: var(--color-foreground);
   text-wrap: balance;
 }
-@media (min-width: 640px) {
-  .sd-pullquote blockquote {
-    font-size: 1.875rem;
-  }
-}
-.sd-pullquote-body > p {
-  display: inline;
-}
-.sd-pullquote-open {
-  position: absolute;
-  transform: translateX(-0.5em);
-  user-select: none;
-}
-.sd-pullquote figcaption {
-  margin-top: 1rem;
-  color: var(--sd-quiet);
-  font-family: var(--sd-font-mono);
-  font-size: 0.75rem;
+
+/* Every heading beneath the title is the sans at 500, never bold, stepping
+   down in size (apps/brand). Unlayered, so it wins over the typography
+   plugin. */
+.prose {
+  line-height: 1.7;
 }
 
-.sd-texture {
-  margin-block: 3rem;
-  color: color-mix(in oklab, var(--sd-ink) 40%, transparent);
-}
-.sd-texture svg {
-  display: block;
-  width: 100%;
-  max-width: 36rem;
-  height: 4rem;
-  margin-inline: auto;
+.prose > h2,
+.prose > h3,
+.prose > h4 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--color-foreground);
+  text-wrap: balance;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .sd-card-title .sd-icon {
-    transition: none;
-  }
+.prose > h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-tight);
+  margin-top: 3rem;
+}
+
+.prose > h3 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: -0.006em;
+  margin-top: 2rem;
+}
+
+.prose > h4 {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > :is(h2, h3, h4) strong {
+  font-weight: inherit;
+}
+
+/* A readable measure: prose lines stop around 70 characters, while tables
+   and code keep the full column. */
+.prose > :is(p, ul, ol, blockquote) {
+  max-width: 70ch;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
