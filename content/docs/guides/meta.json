@@ -1,3 +1,4 @@
 {
-  "pages": ["index", "claude-design", "figma", "figma-make", "codebases", "feedback-widget", "validation"]
+  "title": "Guides",
+  "pages": ["claude-design", "figma", "figma-make", "codebases", "feedback-widget", "validation"]
 }

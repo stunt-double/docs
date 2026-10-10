@@ -5,7 +5,7 @@
 // the source repo owns it.
 //
 //   node scripts/generate.mjs            every source
-//   node scripts/generate.mjs stuntkit   just the named ones
+//   node scripts/generate.mjs stuntdouble-mcp   just the named ones
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, join } from 'node:path';
@@ -20,12 +20,7 @@ const MCP_DIR = join(ROOT, 'content/docs/mcp');
 const MCP_GENERATED = ['index.mdx', 'tools.mdx', 'rules.mdx', 'agents.mdx', 'clients', 'skills'];
 
 /** Page title and description for each source's overview. */
-const PAGES = {
-  stuntkit: {
-    title: 'StuntKit overview',
-    description: 'The open source StuntKit packages and skills, from the stuntkit repository.',
-  },
-};
+const PAGES = {};
 
 /** Escape what MDX would read as JSX or expressions in plain text, leaving inline code alone. */
 function escapeText(text) {
@@ -212,7 +207,7 @@ export function mcpPages(src, at) {
       [s.file]
     );
   }
-  out['skills/meta.json'] = `${JSON.stringify({ title: 'Skills', pages: ['index', ...skills.map((s) => s.name)] }, null, 2)}\n`;
+  out['skills/meta.json'] = `${JSON.stringify({ title: 'Skills', pages: skills.map((s) => s.name) }, null, 2)}\n`;
 
   const rules = src.rules.map(({ file, text }) => {
     const { data } = parseFrontmatter(text);
@@ -298,9 +293,11 @@ function main() {
     );
     console.log(`generated _generated/${name}.mdx from ${repo}@${tag}`);
   }
+  const overviews = names.filter((n) => n !== MCP);
+  if (!overviews.length) return rmSync(OUT_DIR, { recursive: true, force: true });
   writeFileSync(
     join(OUT_DIR, 'meta.json'),
-    `${JSON.stringify({ title: 'Reference', pages: names.filter((n) => n !== MCP) }, null, 2)}\n`
+    `${JSON.stringify({ title: 'Reference', pages: overviews }, null, 2)}\n`
   );
 }
 

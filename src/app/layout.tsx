@@ -40,6 +40,7 @@ const ORGANIZATION = {
   name: 'Stunt Double',
   url: 'https://www.stuntdouble.io',
   logo: `${SITE_URL}/icon-512.png`,
+  sameAs: ['https://github.com/stunt-double', 'https://x.com/stuntdouble'],
 };
 
 // The search target is the docs search dialog, which opens on `?q=`.

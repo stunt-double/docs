@@ -14,9 +14,10 @@ function contains(node: Node, url: string): boolean {
 }
 
 /**
- * The sidebar section a page sits under: the `---Name---` separator above it
- * in the root `meta.json` ("Guides", "Reference"). Undefined for a page with
- * no separator above it.
+ * The sidebar section a page sits under: its top-level folder ("Tutorials",
+ * "Integrations"), or for a page outside one, the `---Name---` separator
+ * above it in the root `meta.json` ("Start here"). Undefined for a page with
+ * neither.
  */
 export function sectionFor(
   url: string,
@@ -26,7 +27,10 @@ export function sectionFor(
   for (const node of tree.children) {
     if (node.type === "separator")
       current = typeof node.name === "string" ? node.name : undefined;
-    else if (contains(node, url)) return current;
+    else if (contains(node, url))
+      return node.type === "folder" && typeof node.name === "string"
+        ? node.name
+        : current;
   }
   return undefined;
 }

@@ -2,7 +2,7 @@
 // .sources/<name>. Never reads a branch: no tag means the build stops here.
 //
 //   node scripts/fetch-sources.mjs            every source
-//   node scripts/fetch-sources.mjs stuntkit   just the named ones
+//   node scripts/fetch-sources.mjs stuntdouble-mcp   just the named ones
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
