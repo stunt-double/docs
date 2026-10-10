@@ -3,6 +3,8 @@ import { slugsPlugin } from 'fumadocs-core/source/plugins/slugs';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 import { defineDocs } from 'fumadocs-mdx/macro';
 
+import { pageIcon } from './page-icon';
+
 export { SITE_URL } from './site';
 
 const docs = defineDocs({
@@ -18,6 +20,7 @@ const docs = defineDocs({
 export const source = loader({
   baseUrl: '/',
   source: docs.toFumadocsSource(),
+  icon: pageIcon,
   plugins: [
     slugsPlugin((_file, next) => {
       const slugs = next();

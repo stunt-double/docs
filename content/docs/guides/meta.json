@@ -1,4 +1,12 @@
 {
   "title": "Guides",
-  "pages": ["claude-design", "figma", "figma-make", "codebases", "feedback-widget", "validation"]
+  "icon": "Map",
+  "pages": [
+    "claude-design",
+    "figma",
+    "figma-make",
+    "codebases",
+    "feedback-widget",
+    "validation"
+  ]
 }

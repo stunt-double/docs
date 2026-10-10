@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/reference/stuntdouble-mcp', destination: '/mcp', permanent: true },
       { source: '/reference/stuntkit', destination: '/stuntkit', permanent: true },
+      { source: '/api/mcp', destination: '/mcp', permanent: true },
     ];
   },
 };

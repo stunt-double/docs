@@ -1,5 +1,6 @@
 ---
-title: "Test Figma prototypes with AI personas"
+title: "Figma prototypes"
+icon: "PenTool"
 description: "Walk prototypes with personas and re-check the built flows automatically when a file changes."
 ---
 
@@ -16,14 +17,11 @@ re-checks work whenever a file changes (via the Figma connection).
 
 ## Setup
 
-1. **Connect Figma to your workspace**: open **Integrations** in
-   [app.stuntdouble.io](https://app.stuntdouble.io), choose Figma and select
-   **Connect Figma**. See **[Figma](/integrations/figma)** for the full setup. This
-   enables Figma event triggers for workflows (file updates, comments, version
-   updates, library publishes).
-2. **Link files to projects**: set the Figma file URL on a project so runs,
-   feedback, and interviews stay associated with the design source.
-3. **For agent workflows**, add the Stunt Double MCP connector to whichever
+1. **Connect Figma and link files to projects**, as
+   **[Figma](/integrations/figma#set-it-up)** describes. That turns on Figma
+   triggers for workflows and keeps runs, feedback and interviews attached to
+   the design source.
+2. **For agent workflows**, add the Stunt Double MCP connector to whichever
    agent you use alongside Figma (Claude, Claude Code, Cursor):
    `https://app.stuntdouble.io/api/mcp` (setup per client in
    **[MCP](/mcp)**). If you also run Figma's own MCP

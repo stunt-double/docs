@@ -11,7 +11,7 @@
     "integrations",
     "---Build on Stunt Double---",
     "mcp",
-    "api",
+    "...api",
     "stuntkit"
   ]
 }

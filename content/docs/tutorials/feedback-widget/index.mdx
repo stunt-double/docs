@@ -1,5 +1,6 @@
 ---
-title: "Collect stakeholder feedback on a prototype"
+title: "Collect feedback"
+icon: "feedback"
 description: "Let stakeholders pin comments on a prototype or staging build, then triage, reply to and resolve them from the project Comments view."
 ---
 
@@ -29,33 +30,10 @@ coding assistant. It describes both script tags and where they go, which is
 usually the fastest route if an agent already has your repo open.
 
 **Code** gives you the snippet directly. Add it just before the closing
-`</body>` tag:
-
-```html
-<!-- Stunt Double Feedback Widget -->
-<script src="https://app.stuntdouble.io/api/feedback/widget"
-  data-sd-key="YOUR_PROJECT_KEY"
-  data-sd-url="https://app.stuntdouble.io"
-  defer></script>
-
-<!-- Optional: Add html2canvas for screenshot support -->
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
-```
-
-The attributes are:
-
-- **`data-sd-key`** (required) is your project's feedback API key. Without it
-  the widget logs a warning and does nothing.
-- **`data-sd-url`** (required in practice) points at Stunt Double. It must be
-  `https`; the widget refuses to run otherwise.
-- **`data-sd-version`** (optional) pins comments to a version string you
-  control, which is how you keep one round of feedback separate from the next.
-  See [Prototype versions](#prototype-versions) below.
-
-The second script tag is genuinely optional. If `html2canvas` is not already on
-the page the widget fetches it itself, from a pinned version checked against its
-subresource integrity hash. Including it up front just means the first
-screenshot is ready sooner.
+`</body>` tag. Set `data-sd-version` to your build ID if you want each round of
+feedback kept apart (see [Prototype versions](#prototype-versions) below). The
+[integration reference](/integrations/feedback-widget#the-snippet) explains
+every attribute.
 
 There is no package to install and no build step, so this works on a staging
 deploy, a preview URL, or a throwaway static build just as well as on your
@@ -161,44 +139,17 @@ group each week.
 
 ## Control who can use it
 
-Your API key sits in your page source, so anyone who views source can read it.
-Treat it as an identifier, not a secret. The real access control is the domain
-allowlist, and every widget endpoint checks it.
+Your API key sits in your page source, so it is an identifier, not a secret.
+What controls access is the project's **allowed domains** list under
+**Comments**, then settings. For a prototype review:
 
-From **Comments → settings** (the gear icon):
+- Add your preview host, or `*.your-domain.com` if each build gets a new URL.
+- Turn on **Require sign in** for staging and internal reviews, so only
+  workspace members can read or leave comments.
+- **Rotate** the key when you stop maintaining a prototype.
 
-- **Allowed domains** is the list of hosts the widget API answers. Your project
-  URL is always accepted and shown as an implicit entry, so you do not need to
-  duplicate it. Add up to 20 more. An entry matches that exact host; use
-  `*.example.com` to cover every subdomain, which is the usual way to cover a
-  preview deployment that gets a new URL each build. Include a port or `http://`
-  prefix only if your site needs one. Requests from anywhere else are refused.
-- **Allow local development** (on by default) additionally permits `localhost`
-  and private network addresses, so the widget works while you build.
-- **Require sign in** restricts both reading and leaving comments to signed-in
-  members of the owning workspace. Use it for staging environments and internal
-  reviews.
-- **Toolbar visible**, **Show comments on page**, and **Keyboard shortcut**
-  control what reviewers actually see. Turn the shortcut off if `c` clashes with
-  a shortcut of your own.
-- **Rotate** the API key to cut off an install you no longer control, such as a
-  prototype you have stopped maintaining. The widget stops working until you
-  update the snippet with the new key, which is the point.
-
-The allowlist **fails closed**: a project with no URL and an empty allowlist
-serves nothing at all. The settings page warns you when that is the case, so you
-can tell "locked down" apart from "broken".
-
-### Workspace-level controls
-
-Workspace admins have a ceiling above every project, under **Settings →
-Security**:
-
-- **Feedback widget** switches the widget off for the entire workspace. When
-  off, every widget endpoint returns nothing for every project in it, including
-  sites where the key is already installed.
-- A workspace-level **allowed origins** list narrows what any project may allow.
-  A project can only ever be more restrictive than the workspace, never less.
+Every setting, the fail-closed rule and the workspace-wide controls are in the
+[integration reference](/integrations/feedback-widget#control-who-can-use-it).
 
 ## Beyond the prototype
 

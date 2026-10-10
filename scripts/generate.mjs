@@ -164,22 +164,22 @@ export function mcpPages(src, at) {
     [...clients.map((c) => `- [${c.heading}](/mcp/clients/${c.slug})`), '- [From the Stunt Double app](/mcp/connect)'].join('\n'),
     ...sections.filter((s) => !DROP.includes(s.heading)).map((s) => `## ${s.heading}\n\n${s.body}`),
   ].join('\n\n');
-  out['index.mdx'] = page({ title: 'Stunt Double MCP server', description: intro[0] }, mdx(overview), ['README.md']);
+  out['index.mdx'] = page({ title: 'MCP server', description: intro[0] }, mdx(overview), ['README.md']);
 
   out['tools.mdx'] = page(
-    { title: 'Tools, prompts and resources', description: 'Every tool, prompt and resource the Stunt Double MCP server exposes.' },
+    { title: 'Tools', icon: 'Wrench', description: 'Every tool, prompt and resource the Stunt Double MCP server exposes.' },
     mdx(byName['Available Tools'] ?? ''),
     ['README.md']
   );
 
   for (const c of clients) {
     out[`clients/${c.slug}.mdx`] = page(
-      { title: c.heading, description: `Connect ${c.heading} to the Stunt Double MCP server.` },
+      { title: c.heading.replace(/\s*\(.*\)$/, ''), description: `Connect ${c.heading} to the Stunt Double MCP server.` },
       mdx(c.body),
       ['README.md']
     );
   }
-  out['clients/meta.json'] = `${JSON.stringify({ title: 'Clients', pages: clients.map((c) => c.slug) }, null, 2)}\n`;
+  out['clients/meta.json'] = `${JSON.stringify({ title: 'Clients', icon: 'AppWindow', pages: clients.map((c) => c.slug) }, null, 2)}\n`;
 
   const skills = src.skills.map(({ file, text }) => {
     const { data, body } = parseFrontmatter(text);
@@ -207,7 +207,7 @@ export function mcpPages(src, at) {
       [s.file]
     );
   }
-  out['skills/meta.json'] = `${JSON.stringify({ title: 'Skills', pages: skills.map((s) => s.name) }, null, 2)}\n`;
+  out['skills/meta.json'] = `${JSON.stringify({ title: 'Skills', icon: 'Sparkles', pages: skills.map((s) => s.name) }, null, 2)}\n`;
 
   const rules = src.rules.map(({ file, text }) => {
     const { data } = parseFrontmatter(text);
@@ -216,7 +216,7 @@ export function mcpPages(src, at) {
     return `## ${basename(file, '.mdc')}\n\n${escapeText((data.description ?? '').replace(/\.$/, ''))}.${applies}\n\n${fence}md title="${basename(file)}"\n${text.trim()}\n${fence}`;
   });
   out['rules.mdx'] = page(
-    { title: 'Cursor rules', description: 'Rules that keep Cursor on track when it works with the Stunt Double MCP server.' },
+    { title: 'Cursor rules', icon: 'ScrollText', description: 'Rules that keep Cursor on track when it works with the Stunt Double MCP server.' },
     `The Cursor plugin installs these rules. To add one by hand, save it in your project's \`.cursor/rules\` folder.\n\n${rules.join('\n\n')}`,
     src.rules.map((r) => r.file)
   );
@@ -227,7 +227,7 @@ export function mcpPages(src, at) {
     return `## ${name}\n\n${data.description ?? ''}\n\n${demote(takeTitle(body).body, 1)}`;
   });
   out['agents.mdx'] = page(
-    { title: 'Agents', description: 'Subagents the Stunt Double Claude Code plugin installs, each set up for one kind of job.' },
+    { title: 'Agents', icon: 'users', description: 'Subagents the Stunt Double Claude Code plugin installs, each set up for one kind of job.' },
     `The [Claude Code plugin](/mcp/clients/claude-code-plugin) installs these subagents. Each one knows which Stunt Double tools to call for its job and how to report back.\n\n${mdx(agents.join('\n\n'), 'agents/')}`,
     src.agents.map((a) => a.file)
   );

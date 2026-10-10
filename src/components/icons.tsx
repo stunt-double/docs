@@ -164,6 +164,10 @@ const PATHS = {
 
 export type ProductIconName = keyof typeof PATHS;
 
+export function isProductIcon(name: string): name is ProductIconName {
+  return Object.hasOwn(PATHS, name);
+}
+
 export function ProductIcon({ name, className }: { name: ProductIconName; className?: string }) {
   return <Svg className={className}>{PATHS[name]}</Svg>;
 }
