@@ -71,12 +71,15 @@ export function ConsentBanner() {
 }
 
 /** Reopens the banner, so a choice can be changed or withdrawn at any time. */
-export function ConsentSettingsButton() {
+export function ConsentSettingsButton({ className }: { className?: string }) {
   return (
     <button
       type="button"
       onClick={openConsentSettings}
-      className="text-muted-foreground hover:text-foreground ease-snap text-left text-sm transition-colors duration-(--duration-quick)"
+      className={
+        className ??
+        'text-muted-foreground hover:text-foreground ease-snap text-left text-sm transition-colors duration-(--duration-quick)'
+      }
     >
       Cookie settings
     </button>

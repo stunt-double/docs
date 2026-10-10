@@ -1,7 +1,6 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { ReactNode } from 'react';
 
-import { ConsentSettingsButton } from '@/components/consent-banner';
 import { StuntDoubleLockup } from '@/components/logo';
 import { source } from '@/lib/source';
 
@@ -30,7 +29,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           external: true,
         },
       ]}
-      sidebar={{ footer: <ConsentSettingsButton key="consent-settings" /> }}
     >
       {children}
     </DocsLayout>

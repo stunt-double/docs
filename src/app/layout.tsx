@@ -4,6 +4,8 @@ import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
 import { ConsentBanner } from '@/components/consent-banner';
+import { JsonLd } from '@/components/json-ld';
+import { DocsSearchDialog, OpenSearchFromUrl } from '@/components/search';
 import { CONSENT_DEFAULTS_SCRIPT } from '@/lib/consent';
 import { SITE_URL } from '@/lib/source';
 import { GeistMono, GeistPixelSquare, GeistSans } from './fonts';
@@ -31,6 +33,31 @@ export const viewport: Viewport = {
   ],
 };
 
+const ORGANIZATION = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://www.stuntdouble.io/#organization',
+  name: 'Stunt Double',
+  url: 'https://www.stuntdouble.io',
+  logo: `${SITE_URL}/icon-512.png`,
+};
+
+// The search target is the docs search dialog, which opens on `?q=`.
+const WEBSITE = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  name: 'Stunt Double Docs',
+  url: SITE_URL,
+  inLanguage: 'en-US',
+  publisher: { '@id': 'https://www.stuntdouble.io/#organization' },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/?q={search_term_string}` },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // Font variables sit on <html>, where the `@theme` tokens that read them resolve.
@@ -49,7 +76,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         ) : null}
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        <RootProvider>{children}</RootProvider>
+        <JsonLd data={ORGANIZATION} />
+        <JsonLd data={WEBSITE} />
+        <RootProvider search={{ SearchDialog: DocsSearchDialog }}>
+          <OpenSearchFromUrl />
+          {children}
+        </RootProvider>
         {GA_MEASUREMENT_ID ? <GoogleAnalytics gaId={GA_MEASUREMENT_ID} /> : null}
         <ConsentBanner />
       </body>
