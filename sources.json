@@ -1,10 +1,18 @@
 {
   "stuntdouble-mcp": {
     "repo": "stunt-double/stuntdouble-mcp",
-    "paths": ["README.md", "skills", "rules"]
+    "paths": [
+      "README.md",
+      "skills",
+      "rules"
+    ]
   },
   "stuntkit": {
     "repo": "stunt-double/stuntkit",
-    "paths": ["README.md", "skills"]
+    "paths": [
+      "README.md",
+      "skills"
+    ],
+    "commit": "24d6b1d81eb1163028557994f8a23f35ef88eb20"
   }
 }

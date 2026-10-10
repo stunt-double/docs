@@ -13,6 +13,7 @@ const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const SOURCES_DIR = join(ROOT, '.sources');
 
 const SEMVER = /^v?(\d+)\.(\d+)\.(\d+)$/;
+const SHA = /^[0-9a-f]{40}$/;
 
 /** The highest `vX.Y.Z` (or `X.Y.Z`) tag in `git ls-remote --tags --refs` output. Pre-releases are skipped. */
 export function highestSemverTag(lsRemoteOutput) {
@@ -55,14 +56,26 @@ function main() {
       continue;
     }
     const url = `https://github.com/${source.repo}.git`;
-    const tag = highestSemverTag(git(['ls-remote', '--tags', '--refs', url]));
-    if (!tag) {
-      failures.push(`${name}: ${source.repo} has no semver release tag (refusing to fall back to a branch)`);
-      continue;
-    }
     const dest = join(SOURCES_DIR, name);
     rmSync(dest, { recursive: true, force: true });
-    git(['-c', 'advice.detachedHead=false', 'clone', '--quiet', '--depth', '1', '--branch', tag, url, dest]);
+    // A repo with no release yet is pinned to an exact commit in sources.json.
+    // Drop the `commit` once it tags a release, so the build follows releases.
+    if (source.commit && !SHA.test(source.commit)) {
+      failures.push(`${name}: commit must be a full 40-character sha`);
+      continue;
+    }
+    const tag = source.commit ?? highestSemverTag(git(['ls-remote', '--tags', '--refs', url]));
+    if (!tag) {
+      failures.push(`${name}: ${source.repo} has no semver release tag and no pinned commit (refusing to fall back to a branch)`);
+      continue;
+    }
+    if (source.commit) {
+      git(['init', '--quiet', dest]);
+      git(['-C', dest, 'fetch', '--quiet', '--depth', '1', url, source.commit]);
+      git(['-C', dest, '-c', 'advice.detachedHead=false', 'checkout', '--quiet', 'FETCH_HEAD']);
+    } else {
+      git(['-c', 'advice.detachedHead=false', 'clone', '--quiet', '--depth', '1', '--branch', tag, url, dest]);
+    }
     const missing = source.paths.filter((p) => !existsSync(join(dest, p)));
     if (missing.length) {
       failures.push(`${name}@${tag}: missing ${missing.join(', ')}`);
