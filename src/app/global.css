@@ -2,6 +2,11 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* Fumadocs ships `[&_::highlight(fd-search)]` utilities for search hits.
+   Lightning CSS (Next's CSS pipeline) cannot parse `::highlight()` and warns
+   on every build, so leave them out; results still list without the tint. */
+@source not inline('[&_::highlight(fd-search)]:text-fd-primary [&_::highlight(fd-search)]:underline');
+
 /* ─────────────────────────────────────────────────────────────
    docs.stuntdouble.io, drawn in Continuity, the Stunt Double
    design system. The design system package is private, so the
