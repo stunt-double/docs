@@ -154,6 +154,14 @@ const PATHS = {
       <path d="M18 15a3.5 3.5 0 0 1 3 3.5V21" />
     </>
   ),
+  // The Model Context Protocol mark, redrawn on the 24 grid at the set's stroke.
+  mcp: (
+    <>
+      <path d="M2.94 11.33l8.45-8.45a3 3 0 0 1 4.23 0 3 3 0 0 1 0 4.23L9.24 13.49" />
+      <path d="M9.32 13.4l6.3-6.29a3 3 0 0 1 4.23 0l.04.04a3 3 0 0 1 0 4.23l-7.64 7.64a1 1 0 0 0 0 1.41l1.57 1.57" />
+      <path d="M13.51 4.99l-6.25 6.26a3 3 0 0 0 0 4.22 3 3 0 0 0 4.22 0l6.25-6.25" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="9" />

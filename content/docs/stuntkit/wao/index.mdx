@@ -1,0 +1,141 @@
+---
+title: "Web Agent Optimiser"
+icon: "Accessibility"
+description: "Use @stunt-double/wao, a drop-in script that repairs the accessibility tree AI agents read, so legacy sites work for agents without a rebuild."
+---
+
+# Make any site readable by AI agents
+
+Agents read a page through its accessibility tree and through screenshots.
+Legacy pages fail the first: a `<div onclick>` is not a button, an icon link
+has no name, and a field's label is the table cell beside it. To an agent,
+those controls are missing or unnamed.
+
+`@stunt-double/wao` (Web Agent Optimiser) repairs them in place. Before, in
+Chromium's aria snapshot of a legacy page:
+
+```yaml
+- link:
+    - /url: /cart
+- cell:
+    - textbox
+- text: Buy now
+```
+
+After WAO:
+
+```yaml
+- link "Shopping cart":
+    - /url: /cart
+- cell:
+    - textbox "Email"
+- button "Buy now"
+```
+
+## How it works
+
+- **Attributes only.** WAO never replaces, moves or restyles a node. Event
+  handlers, framework state and what a screenshot shows are untouched.
+- **Never overwrites the page.** Automatic repairs only fill in attributes the
+  page has not set. Only rules you write can override.
+- **Reversible.** `restore()` puts every attribute back exactly as it was.
+- **Keeps up.** A `MutationObserver` repairs content that single-page apps add
+  later, including inside open shadow roots.
+- **Small.** About 4 KB gzipped, with no dependencies, and no network requests.
+
+## Install
+
+As a script tag on any site, serving `dist/wao.global.js` from the package
+(also exported as `@stunt-double/wao/script`):
+
+```html
+<script src="/wao.global.js" defer></script>
+```
+
+Or as a package in a bundled app. Until the `@stunt-double` scope is available
+on npm, add `@stunt-double:registry=https://npm.pkg.github.com` and a GitHub
+token with `read:packages` to your `.npmrc`.
+
+```sh
+npm install @stunt-double/wao
+```
+
+```ts
+import { optimise } from "@stunt-double/wao";
+
+const wao = optimise();
+```
+
+The npm entry has no side effects: nothing runs until you call `optimise`. The
+script build runs it once the DOM is ready and exposes the handle as
+`window.wao`.
+
+## In an agent's browser
+
+You don't need to own a site to use WAO on it. An agent harness can inject the
+script build into every page it opens, so the agent reads the repaired tree.
+With Playwright:
+
+```ts
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
+const script = readFileSync(
+  fileURLToPath(import.meta.resolve("@stunt-double/wao/script")),
+  "utf8",
+);
+
+await context.addInitScript({ content: script });
+```
+
+With Puppeteer, pass the same content to `page.evaluateOnNewDocument`. Pair it
+with the [browser toolset](/stuntkit/browser-toolset), whose `read_page` reads
+the same tree.
+
+## What it repairs
+
+| Repair       | What it does                                                                                                            |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `clickables` | Gives a non-semantic element with a click handler `role="button"` and `tabindex="0"`, so Enter and Space click it.      |
+| `names`      | Names an unnamed control from a tooltip, an icon font class, the text beside a field, a field's `name` or a link's URL. |
+| `landmarks`  | Gives a page with no `<main>` `role="main"` on its one obvious candidate.                                               |
+
+Each repaired element is marked with `data-wao`, so an agent can tell inferred
+names from ones the page wrote. Switch a repair off with
+`optimise({ repairs: { landmarks: false } })`.
+
+## Rules
+
+Heuristics can't know what a control means. Rules can, and they override the
+page:
+
+```ts
+optimise({
+  rules: [
+    { selector: "#hdr .links", role: "navigation", label: "Primary" },
+    {
+      selector: ".btn-go",
+      label: "Check out",
+      description: "Pays for everything in the basket",
+    },
+  ],
+});
+```
+
+With the script build, set `window.waoOptions` before the script loads.
+
+## Reports
+
+`report()` lists every change in effect and what WAO found but could not fix
+(`unnamed-control`, `image-without-alt`, `no-main`). Each issue is a good
+candidate for a rule, or for a fix in the site itself.
+
+<Callout variant="note" title="Not an accessibility fix">
+  Inferred names are a best guess for agents. A site that people use with
+  assistive technology still needs real labels.
+</Callout>
+
+## Next steps
+
+- **[Read the full API on GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/wao)**
+- **[Give an AI agent a safe browser](/stuntkit/browser-toolset)**

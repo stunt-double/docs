@@ -14,50 +14,77 @@
 
 # Stunt Double docs
 
-[Stunt Double](https://stuntdouble.io): authentic user insights from autonomous AI agents, backed by evidence.
+The source for [docs.stuntdouble.io](https://docs.stuntdouble.io), the documentation for
+[Stunt Double](https://stuntdouble.io): authentic user insights from autonomous AI agents,
+backed by evidence.
 
-This is the source for [docs.stuntdouble.io](https://docs.stuntdouble.io): guides, tutorials, concepts, and the API, MCP and StuntKit reference.
+It covers getting started, concepts, tutorials and guides, integrations, the Stunt Double
+Index, and the reference for the API, the MCP server and [StuntKit](https://github.com/stunt-double/stuntkit).
+Spotted a mistake or something missing? Contributions are welcome, from a typo fix to a new guide.
 
-## Run it locally
+## Quick start
+
+Requires Node 22 or later and [pnpm](https://pnpm.io).
 
 ```bash
+git clone https://github.com/stunt-double/docs.git
+cd docs
 pnpm install
-node scripts/fetch-sources.mjs && node scripts/generate.mjs   # the linked MCP pages
-pnpm dev          # http://localhost:3000
-pnpm test         # node --test
-pnpm type-check
-pnpm build        # fetches linked sources, generates their pages, then builds
+pnpm build   # fetches linked sources and generates their pages, then builds
+pnpm dev     # http://localhost:3000
 ```
 
-## Where content lives
+After the first build, `pnpm dev` is all you need. To refresh the linked pages without a full
+build, run `node scripts/fetch-sources.mjs && node scripts/generate.mjs`.
 
-- `content/docs/`: pages written here. Edit these directly.
-- Linked sources: the MCP server reference, skills and rules come from [`stunt-double/stuntdouble-mcp`](https://github.com/stunt-double/stuntdouble-mcp). `sources.json` lists them. The build reads each at its latest release tag (or a pinned commit) into `.sources/`, which is never committed. To change those pages, change the source repo.
+| Command           | What it does                     |
+| ----------------- | -------------------------------- |
+| `pnpm dev`        | Run the site locally             |
+| `pnpm test`       | Run the tests (`node --test`)    |
+| `pnpm type-check` | Type-check the app               |
+| `pnpm build`      | Production build                 |
 
-## Screenshots
+## How it's built
 
-Product screens in the docs are faithful redraws of the dashboard, built in the
-Figma file [Docs screenshots](https://www.figma.com/design/JBFOSb3uMqBImmPYwYVdQL)
-from the Continuity Design System library (its components, text styles and
-colour variables), so they stay on brand and in step with the product. Each
-frame has a light twin and a dark twin (the library's Dark mode), exported at
-1440 wide to `public/screens/<name>-light.png` and `<name>-dark.png`. Pages use
-them through `<Screenshot name="..." alt="..." caption="..." />`, which swaps
-the file with the site theme. The README header (`.github/readme/header-light.png`
-and `header-dark.png`) lives in the same file, exported at 2x. To update one, edit the light frame, re-clone its
-dark twin, and re-export both.
+A [Next.js](https://nextjs.org) site on [Fumadocs](https://fumadocs.dev), with MDX content and
+Tailwind CSS.
 
-## For agents
+```
+content/docs/   Pages written here, as MDX. Each folder's meta.json sets the sidebar order.
+src/            The app: layouts, MDX components, routes for llms.txt and Markdown.
+public/         Static files, including product screenshots.
+scripts/        Fetch and generate the pages linked from other repositories.
+sources.json    The repositories those pages come from.
+```
 
-- `/llms.txt` indexes every page and `/llms-full.txt` holds them all; both are linked from the sidebar.
+### Linked pages
+
+The MCP server reference, skills and rules come from
+[`stunt-double/stuntdouble-mcp`](https://github.com/stunt-double/stuntdouble-mcp). The build reads
+each source in `sources.json` at its latest release tag (or a pinned commit) into `.sources/`,
+which is never committed. To change those pages, open a pull request on the source repository.
+
+### Screenshots
+
+Product screens are redraws of the dashboard, built in Figma from the Continuity design system
+so they stay on brand and in step with the product. Each one has a light and a dark export at
+1440 wide (`public/screens/<name>-light.png` and `<name>-dark.png`), and pages use them through
+`<Screenshot name="..." alt="..." caption="..." />`, which follows the site theme. If a screen is
+out of date, open an issue rather than editing the image.
+
+## For AI agents
+
+- `/llms.txt` indexes every page and `/llms-full.txt` holds them all.
 - `/.well-known/agents.md` says when to use the docs and how to act through the MCP server.
-- Any page is Markdown at its path plus `.md`, or with `Accept: text/markdown`.
-- `robots.txt` names the AI crawlers it allows.
+- Any page is available as Markdown at its path plus `.md`, or with `Accept: text/markdown`.
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Report security issues as described in [SECURITY.md](./SECURITY.md).
+Read [CONTRIBUTING.md](./CONTRIBUTING.md) for the workflow and style guide, and follow the
+[code of conduct](./CODE_OF_CONDUCT.md). Please report security issues privately as described in
+[SECURITY.md](./SECURITY.md), not in a public issue.
 
 ## License
 
-Code: [MIT](./LICENSE). Content: [CC BY 4.0](./LICENSE-CONTENT).
+Code is under the [MIT License](./LICENSE). Documentation content is under
+[CC BY 4.0](./LICENSE-CONTENT).

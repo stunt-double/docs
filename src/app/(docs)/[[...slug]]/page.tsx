@@ -3,13 +3,13 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
-  PageFooter,
 } from "fumadocs-ui/layouts/docs/page";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { ContinueReading } from "@/components/continue-reading";
 import { JsonLd } from "@/components/json-ld";
 import { getMDXComponents } from "@/components/mdx";
 import { SiteFooter } from "@/components/site-footer";
@@ -101,7 +101,7 @@ export default async function Page({ params }: Props) {
           View as Markdown
         </a>
       </div>
-      <PageFooter />
+      <ContinueReading tree={source.getPageTree()} url={page.url} />
       <SiteFooter />
     </DocsPage>
   );

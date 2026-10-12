@@ -1,16 +1,16 @@
 ---
 title: "StuntKit"
 icon: "Package"
-description: "StuntKit is the open source code behind Stunt Double: browser tools for AI agents with built-in guards against paying and signing up."
+description: "StuntKit is the toolkit Stunt Double runs on: browser tools for AI agents with built-in guards against paying and signing up, plus icons, spelling and agent-readiness packages."
 ---
 
 # StuntKit
 
-Give your AI agent a browser it can use safely. StuntKit is the code Stunt
-Double runs on every agent session, extracted and published so you can use it
-in your own agents, read exactly what it does and send fixes back.
+Give your AI agent a browser it can use safely. StuntKit is the toolkit Stunt
+Double runs on every agent session: browser tools for your own agents, plus the
+icons, spelling and accessibility packages behind the product.
 
-It is open source under the Apache-2.0 license, at
+It is licensed under Apache-2.0, at
 [github.com/stunt-double/stuntkit](https://github.com/stunt-double/stuntkit).
 StuntKit packages are published under the `@stunt-double` scope, on GitHub
 Packages until that scope is available on npm (GitHub Packages asks for a token
@@ -28,30 +28,62 @@ even for public packages). The self-hosted worker ships as the Docker image
         'Let Claude or any model with function calling read and act on a real page, with guards that refuse payments, sign-ups and passwords.',
       href: '/stuntkit/browser-toolset',
     },
+    {
+      title: 'Web Agent Optimiser',
+      description:
+        'A drop-in script that repairs the accessibility tree agents read, so legacy sites work for agents without a rebuild.',
+      href: '/stuntkit/wao',
+    },
+    {
+      title: 'Icons',
+      description:
+        'The Continuity icon pack as geometry, SVG files and React components, plus AI provider marks.',
+      href: '/stuntkit/icons',
+    },
+    {
+      title: 'Spelling',
+      description: 'Rewrite text into American, British or Canadian spelling, whole words only.',
+      href: '/stuntkit/spelling',
+    },
   ]}
 />
 
 <div className="overflow-x-auto [&_td:first-child_code]:whitespace-nowrap">
 
-| Package                         | What it does                                                                                                                             | Source                                                                                               |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `@stunt-double/browser-toolset` | Browser tools for AI agents over any browser you bring, with opt-in safety guards                                                        | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset) |
-| `@stunt-double/icons`           | The Continuity icon pack: 235 stroked icons as geometry, standalone SVG files and React components                                       | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/icons)           |
-| `@stunt-double/spelling`        | Whole-word American, British and Canadian spelling localization, from American or British source text                                    | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)        |
-| `@stunt-double/wao`             | Web Agent Optimiser: a drop-in script that repairs the accessibility tree agents read, so legacy sites work for agents without a rebuild | [stunt-double/stuntkit](https://github.com/stunt-double/stuntkit/tree/main/packages/wao)             |
+| Package                         | What it does                                                                                                                             | Source                                                                                |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `@stunt-double/browser-toolset` | Browser tools for AI agents over any browser you bring, with opt-in safety guards                                                        | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset) |
+| `@stunt-double/icons`           | The Continuity icon pack: 235 stroked icons as geometry, standalone SVG files and React components                                       | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/icons)           |
+| `@stunt-double/spelling`        | Whole-word American, British and Canadian spelling localization, from American or British source text                                    | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)        |
+| `@stunt-double/wao`             | Web Agent Optimiser: a drop-in script that repairs the accessibility tree agents read, so legacy sites work for agents without a rebuild | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/wao)             |
 
 </div>
 
-## Why it's open source
+## How to use it
 
-A browser agent on someone else's site is a liability until you can see what
-it will refuse to do. Telling a model "never pay or sign up" in a prompt is a
-request it can ignore. StuntKit puts that rule in the tools instead: when a
-guard refuses, the click never reaches the page. You can read every guard,
-test it and change it.
+- **Build your own browser agent.** Add `@stunt-double/browser-toolset` to an
+  agent loop, connect it to Playwright, a hosted browser or a CDP client, and
+  turn on the guards. See [Give an AI agent a safe browser](/stuntkit/browser-toolset).
+- **Run Stunt Double sessions on your own infrastructure.** The self-hosted
+  worker image runs actors inside your network, so they can reach staging and
+  internal tools. See [Test a product behind your firewall](/tutorials/self-hosted-worker).
+- **Make a site work for agents.** Drop the `@stunt-double/wao` script into a
+  page to repair the accessibility tree agents read.
+- **Match the product in your own UI.** Use `@stunt-double/icons` for the
+  Continuity icons and `@stunt-double/spelling` to localize copy.
 
-Your security team should be able to read what an agent will do before it
-does. Now they can.
+## Principles
+
+- **Rules live in the tools, not the prompt.** A prompt that says "never pay or
+  sign up" is a request a model can ignore. When a StuntKit guard refuses, the
+  click never reaches the page.
+- **Bring your own model and browser.** The tools never call a model and have
+  no runtime dependencies. Your agent does the reasoning; you choose the
+  browser.
+- **Guards are opt-in and readable.** Turn on the ones you need, and read and
+  test every rule before an agent acts on a real site.
+- **One codebase.** The packages are the same code that drives hosted Stunt
+  Double actors and the [Stunt Double Index](https://index.stuntdouble.io).
 
 ## Contribute
 

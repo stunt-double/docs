@@ -1,0 +1,80 @@
+---
+title: "Improve your score"
+icon: "TrendingUp"
+description: "Read a site's Stunt Double Index report, find what agents struggle with, fix it, and re-score, from the dashboard or through the MCP server."
+---
+
+# Check and improve a site's score
+
+A score tells you where you stand. The sessions behind it tell you why. This
+guide goes from a report to a ranked list of fixes, then re-scores the site
+once they ship.
+
+You can do all of it at [index.stuntdouble.io](https://index.stuntdouble.io),
+or ask your AI assistant to do it through the [MCP server](/mcp), which ships
+the `check-agent-readiness` [skill](/mcp/skills).
+
+<Steps>
+<Step>
+
+### Read the report
+
+Open the site's report, or call `get_index_report` with its domain. If your
+Stunt Double project is linked to an Index domain, pass its `project_id`
+instead. Start with the lowest categories and providers.
+
+</Step>
+<Step>
+
+### Read the sessions behind the weak spots
+
+Filter the sessions by category or provider (`list_index_sessions` with
+`category` or `provider`) and read what the agents actually ran into: a cookie
+wall before the cart, help content that only renders with JavaScript, a
+product page with no structured data. Fix what the sessions show, not what you
+guess.
+
+</Step>
+<Step>
+
+### Compare with your sector
+
+Browse the leaderboard for your sector (`search_index_domains` with `sector`)
+or look up named competitors, and read the reports worth contrasting.
+
+</Step>
+<Step>
+
+### Rank the fixes
+
+1. Failing probe checks with a high weight.
+2. Frictions that recur across providers.
+3. Issues that only one provider hits.
+
+Tie every fix to a failing check or a session friction. For legacy pages that
+can't be rebuilt soon, [WAO](/stuntkit/wao) repairs the accessibility tree
+agents read without changing the page.
+
+</Step>
+<Step>
+
+### Re-score once the fixes ship
+
+Re-run the domain (`request_index_rerun`) for fresh probes and about 24 agent
+sessions. Only the domain's owner can re-run it. Poll
+`list_index_sessions` with the returned `run_id` until no session is running,
+then compare the new report with the old one, category by category.
+
+</Step>
+</Steps>
+
+<Callout variant="tip" title="Keep the fix from regressing">
+  Before the re-run, confirm the fix on a preview deployment with a
+  [checklist](/concepts#checklists), then run that checklist on every deploy
+  with an [automation](/concepts#workflows).
+</Callout>
+
+## Next steps
+
+- **[Connect the MCP server](/mcp/connect)**
+- **[Make any site readable by AI agents](/stuntkit/wao)**

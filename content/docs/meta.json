@@ -9,9 +9,17 @@
     "guides",
     "---Connect your tools---",
     "integrations",
-    "---Build on Stunt Double---",
+    "---Agent readiness---",
+    "index-ranking",
+    "---Extend and integrate---",
     "mcp",
     "...api",
-    "stuntkit"
+    "stuntkit",
+    "---For AI agents---",
+    "external:[book][llms.txt](/llms.txt)",
+    "external:[book][llms-full.txt](/llms-full.txt)",
+    "external:[book][agents.md](/.well-known/agents.md)",
+    "---Stunt Double---",
+    "external:[compass][stuntdouble.io](https://www.stuntdouble.io)"
   ]
 }

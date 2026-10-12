@@ -1,7 +1,6 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import type { ReactNode } from 'react';
 
-import { ProductIcon } from '@/components/icons';
 import { StuntDoubleLockup } from '@/components/logo';
 import { SidebarSeparator } from '@/components/sidebar-separator';
 import { GITHUB_URL } from '@/lib/site';
@@ -27,24 +26,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           </span>
         ),
       }}
-      links={[
-        {
-          text: 'stuntdouble.io',
-          url: 'https://www.stuntdouble.io',
-          icon: <ProductIcon name="compass" />,
-          external: true,
-        },
-        {
-          type: 'menu',
-          text: 'For AI agents',
-          icon: <ProductIcon name="code" />,
-          items: [
-            { text: 'llms.txt', url: '/llms.txt', icon: <ProductIcon name="book" />, external: true },
-            { text: 'llms-full.txt', url: '/llms-full.txt', icon: <ProductIcon name="book" />, external: true },
-            { text: 'agents.md', url: '/.well-known/agents.md', icon: <ProductIcon name="book" />, external: true },
-          ],
-        },
-      ]}
     >
       {children}
     </DocsLayout>

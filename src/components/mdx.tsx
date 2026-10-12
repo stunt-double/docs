@@ -326,96 +326,124 @@ export function PageFacts({ items }: { items: { label: string; value: string }[]
   );
 }
 
-const CONCEPT_WORK: { icon: ProductIconName; name: string; does: string; href: string }[] = [
+type ConceptItem = {
+  icon: ProductIconName;
+  name: string;
+  does: string;
+  href: string;
+};
+
+/** The tiers of the concept map, top to bottom, with up to three items each. */
+const CONCEPT_TIERS: { label: string; items: ConceptItem[] }[] = [
   {
-    icon: 'checklist',
-    name: 'Checklist',
-    does: 'Verifies a flow, check by check',
-    href: '/concepts#checklists',
+    label: 'Where',
+    items: [
+      {
+        icon: 'users',
+        name: 'Workspace',
+        does: 'Your team, members and billing',
+        href: '/concepts#workspaces-and-projects',
+      },
+      {
+        icon: 'project',
+        name: 'Project',
+        does: 'One product or surface',
+        href: '/concepts#workspaces-and-projects',
+      },
+    ],
   },
   {
-    icon: 'interview',
-    name: 'Interview',
-    does: 'Reports how personas got on',
-    href: '/concepts#interviews',
+    label: 'Who',
+    items: [
+      {
+        icon: 'actor',
+        name: 'Actor',
+        does: 'An AI user driving a real browser',
+        href: '/concepts#actors',
+      },
+    ],
   },
   {
-    icon: 'automation',
-    name: 'Automation',
-    does: 'Runs both on a schedule or event',
-    href: '/concepts#workflows',
+    label: 'Work',
+    items: [
+      {
+        icon: 'checklist',
+        name: 'Checklist',
+        does: 'Verifies a flow, check by check',
+        href: '/concepts#checklists',
+      },
+      {
+        icon: 'interview',
+        name: 'Interview',
+        does: 'Reports how personas got on',
+        href: '/concepts#interviews',
+      },
+      {
+        icon: 'automation',
+        name: 'Automation',
+        does: 'Runs both on a schedule or event',
+        href: '/concepts#workflows',
+      },
+    ],
+  },
+  {
+    label: 'Evidence',
+    items: [
+      {
+        icon: 'run',
+        name: 'Run',
+        does: 'Recording, screenshots and steps',
+        href: '/concepts#recordings-and-replays',
+      },
+      {
+        icon: 'insight',
+        name: 'Insights',
+        does: 'What runs roll up into',
+        href: '/concepts#insights',
+      },
+    ],
   },
 ];
 
 /**
  * How the building blocks nest, drawn as hairline tiers: where things live,
- * who does the work, the work they do, and what comes back. Each tier links
- * to its section of Core concepts.
+ * who does the work, the work they do, and what comes back. Every tier sits on
+ * the same three columns, a chip over its description, so the items line up
+ * down the map. Each item links to its section of Core concepts.
  */
 export function ConceptMap() {
-  const tier = 'border-border/60 border-b py-4 sm:grid sm:grid-cols-[9rem_1fr] sm:gap-6';
-  const label =
-    'text-muted-foreground mb-2 block font-mono text-[0.6875rem] tracking-[0.12em] uppercase sm:mb-0 sm:pt-0.5';
-  const chip = 'text-foreground inline-flex items-center gap-2 text-sm font-medium';
   return (
-    <div className="not-prose border-border/60 my-10 border-t" role="figure" aria-label="How Stunt Double's building blocks fit together">
-      <div className={tier}>
-        <span className={label}>Where</span>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <Link href="/concepts#workspaces-and-projects" className={chip}>
-            <ProductIcon name="users" className="text-foreground/70 h-4 w-4" />
-            Workspace
-          </Link>
-          <span className="text-muted-foreground font-mono text-xs" aria-hidden="true">
-            /
+    <div
+      className="not-prose border-border/60 my-10 border-t"
+      role="figure"
+      aria-label="How Stunt Double's building blocks fit together"
+    >
+      {CONCEPT_TIERS.map((tier) => (
+        <div
+          key={tier.label}
+          className="border-border/60 border-b py-4 sm:grid sm:grid-cols-[7rem_1fr] sm:gap-6"
+        >
+          <span className="text-muted-foreground mb-3 block font-mono text-[0.6875rem] leading-5 tracking-[0.12em] uppercase sm:mb-0">
+            {tier.label}
           </span>
-          <Link href="/concepts#workspaces-and-projects" className={chip}>
-            <ProductIcon name="project" className="text-foreground/70 h-4 w-4" />
-            Project
-          </Link>
-          <span className="text-muted-foreground text-sm">your team, then one product or surface</span>
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+            {tier.items.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className="text-foreground inline-flex items-center gap-2 text-sm leading-5 font-medium"
+                >
+                  <ProductIcon name={item.icon} className="text-foreground/70 h-4 w-4" />
+                  {item.name}
+                </Link>
+                <span className="text-muted-foreground mt-1 block pl-6 text-xs leading-relaxed">
+                  {item.does}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-      <div className={tier}>
-        <span className={label}>Who</span>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <Link href="/concepts#actors" className={chip}>
-            <ProductIcon name="actor" className="text-foreground/70 h-4 w-4" />
-            Actor
-          </Link>
-          <span className="text-muted-foreground text-sm">
-            an AI user with instructions and knowledge, driving a real browser
-          </span>
-        </div>
-      </div>
-      <div className={tier}>
-        <span className={label}>Work</span>
-        <ul className="grid gap-3 sm:grid-cols-3">
-          {CONCEPT_WORK.map((w) => (
-            <li key={w.name}>
-              <Link href={w.href} className={chip}>
-                <ProductIcon name={w.icon} className="text-foreground/70 h-4 w-4" />
-                {w.name}
-              </Link>
-              <span className="text-muted-foreground mt-0.5 block text-xs leading-relaxed">{w.does}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={tier}>
-        <span className={label}>Evidence</span>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <Link href="/concepts#recordings-and-replays" className={chip}>
-            <ProductIcon name="run" className="text-foreground/70 h-4 w-4" />
-            Run
-          </Link>
-          <span className="text-muted-foreground text-sm">recording, screenshots and steps, which roll up into</span>
-          <Link href="/concepts#insights" className={chip}>
-            <ProductIcon name="insight" className="text-foreground/70 h-4 w-4" />
-            Insights
-          </Link>
-        </div>
-      </div>
+      ))}
     </div>
   );
 }

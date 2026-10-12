@@ -1,80 +1,39 @@
 ---
 title: "API"
 icon: "Braces"
-description: "Versioning, deprecation, rate limits and discovery for the Stunt Double API, with pointers to the MCP server reference."
+description: "How to reach the Stunt Double platform programmatically: the MCP server, the public docs server, versioning and discovery."
 ---
 
 # Stunt Double API
 
 Stunt Double exposes its platform through a **Model Context Protocol (MCP)**
-server at `https://app.stuntdouble.io/api/mcp` (Streamable HTTP, OAuth 2.1). Drive
-your workspace from Claude, your own agents, or any MCP client, without writing
-a bespoke integration.
+server at `https://app.stuntdouble.io/api/mcp` (Streamable HTTP, OAuth 2.1).
+Drive your workspace from Claude, your own agents or any MCP client, without
+writing a bespoke integration.
 
 - **[MCP server](/mcp)**: authentication, scopes and what a connection can reach.
 - **[Connect](/mcp/connect)**: set up Claude, Cursor, ChatGPT and other clients.
 - **[Tools](/mcp/tools)**: every tool, prompt and resource, grouped by what it acts on.
 
-This page covers what applies across the platform: versioning, rate limits,
-the public docs server and discovery.
+## Public docs server
 
-## Versioning and deprecation
-
-The MCP server is versioned by the protocol itself: a client negotiates a
-version at `initialize` and sends it on every later request in the
-`MCP-Protocol-Version` header. The public HTTP endpoints follow semantic
-versioning (`info.version` in the OpenAPI spec). A breaking change ships under a
-new path or header value alongside the old one, never in place.
-
-When something is deprecated, it is marked `deprecated: true` in the OpenAPI
-spec, its responses carry a `Deprecation` header (RFC 9745) and a `Sunset`
-header (RFC 8594) with the removal date, and the change is announced in the
-[changelog](https://www.stuntdouble.io/changelog) at least 90 days before removal. Nothing is deprecated
-today.
-
-## Rate limits
-
-Uncached endpoints on `www.stuntdouble.io` (health, the public docs MCP server,
-and error responses under `/api`) allow 120 requests per minute per client, and
-say so on every response with the IETF `RateLimit` headers:
-
-```
-RateLimit-Policy: "public-api";q=120;w=60
-RateLimit: "public-api";r=119;t=60
-```
-
-`r` is the requests left and `t` the seconds until the window resets. Over the
-limit, the response is a `429` with a `Retry-After` header and a JSON body whose
-`error.code` is `rate_limited`. Wait that many seconds before retrying.
-
-## Public docs MCP server
-
-Agents that have not signed in can still connect over MCP. A read-only server at
+Agents that haven't signed in can still connect. A read-only MCP server at
 `https://www.stuntdouble.io/api/docs-mcp` needs no authentication and exposes
-Stunt Double's documentation as resources: `llms.txt`, the homepage as
-Markdown, the OpenAPI spec and the MCP manifest. It has no tools; to act on a
-workspace, connect to the product server above. A POST to
-`https://www.stuntdouble.io/.well-known/mcp` reaches the same docs server.
+the documentation as resources. It has no tools: to act on a workspace,
+connect to the product server above.
+
+## Versioning
+
+A client negotiates the MCP protocol version at `initialize`. Breaking changes
+ship alongside the old behavior, never in place, and deprecations are announced
+in the [changelog](https://www.stuntdouble.io/changelog) at least 90 days
+before removal.
 
 ## Discovery
 
-The platform publishes a manifest at
-`https://www.stuntdouble.io/.well-known/mcp.json` describing the server, its
-transport, authentication, and tools. MCP registries and clients use this to
-discover the integration. The same manifest is served at
-`https://www.stuntdouble.io/.well-known/mcp`.
-
-Each MCP server also has a server card on the host that serves it: the docs
-server's at `https://www.stuntdouble.io/.well-known/mcp/server-card.json`, the
-product server's at `https://app.stuntdouble.io/.well-known/mcp/server-card.json`.
-The AI Catalog at `https://www.stuntdouble.io/.well-known/ai-catalog.json` lists
-both. The OAuth metadata documents are served on this site as well as on
-`app.stuntdouble.io`, and name `app.stuntdouble.io` as the issuer either way.
-
-The public HTTP endpoints on this site (discovery files, health, the desktop
-release feed, and the MCP entry point) are described by the Stunt Double
-OpenAPI spec at
-[`https://www.stuntdouble.io/openapi.json`](https://www.stuntdouble.io/openapi.json).
-Agents can also read the site as Markdown: [`/llms.txt`](/llms.txt) says when to
-use Stunt Double and how to connect, and the homepage returns Markdown to
-requests that send `Accept: text/markdown`.
+| What                  | Where                                                    |
+| --------------------- | -------------------------------------------------------- |
+| MCP manifest          | `https://www.stuntdouble.io/.well-known/mcp.json`        |
+| AI Catalog            | `https://www.stuntdouble.io/.well-known/ai-catalog.json` |
+| OpenAPI spec          | `https://www.stuntdouble.io/openapi.json`                |
+| Site index for agents | [`/llms.txt`](/llms.txt)                                 |
