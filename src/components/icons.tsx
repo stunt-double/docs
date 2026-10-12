@@ -154,51 +154,6 @@ const PATHS = {
       <path d="M18 15a3.5 3.5 0 0 1 3 3.5V21" />
     </>
   ),
-  // Integrations. StuntKit has no marks for these products, so each gets the
-  // Continuity icon for what Stunt Double does with it.
-  'git-pull-request': (
-    <>
-      <circle cx="6" cy="6" r="2.5" />
-      <circle cx="6" cy="18" r="2.5" />
-      <circle cx="18" cy="18" r="2.5" />
-      <path d="M6 8.5v7" />
-      <path d="M18 15.5V9a3 3 0 0 0-3-3h-4.5" />
-      <path d="M13 3.5L10.5 6 13 8.5" />
-    </>
-  ),
-  'pen-tool': (
-    <>
-      <path d="M3 21l3.5-10L13 6.5l4.5 4.5L13 17.5z" />
-      <path d="M3 21l6-6" />
-      <circle cx="10.5" cy="13.5" r="1.5" />
-      <path d="M13 6.5L16.5 3 21 7.5 17.5 11" />
-    </>
-  ),
-  component: (
-    <>
-      <path d="M12 3l3 3-3 3-3-3z" />
-      <path d="M6 9l3 3-3 3-3-3z" />
-      <path d="M18 9l3 3-3 3-3-3z" />
-      <path d="M12 15l3 3-3 3-3-3z" />
-    </>
-  ),
-  'square-kanban': (
-    <>
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <path d="M8 7v7" />
-      <path d="M12 7v4" />
-      <path d="M16 7v10" />
-    </>
-  ),
-  hash: (
-    <>
-      <path d="M4 9h16" />
-      <path d="M4 15h16" />
-      <path d="M10 3l-2 18" />
-      <path d="M16 3l-2 18" />
-    </>
-  ),
-  zap: <path d="M13 3L5 13h7l-1 8 8-10h-7z" />,
   monitor: (
     <>
       <rect x="3" y="4" width="18" height="12" rx="2" />
