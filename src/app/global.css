@@ -176,6 +176,18 @@
   }
 }
 
+/* The brand's overline: the editorial label for section names. Sans, not
+   mono. Matches `.overline` in the monorepo's `packages/ui` globals, renamed
+   because Tailwind's own `overline` (a text decoration) is emitted after a
+   custom utility of the same name and would draw a line above the label. */
+@utility text-overline {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
 @layer base {
   body {
     font-feature-settings: 'calt' on;
