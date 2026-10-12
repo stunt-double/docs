@@ -19,6 +19,25 @@ const MCP_DIR = join(ROOT, 'content/docs/mcp');
 /** What the generator owns in content/docs/mcp (kept in step with its .gitignore). */
 const MCP_GENERATED = ['index.mdx', 'tools.mdx', 'rules.mdx', 'agents.mdx', 'clients', 'skills'];
 
+/**
+ * Sidebar icon for each client page, by slug: the client's own mark from
+ * StuntKit's AI provider set (src/components/brand-icons.tsx), else a
+ * Continuity product icon. A client missing here gets no icon.
+ */
+const CLIENT_ICONS = {
+  'claude-code': 'claude-code',
+  'claude-code-plugin': 'claude-code',
+  claude: 'claude',
+  'chatgpt-and-codex': 'openai',
+  'codex-cli': 'codex',
+  'gemini-cli': 'gemini',
+  cursor: 'cursor',
+  windsurf: 'windsurf',
+  opencode: 'opencode',
+  'vs-code': 'code',
+  'other-clients': 'mcp',
+};
+
 /** Page title and description for each source's overview. */
 const PAGES = {};
 
@@ -65,6 +84,7 @@ export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
 
 function frontmatter(data) {
   return `---\n${Object.entries(data)
+    .filter(([, v]) => v !== undefined)
     .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
     .join('\n')}\n---\n\n`;
 }
@@ -174,7 +194,11 @@ export function mcpPages(src, at) {
 
   for (const c of clients) {
     out[`clients/${c.slug}.mdx`] = page(
-      { title: c.heading.replace(/\s*\(.*\)$/, ''), description: `Connect ${c.heading} to the Stunt Double MCP server.` },
+      {
+        title: c.heading.replace(/\s*\(.*\)$/, ''),
+        icon: CLIENT_ICONS[c.slug],
+        description: `Connect ${c.heading} to the Stunt Double MCP server.`,
+      },
       mdx(c.body),
       ['README.md']
     );

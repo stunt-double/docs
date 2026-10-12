@@ -88,6 +88,8 @@ test('mcpPages splits the README by client and ends every page with an edit link
   assert.match(pages['index.mdx'], /description: "Tagline\."/);
   assert.doesNotMatch(pages['index.mdx'], /Plugin internals|Internal\./);
   assert.match(pages['clients/cursor-windsurf.mdx'], /title: "Cursor and Windsurf"/);
+  assert.match(pages['clients/claude-code.mdx'], /title: "Claude Code"\nicon: "claude-code"\n/);
+  assert.doesNotMatch(pages['clients/cursor-windsurf.mdx'], /icon:/);
   assert.match(pages['skills/x.mdx'], /title: "Do X"\ndescription: "Do x: well"/);
   assert.doesNotMatch(pages['skills/index.mdx'], /\| a \|/);
   assert.match(pages['agents.mdx'], /### Use/);
