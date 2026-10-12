@@ -1,0 +1,90 @@
+---
+title: "Icons"
+icon: "Shapes"
+description: "Use @stunt-double/icons, the Continuity icon pack: 235 stroked icons as geometry, SVG files and React components, plus AI provider marks."
+---
+
+# The Continuity icon pack
+
+`@stunt-double/icons` is the icon set across the Stunt Double product and
+brand: 235 stroked icons on a 24 unit grid with a 2 unit margin, at stroke
+width 1.5 with square caps and mitred joins. It ships as framework-free
+geometry, standalone SVG files and React components.
+
+## Install
+
+Until the `@stunt-double` scope is available on npm, add
+`@stunt-double:registry=https://npm.pkg.github.com` and a GitHub token with
+`read:packages` to your `.npmrc`.
+
+```sh
+npm install @stunt-double/icons
+```
+
+No dependencies. React 18 or later is an optional peer, needed only for
+`@stunt-double/icons/react`.
+
+## React
+
+Every icon is a component named in PascalCase with an `Icon` suffix
+(`arrow-right` is `ArrowRightIcon`). The props match lucide-react's, so moving
+a call site across is a rename of the import.
+
+```tsx
+import { ArrowRightIcon } from '@stunt-double/icons/react';
+
+<ArrowRightIcon size={16} />
+<ArrowRightIcon title="Next" />
+```
+
+| Prop                  | Default        | What                                                                     |
+| --------------------- | -------------- | ------------------------------------------------------------------------ |
+| `size`                | `24`           | Width and height, in px or any CSS length                                |
+| `color`               | `currentColor` | Stroke color                                                             |
+| `strokeWidth`         | `1.5`          | Stroke width in grid units                                               |
+| `absoluteStrokeWidth` | `false`        | Hold the stroke at `strokeWidth` px whatever the size                    |
+| `title`               |                | An accessible name. Without one (or `aria-label`) the icon is decorative |
+
+`iconComponents` maps every kebab-case name to its component, for icons chosen
+from data.
+
+## SVG files and geometry
+
+Each icon is a standalone file stroked in `currentColor`:
+
+```ts
+import arrowRight from "@stunt-double/icons/svg/arrow-right.svg";
+```
+
+The root entry has no framework code: each icon's elements as data, a manifest
+and a serializer.
+
+```ts
+import { iconNodes, iconToSvg } from "@stunt-double/icons";
+
+iconToSvg(iconNodes.arrowRight, { size: 32, color: "#111" });
+```
+
+`@stunt-double/icons/icons.json` lists every icon with its category, search
+tags and the lucide-react names it replaces.
+
+## AI provider marks
+
+Filled logos for AI providers and coding agents (Claude, OpenAI, Cursor,
+GitHub Copilot, Gemini, v0, Lovable and more), each in a `color` and a `mono`
+variant at `sm` (16px), `md` (24px) and `lg` (32px).
+
+```tsx
+import { ClaudeLogo, CursorLogo } from '@stunt-double/icons/react';
+
+<ClaudeLogo />
+<CursorLogo variant="mono" size="sm" />
+```
+
+The marks are from [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT)
+and are trademarks of their owners: use them to refer to those products, not
+to suggest endorsement.
+
+## Next steps
+
+- **[Read the full API on GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/icons)**

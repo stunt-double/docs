@@ -1,7 +1,9 @@
 import { llms, loader } from 'fumadocs-core/source';
 import { slugsPlugin } from 'fumadocs-core/source/plugins/slugs';
+import { statusBadgesPlugin } from 'fumadocs-core/source/plugins/status-badges';
 import { metaSchema, pageSchema } from 'fumadocs-core/source/schema';
 import { defineDocs } from 'fumadocs-mdx/macro';
+import { createElement } from 'react';
 
 import { pageIcon } from './page-icon';
 
@@ -9,7 +11,11 @@ export { SITE_URL } from './site';
 
 const docs = defineDocs({
   dir: 'content/docs',
-  docs: { schema: pageSchema, postprocess: { includeProcessedMarkdown: true } },
+  // `status` (`preview`, `new`, ...) badges the page in the sidebar.
+  docs: {
+    schema: pageSchema.extend({ status: pageSchema.shape.title.optional() }),
+    postprocess: { includeProcessedMarkdown: true },
+  },
   meta: { schema: metaSchema },
 });
 
@@ -22,6 +28,18 @@ export const source = loader({
   source: docs.toFumadocsSource(),
   icon: pageIcon,
   plugins: [
+    statusBadgesPlugin({
+      renderBadge: (status) =>
+        createElement(
+          'span',
+          {
+            'data-status': status,
+            className:
+              'border-fd-border text-fd-muted-foreground ms-auto rounded-sm border px-1 py-px font-mono text-[0.625rem] leading-none tracking-[0.08em] uppercase',
+          },
+          status,
+        ),
+    }),
     slugsPlugin((_file, next) => {
       const slugs = next();
       return slugs[0] === '_generated' ? ['reference', ...slugs.slice(1)] : undefined;

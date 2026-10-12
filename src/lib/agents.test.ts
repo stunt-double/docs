@@ -17,6 +17,15 @@ test('llms.txt swaps the title and makes links absolute Markdown', () => {
   assert.ok(out.includes('- [Site](https://x.io)'));
 });
 
+test('llms.txt leaves out the sidebar link sections after the docs', () => {
+  const out = llmsTxt(
+    '# Docs\n\n- [Quickstart](/getting-started): Begin.\n\n- **For AI agents**\n- [llms.txt](/llms.txt)\n\n- **Stunt Double**\n- [stuntdouble.io](https://www.stuntdouble.io)\n',
+  );
+  assert.ok(out.includes('getting-started.md'));
+  assert.ok(!out.includes('llms.txt.md'));
+  assert.ok(!out.includes('**Stunt Double**'));
+});
+
 test('agents.md says when to use the docs', () => {
   assert.match(AGENTS_MD, /## When to use these docs/);
   assert.ok(AGENTS_MD.includes('https://app.stuntdouble.io/api/mcp'));

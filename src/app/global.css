@@ -331,11 +331,12 @@ html {
   line-height: 1.65;
 }
 
-/* Tables: hairline rows, no grid, no card. The header is a mono label. */
+/* Tables: hairline rows on the card ground, no grid. The header is a mono
+   label. Fumadocs wraps each table in a scrolling div, so the table itself
+   stays a real table and its rows span the full width of the ground. */
 .prose :where(table) {
-  display: block;
+  display: table;
   width: 100%;
-  overflow-x: auto;
   border: 0;
   border-radius: 0;
   border-collapse: collapse;
@@ -354,6 +355,10 @@ html {
   text-align: left;
   vertical-align: top;
   background: none;
+}
+
+.prose :where(th, td):first-child {
+  padding-left: 1rem;
 }
 
 .prose :where(th) {

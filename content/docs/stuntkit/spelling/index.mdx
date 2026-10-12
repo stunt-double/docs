@@ -1,0 +1,84 @@
+---
+title: "Spelling"
+icon: "SpellCheck"
+description: "Use @stunt-double/spelling to rewrite text into American, British or Canadian spelling, whole words only, from American or British source text."
+---
+
+# Localize English spelling
+
+`@stunt-double/spelling` rewrites text into British, American or Canadian
+spelling, from source written in either American or British English. Stunt
+Double's public sites are written in American English and rewritten in the
+browser for visitors who read British or Canadian spelling.
+
+```ts
+import { localiseSpelling } from "@stunt-double/spelling";
+
+localiseSpelling("Organize the color of the center.", "british");
+// 'Organise the colour of the centre.'
+
+localiseSpelling("Analyse the cancelled catalogue.", "american");
+// 'Analyze the canceled catalog.'
+```
+
+## Install
+
+Until the `@stunt-double` scope is available on npm, add
+`@stunt-double:registry=https://npm.pkg.github.com` and a GitHub token with
+`read:packages` to your `.npmrc`.
+
+```sh
+npm install @stunt-double/spelling
+```
+
+No dependencies. Runs anywhere JavaScript does: browsers, Node 20 or later
+and workers.
+
+## How it works
+
+Every rewrite is a whole word, looked up exactly in a dictionary generated from
+stems and the suffixes they take. Nothing is rewritten by pattern alone:
+"promise", "enterprise" and "otherwise" keep their "-ise" in American English,
+and "four" and "tour" keep their "-our". A word that isn't in the dictionary
+stays as written.
+
+- **Both directions.** A British word left in American copy still comes out
+  American.
+- **Ambiguous words are left alone.** Words correct in both systems with
+  different meanings ("practice", "license", "check", "program") are never
+  rewritten towards British.
+- **Case is carried.** `Color` becomes `Colour` and `COLOR` becomes `COLOUR`.
+- **Identifiers are kept.** A word in a domain, path, address or snake_case
+  name (`color.com`, `/center`, `color_scheme`) keeps its spelling.
+- **Identity on no change.** When nothing matches, the same string is
+  returned, so you can compare by identity to skip a DOM write.
+
+## API
+
+- **`localiseSpelling(text, system)`** rewrites `text` into `system`
+  (`'british' | 'american' | 'canadian'`).
+- **`spellingDictionary(system)`** returns the lowercase word map for a system,
+  useful for style checks and tooling.
+
+Australia, New Zealand, Ireland and most of the Commonwealth use `'british'`.
+
+## Rewrite a page in the browser
+
+```ts
+import { localiseSpelling, type SpellingSystem } from "@stunt-double/spelling";
+
+function localisePage(root: Node, system: SpellingSystem): void {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    const text = node.nodeValue ?? "";
+    const next = localiseSpelling(text, system);
+    if (next !== text) node.nodeValue = next;
+  }
+}
+```
+
+Skip `code`, `pre` and anything else where text isn't prose.
+
+## Next steps
+
+- **[Read the full API on GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)**

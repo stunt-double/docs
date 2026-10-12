@@ -22,11 +22,13 @@ export function markdownUrl(path: string): string {
 /**
  * The `/llms.txt` index: a summary and reading notes over the Fumadocs page
  * list, with its title swapped for ours and each docs link pointed at the
- * page's absolute Markdown twin.
+ * page's absolute Markdown twin. The sidebar's closing link sections (from
+ * "For AI agents" on) are not docs pages, and the header already links them.
  */
 export function llmsTxt(index: string): string {
   const list = index
     .replace(/^# .*\n+(> .*\n+)?/, '')
+    .replace(/^- \*\*For AI agents\*\*[\s\S]*$/m, '')
     .replace(/\]\((\/[^)#\s]*)(#[^)\s]*)?\)/g, (_, path: string, hash = '') => `](${markdownUrl(path)}${hash})`);
   return `# Stunt Double Docs
 

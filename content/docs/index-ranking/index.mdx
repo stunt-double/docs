@@ -1,0 +1,66 @@
+---
+title: "Stunt Double Index"
+icon: "Gauge"
+description: "The Stunt Double Index is a public ranking of how well AI agents can find, understand and act on a website, scored from HTTP probes and live agent sessions."
+---
+
+# Stunt Double Index
+
+More of your visitors arrive through an AI agent: someone asks ChatGPT, Claude,
+Gemini or Perplexity to compare products, find an answer or check out on their
+behalf. The [Stunt Double Index](https://index.stuntdouble.io) measures how that
+goes on your site, and ranks it against everyone else.
+
+Each tracked domain gets a score out of 100, a band and a rank, overall and
+within its sector. Index data is public, so you can read any tracked site's
+report, including your competitors'.
+
+## How a site is scored
+
+A score comes from two kinds of evidence:
+
+- **Probes.** HTTP checks that look at what agents depend on, such as whether
+  pages are server-rendered, structured data is present and agents are allowed
+  in. Each failing check is listed with its weight.
+- **Agent sessions.** Live sessions, one per AI provider and benchmark task,
+  where an agent tries a real job on the site. Each session records what the
+  agent tried, its rubric evidence, a summary and the frictions it hit.
+
+A full run is the probes plus about 24 agent sessions. Stunt Double runs the
+sessions on the same [browser toolset](/stuntkit/browser-toolset) its actors
+use.
+
+## What it measures
+
+| Category              | Can an agent...                                    |
+| --------------------- | -------------------------------------------------- |
+| Brand awareness       | Recognize the brand and what it offers             |
+| Discovery             | Find the site and the right page for a task        |
+| Information retrieval | Read the facts it needs from the site              |
+| Market ranking        | Place the site among its competitors               |
+| Accuracy              | Report what the site says without getting it wrong |
+| Checkout              | Get through to buying, on a person's behalf        |
+| Delegated access      | Act for a signed-in person                         |
+| Support               | Find help content and get an answer                |
+
+The report also breaks the score down by provider, so you can see when one
+agent struggles where the others don't.
+
+<Callout variant="note" title="No score?">
+  A site can be tracked without a score when the checks were blocked or
+  unanswered, or the site opted out. The report says which.
+</Callout>
+
+## Add or claim a site
+
+Anyone signed in can add a site that isn't tracked yet at
+[index.stuntdouble.io](https://index.stuntdouble.io). A new site gets light
+probes by default, with an option to add live agent sessions.
+
+Claim your domain to re-score it after you ship changes.
+
+## Next steps
+
+- **[Check and improve a site's score](/index-ranking/improve-your-score)**
+- **[Browse the leaderboard](https://index.stuntdouble.io)**
+- **[Make any site readable by AI agents](/stuntkit/wao)**
