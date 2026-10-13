@@ -6,17 +6,18 @@ description: "Run Stunt Double as a Mac app, and let actors browse with your com
 
 # Desktop app
 
-The desktop app is Stunt Double in its own Mac window. It can also turn your
-Mac into a worker, so actors browse with this computer's Chrome, including its
-VPN access and machine-credential sign-ins.
+The desktop app is Stunt Double in its own Mac window. It can also make your
+Mac a [device](/integrations/self-hosted-workers), so actors browse with this
+computer's Chrome, including its VPN access and machine-credential sign-ins.
 
 ## Before you start
 
 - **macOS.** macOS 10.15 or later, on Apple silicon or Intel.
 - **Chrome.** Google Chrome installed, if you want to use the Mac as a
-  worker.
-- **Plan.** The app itself works on any plan. Using it as a worker needs the
-  Workers entitlement, which comes with the Enterprise plan.
+  device.
+- **Plan.** The app itself works on any plan. Using the Mac as a device needs
+  the Enterprise plan, with devices switched on by an owner or admin in
+  **Settings**, then **Devices**.
 
 ## Install it
 
@@ -27,40 +28,49 @@ VPN access and machine-credential sign-ins.
 
 The app updates itself when a new version ships.
 
-## Use this Mac as a worker
+## Use this Mac as a device
 
-1. In the app, open **Settings**, then **Workers**.
-2. Find **Use this device as a worker** and click **Enable this device**.
-3. The card changes to **Connected using this machine's browser.** The
-   worker shows in the list as **Your device**.
-4. Assign actors to it. Open an actor, find **Self-hosted worker** and choose
-   this device under **Worker**.
+1. In the app, open **Go**, then **This Device** (Cmd+D). The device console
+   opens in its own window.
+2. Click **Set up this Mac**. The console shows **Connected** once the Mac
+   checks in.
+3. Choose where each actor's browser runs. Open an actor, go to its **Manage**
+   tab and, under **Where this actor's browser runs**, choose this Mac or
+   **Any device in this workspace**.
 
-The browser runs inside the app, not as a window on your desktop. Click **Open
-device console** to watch what an actor is doing, sign in to an internal site
-or take control of the browser. Sign-ins you make there persist for later
-runs.
+The browser runs inside the app, not as a window on your desktop. Use the
+device console to watch what an actor is doing, sign in to an internal site or
+take control of the browser. Sign-ins you make there persist for later runs.
 
-Enabling is remembered. When the app restarts, including after an update, the
-worker reconnects by itself.
+Setting up is remembered. When the app restarts, including after an update,
+the Mac reconnects by itself. Quitting the app closes its browser.
 
-To stop, click **Disable** on the same card.
+To stop, click **Disable this device** in the console. A run already in
+progress stops with it.
 
 ## Troubleshooting
 
-**There is no "Use this device as a worker" card.** The card only shows inside
-the desktop app, in a workspace with the Workers entitlement.
+**This Device asks you to install Google Chrome.** The device drives Chrome.
+Install it, then click **Set up this Mac** again.
 
-**The card asks you to install Google Chrome.** The worker drives Chrome.
-Install it, then click **Enable this device** again.
+**The console says this Mac is paired with another workspace.** A Mac belongs
+to one workspace at a time. Click **Move to** and confirm to move it here.
+Runs in the other workspace stop using it.
 
-**The card offers "Pair with" your workspace.** This Mac is paired with a
-different workspace, or its worker was deleted. Click **Pair with** to pair it
-here.
+**The console says "This device is no longer paired".** The device was removed
+from the workspace, or its key no longer works. Click **Pair again**.
 
-**The card says to update the app.** That version cannot manage a worker yet.
-Update the app and reopen **Workers**.
+**The console says "Not reaching Stunt Double".** The app is running, but
+Stunt Double has not heard from it for over a minute. Check the Mac is online,
+then click **Reconnect**.
 
-**A run fails because the browser profile is in use.** Only one browser can
-use the profile at a time. Close any Stunt Double worker running on the same
-Mac from the command line, or a sign-in window left open, and try again.
+**The console says to update the app.** That version cannot run a device yet.
+Update the app and reopen **This Device**.
+
+**A run says the browser was suspended by security software.** Endpoint
+security on the Mac froze Chrome before it could start. Ask your IT team to
+allow Stunt Double to launch Google Chrome.
+
+**A run says the browser profile is in use.** Only one Chrome can use the
+device's profile at a time. Close any Chrome window still open on that
+profile, such as a sign-in window, and try again.

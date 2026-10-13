@@ -1,14 +1,15 @@
 ---
-title: "Self-hosted workers"
+title: "Devices"
 icon: "worker"
-description: "Test products that only exist inside your network, with a worker that dials out from behind your firewall."
+description: "Test products that only exist inside your network, with actors that browse from a Mac on that network."
 ---
 
-# Self-hosted workers
+# Devices
 
-Your staging site sits behind a VPN, so a hosted browser cannot reach it. A
-self-hosted worker runs on a machine inside your network and drives the
-browser from there. It connects out to Stunt Double, so you open no inbound
+Your staging site sits behind a VPN, so a cloud browser cannot reach it. A
+device is a Mac running the Stunt Double app, inside your network. Actors set
+to run on it browse with that Mac's Chrome, its VPN, its internal DNS and its
+saved sign-ins. The app connects out to Stunt Double, so you open no inbound
 ports.
 
 For a full walkthrough, read
@@ -16,105 +17,115 @@ For a full walkthrough, read
 
 ## What it does
 
-- **Reach internal products.** Actors assigned to a worker browse from your
-  network, so they can open staging, intranet and local dev servers.
-- **Outbound only.** The worker connects to Stunt Double. Nothing connects in.
-- **Domain controls.** Each worker can be limited to the domains actors need.
-- **Mixed fleets.** Actors without a worker keep using Stunt Double's cloud
-  browser, so one workspace can use both.
+- **Reach internal products.** Actors on a device open staging, intranet and
+  local dev servers, the same way the person at that Mac can.
+- **Outbound only.** The app connects to Stunt Double. Nothing connects in.
+- **Domain controls.** Each device can be limited to the domains actors need.
+- **Mixed workspaces.** Actors set to the cloud keep using Stunt Double's
+  cloud browser, so one workspace can use both.
 
 ## Before you start
 
-- **Plan.** Self-hosted workers are on the Enterprise plan only. On other
-  plans, **Settings**, then **Workers**, shows **Enterprise feature**.
-- **Role.** Only workspace owners and admins can set workers up.
-- **A host.** A machine inside your network with Docker that can reach both
-  the product you want to test and `app.stuntdouble.io`.
+- **Plan.** Devices are part of the Enterprise plan. On other plans,
+  **Settings**, then **Devices**, explains what they do and how to upgrade.
+  You see the same prompt when you point an actor at an address that only
+  works inside a network.
+- **Role.** A workspace owner or admin turns devices on. Once they are on, any
+  member can set up their own Mac.
+- **A Mac.** macOS on Apple silicon or Intel, with Google Chrome installed,
+  that can reach both the product you want to test and `app.stuntdouble.io`.
 
 ## Set it up
 
-1. In [app.stuntdouble.io](https://app.stuntdouble.io), open **Settings**,
-   then **Workers**. The page is marked **Experimental**.
-2. Turn on **Enable for this workspace**.
-3. Click **Add worker**, enter a **Name** (and a description if you like),
-   then click **Create worker**.
-4. Copy the Docker command shown under **Recommended: Docker**. The API key in
-   it is shown once, so copy it before you dismiss the panel.
-5. Run the command on your host. It looks like this, with your own key:
+1. **Turn devices on.** An owner or admin opens **Settings**, then
+   **Devices**, and switches on **Use devices in this workspace**.
+2. **Install the app.** On the Mac, download the
+   [desktop app](/integrations/desktop-app), open it and sign in.
+3. **Set up this Mac.** Open **Go**, then **This Device** (Cmd+D), and click
+   **Set up this Mac**. The device console shows **Connected** once the Mac
+   checks in, and the Mac appears under **Settings**, then **Devices**.
+4. **Choose where each actor's browser runs.** Open an actor, go to its
+   **Manage** tab and find **Where this actor's browser runs**. Choose one of:
+   - **Stunt Double cloud**, for public sites.
+   - **Any device in this workspace**, to use whichever device is online when
+     a run starts.
+   - **A named device**, to always use that Mac.
 
-   ```bash
-   # Run the worker (auto-restarts on failure; auto-updates via watchtower)
-   docker run -d --name sd-worker --restart unless-stopped \
-     --label com.centurylinklabs.watchtower.enable=true \
-     -e SD_WORKER_API_KEY=<your-api-key> \
-     ghcr.io/stunt-double/worker:latest
+To check a device can reach a site before a run depends on it, enter the
+address under **Test connection** in **Settings**, then **Devices**. The test
+runs in the device's browser, so a pass means actors can reach that address.
 
-   # Enable auto-updates (one-time per machine; safe to re-run)
-   docker rm -f sd-watchtower 2>/dev/null; docker pull ghcr.io/nicholas-fedor/watchtower:1.19.0 && docker run -d --name sd-watchtower --restart unless-stopped \
-     -v /var/run/docker.sock:/var/run/docker.sock \
-     ghcr.io/nicholas-fedor/watchtower:1.19.0 --label-enable --cleanup --interval 300
-   ```
+## How runs pick a browser
 
-   The second command installs Watchtower, which pulls and restarts the worker
-   when a new `:latest` ships. Skip it if you would rather update by hand.
+The same rules apply however a run starts: the Run button, an automation, the
+MCP server, the Figma plugin, the assistant, Slack, Linear or an interview.
 
-6. Back on **Workers**, the worker's status changes to **Connected** once it
-   checks in. Enter an internal URL and click **Test connection**. The test
-   runs in the worker's browser, so a pass means actors can reach that URL.
-7. Assign actors to it. Open an actor, find **Self-hosted worker** and choose
-   it under **Worker**. Pick **Any self-hosted worker** to use whichever one is
-   online when a run starts.
+- **An actor set to a device never runs in the cloud.** If its device is
+  offline, or no device is online for an actor set to any device, the run
+  stops and says so. It does not fall back to a cloud browser.
+- **A cloud actor never opens an internal site.** If the project is marked
+  internal, or the address only works inside a network (a private IP range,
+  for example), the run stops up front and asks you to choose a device for
+  the actor.
 
-For docker compose or other container setups, expand **API key only** to copy
-the bare key and set it as `SD_WORKER_API_KEY` yourself.
+## Move a Mac to another workspace
 
-### Sites behind a VPN or machine-credential SSO
-
-The panel also shows a command for **System browser mode**. Instead of a
-headless browser in a container, the worker opens that machine's own Chrome
-with a dedicated profile, so the company VPN, device certificates and proxy
-settings all apply. Run it on the machine that has VPN access, not inside
-Docker, and sign in to your VPN portal or SSO once in the window that opens.
-On a Mac, the [desktop app](/integrations/desktop-app) does the same with one
-click.
+A Mac belongs to one workspace at a time. To move it, open the workspace you
+want it in, then open **This Device**. The console shows that the Mac is paired
+with another workspace. Click **Move to** and confirm. Runs in the old
+workspace stop using it from then on.
 
 ## Control what it can reach
 
-Each worker has an **Access** setting:
+Each device has an **Access** setting under **Settings**, then **Devices**:
 
-- **Allow all domains.** The default. The worker may reach any host.
+- **Allow all domains.** The default. The device may reach any host.
 - **Allow specific domains.** Only the hosts you list, and their subdomains.
 - **Block specific domains.** Any host except the ones you list, and their
   subdomains.
 
-On a network where reach matters, switch to **Allow specific domains** and
-list only what actors need.
+The setting applies to every request the browser makes, including redirects,
+popups and page resources, not only the addresses an actor types. On a network
+where reach matters, switch to **Allow specific domains** and list only what
+actors need. The workspace policy under **Settings**, then **Security**,
+applies on top.
 
-## Remove a worker
+## Remove a device
 
-Delete the worker from **Workers**. Actors assigned to it are unassigned and
-go back to the cloud browser. Then stop the container on your host:
-
-```bash
-docker rm -f sd-worker
-```
+Remove the Mac from **Settings**, then **Devices**. Actors set to it go back
+to the Stunt Double cloud. To stop a Mac without removing it, click **Disable
+this device** in its device console.
 
 ## Troubleshooting
 
-**The worker stays Offline.** Check the container is running
-(`docker ps`) and read its logs (`docker logs sd-worker`). The host needs
-outbound HTTPS to `app.stuntdouble.io`.
+**The device shows Offline.** Open the Stunt Double app on that Mac. A device
+is online only while the app is running and checking in. If the app is open
+and the console says **Not reaching Stunt Double**, check the Mac is online
+and has outbound HTTPS to `app.stuntdouble.io`, then click **Reconnect**.
 
-**Test connection says "No response from worker. Is it running?"** The worker
-has not checked in. Start the container, wait for **Connected**, then test
-again.
+**The console says "This device is no longer paired".** The device was removed
+from the workspace, or its key no longer works. Click **Pair again**.
 
-**Test connection fails on your internal URL.** The worker is up but cannot
-reach that host. Check DNS and routing from the host, and the worker's
-**Access** setting.
+**A run says devices need the Enterprise plan.** Devices are part of the
+Enterprise plan. Contact us to upgrade.
 
-**You lost the API key.** It is only shown once. Delete the worker and create
-a new one.
+**A run says devices are turned off.** Your workspace is on Enterprise, but
+devices are switched off. An owner or admin can switch them on in
+**Settings**, then **Devices**.
 
-**Settings shows "Enterprise feature".** Workers need the Enterprise plan.
-Contact us to upgrade.
+**A run says the address needs a device.** The actor runs in the cloud, but
+the site only works inside your network. Choose a device for the actor on its
+**Manage** tab.
+
+**A run says the browser was suspended by security software.** Something on
+the Mac, most likely endpoint security, froze Chrome before it could start.
+Ask your IT team to allow Stunt Double to launch Google Chrome.
+
+**A run says the browser profile is in use.** Only one Chrome can use the
+device's profile at a time. Close any Chrome window still open on that
+profile, such as a sign-in window, and try again. A browser left behind by an
+earlier session of the app is closed for you.
+
+**A run says the address is not permitted.** The device's **Access** setting,
+or the workspace policy in **Settings**, then **Security**, blocks that host.
+Add it to the allowed list or remove it from the blocked list.

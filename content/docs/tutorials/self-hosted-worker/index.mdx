@@ -1,70 +1,74 @@
 ---
 title: "Test behind a firewall"
 icon: "worker"
-description: "Run actors against an internal product with a self-hosted worker, no inbound firewall changes required."
+description: "Run actors against an internal product from a Mac on your network, no inbound firewall changes required."
 ---
 
 # Test a product behind your firewall
 
 If the product you want to test is only reachable inside your network, a
-hosted browser session can't reach it. A self-hosted worker runs on your side
-of the firewall instead, so actors can reach an internal product without
-opening anything up.
+cloud browser can't reach it. A device is a Mac on your side of the firewall
+running the Stunt Double app, so actors browse from there without you opening
+anything up.
 
-<Callout variant="note" title="Enterprise plan, workspace admins">
-  Self-hosted workers are part of the Enterprise plan, and only a workspace
-  owner or admin can turn them on and add workers. The page is marked
-  **Experimental** in the app.
+<Callout variant="note" title="Enterprise plan">
+  Devices are part of the Enterprise plan. A workspace owner or admin switches
+  them on, then any member can set up their own Mac.
 </Callout>
 
-## Add a worker
+## Turn devices on
 
-1. Open **Settings > Workers** and select **Enable for this workspace**.
-2. Select **Add worker**, name it, then **Create worker**.
-3. Copy the Docker snippet the app shows. It runs the published image
-   `ghcr.io/stunt-double/worker:latest` with your worker's API key in
-   `SD_WORKER_API_KEY`. The key is shown once, so store it somewhere safe
-   before you close the dialog. The snippet can also add Watchtower to keep
-   the image up to date.
-4. Run it on a machine inside your network, then select **Test connection**
-   to confirm it reaches Stunt Double and your target product.
+Open **Settings > Devices** and switch on **Use devices in this workspace**.
+On other plans, this page explains what devices do and how to upgrade.
 
-The worker dials out to Stunt Double rather than waiting for an inbound
-connection, so your firewall needs no changes. Your security team can pull
-and inspect the image before it runs.
+## Set up a Mac
+
+1. On a Mac that can reach your internal product, download the Stunt Double
+   [desktop app](/integrations/desktop-app), open it and sign in. Google
+   Chrome needs to be installed.
+2. Open **Go > This Device** (Cmd+D) and click **Set up this Mac**.
+3. Wait for the device console to show **Connected**.
+
+The app dials out to Stunt Double rather than waiting for an inbound
+connection, so your firewall needs no changes. If your product sits behind a
+VPN portal or SSO, sign in once in the device console. The sign-in persists
+for later runs.
+
+## Choose where each actor's browser runs
+
+Open an actor, go to its **Manage** tab and find **Where this actor's browser
+runs**:
+
+- **Stunt Double cloud** for public sites.
+- **Any device in this workspace** to use whichever device is online.
+- **A named device** to always use that Mac.
+
+An actor set to a device never falls back to the cloud: if its device is
+offline, the run stops and tells you. An actor set to the cloud never opens an
+internal site: if the project is marked internal, or the address only works
+inside your network, the run stops and asks you to choose a device.
 
 ## Control what it can reach
 
-Each worker has an access setting with three modes:
+Each device has an access setting in **Settings > Devices** with three modes:
 
 - **Allow all domains**: no restriction.
 - **Allow specific domains**: only the domains you list.
 - **Block specific domains**: everything except the domains you list.
 
-A new worker starts on Allow all domains, so it works as soon as it
-connects. To restrict it, switch to Allow specific domains and list only what
-your actors need to reach.
+A new device starts on Allow all domains, so it works as soon as it connects.
+To restrict it, switch to Allow specific domains and list only what your
+actors need to reach.
 
-## Pin actors and checklists to a worker
+## Watch status live
 
-Once a worker is connected, assign the actors and checklists that need to
-reach your internal product to it. Everything else
-keeps running on hosted browser sessions as normal, a workspace can mix both
-freely.
-
-## Watch connection status live
-
-The Workers page reflects connection status live: a worker's heartbeat flips
-its status without needing a page refresh, so you can tell at a glance
-whether it's online before kicking off a run that depends on it.
-
-## Run a worker on your Mac
-
-The Stunt Double desktop app for Mac can act as a worker too. With Workers
-enabled, open **Settings > Workers**, select **Use this device as a worker**,
-then **Enable this device**.
+Devices show their status live everywhere they appear: Settings, the actor's
+Manage tab and the device console. A Mac that stops checking in turns Offline
+within a couple of minutes, so you can tell before starting a run that depends
+on it.
 
 ## Next steps
 
+- **[Devices reference and troubleshooting](/integrations/self-hosted-workers)**
 - **[Automate multi-step workflows](/tutorials/building-workflows)**
 - **[Turn runs into insights](/tutorials/reviewing-runs)**
