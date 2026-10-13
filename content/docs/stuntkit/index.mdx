@@ -1,14 +1,14 @@
 ---
 title: "StuntKit"
 icon: "Package"
-description: "StuntKit is the toolkit Stunt Double runs on: browser tools for AI agents with built-in guards against paying and signing up, plus icons, spelling and agent-readiness packages."
+description: "StuntKit is the toolkit Stunt Double runs on: browser tools for AI agents with built-in guards against paying and signing up, plus icons, Americanize for spelling and agent-readiness packages."
 ---
 
 # StuntKit
 
 Give your AI agent a browser it can use safely. StuntKit is the toolkit Stunt
 Double runs on every agent session: browser tools for your own agents, plus the
-icons, spelling and accessibility packages behind the product.
+icons, spelling (Americanize) and accessibility packages behind the product.
 
 It is licensed under Apache-2.0, at
 [github.com/stunt-double/stuntkit](https://github.com/stunt-double/stuntkit).
@@ -40,9 +40,10 @@ for public packages. The self-hosted worker ships as the Docker image
       href: '/stuntkit/icons',
     },
     {
-      title: 'Spelling',
-      description: 'Rewrite text into American, British or Canadian spelling, whole words only.',
-      href: '/stuntkit/spelling',
+      title: 'Americanize',
+      description:
+        'Rewrite text into American, British, Australian or Canadian spelling, whole words only.',
+      href: '/stuntkit/americanize',
     },
   ]}
 />
@@ -53,7 +54,7 @@ for public packages. The self-hosted worker ships as the Docker image
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `@stunt-double/browser-toolset` | Browser tools for AI agents over any browser you bring, with opt-in safety guards                                                        | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset) |
 | `@stunt-double/icons`           | The Continuity icon pack: 235 stroked icons as geometry, standalone SVG files and React components                                       | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/icons)           |
-| `@stunt-double/spelling`        | Whole-word American, British and Canadian spelling localization, from American or British source text                                    | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)        |
+| `@stunt-double/spelling`        | Americanize: whole-word American, British (including Australian) and Canadian spelling, from American or British source text            | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)        |
 | `@stunt-double/wao`             | Web Agent Optimiser: a drop-in script that repairs the accessibility tree agents read, so legacy sites work for agents without a rebuild | [GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/wao)             |
 
 </div>
@@ -69,7 +70,7 @@ for public packages. The self-hosted worker ships as the Docker image
 - **Make a site work for agents.** Drop the `@stunt-double/wao` script into a
   page to repair the accessibility tree agents read.
 - **Match the product in your own UI.** Use `@stunt-double/icons` for the
-  Continuity icons and `@stunt-double/spelling` to localize copy.
+  Continuity icons and Americanize (`@stunt-double/spelling`) to localize copy.
 
 ## Principles
 

@@ -72,6 +72,33 @@ so they stay on brand and in step with the product. Each one has a light and a d
 `<Screenshot name="..." alt="..." caption="..." />`, which follows the site theme. If a screen is
 out of date, open an issue rather than editing the image.
 
+### Icons
+
+Icons come from [StuntKit](https://github.com/stunt-double/stuntkit)'s `@stunt-double/icons`, the
+Continuity icon pack. Use a product icon wherever a page names one of Stunt Double's own things:
+
+```mdx
+<CardGrid
+  items={[{ title: 'Actors', description: 'AI users that drive a real browser.', href: '/concepts#actors', icon: 'actor' }]}
+/>
+```
+
+The [Icons page](https://docs.stuntdouble.io/stuntkit/icons) previews the whole pack with two MDX
+components:
+
+```mdx
+<IconGallery />                           {/* all 235 icons, grouped by category */}
+<IconGallery categories={['product']} />  {/* just the categories you name */}
+<BrandGallery />                          {/* AI provider marks, color and mono */}
+```
+
+The geometry is copied from StuntKit into `src/components/icon-gallery-data.ts`, never edited here.
+To pick up a new StuntKit release, check it out beside this repo and run:
+
+```bash
+node scripts/sync-icons.mjs ../stuntkit
+```
+
 ## For AI agents
 
 - `/llms.txt` indexes every page and `/llms-full.txt` holds them all.
