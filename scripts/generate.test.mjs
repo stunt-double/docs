@@ -23,6 +23,7 @@ test('points relative links at the tagged blob and drops comments', () => {
 test('clean takes out em dashes and internal plugin notes', () => {
   assert.equal(clean('Run it \u2014 all of it \u2014 now'), 'Run it (all of it) now');
   assert.equal(clean('A \u2014 b'), 'A: b');
+  assert.equal(clean('| a | \u2014 | \u2014 |'), '| a | n/a | n/a |');
   assert.equal(clean('Keep\n\nSee CONTRIBUTING.md for releases\n\nThis'), 'Keep\n\nThis');
 });
 
