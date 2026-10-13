@@ -55,8 +55,9 @@ function escapeText(text) {
     .join('');
 }
 
-/** A README's centred `<p>` holding one `<img>`, optionally linked. */
-const IMAGE_BLOCK = /<p[^>]*>\s*(?:<a [^>]*>)?\s*(<img [^>]*>)\s*(?:<\/a>)?\s*<\/p>/g;
+/** A fenced code block (left alone) or a README's centred `<p>` holding one `<img>`, optionally linked. */
+const FENCED_OR_IMAGE =
+  /(^ *(`{3,}|~{3,})[^\n]*\n[\s\S]*?^ *\2[`~]* *$)|<p[^>]*>\s*(?:<a [^>]*>)?\s*(<img [^>]*>)\s*(?:<\/a>)?\s*<\/p>/gm;
 
 /**
  * A GitHub README as MDX: HTML comments dropped, centred images turned into
@@ -66,13 +67,17 @@ const IMAGE_BLOCK = /<p[^>]*>\s*(?:<a [^>]*>)?\s*(<img [^>]*>)\s*(?:<\/a>)?\s*<\
 export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
   const blob = `https://github.com/${repo}/blob/${tag}/${dir}`;
   const raw = `https://raw.githubusercontent.com/${repo}/${tag}/${dir}`;
+  const images = new Set();
   const lines = markdown
     .replace(/\r\n/g, '\n')
     .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(IMAGE_BLOCK, (_, img) => {
+    .replace(FENCED_OR_IMAGE, (_, fence, __, img) => {
+      if (fence) return fence;
       const attr = (name) => new RegExp(`\\b${name}="([^"]*)"`).exec(img)?.[1] ?? '';
       const src = new URL(attr('src').replace(/^\.\//, ''), raw).href;
-      return `<img src="${src}" alt="${attr('alt').replace(/[{}<>]/g, '')}" style={{ width: '100%' }} />`;
+      const jsx = `<img src="${src}" alt="${attr('alt').replace(/[{}<>"]/g, '')}" style={{ width: '100%' }} />`;
+      images.add(jsx);
+      return jsx;
     })
     .split('\n');
   let fence = null;
@@ -87,7 +92,7 @@ export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
         fence = open[1];
         return line;
       }
-      if (line.startsWith('<img src="https://raw.githubusercontent.com/')) return line;
+      if (images.has(line)) return line;
       const [, quote] = /^((?:\s*>)*\s*)/.exec(line);
       return (quote + escapeText(line.slice(quote.length))).replace(
         /\]\((?!https?:|mailto:|#|\/)(?:\.\/)?([^)\s]+)\)/g,

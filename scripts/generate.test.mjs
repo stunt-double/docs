@@ -31,6 +31,15 @@ test('turns centred README images into img tags on the raw file', () => {
   );
 });
 
+test('leaves images in code fences and hand-written img tags to the usual escaping', () => {
+  const fenced = ['```html', '<p align="center"><img src="./x.gif"></p>', '```'].join('\n');
+  assert.equal(readmeToMdx(fenced, at), fenced);
+  assert.equal(
+    readmeToMdx('<img src="https://raw.githubusercontent.com/a/b/c.png">', at),
+    '&#60;img src="https://raw.githubusercontent.com/a/b/c.png"&#62;'
+  );
+});
+
 test('clean takes out em dashes and internal plugin notes', () => {
   assert.equal(clean('Run it \u2014 all of it \u2014 now'), 'Run it (all of it) now');
   assert.equal(clean('A \u2014 b'), 'A: b');
