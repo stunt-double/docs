@@ -295,6 +295,46 @@ export function Screenshot({
 }
 
 /**
+ * A recorded walkthrough in `public/videos/`, framed like a Screenshot: one
+ * hairline, a caption beneath. Never autoplays; the poster holds until the
+ * reader presses play, and only metadata loads up front.
+ */
+export function Video({
+  name,
+  title,
+  caption,
+}: {
+  /** File stem in `public/videos/`: `<name>.mp4` and `<name>-poster.jpg`. */
+  name: string;
+  /** Accessible name for the player. */
+  title: string;
+  caption?: ReactNode;
+}) {
+  return (
+    <figure className="sd-figure not-prose my-10">
+      <div className="border-border overflow-hidden rounded-lg border">
+        <video
+          src={`/videos/${name}.mp4`}
+          poster={`/videos/${name}-poster.jpg`}
+          aria-label={title}
+          controls
+          playsInline
+          preload="metadata"
+          width={1920}
+          height={1080}
+          className="block aspect-video h-auto w-full"
+        />
+      </div>
+      {caption && (
+        <figcaption className="text-muted-foreground mt-3 flex gap-3 text-sm leading-relaxed">
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+/**
  * Numbered steps on a hairline rail. The mono numbers (`01`, `02`) carry the
  * order, so a step's own heading never repeats it. Write each step's title as
  * a `###` heading so it lands in the table of contents.
@@ -470,6 +510,7 @@ export function getMDXComponents(components?: MDXComponents) {
     Pullquote,
     TextureBreak,
     Screenshot,
+    Video,
     Steps,
     Step,
     PageFacts,
