@@ -1,15 +1,16 @@
 ---
-title: "Spelling"
+title: "Americanize"
 icon: "SpellCheck"
-description: "Use @stunt-double/spelling to rewrite text into American, British or Canadian spelling, whole words only, from American or British source text."
+description: "Use Americanize (@stunt-double/spelling) to rewrite text into American, British, Australian or Canadian spelling, whole words only, from American or British source text."
 ---
 
-# Localize English spelling
+# Americanize
 
-`@stunt-double/spelling` rewrites text into British, American or Canadian
-spelling, from source written in either American or British English. Stunt
-Double's public sites are written in American English and rewritten in the
-browser for visitors who read British or Canadian spelling.
+Americanize rewrites text into American, British, Australian or Canadian
+spelling, from source written in either American or British English. It ships
+as the `@stunt-double/spelling` package. Stunt Double's public sites are
+written in American English and rewritten in the browser for visitors who read
+British, Australian or Canadian spelling.
 
 ```ts
 import { localiseSpelling } from "@stunt-double/spelling";
@@ -20,6 +21,27 @@ localiseSpelling("Organize the color of the center.", "british");
 localiseSpelling("Analyse the cancelled catalogue.", "american");
 // 'Analyze the canceled catalog.'
 ```
+
+## Australian English
+
+Australian English spells like British English (`colour`, `organise`,
+`centre`, `travelled`), so use the `'british'` system. There is no separate
+`'australian'` value.
+
+```ts
+localiseSpelling("Organize a program to analyze the color of the center.", "british");
+// 'Organise a program to analyse the colour of the centre.'
+```
+
+"Program" is left as written: it is correct in both systems, and it is the
+usual Australian spelling for software too. The same goes for New Zealand,
+Irish and most other Commonwealth English.
+
+| Locale                                 | System       |
+| -------------------------------------- | ------------ |
+| `en-US`                                | `'american'` |
+| `en-GB`, `en-AU`, `en-NZ`, `en-IE`     | `'british'`  |
+| `en-CA`                                | `'canadian'` |
 
 ## Install
 
@@ -59,7 +81,8 @@ stays as written.
 - **`spellingDictionary(system)`** returns the lowercase word map for a system,
   useful for style checks and tooling.
 
-Australia, New Zealand, Ireland and most of the Commonwealth use `'british'`.
+Australia, New Zealand, Ireland and most of the Commonwealth use `'british'`
+(see [Australian English](#australian-english)).
 
 ## Rewrite a page in the browser
 

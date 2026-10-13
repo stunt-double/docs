@@ -4,6 +4,7 @@ import type { MDXComponents } from 'mdx/types';
 import Link from 'next/link';
 import type { ComponentProps, ReactNode } from 'react';
 
+import { BrandGallery, IconGallery } from '@/components/icon-gallery';
 import { ProductIcon, type ProductIconName } from '@/components/icons';
 import { docsHref } from '@/lib/links';
 
@@ -515,6 +516,8 @@ export function getMDXComponents(components?: MDXComponents) {
     Step,
     PageFacts,
     ConceptMap,
+    IconGallery,
+    BrandGallery,
     ...components,
   } satisfies MDXComponents;
 }
