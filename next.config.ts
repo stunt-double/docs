@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       { source: '/reference/stuntdouble-mcp', destination: '/mcp', permanent: true },
       { source: '/reference/stuntkit', destination: '/stuntkit', permanent: true },
       { source: '/api/mcp', destination: '/mcp', permanent: true },
+      { source: '/stuntkit/spelling', destination: '/stuntkit/americanize', permanent: true },
     ];
   },
 };
