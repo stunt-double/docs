@@ -13,8 +13,7 @@ icons, spelling (Americanize) and accessibility packages behind the product.
 It is licensed under Apache-2.0, at
 [github.com/stunt-double/stuntkit](https://github.com/stunt-double/stuntkit).
 StuntKit packages are published to GitHub Packages, which asks for a token even
-for public packages. The self-hosted worker ships as the Docker image
-`ghcr.io/stunt-double/worker:latest`.
+for public packages.
 
 ## What's in it
 
@@ -64,9 +63,9 @@ for public packages. The self-hosted worker ships as the Docker image
 - **Build your own browser agent.** Add `@stunt-double/browser-toolset` to an
   agent loop, connect it to Playwright, a hosted browser or a CDP client, and
   turn on the guards. See [Give an AI agent a safe browser](/stuntkit/browser-toolset).
-- **Run Stunt Double sessions on your own infrastructure.** The self-hosted
-  worker image runs actors inside your network, so they can reach staging and
-  internal tools. See [Test a product behind your firewall](/tutorials/self-hosted-worker).
+- **Run Stunt Double sessions on your own network.** A Mac running the
+  Stunt Double app runs actors inside your network, so they can reach staging
+  and internal tools. See [Test a product behind your firewall](/tutorials/self-hosted-worker).
 - **Make a site work for agents.** Drop the `@stunt-double/wao` script into a
   page to repair the accessibility tree agents read.
 - **Match the product in your own UI.** Use `@stunt-double/icons` for the
