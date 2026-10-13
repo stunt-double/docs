@@ -55,13 +55,31 @@ function escapeText(text) {
     .join('');
 }
 
+/** A fenced code block (left alone) or a README's centred `<p>` holding one `<img>`, optionally linked. */
+const FENCED_OR_IMAGE =
+  /(^ *(`{3,}|~{3,})[^\n]*\n[\s\S]*?^ *\2[`~]* *$)|<p[^>]*>\s*(?:<a [^>]*>)?\s*(<img [^>]*>)\s*(?:<\/a>)?\s*<\/p>/gm;
+
 /**
- * A GitHub README as MDX: HTML comments dropped, JSX-like text escaped
- * outside code, and relative links pointed at the file on GitHub at `tag`.
+ * A GitHub README as MDX: HTML comments dropped, centred images turned into
+ * `<img>` tags on the raw file at `tag`, JSX-like text escaped outside code,
+ * and relative links pointed at the file on GitHub at `tag`.
  */
 export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
   const blob = `https://github.com/${repo}/blob/${tag}/${dir}`;
-  const lines = markdown.replace(/\r\n/g, '\n').replace(/<!--[\s\S]*?-->/g, '').split('\n');
+  const raw = `https://raw.githubusercontent.com/${repo}/${tag}/${dir}`;
+  const images = new Set();
+  const lines = markdown
+    .replace(/\r\n/g, '\n')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(FENCED_OR_IMAGE, (_, fence, __, img) => {
+      if (fence) return fence;
+      const attr = (name) => new RegExp(`\\b${name}="([^"]*)"`).exec(img)?.[1] ?? '';
+      const src = new URL(attr('src').replace(/^\.\//, ''), raw).href;
+      const jsx = `<img src="${src}" alt="${attr('alt').replace(/[{}<>"]/g, '')}" style={{ width: '100%' }} />`;
+      images.add(jsx);
+      return jsx;
+    })
+    .split('\n');
   let fence = null;
   return lines
     .map((line) => {
@@ -74,6 +92,7 @@ export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
         fence = open[1];
         return line;
       }
+      if (images.has(line)) return line;
       const [, quote] = /^((?:\s*>)*\s*)/.exec(line);
       return (quote + escapeText(line.slice(quote.length))).replace(
         /\]\((?!https?:|mailto:|#|\/)(?:\.\/)?([^)\s]+)\)/g,
@@ -174,7 +193,7 @@ export function mcpPages(src, at) {
 
   const [pre, ...sections] = splitSections(src.readme, 2);
   const byName = Object.fromEntries(sections.map((s) => [s.heading, s.body]));
-  const intro = takeTitle(pre.body).body.split(/\n{2,}/);
+  const intro = takeTitle(pre.body.replace(/^(?:\s*<p[\s\S]*?<\/p>)+/, '')).body.split(/\n{2,}/);
   const quick = splitSections(byName['Quick Start'] ?? '', 3).filter((s) => s.heading);
   const skillsIntro = quick.find((s) => /^skills/i.test(s.heading));
   const clients = quick.filter((s) => s !== skillsIntro).map((s) => ({ ...s, heading: s.heading.replace(/\s+\/\s+/g, ' and '), slug: slugify(s.heading) }));

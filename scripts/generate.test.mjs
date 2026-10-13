@@ -20,6 +20,26 @@ test('points relative links at the tagged blob and drops comments', () => {
   );
 });
 
+test('keeps blockquote markers', () => {
+  assert.equal(readmeToMdx('> > a <b> | c |', at), '> > a &#60;b&#62; | c |');
+});
+
+test('turns centred README images into img tags on the raw file', () => {
+  assert.equal(
+    readmeToMdx('<p align="center">\n  <a href="https://a.b"><img src="./assets/x.gif" alt="A {demo}" width="100%"></a>\n</p>', at),
+    `<img src="https://raw.githubusercontent.com/stunt-double/x/v1.0.0/assets/x.gif" alt="A demo" style={{ width: '100%' }} />`
+  );
+});
+
+test('leaves images in code fences and hand-written img tags to the usual escaping', () => {
+  const fenced = ['```html', '<p align="center"><img src="./x.gif"></p>', '```'].join('\n');
+  assert.equal(readmeToMdx(fenced, at), fenced);
+  assert.equal(
+    readmeToMdx('<img src="https://raw.githubusercontent.com/a/b/c.png">', at),
+    '&#60;img src="https://raw.githubusercontent.com/a/b/c.png"&#62;'
+  );
+});
+
 test('clean takes out em dashes and internal plugin notes', () => {
   assert.equal(clean('Run it \u2014 all of it \u2014 now'), 'Run it (all of it) now');
   assert.equal(clean('A \u2014 b'), 'A: b');
