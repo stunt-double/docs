@@ -42,151 +42,151 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "actor",
     "component": "ActorIcon",
     "category": "product",
-    "svg": "<path d=\"M3 8V3h5\"/><path d=\"M16 3h5v5\"/><path d=\"M21 16v5h-5\"/><path d=\"M8 21H3v-5\"/><circle cx=\"12\" cy=\"9.5\" r=\"2.5\"/><path d=\"M7.5 17.5a4.5 4.5 0 0 1 9 0\"/>"
+    "svg": "<path d=\"M3 8V3h5\"/> <path d=\"M16 3h5v5\"/> <path d=\"M21 16v5h-5\"/> <path d=\"M8 21H3v-5\"/> <circle cx=\"12\" cy=\"9.5\" r=\"2.5\"/> <path d=\"M7.5 17.5a4.5 4.5 0 0 1 9 0\"/>"
   },
   {
     "name": "checklist",
     "component": "ChecklistIcon",
     "category": "product",
-    "svg": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/><path d=\"M8 8.5l1.5 1.5 3-3\"/><path d=\"M14.5 9h2\"/><rect x=\"8\" y=\"13.5\" width=\"3\" height=\"3\"/><path d=\"M14.5 15h2\"/>"
+    "svg": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/> <path d=\"M8 8.5l1.5 1.5 3-3\"/> <path d=\"M14.5 9h2\"/> <rect x=\"8\" y=\"13.5\" width=\"3\" height=\"3\"/> <path d=\"M14.5 15h2\"/>"
   },
   {
     "name": "run",
     "component": "RunIcon",
     "category": "product",
-    "svg": "<path d=\"M9 4.5l12 7.5-12 7.5z\"/><path d=\"M3 9h3\"/><path d=\"M3 15h3\"/>"
+    "svg": "<path d=\"M9 4.5l12 7.5-12 7.5z\"/> <path d=\"M3 9h3\"/> <path d=\"M3 15h3\"/>"
   },
   {
     "name": "interview",
     "component": "InterviewIcon",
     "category": "product",
-    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/><path d=\"M9.5 7v2.5L8 11\"/><path d=\"M14.5 7v2.5L13 11\"/>"
+    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/> <path d=\"M9.5 7v2.5L8 11\"/> <path d=\"M14.5 7v2.5L13 11\"/>"
   },
   {
     "name": "automation",
     "component": "AutomationIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"6\" height=\"6\" rx=\"1\"/><path d=\"M9 6h5\"/><path d=\"M17 3l3 3-3 3-3-3z\"/><path d=\"M17 9v6\"/><rect x=\"14\" y=\"15\" width=\"6\" height=\"6\" rx=\"1\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"6\" height=\"6\" rx=\"1\"/> <path d=\"M9 6h5\"/> <path d=\"M17 3l3 3-3 3-3-3z\"/> <path d=\"M17 9v6\"/> <rect x=\"14\" y=\"15\" width=\"6\" height=\"6\" rx=\"1\"/>"
   },
   {
     "name": "evidence",
     "component": "EvidenceIcon",
     "category": "product",
-    "svg": "<path d=\"M3 8V3h5\"/><path d=\"M16 3h5v5\"/><path d=\"M21 16v5h-5\"/><path d=\"M8 21H3v-5\"/><path d=\"M7 16l3.5-3.5 2 2L16 11\"/><rect x=\"7.25\" y=\"7.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M3 8V3h5\"/> <path d=\"M16 3h5v5\"/> <path d=\"M21 16v5h-5\"/> <path d=\"M8 21H3v-5\"/> <path d=\"M7 16l3.5-3.5 2 2L16 11\"/> <rect x=\"7.25\" y=\"7.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "insight",
     "component": "InsightIcon",
     "category": "product",
-    "svg": "<path d=\"M9.5 21v-2a5 5 0 1 1 5 0v2z\"/><path d=\"M12 3V2\"/><path d=\"M5 6l-1-1\"/><path d=\"M19 6l1-1\"/>"
+    "svg": "<path d=\"M9.5 21v-2a5 5 0 1 1 5 0v2z\"/> <path d=\"M12 3V2\"/> <path d=\"M5 6l-1-1\"/> <path d=\"M19 6l1-1\"/>"
   },
   {
     "name": "feedback",
     "component": "FeedbackIcon",
     "category": "product",
-    "svg": "<path d=\"M12 3a8 8 0 0 1 0 16H4v-8a8 8 0 0 1 8-8z\"/><path d=\"M8.5 9.5h7\"/><path d=\"M8.5 13h4\"/>"
+    "svg": "<path d=\"M12 3a8 8 0 0 1 0 16H4v-8a8 8 0 0 1 8-8z\"/> <path d=\"M8.5 9.5h7\"/> <path d=\"M8.5 13h4\"/>"
   },
   {
     "name": "worker",
     "component": "WorkerIcon",
     "category": "product",
-    "svg": "<rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"2\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\"/><path d=\"M9.5 3v3\"/><path d=\"M14.5 3v3\"/><path d=\"M9.5 18v3\"/><path d=\"M14.5 18v3\"/><path d=\"M3 9.5h3\"/><path d=\"M3 14.5h3\"/><path d=\"M18 9.5h3\"/><path d=\"M18 14.5h3\"/>"
+    "svg": "<rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"2\"/> <rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\"/> <path d=\"M9.5 3v3\"/> <path d=\"M14.5 3v3\"/> <path d=\"M9.5 18v3\"/> <path d=\"M14.5 18v3\"/> <path d=\"M3 9.5h3\"/> <path d=\"M3 14.5h3\"/> <path d=\"M18 9.5h3\"/> <path d=\"M18 14.5h3\"/>"
   },
   {
     "name": "project",
     "component": "ProjectIcon",
     "category": "product",
-    "svg": "<path d=\"M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><path d=\"M8 8V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3\"/><path d=\"M3 13h18\"/>"
+    "svg": "<path d=\"M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <path d=\"M8 8V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3\"/> <path d=\"M3 13h18\"/>"
   },
   {
     "name": "knowledge",
     "component": "KnowledgeIcon",
     "category": "product",
-    "svg": "<rect x=\"6\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/><path d=\"M3.5 7.5h5\"/><path d=\"M3.5 12h5\"/><path d=\"M3.5 16.5h5\"/><path d=\"M12 8h5\"/><path d=\"M12 12h5\"/>"
+    "svg": "<rect x=\"6\" y=\"3\" width=\"14\" height=\"18\" rx=\"2\"/> <path d=\"M3.5 7.5h5\"/> <path d=\"M3.5 12h5\"/> <path d=\"M3.5 16.5h5\"/> <path d=\"M12 8h5\"/> <path d=\"M12 12h5\"/>"
   },
   {
     "name": "take",
     "component": "TakeIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M7 9.5h3v5H7z\"/><path d=\"M13.5 9.5H17v5h-3.5\"/><path d=\"M14.5 12H17\"/>"
+    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M7 9.5h3v5H7z\"/> <path d=\"M13.5 9.5H17v5h-3.5\"/> <path d=\"M14.5 12H17\"/>"
   },
   {
     "name": "live-view",
     "component": "LiveViewIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M12 16v4\"/><path d=\"M8 20h8\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M12 16v4\"/> <path d=\"M8 20h8\"/> <circle cx=\"12\" cy=\"10\" r=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "design-review",
     "component": "DesignReviewIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M6.5 12a6.4 6.4 0 0 1 11 0 6.4 6.4 0 0 1-11 0z\"/><rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M6.5 12a6.4 6.4 0 0 1 11 0 6.4 6.4 0 0 1-11 0z\"/> <rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "topology",
     "component": "TopologyIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"1\"/><rect x=\"16\" y=\"3\" width=\"5\" height=\"5\" rx=\"1\"/><rect x=\"16\" y=\"16\" width=\"5\" height=\"5\" rx=\"1\"/><path d=\"M8 12h4\"/><path d=\"M16 5.5h-4v13h4\"/>"
+    "svg": "<rect x=\"3\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"1\"/> <rect x=\"16\" y=\"3\" width=\"5\" height=\"5\" rx=\"1\"/> <rect x=\"16\" y=\"16\" width=\"5\" height=\"5\" rx=\"1\"/> <path d=\"M8 12h4\"/> <path d=\"M16 5.5h-4v13h4\"/>"
   },
   {
     "name": "step",
     "component": "StepIcon",
     "category": "product",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M10 9l2-1.5V16\"/><path d=\"M10 16h4\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M10 9l2-1.5V16\"/> <path d=\"M10 16h4\"/>"
   },
   {
     "name": "assist",
     "component": "AssistIcon",
     "category": "product",
-    "svg": "<path d=\"M4 7.5v12.5l3.6-3.2 2.3 5 2.2-1-2.3-5 4.6-.2z\"/><path d=\"M14 3h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-3l-2 2V9h-1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/>"
+    "svg": "<path d=\"M4 7.5v12.5l3.6-3.2 2.3 5 2.2-1-2.3-5 4.6-.2z\"/> <path d=\"M14 3h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-3l-2 2V9h-1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z\"/>"
   },
   {
     "name": "arrow-right",
     "component": "ArrowRightIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 12h16\"/><path d=\"M14 6l6 6-6 6\"/>"
+    "svg": "<path d=\"M4 12h16\"/> <path d=\"M14 6l6 6-6 6\"/>"
   },
   {
     "name": "arrow-left",
     "component": "ArrowLeftIcon",
     "category": "arrows",
-    "svg": "<path d=\"M20 12H4\"/><path d=\"M10 6l-6 6 6 6\"/>"
+    "svg": "<path d=\"M20 12H4\"/> <path d=\"M10 6l-6 6 6 6\"/>"
   },
   {
     "name": "arrow-up",
     "component": "ArrowUpIcon",
     "category": "arrows",
-    "svg": "<path d=\"M12 20V4\"/><path d=\"M6 10l6-6 6 6\"/>"
+    "svg": "<path d=\"M12 20V4\"/> <path d=\"M6 10l6-6 6 6\"/>"
   },
   {
     "name": "arrow-down",
     "component": "ArrowDownIcon",
     "category": "arrows",
-    "svg": "<path d=\"M12 4v16\"/><path d=\"M6 14l6 6 6-6\"/>"
+    "svg": "<path d=\"M12 4v16\"/> <path d=\"M6 14l6 6 6-6\"/>"
   },
   {
     "name": "arrow-up-right",
     "component": "ArrowUpRightIcon",
     "category": "arrows",
-    "svg": "<path d=\"M6 18L18 6\"/><path d=\"M9 6h9v9\"/>"
+    "svg": "<path d=\"M6 18L18 6\"/> <path d=\"M9 6h9v9\"/>"
   },
   {
     "name": "arrow-down-right",
     "component": "ArrowDownRightIcon",
     "category": "arrows",
-    "svg": "<path d=\"M6 6l12 12\"/><path d=\"M18 9v9H9\"/>"
+    "svg": "<path d=\"M6 6l12 12\"/> <path d=\"M18 9v9H9\"/>"
   },
   {
     "name": "arrow-up-down",
     "component": "ArrowUpDownIcon",
     "category": "arrows",
-    "svg": "<path d=\"M8 20V4\"/><path d=\"M4 8l4-4 4 4\"/><path d=\"M16 4v16\"/><path d=\"M12 16l4 4 4-4\"/>"
+    "svg": "<path d=\"M8 20V4\"/> <path d=\"M4 8l4-4 4 4\"/> <path d=\"M16 4v16\"/> <path d=\"M12 16l4 4 4-4\"/>"
   },
   {
     "name": "arrow-down-up",
     "component": "ArrowDownUpIcon",
     "category": "arrows",
-    "svg": "<path d=\"M8 4v16\"/><path d=\"M4 16l4 4 4-4\"/><path d=\"M16 20V4\"/><path d=\"M12 8l4-4 4 4\"/>"
+    "svg": "<path d=\"M8 4v16\"/> <path d=\"M4 16l4 4 4-4\"/> <path d=\"M16 20V4\"/> <path d=\"M12 8l4-4 4 4\"/>"
   },
   {
     "name": "chevron-right",
@@ -216,79 +216,79 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "chevrons-up-down",
     "component": "ChevronsUpDownIcon",
     "category": "arrows",
-    "svg": "<path d=\"M7 9l5-5 5 5\"/><path d=\"M7 15l5 5 5-5\"/>"
+    "svg": "<path d=\"M7 9l5-5 5 5\"/> <path d=\"M7 15l5 5 5-5\"/>"
   },
   {
     "name": "chevrons-down-up",
     "component": "ChevronsDownUpIcon",
     "category": "arrows",
-    "svg": "<path d=\"M7 4l5 5 5-5\"/><path d=\"M7 20l5-5 5 5\"/>"
+    "svg": "<path d=\"M7 4l5 5 5-5\"/> <path d=\"M7 20l5-5 5 5\"/>"
   },
   {
     "name": "corner-down-left",
     "component": "CornerDownLeftIcon",
     "category": "arrows",
-    "svg": "<path d=\"M20 4v10H5\"/><path d=\"M9 10l-4 4 4 4\"/>"
+    "svg": "<path d=\"M20 4v10H5\"/> <path d=\"M9 10l-4 4 4 4\"/>"
   },
   {
     "name": "external-link",
     "component": "ExternalLinkIcon",
     "category": "arrows",
-    "svg": "<path d=\"M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4\"/><path d=\"M14 4h6v6\"/><path d=\"M20 4l-9 9\"/>"
+    "svg": "<path d=\"M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4\"/> <path d=\"M14 4h6v6\"/> <path d=\"M20 4l-9 9\"/>"
   },
   {
     "name": "trending-up",
     "component": "TrendingUpIcon",
     "category": "arrows",
-    "svg": "<path d=\"M3 17l6-6 4 4 7-7\"/><path d=\"M15 8h5v5\"/>"
+    "svg": "<path d=\"M3 17l6-6 4 4 7-7\"/> <path d=\"M15 8h5v5\"/>"
   },
   {
     "name": "trending-down",
     "component": "TrendingDownIcon",
     "category": "arrows",
-    "svg": "<path d=\"M3 7l6 6 4-4 7 7\"/><path d=\"M15 16h5v-5\"/>"
+    "svg": "<path d=\"M3 7l6 6 4-4 7 7\"/> <path d=\"M15 16h5v-5\"/>"
   },
   {
     "name": "refresh",
     "component": "RefreshIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 12a8 8 0 0 1 14-5.3L20 9\"/><path d=\"M20 4v5h-5\"/><path d=\"M20 12a8 8 0 0 1-14 5.3L4 15\"/><path d=\"M4 20v-5h5\"/>"
+    "svg": "<path d=\"M4 12a8 8 0 0 1 14-5.3L20 9\"/> <path d=\"M20 4v5h-5\"/> <path d=\"M20 12a8 8 0 0 1-14 5.3L4 15\"/> <path d=\"M4 20v-5h5\"/>"
   },
   {
     "name": "rotate-ccw",
     "component": "RotateCcwIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 12a8 8 0 1 0 2.35-5.65L4 9\"/><path d=\"M4 4v5h5\"/>"
+    "svg": "<path d=\"M4 12a8 8 0 1 0 2.35-5.65L4 9\"/> <path d=\"M4 4v5h5\"/>"
   },
   {
     "name": "rotate-cw",
     "component": "RotateCwIcon",
     "category": "arrows",
-    "svg": "<path d=\"M20 12a8 8 0 1 1-2.35-5.65L20 9\"/><path d=\"M20 4v5h-5\"/>"
+    "svg": "<path d=\"M20 12a8 8 0 1 1-2.35-5.65L20 9\"/> <path d=\"M20 4v5h-5\"/>"
   },
   {
     "name": "repeat",
     "component": "RepeatIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 12V7h15\"/><path d=\"M16 4l3 3-3 3\"/><path d=\"M20 12v5H5\"/><path d=\"M8 14l-3 3 3 3\"/>"
+    "svg": "<path d=\"M4 12V7h15\"/> <path d=\"M16 4l3 3-3 3\"/> <path d=\"M20 12v5H5\"/> <path d=\"M8 14l-3 3 3 3\"/>"
   },
   {
     "name": "history",
     "component": "HistoryIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 12a8 8 0 1 0 2.35-5.65L4 9\"/><path d=\"M4 4v5h5\"/><path d=\"M12 8v4l3 3\"/>"
+    "svg": "<path d=\"M4 12a8 8 0 1 0 2.35-5.65L4 9\"/> <path d=\"M4 4v5h5\"/> <path d=\"M12 8v4l3 3\"/>"
   },
   {
     "name": "shrink",
     "component": "ShrinkIcon",
     "category": "arrows",
-    "svg": "<path d=\"M4 20l6-6\"/><path d=\"M5 14h5v5\"/><path d=\"M20 4l-6 6\"/><path d=\"M19 10h-5V5\"/>"
+    "svg": "<path d=\"M4 20l6-6\"/> <path d=\"M5 14h5v5\"/> <path d=\"M20 4l-6 6\"/> <path d=\"M19 10h-5V5\"/>"
   },
   {
     "name": "expand",
     "component": "ExpandIcon",
     "category": "arrows",
-    "svg": "<path d=\"M10 14l-6 6\"/><path d=\"M4 15v5h5\"/><path d=\"M14 10l6-6\"/><path d=\"M20 9V4h-5\"/>"
+    "svg": "<path d=\"M10 14l-6 6\"/> <path d=\"M4 15v5h5\"/> <path d=\"M14 10l6-6\"/> <path d=\"M20 9V4h-5\"/>"
   },
   {
     "name": "navigation",
@@ -300,7 +300,7 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "plus",
     "component": "PlusIcon",
     "category": "actions",
-    "svg": "<path d=\"M12 5v14\"/><path d=\"M5 12h14\"/>"
+    "svg": "<path d=\"M12 5v14\"/> <path d=\"M5 12h14\"/>"
   },
   {
     "name": "minus",
@@ -312,7 +312,7 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "x",
     "component": "XIcon",
     "category": "actions",
-    "svg": "<path d=\"M6 6l12 12\"/><path d=\"M18 6L6 18\"/>"
+    "svg": "<path d=\"M6 6l12 12\"/> <path d=\"M18 6L6 18\"/>"
   },
   {
     "name": "check",
@@ -324,109 +324,109 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "search",
     "component": "SearchIcon",
     "category": "actions",
-    "svg": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"M15.5 15.5l5 5\"/>"
+    "svg": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/> <path d=\"M15.5 15.5l5 5\"/>"
   },
   {
     "name": "search-x",
     "component": "SearchXIcon",
     "category": "actions",
-    "svg": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"M15.5 15.5l5 5\"/><path d=\"M8.5 8.5l4 4\"/><path d=\"M12.5 8.5l-4 4\"/>"
+    "svg": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/> <path d=\"M15.5 15.5l5 5\"/> <path d=\"M8.5 8.5l4 4\"/> <path d=\"M12.5 8.5l-4 4\"/>"
   },
   {
     "name": "scan-search",
     "component": "ScanSearchIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 8V3h5\"/><path d=\"M16 3h5v5\"/><path d=\"M21 16v5h-5\"/><path d=\"M8 21H3v-5\"/><circle cx=\"11\" cy=\"11\" r=\"3.5\"/><path d=\"M13.5 13.5l3 3\"/>"
+    "svg": "<path d=\"M3 8V3h5\"/> <path d=\"M16 3h5v5\"/> <path d=\"M21 16v5h-5\"/> <path d=\"M8 21H3v-5\"/> <circle cx=\"11\" cy=\"11\" r=\"3.5\"/> <path d=\"M13.5 13.5l3 3\"/>"
   },
   {
     "name": "trash",
     "component": "TrashIcon",
     "category": "actions",
-    "svg": "<path d=\"M4 6h16\"/><path d=\"M9 6V3h6v3\"/><path d=\"M6 6v13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6\"/><path d=\"M10 10v7\"/><path d=\"M14 10v7\"/>"
+    "svg": "<path d=\"M4 6h16\"/> <path d=\"M9 6V3h6v3\"/> <path d=\"M6 6v13a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6\"/> <path d=\"M10 10v7\"/> <path d=\"M14 10v7\"/>"
   },
   {
     "name": "copy",
     "component": "CopyIcon",
     "category": "actions",
-    "svg": "<rect x=\"8\" y=\"8\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3\"/>"
+    "svg": "<rect x=\"8\" y=\"8\" width=\"13\" height=\"13\" rx=\"2\"/> <path d=\"M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3\"/>"
   },
   {
     "name": "clipboard",
     "component": "ClipboardIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/><rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/>"
+    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/> <rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/>"
   },
   {
     "name": "clipboard-check",
     "component": "ClipboardCheckIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/><rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/><path d=\"M8.5 14l2.5 2.5 4.5-4.5\"/>"
+    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/> <rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/> <path d=\"M8.5 14l2.5 2.5 4.5-4.5\"/>"
   },
   {
     "name": "clipboard-list",
     "component": "ClipboardListIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/><rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/><path d=\"M9 11.5h6\"/><path d=\"M9 15h6\"/><path d=\"M9 18.5h3\"/>"
+    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/> <rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/> <path d=\"M9 11.5h6\"/> <path d=\"M9 15h6\"/> <path d=\"M9 18.5h3\"/>"
   },
   {
     "name": "clipboard-copy",
     "component": "ClipboardCopyIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/><rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/><path d=\"M16 14.5H9\"/><path d=\"M11.5 12l-2.5 2.5 2.5 2.5\"/>"
+    "svg": "<path d=\"M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2\"/> <rect x=\"9\" y=\"3\" width=\"6\" height=\"4\" rx=\"1\"/> <path d=\"M16 14.5H9\"/> <path d=\"M11.5 12l-2.5 2.5 2.5 2.5\"/>"
   },
   {
     "name": "pencil",
     "component": "PencilIcon",
     "category": "actions",
-    "svg": "<path d=\"M4 20v-4L16 4l4 4L8 20z\"/><path d=\"M13.5 6.5l4 4\"/>"
+    "svg": "<path d=\"M4 20v-4L16 4l4 4L8 20z\"/> <path d=\"M13.5 6.5l4 4\"/>"
   },
   {
     "name": "pencil-line",
     "component": "PencilLineIcon",
     "category": "actions",
-    "svg": "<path d=\"M4 17v-3L14 4l3 3L7 17z\"/><path d=\"M11.5 6.5l3 3\"/><path d=\"M12 20h8\"/>"
+    "svg": "<path d=\"M4 17v-3L14 4l3 3L7 17z\"/> <path d=\"M11.5 6.5l3 3\"/> <path d=\"M12 20h8\"/>"
   },
   {
     "name": "edit",
     "component": "EditIcon",
     "category": "actions",
-    "svg": "<path d=\"M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5\"/><path d=\"M9 15v-3l8-8 3 3-8 8z\"/>"
+    "svg": "<path d=\"M11 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5\"/> <path d=\"M9 15v-3l8-8 3 3-8 8z\"/>"
   },
   {
     "name": "download",
     "component": "DownloadIcon",
     "category": "actions",
-    "svg": "<path d=\"M12 3v12\"/><path d=\"M7 10l5 5 5-5\"/><path d=\"M4 15v5h16v-5\"/>"
+    "svg": "<path d=\"M12 3v12\"/> <path d=\"M7 10l5 5 5-5\"/> <path d=\"M4 15v5h16v-5\"/>"
   },
   {
     "name": "upload",
     "component": "UploadIcon",
     "category": "actions",
-    "svg": "<path d=\"M12 15V3\"/><path d=\"M7 8l5-5 5 5\"/><path d=\"M4 15v5h16v-5\"/>"
+    "svg": "<path d=\"M12 15V3\"/> <path d=\"M7 8l5-5 5 5\"/> <path d=\"M4 15v5h16v-5\"/>"
   },
   {
     "name": "send",
     "component": "SendIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 4l18 8-18 8 3-8z\"/><path d=\"M6 12h7\"/>"
+    "svg": "<path d=\"M3 4l18 8-18 8 3-8z\"/> <path d=\"M6 12h7\"/>"
   },
   {
     "name": "share",
     "component": "ShareIcon",
     "category": "actions",
-    "svg": "<circle cx=\"17.5\" cy=\"5.5\" r=\"2.5\"/><circle cx=\"6.5\" cy=\"12\" r=\"2.5\"/><circle cx=\"17.5\" cy=\"18.5\" r=\"2.5\"/><path d=\"M8.7 10.7l6.6-3.9\"/><path d=\"M8.7 13.3l6.6 3.9\"/>"
+    "svg": "<circle cx=\"17.5\" cy=\"5.5\" r=\"2.5\"/> <circle cx=\"6.5\" cy=\"12\" r=\"2.5\"/> <circle cx=\"17.5\" cy=\"18.5\" r=\"2.5\"/> <path d=\"M8.7 10.7l6.6-3.9\"/> <path d=\"M8.7 13.3l6.6 3.9\"/>"
   },
   {
     "name": "link",
     "component": "LinkIcon",
     "category": "actions",
-    "svg": "<path d=\"M11 7l2-2a4.24 4.24 0 0 1 6 6l-2 2\"/><path d=\"M13 17l-2 2a4.24 4.24 0 0 1-6-6l2-2\"/><path d=\"M10 14l4-4\"/>"
+    "svg": "<path d=\"M11 7l2-2a4.24 4.24 0 0 1 6 6l-2 2\"/> <path d=\"M13 17l-2 2a4.24 4.24 0 0 1-6-6l2-2\"/> <path d=\"M10 14l4-4\"/>"
   },
   {
     "name": "link-off",
     "component": "LinkOffIcon",
     "category": "actions",
-    "svg": "<path d=\"M11 7l2-2a4.24 4.24 0 0 1 6 6l-2 2\"/><path d=\"M13 17l-2 2a4.24 4.24 0 0 1-6-6l2-2\"/><path d=\"M4 4l16 16\"/>"
+    "svg": "<path d=\"M11 7l2-2a4.24 4.24 0 0 1 6 6l-2 2\"/> <path d=\"M13 17l-2 2a4.24 4.24 0 0 1-6-6l2-2\"/> <path d=\"M4 4l16 16\"/>"
   },
   {
     "name": "filter",
@@ -438,43 +438,43 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "list-filter",
     "component": "ListFilterIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 6h18\"/><path d=\"M6 12h12\"/><path d=\"M10 18h4\"/>"
+    "svg": "<path d=\"M3 6h18\"/> <path d=\"M6 12h12\"/> <path d=\"M10 18h4\"/>"
   },
   {
     "name": "sliders",
     "component": "SlidersIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 6h9\"/><path d=\"M16 6h5\"/><rect x=\"12\" y=\"4\" width=\"4\" height=\"4\" rx=\"1\"/><path d=\"M3 12h3\"/><path d=\"M10 12h11\"/><rect x=\"6\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/><path d=\"M3 18h11\"/><path d=\"M18 18h3\"/><rect x=\"14\" y=\"16\" width=\"4\" height=\"4\" rx=\"1\"/>"
+    "svg": "<path d=\"M3 6h9\"/> <path d=\"M16 6h5\"/> <rect x=\"12\" y=\"4\" width=\"4\" height=\"4\" rx=\"1\"/> <path d=\"M3 12h3\"/> <path d=\"M10 12h11\"/> <rect x=\"6\" y=\"10\" width=\"4\" height=\"4\" rx=\"1\"/> <path d=\"M3 18h11\"/> <path d=\"M18 18h3\"/> <rect x=\"14\" y=\"16\" width=\"4\" height=\"4\" rx=\"1\"/>"
   },
   {
     "name": "archive",
     "component": "ArchiveIcon",
     "category": "actions",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\" rx=\"1\"/><path d=\"M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9\"/><path d=\"M10 13h4\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\" rx=\"1\"/> <path d=\"M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9\"/> <path d=\"M10 13h4\"/>"
   },
   {
     "name": "archive-restore",
     "component": "ArchiveRestoreIcon",
     "category": "actions",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\" rx=\"1\"/><path d=\"M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9\"/><path d=\"M9 15l3-3 3 3\"/><path d=\"M12 12v6\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\" rx=\"1\"/> <path d=\"M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9\"/> <path d=\"M9 15l3-3 3 3\"/> <path d=\"M12 12v6\"/>"
   },
   {
     "name": "log-out",
     "component": "LogOutIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4\"/><path d=\"M10 12h10\"/><path d=\"M16 8l4 4-4 4\"/>"
+    "svg": "<path d=\"M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4\"/> <path d=\"M10 12h10\"/> <path d=\"M16 8l4 4-4 4\"/>"
   },
   {
     "name": "door-open",
     "component": "DoorOpenIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 21h18\"/><path d=\"M15 4h4v17\"/><path d=\"M5 21V5l9-2v18z\"/><rect x=\"9.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M3 21h18\"/> <path d=\"M15 4h4v17\"/> <path d=\"M5 21V5l9-2v18z\"/> <rect x=\"9.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "printer",
     "component": "PrinterIcon",
     "category": "actions",
-    "svg": "<path d=\"M6 9V3h12v6\"/><path d=\"M6 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1\"/><path d=\"M6 14h12v7H6z\"/>"
+    "svg": "<path d=\"M6 9V3h12v6\"/> <path d=\"M6 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1\"/> <path d=\"M6 14h12v7H6z\"/>"
   },
   {
     "name": "paperclip",
@@ -486,19 +486,19 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "grip-vertical",
     "component": "GripVerticalIcon",
     "category": "actions",
-    "svg": "<rect x=\"7.75\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.75\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"7.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"7.75\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.75\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"7.75\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.75\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"7.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"7.75\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.75\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "more-horizontal",
     "component": "MoreHorizontalIcon",
     "category": "actions",
-    "svg": "<rect x=\"3.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"17.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"3.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"17.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "more-vertical",
     "component": "MoreVerticalIcon",
     "category": "actions",
-    "svg": "<rect x=\"10.75\" y=\"3.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10.75\" y=\"17.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"10.75\" y=\"3.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"10.75\" y=\"17.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "bookmark",
@@ -510,25 +510,25 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "bookmark-plus",
     "component": "BookmarkPlusIcon",
     "category": "actions",
-    "svg": "<path d=\"M6 3h12v18l-6-6-6 6z\"/><path d=\"M12 6v6\"/><path d=\"M9 9h6\"/>"
+    "svg": "<path d=\"M6 3h12v18l-6-6-6 6z\"/> <path d=\"M12 6v6\"/> <path d=\"M9 9h6\"/>"
   },
   {
     "name": "tag",
     "component": "TagIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 3h8l10 10-8 8L3 11z\"/><rect x=\"6.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M3 3h8l10 10-8 8L3 11z\"/> <rect x=\"6.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "sparkles",
     "component": "SparklesIcon",
     "category": "actions",
-    "svg": "<path d=\"M10 5q1 7 8 8-7 1-8 8-1-7-8-8 7-1 8-8z\"/><path d=\"M18 3v4\"/><path d=\"M16 5h4\"/>"
+    "svg": "<path d=\"M10 5q1 7 8 8-7 1-8 8-1-7-8-8 7-1 8-8z\"/> <path d=\"M18 3v4\"/> <path d=\"M16 5h4\"/>"
   },
   {
     "name": "wand",
     "component": "WandIcon",
     "category": "actions",
-    "svg": "<path d=\"M3 21l12-12\"/><path d=\"M13 7l2-2 4 4-2 2z\"/><path d=\"M6 4v4\"/><path d=\"M4 6h4\"/><path d=\"M19 15v4\"/><path d=\"M17 17h4\"/>"
+    "svg": "<path d=\"M3 21l12-12\"/> <path d=\"M13 7l2-2 4 4-2 2z\"/> <path d=\"M6 4v4\"/> <path d=\"M4 6h4\"/> <path d=\"M19 15v4\"/> <path d=\"M17 17h4\"/>"
   },
   {
     "name": "play",
@@ -540,13 +540,13 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "play-circle",
     "component": "PlayCircleIcon",
     "category": "actions",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M10 8.5l5.5 3.5-5.5 3.5z\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M10 8.5l5.5 3.5-5.5 3.5z\"/>"
   },
   {
     "name": "pause",
     "component": "PauseIcon",
     "category": "actions",
-    "svg": "<rect x=\"6.5\" y=\"4.5\" width=\"3.5\" height=\"15\"/><rect x=\"14\" y=\"4.5\" width=\"3.5\" height=\"15\"/>"
+    "svg": "<rect x=\"6.5\" y=\"4.5\" width=\"3.5\" height=\"15\"/> <rect x=\"14\" y=\"4.5\" width=\"3.5\" height=\"15\"/>"
   },
   {
     "name": "stop",
@@ -558,7 +558,7 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "hand",
     "component": "HandIcon",
     "category": "actions",
-    "svg": "<path d=\"M7 15.3V6.5a1.5 1.5 0 0 1 3 0V11\"/><path d=\"M10 11V4.5a1.5 1.5 0 0 1 3 0V11\"/><path d=\"M13 11V5.5a1.5 1.5 0 0 1 3 0V11\"/><path d=\"M16 11V7.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1.5a5 5 0 0 1-3.54-1.46L4 16.58a1.5 1.5 0 0 1 2.12-2.12L7 15.3\"/>"
+    "svg": "<path d=\"M7 15.3V6.5a1.5 1.5 0 0 1 3 0V11\"/> <path d=\"M10 11V4.5a1.5 1.5 0 0 1 3 0V11\"/> <path d=\"M13 11V5.5a1.5 1.5 0 0 1 3 0V11\"/> <path d=\"M16 11V7.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1.5a5 5 0 0 1-3.54-1.46L4 16.58a1.5 1.5 0 0 1 2.12-2.12L7 15.3\"/>"
   },
   {
     "name": "pointer",
@@ -570,13 +570,13 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "pointer-click",
     "component": "PointerClickIcon",
     "category": "actions",
-    "svg": "<path d=\"M9 9v11.5l3.3-3 2.1 4.5 2-.9-2-4.5 4.1-.2z\"/><path d=\"M9 3v2.5\"/><path d=\"M3 9h2.5\"/><path d=\"M4.8 4.8l1.8 1.8\"/><path d=\"M13.2 4.8l-1.8 1.8\"/><path d=\"M4.8 13.2l1.8-1.8\"/>"
+    "svg": "<path d=\"M9 9v11.5l3.3-3 2.1 4.5 2-.9-2-4.5 4.1-.2z\"/> <path d=\"M9 3v2.5\"/> <path d=\"M3 9h2.5\"/> <path d=\"M4.8 4.8l1.8 1.8\"/> <path d=\"M13.2 4.8l-1.8 1.8\"/> <path d=\"M4.8 13.2l1.8-1.8\"/>"
   },
   {
     "name": "pending",
     "component": "PendingIcon",
     "category": "actions",
-    "svg": "<rect x=\"3.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"17.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\" opacity=\"0.35\"/>"
+    "svg": "<rect x=\"3.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"10.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"17.75\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\" opacity=\"0.35\"/>"
   },
   {
     "name": "circle",
@@ -588,13 +588,13 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "circle-dot",
     "component": "CircleDotIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <circle cx=\"12\" cy=\"12\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "circle-dashed",
     "component": "CircleDashedIcon",
     "category": "status",
-    "svg": "<path d=\"M13.1 3.07A9 9 0 0 1 17.54 4.91\"/><path d=\"M19.09 6.46A9 9 0 0 1 20.93 10.9\"/><path d=\"M20.93 13.1A9 9 0 0 1 19.09 17.54\"/><path d=\"M17.54 19.09A9 9 0 0 1 13.1 20.93\"/><path d=\"M10.9 20.93A9 9 0 0 1 6.46 19.09\"/><path d=\"M4.91 17.54A9 9 0 0 1 3.07 13.1\"/><path d=\"M3.07 10.9A9 9 0 0 1 4.91 6.46\"/><path d=\"M6.46 4.91A9 9 0 0 1 10.9 3.07\"/>"
+    "svg": "<path d=\"M13.1 3.07A9 9 0 0 1 17.54 4.91\"/> <path d=\"M19.09 6.46A9 9 0 0 1 20.93 10.9\"/> <path d=\"M20.93 13.1A9 9 0 0 1 19.09 17.54\"/> <path d=\"M17.54 19.09A9 9 0 0 1 13.1 20.93\"/> <path d=\"M10.9 20.93A9 9 0 0 1 6.46 19.09\"/> <path d=\"M4.91 17.54A9 9 0 0 1 3.07 13.1\"/> <path d=\"M3.07 10.9A9 9 0 0 1 4.91 6.46\"/> <path d=\"M6.46 4.91A9 9 0 0 1 10.9 3.07\"/>"
   },
   {
     "name": "square",
@@ -606,217 +606,217 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "check-circle",
     "component": "CheckCircleIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 12l3 3 5-5\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M8 12l3 3 5-5\"/>"
   },
   {
     "name": "x-circle",
     "component": "XCircleIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M9 9l6 6\"/><path d=\"M15 9l-6 6\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M9 9l6 6\"/> <path d=\"M15 9l-6 6\"/>"
   },
   {
     "name": "minus-circle",
     "component": "MinusCircleIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 12h8\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M8 12h8\"/>"
   },
   {
     "name": "plus-circle",
     "component": "PlusCircleIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 8v8\"/><path d=\"M8 12h8\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 8v8\"/> <path d=\"M8 12h8\"/>"
   },
   {
     "name": "info",
     "component": "InfoIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 11v5.5\"/><rect x=\"10.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 11v5.5\"/> <rect x=\"10.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "help",
     "component": "HelpIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M9.5 9.5a2.5 2.5 0 1 1 2.5 2.5V14\"/><rect x=\"10.75\" y=\"15.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M9.5 9.5a2.5 2.5 0 1 1 2.5 2.5V14\"/> <rect x=\"10.75\" y=\"15.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "alert-circle",
     "component": "AlertCircleIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v6\"/><rect x=\"10.75\" y=\"15.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 7v6\"/> <rect x=\"10.75\" y=\"15.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "alert-triangle",
     "component": "AlertTriangleIcon",
     "category": "status",
-    "svg": "<path d=\"M12 3.5l9.5 16.5h-19z\"/><path d=\"M12 9.5v4.5\"/><rect x=\"10.75\" y=\"16\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M12 3.5l9.5 16.5h-19z\"/> <path d=\"M12 9.5v4.5\"/> <rect x=\"10.75\" y=\"16\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "octagon-x",
     "component": "OctagonXIcon",
     "category": "status",
-    "svg": "<path d=\"M8.25 3h7.5L21 8.25v7.5L15.75 21h-7.5L3 15.75v-7.5z\"/><path d=\"M9 9l6 6\"/><path d=\"M15 9l-6 6\"/>"
+    "svg": "<path d=\"M8.25 3h7.5L21 8.25v7.5L15.75 21h-7.5L3 15.75v-7.5z\"/> <path d=\"M9 9l6 6\"/> <path d=\"M15 9l-6 6\"/>"
   },
   {
     "name": "ban",
     "component": "BanIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M5.64 5.64l12.72 12.72\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M5.64 5.64l12.72 12.72\"/>"
   },
   {
     "name": "badge-check",
     "component": "BadgeCheckIcon",
     "category": "status",
-    "svg": "<path d=\"M12 3l2.5 2.5h4v4L21 12l-2.5 2.5v4h-4L12 21l-2.5-2.5h-4v-4L3 12l2.5-2.5v-4h4z\"/><path d=\"M8.5 12l2.5 2.5 4.5-4.5\"/>"
+    "svg": "<path d=\"M12 3l2.5 2.5h4v4L21 12l-2.5 2.5v4h-4L12 21l-2.5-2.5h-4v-4L3 12l2.5-2.5v-4h4z\"/> <path d=\"M8.5 12l2.5 2.5 4.5-4.5\"/>"
   },
   {
     "name": "flag",
     "component": "FlagIcon",
     "category": "status",
-    "svg": "<path d=\"M5 21V3\"/><path d=\"M5 4h14l-4 4.5 4 4.5H5\"/>"
+    "svg": "<path d=\"M5 21V3\"/> <path d=\"M5 4h14l-4 4.5 4 4.5H5\"/>"
   },
   {
     "name": "bell",
     "component": "BellIcon",
     "category": "status",
-    "svg": "<path d=\"M6 16v-6a6 6 0 0 1 12 0v6l2 2H4z\"/><path d=\"M10 21h4\"/>"
+    "svg": "<path d=\"M6 16v-6a6 6 0 0 1 12 0v6l2 2H4z\"/> <path d=\"M10 21h4\"/>"
   },
   {
     "name": "bell-ring",
     "component": "BellRingIcon",
     "category": "status",
-    "svg": "<path d=\"M6 16v-6a6 6 0 0 1 12 0v6l2 2H4z\"/><path d=\"M10 21h4\"/><path d=\"M2.5 9a9.5 9.5 0 0 1 2.8-5.5\"/><path d=\"M21.5 9a9.5 9.5 0 0 0-2.8-5.5\"/>"
+    "svg": "<path d=\"M6 16v-6a6 6 0 0 1 12 0v6l2 2H4z\"/> <path d=\"M10 21h4\"/> <path d=\"M2.5 9a9.5 9.5 0 0 1 2.8-5.5\"/> <path d=\"M21.5 9a9.5 9.5 0 0 0-2.8-5.5\"/>"
   },
   {
     "name": "clock",
     "component": "ClockIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 3\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 7v5l3 3\"/>"
   },
   {
     "name": "calendar",
     "component": "CalendarIcon",
     "category": "status",
-    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 10h18\"/><path d=\"M8 3v4\"/><path d=\"M16 3v4\"/>"
+    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M8 3v4\"/> <path d=\"M16 3v4\"/>"
   },
   {
     "name": "calendar-clock",
     "component": "CalendarClockIcon",
     "category": "status",
-    "svg": "<path d=\"M21 10V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5\"/><path d=\"M3 10h18\"/><path d=\"M8 3v4\"/><path d=\"M16 3v4\"/><circle cx=\"16.5\" cy=\"16.5\" r=\"4.5\"/><path d=\"M16.5 14.5v2l1.5 1.5\"/>"
+    "svg": "<path d=\"M21 10V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5\"/> <path d=\"M3 10h18\"/> <path d=\"M8 3v4\"/> <path d=\"M16 3v4\"/> <circle cx=\"16.5\" cy=\"16.5\" r=\"4.5\"/> <path d=\"M16.5 14.5v2l1.5 1.5\"/>"
   },
   {
     "name": "timer",
     "component": "TimerIcon",
     "category": "status",
-    "svg": "<circle cx=\"12\" cy=\"13.5\" r=\"7.5\"/><path d=\"M12 13.5l3-3\"/><path d=\"M10 3h4\"/><path d=\"M12 3v3\"/>"
+    "svg": "<circle cx=\"12\" cy=\"13.5\" r=\"7.5\"/> <path d=\"M12 13.5l3-3\"/> <path d=\"M10 3h4\"/> <path d=\"M12 3v3\"/>"
   },
   {
     "name": "gauge",
     "component": "GaugeIcon",
     "category": "status",
-    "svg": "<path d=\"M4.2 18.5a9 9 0 1 1 15.6 0\"/><path d=\"M12 14l4-4\"/>"
+    "svg": "<path d=\"M4.2 18.5a9 9 0 1 1 15.6 0\"/> <path d=\"M12 14l4-4\"/>"
   },
   {
     "name": "menu",
     "component": "MenuIcon",
     "category": "interface",
-    "svg": "<path d=\"M3 6h18\"/><path d=\"M3 12h18\"/><path d=\"M3 18h18\"/>"
+    "svg": "<path d=\"M3 6h18\"/> <path d=\"M3 12h18\"/> <path d=\"M3 18h18\"/>"
   },
   {
     "name": "settings",
     "component": "SettingsIcon",
     "category": "interface",
-    "svg": "<path d=\"M10.25 5.48V3.17a9 9 0 0 1 3.5 0v2.31a6.75 6.75 0 0 1 1.62.67l1.64-1.63a9 9 0 0 1 2.47 2.47l-1.63 1.64a6.75 6.75 0 0 1 .67 1.62h2.31a9 9 0 0 1 0 3.5h-2.31a6.75 6.75 0 0 1-.67 1.62l1.63 1.64a9 9 0 0 1-2.47 2.47l-1.64-1.63a6.75 6.75 0 0 1-1.62.67v2.31a9 9 0 0 1-3.5 0v-2.31a6.75 6.75 0 0 1-1.62-.67l-1.64 1.63a9 9 0 0 1-2.47-2.47l1.63-1.64a6.75 6.75 0 0 1-.67-1.62H3.17a9 9 0 0 1 0-3.5h2.31a6.75 6.75 0 0 1 .67-1.62L4.52 6.99a9 9 0 0 1 2.47-2.47l1.64 1.63a6.75 6.75 0 0 1 1.62-.67z\"/><circle cx=\"12\" cy=\"12\" r=\"2.75\"/>"
+    "svg": "<path d=\"M10.25 5.48V3.17a9 9 0 0 1 3.5 0v2.31a6.75 6.75 0 0 1 1.62.67l1.64-1.63a9 9 0 0 1 2.47 2.47l-1.63 1.64a6.75 6.75 0 0 1 .67 1.62h2.31a9 9 0 0 1 0 3.5h-2.31a6.75 6.75 0 0 1-.67 1.62l1.63 1.64a9 9 0 0 1-2.47 2.47l-1.64-1.63a6.75 6.75 0 0 1-1.62.67v2.31a9 9 0 0 1-3.5 0v-2.31a6.75 6.75 0 0 1-1.62-.67l-1.64 1.63a9 9 0 0 1-2.47-2.47l1.63-1.64a6.75 6.75 0 0 1-.67-1.62H3.17a9 9 0 0 1 0-3.5h2.31a6.75 6.75 0 0 1 .67-1.62L4.52 6.99a9 9 0 0 1 2.47-2.47l1.64 1.63a6.75 6.75 0 0 1 1.62-.67z\"/> <circle cx=\"12\" cy=\"12\" r=\"2.75\"/>"
   },
   {
     "name": "layout-dashboard",
     "component": "LayoutDashboardIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"7.5\" height=\"9\" rx=\"1\"/><rect x=\"13.5\" y=\"3\" width=\"7.5\" height=\"5\" rx=\"1\"/><rect x=\"13.5\" y=\"11\" width=\"7.5\" height=\"10\" rx=\"1\"/><rect x=\"3\" y=\"15\" width=\"7.5\" height=\"6\" rx=\"1\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"7.5\" height=\"9\" rx=\"1\"/> <rect x=\"13.5\" y=\"3\" width=\"7.5\" height=\"5\" rx=\"1\"/> <rect x=\"13.5\" y=\"11\" width=\"7.5\" height=\"10\" rx=\"1\"/> <rect x=\"3\" y=\"15\" width=\"7.5\" height=\"6\" rx=\"1\"/>"
   },
   {
     "name": "layout-grid",
     "component": "LayoutGridIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"7.5\" height=\"7.5\" rx=\"1\"/><rect x=\"13.5\" y=\"3\" width=\"7.5\" height=\"7.5\" rx=\"1\"/><rect x=\"3\" y=\"13.5\" width=\"7.5\" height=\"7.5\" rx=\"1\"/><rect x=\"13.5\" y=\"13.5\" width=\"7.5\" height=\"7.5\" rx=\"1\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"7.5\" height=\"7.5\" rx=\"1\"/> <rect x=\"13.5\" y=\"3\" width=\"7.5\" height=\"7.5\" rx=\"1\"/> <rect x=\"3\" y=\"13.5\" width=\"7.5\" height=\"7.5\" rx=\"1\"/> <rect x=\"13.5\" y=\"13.5\" width=\"7.5\" height=\"7.5\" rx=\"1\"/>"
   },
   {
     "name": "list",
     "component": "ListIcon",
     "category": "interface",
-    "svg": "<path d=\"M9 6h12\"/><path d=\"M9 12h12\"/><path d=\"M9 18h12\"/><rect x=\"3.25\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"3.25\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"3.25\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M9 6h12\"/> <path d=\"M9 12h12\"/> <path d=\"M9 18h12\"/> <rect x=\"3.25\" y=\"4.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"3.25\" y=\"10.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"3.25\" y=\"16.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "list-checks",
     "component": "ListChecksIcon",
     "category": "interface",
-    "svg": "<path d=\"M3 6.5L5 8.5l3.5-3.5\"/><path d=\"M3 16.5l2 2 3.5-3.5\"/><path d=\"M12 6h9\"/><path d=\"M12 12h9\"/><path d=\"M12 18h9\"/>"
+    "svg": "<path d=\"M3 6.5L5 8.5l3.5-3.5\"/> <path d=\"M3 16.5l2 2 3.5-3.5\"/> <path d=\"M12 6h9\"/> <path d=\"M12 12h9\"/> <path d=\"M12 18h9\"/>"
   },
   {
     "name": "square-check",
     "component": "SquareCheckIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M7.5 12l3 3 6-6\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M7.5 12l3 3 6-6\"/>"
   },
   {
     "name": "square-kanban",
     "component": "SquareKanbanIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M8 7v7\"/><path d=\"M12 7v4\"/><path d=\"M16 7v10\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M8 7v7\"/> <path d=\"M12 7v4\"/> <path d=\"M16 7v10\"/>"
   },
   {
     "name": "app-window",
     "component": "AppWindowIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 9h18\"/><rect x=\"5.25\" y=\"5.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"8.75\" y=\"5.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/> <path d=\"M3 9h18\"/> <rect x=\"5.25\" y=\"5.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"8.75\" y=\"5.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "panels-top-left",
     "component": "PanelsTopLeftIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18\"/><path d=\"M9 9v12\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M3 9h18\"/> <path d=\"M9 9v12\"/>"
   },
   {
     "name": "panel-right-open",
     "component": "PanelRightOpenIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M15 3v18\"/><path d=\"M10.5 9l-3 3 3 3\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M15 3v18\"/> <path d=\"M10.5 9l-3 3 3 3\"/>"
   },
   {
     "name": "panel-right-close",
     "component": "PanelRightCloseIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M15 3v18\"/><path d=\"M7.5 9l3 3-3 3\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M15 3v18\"/> <path d=\"M7.5 9l3 3-3 3\"/>"
   },
   {
     "name": "frame",
     "component": "FrameIcon",
     "category": "interface",
-    "svg": "<path d=\"M3 8h18\"/><path d=\"M3 16h18\"/><path d=\"M8 3v18\"/><path d=\"M16 3v18\"/>"
+    "svg": "<path d=\"M3 8h18\"/> <path d=\"M3 16h18\"/> <path d=\"M8 3v18\"/> <path d=\"M16 3v18\"/>"
   },
   {
     "name": "layers",
     "component": "LayersIcon",
     "category": "interface",
-    "svg": "<path d=\"M12 3l9 4.5-9 4.5-9-4.5z\"/><path d=\"M3 12l9 4.5 9-4.5\"/><path d=\"M3 16.5l9 4.5 9-4.5\"/>"
+    "svg": "<path d=\"M12 3l9 4.5-9 4.5-9-4.5z\"/> <path d=\"M3 12l9 4.5 9-4.5\"/> <path d=\"M3 16.5l9 4.5 9-4.5\"/>"
   },
   {
     "name": "blocks",
     "component": "BlocksIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1\"/><rect x=\"3\" y=\"13\" width=\"8\" height=\"8\" rx=\"1\"/><rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1\"/><path d=\"M17 3l4 4-4 4-4-4z\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"8\" height=\"8\" rx=\"1\"/> <rect x=\"3\" y=\"13\" width=\"8\" height=\"8\" rx=\"1\"/> <rect x=\"13\" y=\"13\" width=\"8\" height=\"8\" rx=\"1\"/> <path d=\"M17 3l4 4-4 4-4-4z\"/>"
   },
   {
     "name": "component",
     "component": "ComponentIcon",
     "category": "interface",
-    "svg": "<path d=\"M12 3l3 3-3 3-3-3z\"/><path d=\"M6 9l3 3-3 3-3-3z\"/><path d=\"M18 9l3 3-3 3-3-3z\"/><path d=\"M12 15l3 3-3 3-3-3z\"/>"
+    "svg": "<path d=\"M12 3l3 3-3 3-3-3z\"/> <path d=\"M6 9l3 3-3 3-3-3z\"/> <path d=\"M18 9l3 3-3 3-3-3z\"/> <path d=\"M12 15l3 3-3 3-3-3z\"/>"
   },
   {
     "name": "keyboard",
     "component": "KeyboardIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><rect x=\"5.75\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"9.25\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"12.25\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"15.75\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M8 14.5h8\"/>"
+    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/> <rect x=\"5.75\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"9.25\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"12.25\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"15.75\" y=\"9\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <path d=\"M8 14.5h8\"/>"
   },
   {
     "name": "command",
@@ -828,31 +828,31 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "hash",
     "component": "HashIcon",
     "category": "interface",
-    "svg": "<path d=\"M4 9h16\"/><path d=\"M4 15h16\"/><path d=\"M10 3l-2 18\"/><path d=\"M16 3l-2 18\"/>"
+    "svg": "<path d=\"M4 9h16\"/> <path d=\"M4 15h16\"/> <path d=\"M10 3l-2 18\"/> <path d=\"M16 3l-2 18\"/>"
   },
   {
     "name": "type",
     "component": "TypeIcon",
     "category": "interface",
-    "svg": "<path d=\"M4 7V4h16v3\"/><path d=\"M12 4v16\"/><path d=\"M9 20h6\"/>"
+    "svg": "<path d=\"M4 7V4h16v3\"/> <path d=\"M12 4v16\"/> <path d=\"M9 20h6\"/>"
   },
   {
     "name": "text-cursor-input",
     "component": "TextCursorInputIcon",
     "category": "interface",
-    "svg": "<path d=\"M14 7h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-5\"/><path d=\"M6 7H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1\"/><path d=\"M10 4v16\"/><path d=\"M8 4h4\"/><path d=\"M8 20h4\"/>"
+    "svg": "<path d=\"M14 7h5a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-5\"/> <path d=\"M6 7H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1\"/> <path d=\"M10 4v16\"/> <path d=\"M8 4h4\"/> <path d=\"M8 20h4\"/>"
   },
   {
     "name": "form-input",
     "component": "FormInputIcon",
     "category": "interface",
-    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M7 9.5v5\"/>"
+    "svg": "<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M7 9.5v5\"/>"
   },
   {
     "name": "sun",
     "component": "SunIcon",
     "category": "interface",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2.25\"/><path d=\"M12 18.75V21\"/><path d=\"M3 12h2.25\"/><path d=\"M18.75 12H21\"/><path d=\"M5.64 5.64l1.6 1.6\"/><path d=\"M16.76 16.76l1.6 1.6\"/><path d=\"M18.36 5.64l-1.6 1.6\"/><path d=\"M7.24 16.76l-1.6 1.6\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"4\"/> <path d=\"M12 3v2.25\"/> <path d=\"M12 18.75V21\"/> <path d=\"M3 12h2.25\"/> <path d=\"M18.75 12H21\"/> <path d=\"M5.64 5.64l1.6 1.6\"/> <path d=\"M16.76 16.76l1.6 1.6\"/> <path d=\"M18.36 5.64l-1.6 1.6\"/> <path d=\"M7.24 16.76l-1.6 1.6\"/>"
   },
   {
     "name": "moon",
@@ -864,25 +864,25 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "contrast",
     "component": "ContrastIcon",
     "category": "interface",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 3a9 9 0 0 1 0 18z\" fill=\"currentColor\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 3a9 9 0 0 1 0 18z\" fill=\"currentColor\"/>"
   },
   {
     "name": "palette",
     "component": "PaletteIcon",
     "category": "interface",
-    "svg": "<path d=\"M12 21a9 9 0 1 1 9-9c0 2.5-2 4-4.5 4H15a2 2 0 0 0-1.5 3.3A1.5 1.5 0 0 1 12 21z\"/><rect x=\"5.75\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"8.25\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.25\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M12 21a9 9 0 1 1 9-9c0 2.5-2 4-4.5 4H15a2 2 0 0 0-1.5 3.3A1.5 1.5 0 0 1 12 21z\"/> <rect x=\"5.75\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"8.25\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.25\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "accessibility",
     "component": "AccessibilityIcon",
     "category": "interface",
-    "svg": "<circle cx=\"12\" cy=\"5\" r=\"2\"/><path d=\"M4 9h16\"/><path d=\"M12 9v5\"/><path d=\"M8 21l4-7 4 7\"/>"
+    "svg": "<circle cx=\"12\" cy=\"5\" r=\"2\"/> <path d=\"M4 9h16\"/> <path d=\"M12 9v5\"/> <path d=\"M8 21l4-7 4 7\"/>"
   },
   {
     "name": "languages",
     "component": "LanguagesIcon",
     "category": "interface",
-    "svg": "<path d=\"M3 5h9\"/><path d=\"M7.5 3v2\"/><path d=\"M5 5c1 3.5 3 6 6.5 8\"/><path d=\"M10 5c-1 3.5-3 6-6.5 8\"/><path d=\"M12 21l4.5-10 4.5 10\"/><path d=\"M13.5 18h6\"/>"
+    "svg": "<path d=\"M3 5h9\"/> <path d=\"M7.5 3v2\"/> <path d=\"M5 5c1 3.5 3 6 6.5 8\"/> <path d=\"M10 5c-1 3.5-3 6-6.5 8\"/> <path d=\"M12 21l4.5-10 4.5 10\"/> <path d=\"M13.5 18h6\"/>"
   },
   {
     "name": "message-square",
@@ -894,31 +894,31 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "message-square-text",
     "component": "MessageSquareTextIcon",
     "category": "communication",
-    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/><path d=\"M7 8h10\"/><path d=\"M7 12h6\"/>"
+    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/> <path d=\"M7 8h10\"/> <path d=\"M7 12h6\"/>"
   },
   {
     "name": "message-square-more",
     "component": "MessageSquareMoreIcon",
     "category": "communication",
-    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/><rect x=\"6.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"10.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"14.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/> <rect x=\"6.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"10.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"14.75\" y=\"8.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "message-square-plus",
     "component": "MessageSquarePlusIcon",
     "category": "communication",
-    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/><path d=\"M12 7v6\"/><path d=\"M9 10h6\"/>"
+    "svg": "<path d=\"M7 17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-8l-4 4z\"/> <path d=\"M12 7v6\"/> <path d=\"M9 10h6\"/>"
   },
   {
     "name": "messages-square",
     "component": "MessagesSquareIcon",
     "category": "communication",
-    "svg": "<path d=\"M17 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/><path d=\"M10 18H9a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-6l-3 3z\"/>"
+    "svg": "<path d=\"M17 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2\"/> <path d=\"M10 18H9a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-6l-3 3z\"/>"
   },
   {
     "name": "quote",
     "component": "QuoteIcon",
     "category": "communication",
-    "svg": "<path d=\"M4 6h5v5H4z\"/><path d=\"M9 11v1.5L6 15.5\"/><path d=\"M14 6h5v5h-5z\"/><path d=\"M19 11v1.5l-3 3\"/>"
+    "svg": "<path d=\"M4 6h5v5H4z\"/> <path d=\"M9 11v1.5L6 15.5\"/> <path d=\"M14 6h5v5h-5z\"/> <path d=\"M19 11v1.5l-3 3\"/>"
   },
   {
     "name": "message-circle",
@@ -930,73 +930,73 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "mail",
     "component": "MailIcon",
     "category": "communication",
-    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7.5l9 6 9-6\"/>"
+    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/> <path d=\"M3 7.5l9 6 9-6\"/>"
   },
   {
     "name": "mail-open",
     "component": "MailOpenIcon",
     "category": "communication",
-    "svg": "<path d=\"M3 10l9-6 9 6v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><path d=\"M3 10l9 6 9-6\"/>"
+    "svg": "<path d=\"M3 10l9-6 9 6v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <path d=\"M3 10l9 6 9-6\"/>"
   },
   {
     "name": "inbox",
     "component": "InboxIcon",
     "category": "communication",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 13h5l2 2h4l2-2h5\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/> <path d=\"M3 13h5l2 2h4l2-2h5\"/>"
   },
   {
     "name": "megaphone",
     "component": "MegaphoneIcon",
     "category": "communication",
-    "svg": "<path d=\"M4 9h3l10-5v16L7 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z\"/><path d=\"M7 9v6\"/><path d=\"M7 15v5h3v-4\"/><path d=\"M20.5 10v4\"/>"
+    "svg": "<path d=\"M4 9h3l10-5v16L7 15H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z\"/> <path d=\"M7 9v6\"/> <path d=\"M7 15v5h3v-4\"/> <path d=\"M20.5 10v4\"/>"
   },
   {
     "name": "globe",
     "component": "GlobeIcon",
     "category": "communication",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M3 12h18\"/> <path d=\"M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z\"/>"
   },
   {
     "name": "life-buoy",
     "component": "LifeBuoyIcon",
     "category": "communication",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M5.64 5.64l3.53 3.53\"/><path d=\"M18.36 5.64l-3.53 3.53\"/><path d=\"M5.64 18.36l3.53-3.53\"/><path d=\"M18.36 18.36l-3.53-3.53\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <circle cx=\"12\" cy=\"12\" r=\"4\"/> <path d=\"M5.64 5.64l3.53 3.53\"/> <path d=\"M18.36 5.64l-3.53 3.53\"/> <path d=\"M5.64 18.36l3.53-3.53\"/> <path d=\"M18.36 18.36l-3.53-3.53\"/>"
   },
   {
     "name": "user",
     "component": "UserIcon",
     "category": "people",
-    "svg": "<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1\"/>"
+    "svg": "<circle cx=\"12\" cy=\"8\" r=\"4\"/> <path d=\"M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1\"/>"
   },
   {
     "name": "users",
     "component": "UsersIcon",
     "category": "people",
-    "svg": "<circle cx=\"9.5\" cy=\"8\" r=\"4\"/><path d=\"M3 21v-1a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v1\"/><path d=\"M15.5 4.25a4 4 0 0 1 0 7.5\"/><path d=\"M18 15a3.5 3.5 0 0 1 3 3.5V21\"/>"
+    "svg": "<circle cx=\"9.5\" cy=\"8\" r=\"4\"/> <path d=\"M3 21v-1a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v1\"/> <path d=\"M15.5 4.25a4 4 0 0 1 0 7.5\"/> <path d=\"M18 15a3.5 3.5 0 0 1 3 3.5V21\"/>"
   },
   {
     "name": "user-plus",
     "component": "UserPlusIcon",
     "category": "people",
-    "svg": "<circle cx=\"9.5\" cy=\"8\" r=\"4\"/><path d=\"M3 21v-1a5.5 5.5 0 0 1 5.5-5.5h2a5.5 5.5 0 0 1 5.5 5.5v1\"/><path d=\"M18.5 7.5v5\"/><path d=\"M16 10h5\"/>"
+    "svg": "<circle cx=\"9.5\" cy=\"8\" r=\"4\"/> <path d=\"M3 21v-1a5.5 5.5 0 0 1 5.5-5.5h2a5.5 5.5 0 0 1 5.5 5.5v1\"/> <path d=\"M18.5 7.5v5\"/> <path d=\"M16 10h5\"/>"
   },
   {
     "name": "bot",
     "component": "BotIcon",
     "category": "people",
-    "svg": "<rect x=\"5\" y=\"8\" width=\"14\" height=\"12\" rx=\"2\"/><path d=\"M12 8V5\"/><rect x=\"10.75\" y=\"2.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M3 12.5v4\"/><path d=\"M21 12.5v4\"/><path d=\"M9.5 12.5v2\"/><path d=\"M14.5 12.5v2\"/>"
+    "svg": "<rect x=\"5\" y=\"8\" width=\"14\" height=\"12\" rx=\"2\"/> <path d=\"M12 8V5\"/> <rect x=\"10.75\" y=\"2.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <path d=\"M3 12.5v4\"/> <path d=\"M21 12.5v4\"/> <path d=\"M9.5 12.5v2\"/> <path d=\"M14.5 12.5v2\"/>"
   },
   {
     "name": "brain",
     "component": "BrainIcon",
     "category": "people",
-    "svg": "<path d=\"M12 5A2.5 2.5 0 0 0 7 6a2.5 2.5 0 0 0-2.5 4.5A2.5 2.5 0 0 0 5 15.5a2.5 2.5 0 0 0 3 4 2 2 0 0 0 4-.5\"/><path d=\"M12 5a2.5 2.5 0 0 1 5 1 2.5 2.5 0 0 1 2.5 4.5 2.5 2.5 0 0 1-.5 5 2.5 2.5 0 0 1-3 4 2 2 0 0 1-4-.5\"/><path d=\"M12 5v14\"/><path d=\"M4.5 10.5H8\"/><path d=\"M19.5 10.5H16\"/><path d=\"M5 15.5h3\"/><path d=\"M19 15.5h-3\"/>"
+    "svg": "<path d=\"M12 5A2.5 2.5 0 0 0 7 6a2.5 2.5 0 0 0-2.5 4.5A2.5 2.5 0 0 0 5 15.5a2.5 2.5 0 0 0 3 4 2 2 0 0 0 4-.5\"/> <path d=\"M12 5a2.5 2.5 0 0 1 5 1 2.5 2.5 0 0 1 2.5 4.5 2.5 2.5 0 0 1-.5 5 2.5 2.5 0 0 1-3 4 2 2 0 0 1-4-.5\"/> <path d=\"M12 5v14\"/> <path d=\"M4.5 10.5H8\"/> <path d=\"M19.5 10.5H16\"/> <path d=\"M5 15.5h3\"/> <path d=\"M19 15.5h-3\"/>"
   },
   {
     "name": "fingerprint",
     "component": "FingerprintIcon",
     "category": "people",
-    "svg": "<path d=\"M4 17v-5a8 8 0 0 1 14-5.3\"/><path d=\"M20 12v2\"/><path d=\"M7.5 20v-8a4.5 4.5 0 0 1 9 0v5\"/><path d=\"M12 12v9\"/>"
+    "svg": "<path d=\"M4 17v-5a8 8 0 0 1 14-5.3\"/> <path d=\"M20 12v2\"/> <path d=\"M7.5 20v-8a4.5 4.5 0 0 1 9 0v5\"/> <path d=\"M12 12v9\"/>"
   },
   {
     "name": "shield",
@@ -1008,85 +1008,85 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "shield-check",
     "component": "ShieldCheckIcon",
     "category": "security",
-    "svg": "<path d=\"M12 3l8 2.5V12c0 4.5-3.5 7.5-8 9-4.5-1.5-8-4.5-8-9V5.5z\"/><path d=\"M8.5 12l2.5 2.5 4.5-4.5\"/>"
+    "svg": "<path d=\"M12 3l8 2.5V12c0 4.5-3.5 7.5-8 9-4.5-1.5-8-4.5-8-9V5.5z\"/> <path d=\"M8.5 12l2.5 2.5 4.5-4.5\"/>"
   },
   {
     "name": "shield-off",
     "component": "ShieldOffIcon",
     "category": "security",
-    "svg": "<path d=\"M12 3l8 2.5V12c0 4.5-3.5 7.5-8 9-4.5-1.5-8-4.5-8-9V5.5z\"/><path d=\"M3 3l18 18\"/>"
+    "svg": "<path d=\"M12 3l8 2.5V12c0 4.5-3.5 7.5-8 9-4.5-1.5-8-4.5-8-9V5.5z\"/> <path d=\"M3 3l18 18\"/>"
   },
   {
     "name": "lock",
     "component": "LockIcon",
     "category": "security",
-    "svg": "<rect x=\"4\" y=\"10\" width=\"16\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/>"
+    "svg": "<rect x=\"4\" y=\"10\" width=\"16\" height=\"11\" rx=\"2\"/> <path d=\"M8 10V7a4 4 0 0 1 8 0v3\"/>"
   },
   {
     "name": "lock-open",
     "component": "LockOpenIcon",
     "category": "security",
-    "svg": "<rect x=\"4\" y=\"10\" width=\"16\" height=\"11\" rx=\"2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0\"/>"
+    "svg": "<rect x=\"4\" y=\"10\" width=\"16\" height=\"11\" rx=\"2\"/> <path d=\"M8 10V7a4 4 0 0 1 8 0\"/>"
   },
   {
     "name": "key",
     "component": "KeyIcon",
     "category": "security",
-    "svg": "<circle cx=\"7.5\" cy=\"16.5\" r=\"4.5\"/><path d=\"M10.68 13.32L20 4\"/><path d=\"M16.5 7.5l2.5 2.5\"/><path d=\"M14 10l2 2\"/>"
+    "svg": "<circle cx=\"7.5\" cy=\"16.5\" r=\"4.5\"/> <path d=\"M10.68 13.32L20 4\"/> <path d=\"M16.5 7.5l2.5 2.5\"/> <path d=\"M14 10l2 2\"/>"
   },
   {
     "name": "eye",
     "component": "EyeIcon",
     "category": "security",
-    "svg": "<path d=\"M2.5 12a10.2 10.2 0 0 1 19 0 10.2 10.2 0 0 1-19 0z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>"
+    "svg": "<path d=\"M2.5 12a10.2 10.2 0 0 1 19 0 10.2 10.2 0 0 1-19 0z\"/> <circle cx=\"12\" cy=\"12\" r=\"3\"/>"
   },
   {
     "name": "eye-off",
     "component": "EyeOffIcon",
     "category": "security",
-    "svg": "<path d=\"M2.5 12a10.2 10.2 0 0 1 19 0 10.2 10.2 0 0 1-19 0z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M4 4l16 16\"/>"
+    "svg": "<path d=\"M2.5 12a10.2 10.2 0 0 1 19 0 10.2 10.2 0 0 1-19 0z\"/> <circle cx=\"12\" cy=\"12\" r=\"3\"/> <path d=\"M4 4l16 16\"/>"
   },
   {
     "name": "file",
     "component": "FileIcon",
     "category": "files",
-    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/>"
+    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/> <path d=\"M14 3v6h6\"/>"
   },
   {
     "name": "file-text",
     "component": "FileTextIcon",
     "category": "files",
-    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/><path d=\"M8 13h8\"/><path d=\"M8 17h8\"/><path d=\"M8 9h2\"/>"
+    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/> <path d=\"M14 3v6h6\"/> <path d=\"M8 13h8\"/> <path d=\"M8 17h8\"/> <path d=\"M8 9h2\"/>"
   },
   {
     "name": "file-check",
     "component": "FileCheckIcon",
     "category": "files",
-    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/><path d=\"M8.5 15l2.5 2.5 4.5-4.5\"/>"
+    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/> <path d=\"M14 3v6h6\"/> <path d=\"M8.5 15l2.5 2.5 4.5-4.5\"/>"
   },
   {
     "name": "file-chart",
     "component": "FileChartIcon",
     "category": "files",
-    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/><path d=\"M8 18v-3\"/><path d=\"M12 18v-6\"/><path d=\"M16 18v-4\"/>"
+    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/> <path d=\"M14 3v6h6\"/> <path d=\"M8 18v-3\"/> <path d=\"M12 18v-6\"/> <path d=\"M16 18v-4\"/>"
   },
   {
     "name": "file-json",
     "component": "FileJsonIcon",
     "category": "files",
-    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/><path d=\"M10 12H9v2l-1 1 1 1v2h1\"/><path d=\"M14 12h1v2l1 1-1 1v2h-1\"/>"
+    "svg": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/> <path d=\"M14 3v6h6\"/> <path d=\"M10 12H9v2l-1 1 1 1v2h1\"/> <path d=\"M14 12h1v2l1 1-1 1v2h-1\"/>"
   },
   {
     "name": "file-search",
     "component": "FileSearchIcon",
     "category": "files",
-    "svg": "<path d=\"M20 11V9l-6-6H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4\"/><path d=\"M14 3v6h6\"/><circle cx=\"15\" cy=\"16\" r=\"3\"/><path d=\"M17.25 18.25l2.75 2.75\"/>"
+    "svg": "<path d=\"M20 11V9l-6-6H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4\"/> <path d=\"M14 3v6h6\"/> <circle cx=\"15\" cy=\"16\" r=\"3\"/> <path d=\"M17.25 18.25l2.75 2.75\"/>"
   },
   {
     "name": "file-pen",
     "component": "FilePenIcon",
     "category": "files",
-    "svg": "<path d=\"M20 11V9l-6-6H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4\"/><path d=\"M14 3v6h6\"/><path d=\"M13 21v-2.5l6-6 2.5 2.5-6 6z\"/>"
+    "svg": "<path d=\"M20 11V9l-6-6H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4\"/> <path d=\"M14 3v6h6\"/> <path d=\"M13 21v-2.5l6-6 2.5 2.5-6 6z\"/>"
   },
   {
     "name": "folder",
@@ -1098,151 +1098,151 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "folder-plus",
     "component": "FolderPlusIcon",
     "category": "files",
-    "svg": "<path d=\"M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><path d=\"M12 10v7\"/><path d=\"M8.5 13.5h7\"/>"
+    "svg": "<path d=\"M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <path d=\"M12 10v7\"/> <path d=\"M8.5 13.5h7\"/>"
   },
   {
     "name": "folder-kanban",
     "component": "FolderKanbanIcon",
     "category": "files",
-    "svg": "<path d=\"M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><path d=\"M8 10v5\"/><path d=\"M12 10v3\"/><path d=\"M16 10v7\"/>"
+    "svg": "<path d=\"M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <path d=\"M8 10v5\"/> <path d=\"M12 10v3\"/> <path d=\"M16 10v7\"/>"
   },
   {
     "name": "book-open",
     "component": "BookOpenIcon",
     "category": "files",
-    "svg": "<path d=\"M3 4h5a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H3z\"/><path d=\"M21 4h-5a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h6z\"/>"
+    "svg": "<path d=\"M3 4h5a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H3z\"/> <path d=\"M21 4h-5a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h6z\"/>"
   },
   {
     "name": "book-marked",
     "component": "BookMarkedIcon",
     "category": "files",
-    "svg": "<path d=\"M4 19V5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 1 0-4h14\"/><path d=\"M9 3v7l2.5-2.5L14 10V3\"/>"
+    "svg": "<path d=\"M4 19V5a2 2 0 0 1 2-2h14v18H6a2 2 0 0 1 0-4h14\"/> <path d=\"M9 3v7l2.5-2.5L14 10V3\"/>"
   },
   {
     "name": "library",
     "component": "LibraryIcon",
     "category": "files",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\"/><rect x=\"10\" y=\"3\" width=\"4\" height=\"18\" rx=\"1\"/><path d=\"M15.5 5.5l3-1 3.25 15.5-3 .75z\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"5\" height=\"18\" rx=\"1\"/> <rect x=\"10\" y=\"3\" width=\"4\" height=\"18\" rx=\"1\"/> <path d=\"M15.5 5.5l3-1 3.25 15.5-3 .75z\"/>"
   },
   {
     "name": "newspaper",
     "component": "NewspaperIcon",
     "category": "files",
-    "svg": "<path d=\"M7 17V4h13v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9h4\"/><path d=\"M10 8h7\"/><path d=\"M10 12h7\"/><path d=\"M10 16h4\"/>"
+    "svg": "<path d=\"M7 17V4h13v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9h4\"/> <path d=\"M10 8h7\"/> <path d=\"M10 12h7\"/> <path d=\"M10 16h4\"/>"
   },
   {
     "name": "scroll-text",
     "component": "ScrollTextIcon",
     "category": "files",
-    "svg": "<path d=\"M17 21H7a3 3 0 0 1-3-3v-1h10v1a3 3 0 0 0 6 0V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12\"/><path d=\"M10 8h6\"/><path d=\"M10 12h6\"/>"
+    "svg": "<path d=\"M17 21H7a3 3 0 0 1-3-3v-1h10v1a3 3 0 0 0 6 0V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v12\"/> <path d=\"M10 8h6\"/> <path d=\"M10 12h6\"/>"
   },
   {
     "name": "image",
     "component": "ImageIcon",
     "category": "media",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><rect x=\"6.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M21 15l-5-5L5 21\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <rect x=\"6.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <path d=\"M21 15l-5-5L5 21\"/>"
   },
   {
     "name": "image-plus",
     "component": "ImagePlusIcon",
     "category": "media",
-    "svg": "<path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7\"/><rect x=\"6.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M21 15l-5-5L5 21\"/><path d=\"M18 3v6\"/><path d=\"M15 6h6\"/>"
+    "svg": "<path d=\"M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7\"/> <rect x=\"6.75\" y=\"6.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <path d=\"M21 15l-5-5L5 21\"/> <path d=\"M18 3v6\"/> <path d=\"M15 6h6\"/>"
   },
   {
     "name": "camera",
     "component": "CameraIcon",
     "category": "media",
-    "svg": "<path d=\"M3 9a2 2 0 0 1 2-2h2l3-3h4l3 3h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><circle cx=\"12\" cy=\"13.5\" r=\"4\"/>"
+    "svg": "<path d=\"M3 9a2 2 0 0 1 2-2h2l3-3h4l3 3h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <circle cx=\"12\" cy=\"13.5\" r=\"4\"/>"
   },
   {
     "name": "mic",
     "component": "MicIcon",
     "category": "media",
-    "svg": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5.5 11a6.5 6.5 0 0 0 13 0\"/><path d=\"M12 17.5V21\"/>"
+    "svg": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"11\" rx=\"3\"/> <path d=\"M5.5 11a6.5 6.5 0 0 0 13 0\"/> <path d=\"M12 17.5V21\"/>"
   },
   {
     "name": "film",
     "component": "FilmIcon",
     "category": "media",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M7 3v18\"/><path d=\"M17 3v18\"/><path d=\"M3 12h18\"/><path d=\"M3 7.5h4\"/><path d=\"M3 16.5h4\"/><path d=\"M17 7.5h4\"/><path d=\"M17 16.5h4\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M7 3v18\"/> <path d=\"M17 3v18\"/> <path d=\"M3 12h18\"/> <path d=\"M3 7.5h4\"/> <path d=\"M3 16.5h4\"/> <path d=\"M17 7.5h4\"/> <path d=\"M17 16.5h4\"/>"
   },
   {
     "name": "clapperboard",
     "component": "ClapperboardIcon",
     "category": "media",
-    "svg": "<path d=\"M3 10h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/><path d=\"M3 10V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4\"/><path d=\"M9 4l-6 6\"/><path d=\"M15 4l-6 6\"/><path d=\"M21 4l-6 6\"/>"
+    "svg": "<path d=\"M3 10h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/> <path d=\"M3 10V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4\"/> <path d=\"M9 4l-6 6\"/> <path d=\"M15 4l-6 6\"/> <path d=\"M21 4l-6 6\"/>"
   },
   {
     "name": "monitor-play",
     "component": "MonitorPlayIcon",
     "category": "media",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M12 16v4\"/><path d=\"M8 20h8\"/><path d=\"M10.5 7.5v5l4-2.5z\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M12 16v4\"/> <path d=\"M8 20h8\"/> <path d=\"M10.5 7.5v5l4-2.5z\"/>"
   },
   {
     "name": "pen-tool",
     "component": "PenToolIcon",
     "category": "media",
-    "svg": "<path d=\"M3 21l3.5-10L13 6.5l4.5 4.5L13 17.5z\"/><path d=\"M3 21l6-6\"/><circle cx=\"10.5\" cy=\"13.5\" r=\"1.5\"/><path d=\"M13 6.5L16.5 3 21 7.5 17.5 11\"/>"
+    "svg": "<path d=\"M3 21l3.5-10L13 6.5l4.5 4.5L13 17.5z\"/> <path d=\"M3 21l6-6\"/> <circle cx=\"10.5\" cy=\"13.5\" r=\"1.5\"/> <path d=\"M13 6.5L16.5 3 21 7.5 17.5 11\"/>"
   },
   {
     "name": "ruler",
     "component": "RulerIcon",
     "category": "media",
-    "svg": "<path d=\"M3 16L16 3l5 5L8 21z\"/><path d=\"M6.5 12.5l2 2\"/><path d=\"M9.5 9.5l2.5 2.5\"/><path d=\"M12.5 6.5l2 2\"/>"
+    "svg": "<path d=\"M3 16L16 3l5 5L8 21z\"/> <path d=\"M6.5 12.5l2 2\"/> <path d=\"M9.5 9.5l2.5 2.5\"/> <path d=\"M12.5 6.5l2 2\"/>"
   },
   {
     "name": "monitor",
     "component": "MonitorIcon",
     "category": "devices",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M12 16v4\"/><path d=\"M8 20h8\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M12 16v4\"/> <path d=\"M8 20h8\"/>"
   },
   {
     "name": "monitor-off",
     "component": "MonitorOffIcon",
     "category": "devices",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/><path d=\"M12 16v4\"/><path d=\"M8 20h8\"/><path d=\"M4 3l16 16\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"12\" rx=\"2\"/> <path d=\"M12 16v4\"/> <path d=\"M8 20h8\"/> <path d=\"M4 3l16 16\"/>"
   },
   {
     "name": "smartphone",
     "component": "SmartphoneIcon",
     "category": "devices",
-    "svg": "<rect x=\"6\" y=\"3\" width=\"12\" height=\"18\" rx=\"2\"/><path d=\"M11 17.5h2\"/>"
+    "svg": "<rect x=\"6\" y=\"3\" width=\"12\" height=\"18\" rx=\"2\"/> <path d=\"M11 17.5h2\"/>"
   },
   {
     "name": "tablet",
     "component": "TabletIcon",
     "category": "devices",
-    "svg": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/><path d=\"M11 17.5h2\"/>"
+    "svg": "<rect x=\"4\" y=\"3\" width=\"16\" height=\"18\" rx=\"2\"/> <path d=\"M11 17.5h2\"/>"
   },
   {
     "name": "server",
     "component": "ServerIcon",
     "category": "devices",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"8\" rx=\"2\"/><rect x=\"3\" y=\"13\" width=\"18\" height=\"8\" rx=\"2\"/><rect x=\"5.75\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"5.75\" y=\"15.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"8\" rx=\"2\"/> <rect x=\"3\" y=\"13\" width=\"18\" height=\"8\" rx=\"2\"/> <rect x=\"5.75\" y=\"5.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"5.75\" y=\"15.75\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "database",
     "component": "DatabaseIcon",
     "category": "devices",
-    "svg": "<ellipse cx=\"12\" cy=\"5.5\" rx=\"8\" ry=\"2.5\"/><path d=\"M4 5.5v13a8 2.5 0 0 0 16 0v-13\"/><path d=\"M4 12a8 2.5 0 0 0 16 0\"/>"
+    "svg": "<ellipse cx=\"12\" cy=\"5.5\" rx=\"8\" ry=\"2.5\"/> <path d=\"M4 5.5v13a8 2.5 0 0 0 16 0v-13\"/> <path d=\"M4 12a8 2.5 0 0 0 16 0\"/>"
   },
   {
     "name": "chart-bar",
     "component": "ChartBarIcon",
     "category": "data",
-    "svg": "<path d=\"M3 3v18h18\"/><path d=\"M8 17v-5\"/><path d=\"M13 17V7\"/><path d=\"M18 17V9\"/>"
+    "svg": "<path d=\"M3 3v18h18\"/> <path d=\"M8 17v-5\"/> <path d=\"M13 17V7\"/> <path d=\"M18 17V9\"/>"
   },
   {
     "name": "chart-column",
     "component": "ChartColumnIcon",
     "category": "data",
-    "svg": "<path d=\"M6 20v-6\"/><path d=\"M12 20V4\"/><path d=\"M18 20v-9\"/>"
+    "svg": "<path d=\"M6 20v-6\"/> <path d=\"M12 20V4\"/> <path d=\"M18 20v-9\"/>"
   },
   {
     "name": "chart-line",
     "component": "ChartLineIcon",
     "category": "data",
-    "svg": "<path d=\"M3 3v18h18\"/><path d=\"M7 15l4-4 3 3 6-6\"/>"
+    "svg": "<path d=\"M3 3v18h18\"/> <path d=\"M7 15l4-4 3 3 6-6\"/>"
   },
   {
     "name": "activity",
@@ -1254,79 +1254,79 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "target",
     "component": "TargetIcon",
     "category": "data",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5.5\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <circle cx=\"12\" cy=\"12\" r=\"5.5\"/> <circle cx=\"12\" cy=\"12\" r=\"2\"/>"
   },
   {
     "name": "terminal",
     "component": "TerminalIcon",
     "category": "development",
-    "svg": "<path d=\"M4 17l5-5-5-5\"/><path d=\"M12 19h8\"/>"
+    "svg": "<path d=\"M4 17l5-5-5-5\"/> <path d=\"M12 19h8\"/>"
   },
   {
     "name": "square-terminal",
     "component": "SquareTerminalIcon",
     "category": "development",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M7 9l3 3-3 3\"/><path d=\"M12 15h5\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/> <path d=\"M7 9l3 3-3 3\"/> <path d=\"M12 15h5\"/>"
   },
   {
     "name": "code",
     "component": "CodeIcon",
     "category": "development",
-    "svg": "<path d=\"M15 7l5 5-5 5\"/><path d=\"M9 7l-5 5 5 5\"/>"
+    "svg": "<path d=\"M15 7l5 5-5 5\"/> <path d=\"M9 7l-5 5 5 5\"/>"
   },
   {
     "name": "git-branch",
     "component": "GitBranchIcon",
     "category": "development",
-    "svg": "<path d=\"M6 3v12.5\"/><circle cx=\"6\" cy=\"18\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><path d=\"M18 8.5A9.5 9.5 0 0 1 8.5 18\"/>"
+    "svg": "<path d=\"M6 3v12.5\"/> <circle cx=\"6\" cy=\"18\" r=\"2.5\"/> <circle cx=\"18\" cy=\"6\" r=\"2.5\"/> <path d=\"M18 8.5A9.5 9.5 0 0 1 8.5 18\"/>"
   },
   {
     "name": "git-pull-request",
     "component": "GitPullRequestIcon",
     "category": "development",
-    "svg": "<circle cx=\"6\" cy=\"6\" r=\"2.5\"/><circle cx=\"6\" cy=\"18\" r=\"2.5\"/><circle cx=\"18\" cy=\"18\" r=\"2.5\"/><path d=\"M6 8.5v7\"/><path d=\"M18 15.5V9a3 3 0 0 0-3-3h-4.5\"/><path d=\"M13 3.5L10.5 6 13 8.5\"/>"
+    "svg": "<circle cx=\"6\" cy=\"6\" r=\"2.5\"/> <circle cx=\"6\" cy=\"18\" r=\"2.5\"/> <circle cx=\"18\" cy=\"18\" r=\"2.5\"/> <path d=\"M6 8.5v7\"/> <path d=\"M18 15.5V9a3 3 0 0 0-3-3h-4.5\"/> <path d=\"M13 3.5L10.5 6 13 8.5\"/>"
   },
   {
     "name": "workflow",
     "component": "WorkflowIcon",
     "category": "development",
-    "svg": "<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/><path d=\"M6.5 10v7.5H14\"/>"
+    "svg": "<rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/> <rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/> <path d=\"M6.5 10v7.5H14\"/>"
   },
   {
     "name": "network",
     "component": "NetworkIcon",
     "category": "development",
-    "svg": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"5\" rx=\"1\"/><rect x=\"3\" y=\"16\" width=\"6\" height=\"5\" rx=\"1\"/><rect x=\"15\" y=\"16\" width=\"6\" height=\"5\" rx=\"1\"/><path d=\"M12 8v4\"/><path d=\"M6 16v-4h12v4\"/>"
+    "svg": "<rect x=\"9\" y=\"3\" width=\"6\" height=\"5\" rx=\"1\"/> <rect x=\"3\" y=\"16\" width=\"6\" height=\"5\" rx=\"1\"/> <rect x=\"15\" y=\"16\" width=\"6\" height=\"5\" rx=\"1\"/> <path d=\"M12 8v4\"/> <path d=\"M6 16v-4h12v4\"/>"
   },
   {
     "name": "route",
     "component": "RouteIcon",
     "category": "development",
-    "svg": "<circle cx=\"6\" cy=\"18\" r=\"2.5\"/><circle cx=\"18\" cy=\"6\" r=\"2.5\"/><path d=\"M8.5 18H16a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h7.5\"/>"
+    "svg": "<circle cx=\"6\" cy=\"18\" r=\"2.5\"/> <circle cx=\"18\" cy=\"6\" r=\"2.5\"/> <path d=\"M8.5 18H16a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h7.5\"/>"
   },
   {
     "name": "plug",
     "component": "PlugIcon",
     "category": "development",
-    "svg": "<path d=\"M9 3v5\"/><path d=\"M15 3v5\"/><path d=\"M6 8h12v4a6 6 0 0 1-12 0z\"/><path d=\"M12 18v3\"/>"
+    "svg": "<path d=\"M9 3v5\"/> <path d=\"M15 3v5\"/> <path d=\"M6 8h12v4a6 6 0 0 1-12 0z\"/> <path d=\"M12 18v3\"/>"
   },
   {
     "name": "bug",
     "component": "BugIcon",
     "category": "development",
-    "svg": "<rect x=\"8\" y=\"7\" width=\"8\" height=\"13\" rx=\"4\"/><path d=\"M9.5 7a2.5 2.5 0 0 1 5 0\"/><path d=\"M12 12v8\"/><path d=\"M8 10L5 7\"/><path d=\"M16 10l3-3\"/><path d=\"M8 14H4\"/><path d=\"M16 14h4\"/><path d=\"M8.5 18L5.5 21\"/><path d=\"M15.5 18l3 3\"/>"
+    "svg": "<rect x=\"8\" y=\"7\" width=\"8\" height=\"13\" rx=\"4\"/> <path d=\"M9.5 7a2.5 2.5 0 0 1 5 0\"/> <path d=\"M12 12v8\"/> <path d=\"M8 10L5 7\"/> <path d=\"M16 10l3-3\"/> <path d=\"M8 14H4\"/> <path d=\"M16 14h4\"/> <path d=\"M8.5 18L5.5 21\"/> <path d=\"M15.5 18l3 3\"/>"
   },
   {
     "name": "package",
     "component": "PackageIcon",
     "category": "development",
-    "svg": "<path d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9z\"/><path d=\"M4 7.5l8 4.5 8-4.5\"/><path d=\"M12 12v9\"/><path d=\"M8 5.25l8 4.5\"/>"
+    "svg": "<path d=\"M12 3l8 4.5v9L12 21l-8-4.5v-9z\"/> <path d=\"M4 7.5l8 4.5 8-4.5\"/> <path d=\"M12 12v9\"/> <path d=\"M8 5.25l8 4.5\"/>"
   },
   {
     "name": "flask",
     "component": "FlaskIcon",
     "category": "development",
-    "svg": "<path d=\"M9 3h6\"/><path d=\"M10 3v6l-6 6v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4l-6-6V3\"/><path d=\"M4 15h16\"/>"
+    "svg": "<path d=\"M9 3h6\"/> <path d=\"M10 3v6l-6 6v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4l-6-6V3\"/> <path d=\"M4 15h16\"/>"
   },
   {
     "name": "wrench",
@@ -1338,7 +1338,7 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "rocket",
     "component": "RocketIcon",
     "category": "development",
-    "svg": "<path d=\"M8 13l7-7c1.5-1.5 3.5-2 5-2 0 1.5-.5 3.5-2 5l-7 7z\"/><path d=\"M9.5 11.5H5l3-3h4\"/><path d=\"M12.5 14.5V19l3-3v-4\"/><path d=\"M7 17l-3 3\"/><circle cx=\"15.5\" cy=\"8.5\" r=\"1.5\"/>"
+    "svg": "<path d=\"M8 13l7-7c1.5-1.5 3.5-2 5-2 0 1.5-.5 3.5-2 5l-7 7z\"/> <path d=\"M9.5 11.5H5l3-3h4\"/> <path d=\"M12.5 14.5V19l3-3v-4\"/> <path d=\"M7 17l-3 3\"/> <circle cx=\"15.5\" cy=\"8.5\" r=\"1.5\"/>"
   },
   {
     "name": "zap",
@@ -1350,61 +1350,61 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "home",
     "component": "HomeIcon",
     "category": "objects",
-    "svg": "<path d=\"M3 12l9-9 9 9\"/><path d=\"M5 10v11h14V10\"/><path d=\"M10 21v-6h4v6\"/>"
+    "svg": "<path d=\"M3 12l9-9 9 9\"/> <path d=\"M5 10v11h14V10\"/> <path d=\"M10 21v-6h4v6\"/>"
   },
   {
     "name": "building",
     "component": "BuildingIcon",
     "category": "objects",
-    "svg": "<path d=\"M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16\"/><path d=\"M3 21h18\"/><rect x=\"8.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"8.25\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"13.25\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M10 21v-4.5h4V21\"/>"
+    "svg": "<path d=\"M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16\"/> <path d=\"M3 21h18\"/> <rect x=\"8.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.25\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"8.25\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"13.25\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <path d=\"M10 21v-4.5h4V21\"/>"
   },
   {
     "name": "buildings",
     "component": "BuildingsIcon",
     "category": "objects",
-    "svg": "<path d=\"M3 21h18\"/><path d=\"M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16\"/><path d=\"M15 10h3a2 2 0 0 1 2 2v9\"/><rect x=\"7.75\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"7.75\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/><rect x=\"7.75\" y=\"14.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
+    "svg": "<path d=\"M3 21h18\"/> <path d=\"M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16\"/> <path d=\"M15 10h3a2 2 0 0 1 2 2v9\"/> <rect x=\"7.75\" y=\"6.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"7.75\" y=\"10.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/> <rect x=\"7.75\" y=\"14.25\" width=\"2.5\" height=\"2.5\" fill=\"currentColor\" stroke=\"none\"/>"
   },
   {
     "name": "store",
     "component": "StoreIcon",
     "category": "objects",
-    "svg": "<path d=\"M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"/><path d=\"M3 8V7l2-4h14l2 4v1a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z\"/><path d=\"M10 21v-5h4v5\"/>"
+    "svg": "<path d=\"M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8\"/> <path d=\"M3 8V7l2-4h14l2 4v1a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z\"/> <path d=\"M10 21v-5h4v5\"/>"
   },
   {
     "name": "map-pin",
     "component": "MapPinIcon",
     "category": "objects",
-    "svg": "<path d=\"M12 19.3l-4.77-4.78a6.75 6.75 0 1 1 9.54 0z\"/><circle cx=\"12\" cy=\"9.75\" r=\"2.5\"/>"
+    "svg": "<path d=\"M12 19.3l-4.77-4.78a6.75 6.75 0 1 1 9.54 0z\"/> <circle cx=\"12\" cy=\"9.75\" r=\"2.5\"/>"
   },
   {
     "name": "compass",
     "component": "CompassIcon",
     "category": "objects",
-    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M16 8l-2 6-6 2 2-6z\"/>"
+    "svg": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M16 8l-2 6-6 2 2-6z\"/>"
   },
   {
     "name": "scale",
     "component": "ScaleIcon",
     "category": "objects",
-    "svg": "<path d=\"M12 4v17\"/><path d=\"M8 21h8\"/><path d=\"M5 7h14\"/><path d=\"M5 7l-2.5 6h5z\"/><path d=\"M19 7l-2.5 6h5z\"/><path d=\"M2.5 13a2.5 2.5 0 0 0 5 0\"/><path d=\"M16.5 13a2.5 2.5 0 0 0 5 0\"/>"
+    "svg": "<path d=\"M12 4v17\"/> <path d=\"M8 21h8\"/> <path d=\"M5 7h14\"/> <path d=\"M5 7l-2.5 6h5z\"/> <path d=\"M19 7l-2.5 6h5z\"/> <path d=\"M2.5 13a2.5 2.5 0 0 0 5 0\"/> <path d=\"M16.5 13a2.5 2.5 0 0 0 5 0\"/>"
   },
   {
     "name": "brick-wall",
     "component": "BrickWallIcon",
     "category": "objects",
-    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/><path d=\"M3 9.5h18\"/><path d=\"M3 14.5h18\"/><path d=\"M12 4v5.5\"/><path d=\"M8 9.5v5\"/><path d=\"M16 9.5v5\"/><path d=\"M12 14.5V20\"/>"
+    "svg": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/> <path d=\"M3 9.5h18\"/> <path d=\"M3 14.5h18\"/> <path d=\"M12 4v5.5\"/> <path d=\"M8 9.5v5\"/> <path d=\"M16 9.5v5\"/> <path d=\"M12 14.5V20\"/>"
   },
   {
     "name": "lightbulb",
     "component": "LightbulbIcon",
     "category": "objects",
-    "svg": "<path d=\"M9 18v-2.73A6.5 6.5 0 1 1 15 15.27V18z\"/><path d=\"M10 21h4\"/>"
+    "svg": "<path d=\"M9 18v-2.73A6.5 6.5 0 1 1 15 15.27V18z\"/> <path d=\"M10 21h4\"/>"
   },
   {
     "name": "gift",
     "component": "GiftIcon",
     "category": "objects",
-    "svg": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"4\" rx=\"1\"/><path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7\"/><path d=\"M12 8v13\"/><path d=\"M12 8H8.5a2 2 0 0 1 0-4c2.5 0 3.5 4 3.5 4z\"/><path d=\"M12 8h3.5a2 2 0 0 0 0-4c-2.5 0-3.5 4-3.5 4z\"/>"
+    "svg": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"4\" rx=\"1\"/> <path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7\"/> <path d=\"M12 8v13\"/> <path d=\"M12 8H8.5a2 2 0 0 1 0-4c2.5 0 3.5 4 3.5 4z\"/> <path d=\"M12 8h3.5a2 2 0 0 0 0-4c-2.5 0-3.5 4-3.5 4z\"/>"
   },
   {
     "name": "flame",
@@ -1416,37 +1416,37 @@ export const GALLERY_ICONS: GalleryIcon[] = [
     "name": "credit-card",
     "component": "CreditCardIcon",
     "category": "commerce",
-    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 10h18\"/><path d=\"M7 15h3\"/>"
+    "svg": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/> <path d=\"M3 10h18\"/> <path d=\"M7 15h3\"/>"
   },
   {
     "name": "shopping-cart",
     "component": "ShoppingCartIcon",
     "category": "commerce",
-    "svg": "<path d=\"M3 4h2.5l2 11h10.5l2.5-8H6.3\"/><circle cx=\"9\" cy=\"19.5\" r=\"1.5\"/><circle cx=\"17\" cy=\"19.5\" r=\"1.5\"/>"
+    "svg": "<path d=\"M3 4h2.5l2 11h10.5l2.5-8H6.3\"/> <circle cx=\"9\" cy=\"19.5\" r=\"1.5\"/> <circle cx=\"17\" cy=\"19.5\" r=\"1.5\"/>"
   },
   {
     "name": "shopping-bag",
     "component": "ShoppingBagIcon",
     "category": "commerce",
-    "svg": "<path d=\"M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z\"/><path d=\"M9 10V7a3 3 0 0 1 6 0v3\"/>"
+    "svg": "<path d=\"M5 7h14v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z\"/> <path d=\"M9 10V7a3 3 0 0 1 6 0v3\"/>"
   },
   {
     "name": "receipt",
     "component": "ReceiptIcon",
     "category": "commerce",
-    "svg": "<path d=\"M5 21V3h14v16l-2 2-2-2-2 2-2-2-2 2-2-2z\"/><path d=\"M9 8h6\"/><path d=\"M9 12h6\"/>"
+    "svg": "<path d=\"M5 21V3h14v16l-2 2-2-2-2 2-2-2-2 2-2-2z\"/> <path d=\"M9 8h6\"/> <path d=\"M9 12h6\"/>"
   },
   {
     "name": "coins",
     "component": "CoinsIcon",
     "category": "commerce",
-    "svg": "<circle cx=\"9\" cy=\"9\" r=\"6\"/><path d=\"M15 9a6 6 0 1 1-6 6\"/>"
+    "svg": "<circle cx=\"9\" cy=\"9\" r=\"6\"/> <path d=\"M15 9a6 6 0 1 1-6 6\"/>"
   },
   {
     "name": "truck",
     "component": "TruckIcon",
     "category": "commerce",
-    "svg": "<path d=\"M5 17.5H3V5h11v12.5\"/><path d=\"M9 17.5h6\"/><path d=\"M14 9h4l3 3v5.5h-2\"/><circle cx=\"7\" cy=\"17.5\" r=\"2\"/><circle cx=\"17\" cy=\"17.5\" r=\"2\"/>"
+    "svg": "<path d=\"M5 17.5H3V5h11v12.5\"/> <path d=\"M9 17.5h6\"/> <path d=\"M14 9h4l3 3v5.5h-2\"/> <circle cx=\"7\" cy=\"17.5\" r=\"2\"/> <circle cx=\"17\" cy=\"17.5\" r=\"2\"/>"
   }
 ];
 
@@ -1497,8 +1497,8 @@ export const GALLERY_BRANDS: GalleryBrand[] = [
     "name": "cline",
     "title": "Cline",
     "component": "ClineLogo",
-    "color": "<path d=\"M17.035 3.991c2.75 0 4.98 2.24 4.98 5.003v1.667l1.45 2.896a1.01 1.01 0 01-.002.909l-1.448 2.864v1.668c0 2.762-2.23 5.002-4.98 5.002H7.074c-2.751 0-4.98-2.24-4.98-5.002V17.33l-1.48-2.855a1.01 1.01 0 01-.003-.927l1.482-2.887V8.994c0-2.763 2.23-5.003 4.98-5.003h9.962zM8.265 9.6a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 004.547 0v-4.042A2.274 2.274 0 008.265 9.6zm7.326 0a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 104.548 0v-4.042A2.274 2.274 0 0015.59 9.6z\" fill-rule=\"evenodd\" fill=\"#000000\"/><path d=\"M12.054 5.558a2.779 2.779 0 100-5.558 2.779 2.779 0 000 5.558z\" fill-rule=\"evenodd\" fill=\"#000000\"/>",
-    "mono": "<path d=\"M17.035 3.991c2.75 0 4.98 2.24 4.98 5.003v1.667l1.45 2.896a1.01 1.01 0 01-.002.909l-1.448 2.864v1.668c0 2.762-2.23 5.002-4.98 5.002H7.074c-2.751 0-4.98-2.24-4.98-5.002V17.33l-1.48-2.855a1.01 1.01 0 01-.003-.927l1.482-2.887V8.994c0-2.763 2.23-5.003 4.98-5.003h9.962zM8.265 9.6a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 004.547 0v-4.042A2.274 2.274 0 008.265 9.6zm7.326 0a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 104.548 0v-4.042A2.274 2.274 0 0015.59 9.6z\" fill-rule=\"evenodd\"/><path d=\"M12.054 5.558a2.779 2.779 0 100-5.558 2.779 2.779 0 000 5.558z\" fill-rule=\"evenodd\"/>"
+    "color": "<path d=\"M17.035 3.991c2.75 0 4.98 2.24 4.98 5.003v1.667l1.45 2.896a1.01 1.01 0 01-.002.909l-1.448 2.864v1.668c0 2.762-2.23 5.002-4.98 5.002H7.074c-2.751 0-4.98-2.24-4.98-5.002V17.33l-1.48-2.855a1.01 1.01 0 01-.003-.927l1.482-2.887V8.994c0-2.763 2.23-5.003 4.98-5.003h9.962zM8.265 9.6a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 004.547 0v-4.042A2.274 2.274 0 008.265 9.6zm7.326 0a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 104.548 0v-4.042A2.274 2.274 0 0015.59 9.6z\" fill-rule=\"evenodd\" fill=\"#000000\"/> <path d=\"M12.054 5.558a2.779 2.779 0 100-5.558 2.779 2.779 0 000 5.558z\" fill-rule=\"evenodd\" fill=\"#000000\"/>",
+    "mono": "<path d=\"M17.035 3.991c2.75 0 4.98 2.24 4.98 5.003v1.667l1.45 2.896a1.01 1.01 0 01-.002.909l-1.448 2.864v1.668c0 2.762-2.23 5.002-4.98 5.002H7.074c-2.751 0-4.98-2.24-4.98-5.002V17.33l-1.48-2.855a1.01 1.01 0 01-.003-.927l1.482-2.887V8.994c0-2.763 2.23-5.003 4.98-5.003h9.962zM8.265 9.6a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 004.547 0v-4.042A2.274 2.274 0 008.265 9.6zm7.326 0a2.274 2.274 0 00-2.274 2.274v4.042a2.274 2.274 0 104.548 0v-4.042A2.274 2.274 0 0015.59 9.6z\" fill-rule=\"evenodd\"/> <path d=\"M12.054 5.558a2.779 2.779 0 100-5.558 2.779 2.779 0 000 5.558z\" fill-rule=\"evenodd\"/>"
   },
   {
     "name": "windsurf",
@@ -1532,7 +1532,7 @@ export const GALLERY_BRANDS: GalleryBrand[] = [
     "name": "mistral",
     "title": "Mistral",
     "component": "MistralLogo",
-    "color": "<path d=\"M3.428 3.4h3.429v3.428H3.428V3.4zm13.714 0h3.43v3.428h-3.43V3.4z\" fill=\"#FFD700\"/><path d=\"M3.428 6.828h6.857v3.429H3.429V6.828zm10.286 0h6.857v3.429h-6.857V6.828z\" fill=\"#FFAF00\"/><path d=\"M3.428 10.258h17.144v3.428H3.428v-3.428z\" fill=\"#FF8205\"/><path d=\"M3.428 13.686h3.429v3.428H3.428v-3.428zm6.858 0h3.429v3.428h-3.429v-3.428zm6.856 0h3.43v3.428h-3.43v-3.428z\" fill=\"#FA500F\"/><path d=\"M0 17.114h10.286v3.429H0v-3.429zm13.714 0H24v3.429H13.714v-3.429z\" fill=\"#E10500\"/>",
+    "color": "<path d=\"M3.428 3.4h3.429v3.428H3.428V3.4zm13.714 0h3.43v3.428h-3.43V3.4z\" fill=\"#FFD700\"/> <path d=\"M3.428 6.828h6.857v3.429H3.429V6.828zm10.286 0h6.857v3.429h-6.857V6.828z\" fill=\"#FFAF00\"/> <path d=\"M3.428 10.258h17.144v3.428H3.428v-3.428z\" fill=\"#FF8205\"/> <path d=\"M3.428 13.686h3.429v3.428H3.428v-3.428zm6.858 0h3.429v3.428h-3.429v-3.428zm6.856 0h3.43v3.428h-3.43v-3.428z\" fill=\"#FA500F\"/> <path d=\"M0 17.114h10.286v3.429H0v-3.429zm13.714 0H24v3.429H13.714v-3.429z\" fill=\"#E10500\"/>",
     "mono": "<path d=\"M3.428 3.4h3.429v3.428h3.429v3.429h-.002 3.431V6.828h3.427V3.4h3.43v13.714H24v3.429H13.714v-3.428h-3.428v-3.429h-3.43v3.428h3.43v3.429H0v-3.429h3.428V3.4zm10.286 13.715h3.428v-3.429h-3.427v3.429z\" fill-rule=\"evenodd\" clip-rule=\"evenodd\"/>"
   },
   {
@@ -1581,7 +1581,7 @@ export const GALLERY_BRANDS: GalleryBrand[] = [
     "name": "kiro",
     "title": "Kiro",
     "component": "KiroLogo",
-    "color": "<path d=\"M18.8 0H5.2A5.2 5.2 0 000 5.2v13.6A5.2 5.2 0 005.2 24h13.6a5.2 5.2 0 005.2-5.2V5.2A5.2 5.2 0 0018.8 0z\" fill=\"#9046FF\"/><path d=\"M7.97 16.376c-1.644 3.642 1.86 4.556 4.443 2.424.76 2.39 3.608.607 4.631-1.247 2.251-4.084 1.342-8.249 1.108-9.108-1.6-5.859-9.6-5.869-10.976.03-.323 1.033-.328 2.206-.507 3.423-.09.617-.16 1.009-.393 1.655-.139.373-.323.7-.62 1.257-.458.865-.264 2.53 2.101 1.665l.224-.1h-.01l-.001.001z\" fill=\"#FFFFFF\"/><path d=\"M12.722 10.985c-.656 0-.755-.785-.755-1.252 0-.423.074-.756.218-.97a.61.61 0 01.537-.283c.229 0 .428.095.567.289.159.218.243.55.243.964 0 .785-.303 1.252-.805 1.252h-.005zm2.703 0c-.656 0-.755-.785-.755-1.252 0-.423.074-.756.219-.97a.61.61 0 01.536-.283c.229 0 .428.095.567.289.159.218.243.55.243.964 0 .785-.303 1.252-.805 1.252h-.005z\" fill=\"#000000\"/>",
+    "color": "<path d=\"M18.8 0H5.2A5.2 5.2 0 000 5.2v13.6A5.2 5.2 0 005.2 24h13.6a5.2 5.2 0 005.2-5.2V5.2A5.2 5.2 0 0018.8 0z\" fill=\"#9046FF\"/> <path d=\"M7.97 16.376c-1.644 3.642 1.86 4.556 4.443 2.424.76 2.39 3.608.607 4.631-1.247 2.251-4.084 1.342-8.249 1.108-9.108-1.6-5.859-9.6-5.869-10.976.03-.323 1.033-.328 2.206-.507 3.423-.09.617-.16 1.009-.393 1.655-.139.373-.323.7-.62 1.257-.458.865-.264 2.53 2.101 1.665l.224-.1h-.01l-.001.001z\" fill=\"#FFFFFF\"/> <path d=\"M12.722 10.985c-.656 0-.755-.785-.755-1.252 0-.423.074-.756.218-.97a.61.61 0 01.537-.283c.229 0 .428.095.567.289.159.218.243.55.243.964 0 .785-.303 1.252-.805 1.252h-.005zm2.703 0c-.656 0-.755-.785-.755-1.252 0-.423.074-.756.219-.97a.61.61 0 01.536-.283c.229 0 .428.095.567.289.159.218.243.55.243.964 0 .785-.303 1.252-.805 1.252h-.005z\" fill=\"#000000\"/>",
     "mono": "<path d=\"M4.594 6.677C6.67-2.226 18.746-2.211 21.16 6.632c.353 1.297 1.725 7.582-1.673 13.747-1.545 2.797-5.841 5.49-6.99 1.883C8.6 25.477 3.315 24.1 5.789 18.609l-.318.143c-3.57 1.305-3.863-1.208-3.173-2.513.45-.84.727-1.335.937-1.897.353-.975.458-1.568.593-2.498.27-1.837.277-3.607.765-5.167zm8.37.01a.92.92 0 00-.81.428c-.217.323-.33.825-.33 1.462 0 .705.15 1.89 1.14 1.89h.008c.757 0 1.214-.705 1.214-1.89 0-.622-.127-1.125-.367-1.455a1.014 1.014 0 00-.855-.435zm4.08 0a.92.92 0 00-.81.428c-.217.323-.33.825-.33 1.462 0 .705.15 1.89 1.14 1.89h.008c.757 0 1.215-.705 1.215-1.89 0-.622-.128-1.125-.368-1.455a1.014 1.014 0 00-.855-.435z\" fill-rule=\"evenodd\"/>"
   },
   {
@@ -1609,15 +1609,15 @@ export const GALLERY_BRANDS: GalleryBrand[] = [
     "name": "amp",
     "title": "Amp",
     "component": "AmpLogo",
-    "color": "<path d=\"M15.087 23.18L12.03 24l-2.097-7.823-5.738 5.738-2.251-2.251 5.718-5.719-7.769-2.082.82-3.057 11.294 3.08 3.08 11.295z\" fill=\"#F34E3F\"/><path d=\"M19.505 18.762l-3.057.82-2.564-9.573-9.572-2.564.819-3.057 11.295 3.079 3.08 11.295z\" fill=\"#F34E3F\"/><path d=\"M23.893 14.374l-3.057.82-2.565-9.572L8.7 3.057 9.52 0l11.295 3.08 3.079 11.294z\" fill=\"#F34E3F\"/>",
-    "mono": "<path d=\"M15.087 23.18L12.03 24l-2.097-7.823-5.738 5.738-2.251-2.251 5.718-5.719-7.769-2.082.82-3.057 11.294 3.08 3.08 11.295z\" fill-rule=\"evenodd\"/><path d=\"M19.505 18.762l-3.057.82-2.564-9.573-9.572-2.564.819-3.057 11.295 3.079 3.08 11.295z\" fill-rule=\"evenodd\"/><path d=\"M23.893 14.374l-3.057.82-2.565-9.572L8.7 3.057 9.52 0l11.295 3.08 3.079 11.294z\" fill-rule=\"evenodd\"/>"
+    "color": "<path d=\"M15.087 23.18L12.03 24l-2.097-7.823-5.738 5.738-2.251-2.251 5.718-5.719-7.769-2.082.82-3.057 11.294 3.08 3.08 11.295z\" fill=\"#F34E3F\"/> <path d=\"M19.505 18.762l-3.057.82-2.564-9.573-9.572-2.564.819-3.057 11.295 3.079 3.08 11.295z\" fill=\"#F34E3F\"/> <path d=\"M23.893 14.374l-3.057.82-2.565-9.572L8.7 3.057 9.52 0l11.295 3.08 3.079 11.294z\" fill=\"#F34E3F\"/>",
+    "mono": "<path d=\"M15.087 23.18L12.03 24l-2.097-7.823-5.738 5.738-2.251-2.251 5.718-5.719-7.769-2.082.82-3.057 11.294 3.08 3.08 11.295z\" fill-rule=\"evenodd\"/> <path d=\"M19.505 18.762l-3.057.82-2.564-9.573-9.572-2.564.819-3.057 11.295 3.079 3.08 11.295z\" fill-rule=\"evenodd\"/> <path d=\"M23.893 14.374l-3.057.82-2.565-9.572L8.7 3.057 9.52 0l11.295 3.08 3.079 11.294z\" fill-rule=\"evenodd\"/>"
   },
   {
     "name": "devin",
     "title": "Devin",
     "component": "DevinLogo",
-    "color": "<path d=\"M2.033 9.867l2.554 1.483a.589.589 0 00.592 0l2.554-1.483.01-.008a.608.608 0 00.11-.084l.013-.015a.631.631 0 00.076-.1c.003-.005.008-.01.01-.016a.558.558 0 00.052-.125l.007-.028a.611.611 0 00.019-.14V7.868c0-.572.307-1.105.8-1.392a1.595 1.595 0 011.598 0l1.277.742a.54.54 0 00.129.053l.028.01c.044.01.088.015.133.016h.006l.013-.002a.587.587 0 00.27-.074l.011-.004 2.554-1.483a.596.596 0 00.297-.516V2.253a.595.595 0 00-.297-.516L12.293.257a.587.587 0 00-.591 0L9.148 1.737l-.01.01a.609.609 0 00-.109.083l-.014.015a.632.632 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.028a.612.612 0 00-.018.14v1.483c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.603.603 0 00-.13-.053l-.028-.008a.658.658 0 00-.133-.018h-.02a.57.57 0 00-.269.074c-.003.002-.008.002-.012.005L2.033 5.872a.596.596 0 00-.297.515v2.966c0 .213.113.41.297.515z\" fill=\"#3969CA\"/><path d=\"M15.943 10.607a1.596 1.596 0 011.599 0l1.276.74c.041.025.085.04.13.055l.028.008c.043.01.088.016.133.018h.005c.005 0 .01-.002.014-.003a.474.474 0 00.122-.016l.021-.005a.616.616 0 00.126-.052c.004-.002.009-.002.013-.005l2.554-1.482a.597.597 0 00.297-.516V6.383a.596.596 0 00-.297-.515l-2.552-1.483a.587.587 0 00-.592 0l-2.553 1.482-.011.008a.61.61 0 00-.108.084l-.014.016a.637.637 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.029a.612.612 0 00-.018.14v1.482c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.584.584 0 00-.13-.053l-.028-.008a.62.62 0 00-.133-.018h-.02a.587.587 0 00-.269.074l-.012.004L9.15 10a.596.596 0 00-.296.516v2.966c0 .212.112.409.296.515l2.554 1.483s.008.002.012.005c.04.022.082.04.126.052l.02.004a.57.57 0 00.123.017l.014.002h.006c.054 0 .108-.01.16-.025a.587.587 0 00.13-.054l1.277-.741a1.597 1.597 0 012.398 1.392v1.482c0 .049.007.095.019.14l.007.028a.619.619 0 00.051.125c.004.006.008.01.01.016a.6.6 0 00.076.1l.014.015c.033.032.069.06.108.084.004.002.006.006.011.008l2.554 1.483a.59.59 0 00.593 0l2.554-1.483a.597.597 0 00.296-.516v-2.965a.595.595 0 00-.296-.516l-2.554-1.483s-.008-.002-.012-.005a.54.54 0 00-.126-.051c-.007-.003-.013-.003-.02-.005a.635.635 0 00-.125-.017h-.018a.557.557 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.595 1.595 0 01-1.598 0 1.615 1.615 0 010-2.785l-.005-.001z\" fill=\"#21C19A\"/><path d=\"M14.848 18.265l-2.554-1.482-.012-.005a.526.526 0 00-.126-.052c-.007-.002-.014-.002-.02-.005a.64.64 0 00-.124-.017h-.02a.56.56 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.594 1.594 0 01-1.598 0c-.493-.286-.8-.82-.8-1.393V14.65a.563.563 0 00-.018-.14l-.008-.028a.604.604 0 00-.051-.124l-.01-.017a.603.603 0 00-.076-.1l-.014-.015a.596.596 0 00-.109-.084c-.003-.002-.005-.006-.01-.008L5.178 12.65a.587.587 0 00-.591 0l-2.554 1.483a.596.596 0 00-.297.516v2.965c0 .213.113.41.297.516l2.554 1.483.012.004a.618.618 0 00.267.074l.016.002h.007a.55.55 0 00.16-.026.584.584 0 00.129-.053l1.277-.742a1.597 1.597 0 012.398 1.393v1.482c0 .05.007.095.019.14l.007.028c.013.044.03.085.051.125l.01.016c.022.036.047.07.076.1l.014.015c.032.032.069.06.109.084l.01.008 2.554 1.483a.587.587 0 00.593 0l2.554-1.483a.596.596 0 00.296-.515v-2.966a.596.596 0 00-.296-.516h-.002z\" fill=\"#0294DE\"/>",
-    "mono": "<path d=\"M2.033 9.867l2.554 1.483a.589.589 0 00.592 0l2.554-1.483.01-.008a.608.608 0 00.11-.084l.013-.015a.631.631 0 00.076-.1c.003-.005.008-.01.01-.016a.558.558 0 00.052-.125l.007-.028a.611.611 0 00.019-.14V7.868c0-.572.307-1.105.8-1.392a1.595 1.595 0 011.598 0l1.277.742a.54.54 0 00.129.053l.028.01c.044.01.088.015.133.016h.006l.013-.002a.587.587 0 00.27-.074l.011-.004 2.554-1.483a.596.596 0 00.297-.516V2.253a.595.595 0 00-.297-.516L12.293.257a.587.587 0 00-.591 0L9.148 1.737l-.01.01a.609.609 0 00-.109.083l-.014.015a.632.632 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.028a.612.612 0 00-.018.14v1.483c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.603.603 0 00-.13-.053l-.028-.008a.658.658 0 00-.133-.018h-.02a.57.57 0 00-.269.074c-.003.002-.008.002-.012.005L2.033 5.872a.596.596 0 00-.297.515v2.966c0 .213.113.41.297.515z\" fill-rule=\"evenodd\"/><path d=\"M15.943 10.607a1.596 1.596 0 011.599 0l1.276.74c.041.025.085.04.13.055l.028.008c.043.01.088.016.133.018h.005c.005 0 .01-.002.014-.003a.474.474 0 00.122-.016l.021-.005a.616.616 0 00.126-.052c.004-.002.009-.002.013-.005l2.554-1.482a.597.597 0 00.297-.516V6.383a.596.596 0 00-.297-.515l-2.552-1.483a.587.587 0 00-.592 0l-2.553 1.482-.011.008a.61.61 0 00-.108.084l-.014.016a.637.637 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.029a.612.612 0 00-.018.14v1.482c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.584.584 0 00-.13-.053l-.028-.008a.62.62 0 00-.133-.018h-.02a.587.587 0 00-.269.074l-.012.004L9.15 10a.596.596 0 00-.296.516v2.966c0 .212.112.409.296.515l2.554 1.483s.008.002.012.005c.04.022.082.04.126.052l.02.004a.57.57 0 00.123.017l.014.002h.006c.054 0 .108-.01.16-.025a.587.587 0 00.13-.054l1.277-.741a1.597 1.597 0 012.398 1.392v1.482c0 .049.007.095.019.14l.007.028a.619.619 0 00.051.125c.004.006.008.01.01.016a.6.6 0 00.076.1l.014.015c.033.032.069.06.108.084.004.002.006.006.011.008l2.554 1.483a.59.59 0 00.593 0l2.554-1.483a.597.597 0 00.296-.516v-2.965a.595.595 0 00-.296-.516l-2.554-1.483s-.008-.002-.012-.005a.54.54 0 00-.126-.051c-.007-.003-.013-.003-.02-.005a.635.635 0 00-.125-.017h-.018a.557.557 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.595 1.595 0 01-1.598 0 1.615 1.615 0 010-2.785l-.005-.001z\" fill-rule=\"evenodd\"/><path d=\"M14.848 18.265l-2.554-1.482-.012-.005a.526.526 0 00-.126-.052c-.007-.002-.014-.002-.02-.005a.64.64 0 00-.124-.017h-.02a.56.56 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.594 1.594 0 01-1.598 0c-.493-.286-.8-.82-.8-1.393V14.65a.563.563 0 00-.018-.14l-.008-.028a.604.604 0 00-.051-.124l-.01-.017a.603.603 0 00-.076-.1l-.014-.015a.596.596 0 00-.109-.084c-.003-.002-.005-.006-.01-.008L5.178 12.65a.587.587 0 00-.591 0l-2.554 1.483a.596.596 0 00-.297.516v2.965c0 .213.113.41.297.516l2.554 1.483.012.004a.618.618 0 00.267.074l.016.002h.007a.55.55 0 00.16-.026.584.584 0 00.129-.053l1.277-.742a1.597 1.597 0 012.398 1.393v1.482c0 .05.007.095.019.14l.007.028c.013.044.03.085.051.125l.01.016c.022.036.047.07.076.1l.014.015c.032.032.069.06.109.084l.01.008 2.554 1.483a.587.587 0 00.593 0l2.554-1.483a.596.596 0 00.296-.515v-2.966a.596.596 0 00-.296-.516h-.002z\" fill-rule=\"evenodd\"/>"
+    "color": "<path d=\"M2.033 9.867l2.554 1.483a.589.589 0 00.592 0l2.554-1.483.01-.008a.608.608 0 00.11-.084l.013-.015a.631.631 0 00.076-.1c.003-.005.008-.01.01-.016a.558.558 0 00.052-.125l.007-.028a.611.611 0 00.019-.14V7.868c0-.572.307-1.105.8-1.392a1.595 1.595 0 011.598 0l1.277.742a.54.54 0 00.129.053l.028.01c.044.01.088.015.133.016h.006l.013-.002a.587.587 0 00.27-.074l.011-.004 2.554-1.483a.596.596 0 00.297-.516V2.253a.595.595 0 00-.297-.516L12.293.257a.587.587 0 00-.591 0L9.148 1.737l-.01.01a.609.609 0 00-.109.083l-.014.015a.632.632 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.028a.612.612 0 00-.018.14v1.483c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.603.603 0 00-.13-.053l-.028-.008a.658.658 0 00-.133-.018h-.02a.57.57 0 00-.269.074c-.003.002-.008.002-.012.005L2.033 5.872a.596.596 0 00-.297.515v2.966c0 .213.113.41.297.515z\" fill=\"#3969CA\"/> <path d=\"M15.943 10.607a1.596 1.596 0 011.599 0l1.276.74c.041.025.085.04.13.055l.028.008c.043.01.088.016.133.018h.005c.005 0 .01-.002.014-.003a.474.474 0 00.122-.016l.021-.005a.616.616 0 00.126-.052c.004-.002.009-.002.013-.005l2.554-1.482a.597.597 0 00.297-.516V6.383a.596.596 0 00-.297-.515l-2.552-1.483a.587.587 0 00-.592 0l-2.553 1.482-.011.008a.61.61 0 00-.108.084l-.014.016a.637.637 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.029a.612.612 0 00-.018.14v1.482c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.584.584 0 00-.13-.053l-.028-.008a.62.62 0 00-.133-.018h-.02a.587.587 0 00-.269.074l-.012.004L9.15 10a.596.596 0 00-.296.516v2.966c0 .212.112.409.296.515l2.554 1.483s.008.002.012.005c.04.022.082.04.126.052l.02.004a.57.57 0 00.123.017l.014.002h.006c.054 0 .108-.01.16-.025a.587.587 0 00.13-.054l1.277-.741a1.597 1.597 0 012.398 1.392v1.482c0 .049.007.095.019.14l.007.028a.619.619 0 00.051.125c.004.006.008.01.01.016a.6.6 0 00.076.1l.014.015c.033.032.069.06.108.084.004.002.006.006.011.008l2.554 1.483a.59.59 0 00.593 0l2.554-1.483a.597.597 0 00.296-.516v-2.965a.595.595 0 00-.296-.516l-2.554-1.483s-.008-.002-.012-.005a.54.54 0 00-.126-.051c-.007-.003-.013-.003-.02-.005a.635.635 0 00-.125-.017h-.018a.557.557 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.595 1.595 0 01-1.598 0 1.615 1.615 0 010-2.785l-.005-.001z\" fill=\"#21C19A\"/> <path d=\"M14.848 18.265l-2.554-1.482-.012-.005a.526.526 0 00-.126-.052c-.007-.002-.014-.002-.02-.005a.64.64 0 00-.124-.017h-.02a.56.56 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.594 1.594 0 01-1.598 0c-.493-.286-.8-.82-.8-1.393V14.65a.563.563 0 00-.018-.14l-.008-.028a.604.604 0 00-.051-.124l-.01-.017a.603.603 0 00-.076-.1l-.014-.015a.596.596 0 00-.109-.084c-.003-.002-.005-.006-.01-.008L5.178 12.65a.587.587 0 00-.591 0l-2.554 1.483a.596.596 0 00-.297.516v2.965c0 .213.113.41.297.516l2.554 1.483.012.004a.618.618 0 00.267.074l.016.002h.007a.55.55 0 00.16-.026.584.584 0 00.129-.053l1.277-.742a1.597 1.597 0 012.398 1.393v1.482c0 .05.007.095.019.14l.007.028c.013.044.03.085.051.125l.01.016c.022.036.047.07.076.1l.014.015c.032.032.069.06.109.084l.01.008 2.554 1.483a.587.587 0 00.593 0l2.554-1.483a.596.596 0 00.296-.515v-2.966a.596.596 0 00-.296-.516h-.002z\" fill=\"#0294DE\"/>",
+    "mono": "<path d=\"M2.033 9.867l2.554 1.483a.589.589 0 00.592 0l2.554-1.483.01-.008a.608.608 0 00.11-.084l.013-.015a.631.631 0 00.076-.1c.003-.005.008-.01.01-.016a.558.558 0 00.052-.125l.007-.028a.611.611 0 00.019-.14V7.868c0-.572.307-1.105.8-1.392a1.595 1.595 0 011.598 0l1.277.742a.54.54 0 00.129.053l.028.01c.044.01.088.015.133.016h.006l.013-.002a.587.587 0 00.27-.074l.011-.004 2.554-1.483a.596.596 0 00.297-.516V2.253a.595.595 0 00-.297-.516L12.293.257a.587.587 0 00-.591 0L9.148 1.737l-.01.01a.609.609 0 00-.109.083l-.014.015a.632.632 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.028a.612.612 0 00-.018.14v1.483c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.603.603 0 00-.13-.053l-.028-.008a.658.658 0 00-.133-.018h-.02a.57.57 0 00-.269.074c-.003.002-.008.002-.012.005L2.033 5.872a.596.596 0 00-.297.515v2.966c0 .213.113.41.297.515z\" fill-rule=\"evenodd\"/> <path d=\"M15.943 10.607a1.596 1.596 0 011.599 0l1.276.74c.041.025.085.04.13.055l.028.008c.043.01.088.016.133.018h.005c.005 0 .01-.002.014-.003a.474.474 0 00.122-.016l.021-.005a.616.616 0 00.126-.052c.004-.002.009-.002.013-.005l2.554-1.482a.597.597 0 00.297-.516V6.383a.596.596 0 00-.297-.515l-2.552-1.483a.587.587 0 00-.592 0l-2.553 1.482-.011.008a.61.61 0 00-.108.084l-.014.016a.637.637 0 00-.076.1c-.003.005-.008.01-.01.016a.57.57 0 00-.052.124l-.007.029a.612.612 0 00-.018.14v1.482c0 .572-.307 1.105-.8 1.393a1.597 1.597 0 01-1.599 0l-1.276-.742a.584.584 0 00-.13-.053l-.028-.008a.62.62 0 00-.133-.018h-.02a.587.587 0 00-.269.074l-.012.004L9.15 10a.596.596 0 00-.296.516v2.966c0 .212.112.409.296.515l2.554 1.483s.008.002.012.005c.04.022.082.04.126.052l.02.004a.57.57 0 00.123.017l.014.002h.006c.054 0 .108-.01.16-.025a.587.587 0 00.13-.054l1.277-.741a1.597 1.597 0 012.398 1.392v1.482c0 .049.007.095.019.14l.007.028a.619.619 0 00.051.125c.004.006.008.01.01.016a.6.6 0 00.076.1l.014.015c.033.032.069.06.108.084.004.002.006.006.011.008l2.554 1.483a.59.59 0 00.593 0l2.554-1.483a.597.597 0 00.296-.516v-2.965a.595.595 0 00-.296-.516l-2.554-1.483s-.008-.002-.012-.005a.54.54 0 00-.126-.051c-.007-.003-.013-.003-.02-.005a.635.635 0 00-.125-.017h-.018a.557.557 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.595 1.595 0 01-1.598 0 1.615 1.615 0 010-2.785l-.005-.001z\" fill-rule=\"evenodd\"/> <path d=\"M14.848 18.265l-2.554-1.482-.012-.005a.526.526 0 00-.126-.052c-.007-.002-.014-.002-.02-.005a.64.64 0 00-.124-.017h-.02a.56.56 0 00-.16.026.588.588 0 00-.13.053l-1.276.742a1.594 1.594 0 01-1.598 0c-.493-.286-.8-.82-.8-1.393V14.65a.563.563 0 00-.018-.14l-.008-.028a.604.604 0 00-.051-.124l-.01-.017a.603.603 0 00-.076-.1l-.014-.015a.596.596 0 00-.109-.084c-.003-.002-.005-.006-.01-.008L5.178 12.65a.587.587 0 00-.591 0l-2.554 1.483a.596.596 0 00-.297.516v2.965c0 .213.113.41.297.516l2.554 1.483.012.004a.618.618 0 00.267.074l.016.002h.007a.55.55 0 00.16-.026.584.584 0 00.129-.053l1.277-.742a1.597 1.597 0 012.398 1.393v1.482c0 .05.007.095.019.14l.007.028c.013.044.03.085.051.125l.01.016c.022.036.047.07.076.1l.014.015c.032.032.069.06.109.084l.01.008 2.554 1.483a.587.587 0 00.593 0l2.554-1.483a.596.596 0 00.296-.515v-2.966a.596.596 0 00-.296-.516h-.002z\" fill-rule=\"evenodd\"/>"
   },
   {
     "name": "trae",
@@ -1637,7 +1637,7 @@ export const GALLERY_BRANDS: GalleryBrand[] = [
     "name": "hugging-face",
     "title": "Hugging Face",
     "component": "HuggingFaceLogo",
-    "color": "<path d=\"M2.25 11.535c0-3.407 1.847-6.554 4.844-8.258a9.822 9.822 0 019.687 0c2.997 1.704 4.844 4.851 4.844 8.258 0 5.266-4.337 9.535-9.687 9.535S2.25 16.8 2.25 11.535z\" fill=\"#FF9D0B\"/><path d=\"M11.938 20.086c4.797 0 8.687-3.829 8.687-8.551 0-4.722-3.89-8.55-8.687-8.55-4.798 0-8.688 3.828-8.688 8.55 0 4.722 3.89 8.55 8.688 8.55z\" fill=\"#FFD21E\"/><path d=\"M11.875 15.113c2.457 0 3.25-2.156 3.25-3.263 0-.576-.393-.394-1.023-.089-.582.283-1.365.675-2.224.675-1.798 0-3.25-1.693-3.25-.586 0 1.107.79 3.263 3.25 3.263h-.003z\" fill=\"#FF323D\"/><path d=\"M14.76 9.21c.32.108.445.753.767.585.447-.233.707-.708.659-1.204a1.235 1.235 0 00-.879-1.059 1.262 1.262 0 00-1.33.394c-.322.384-.377.92-.14 1.36.153.283.638-.177.925-.079l-.002.003zm-5.887 0c-.32.108-.448.753-.768.585a1.226 1.226 0 01-.658-1.204c.048-.495.395-.913.878-1.059a1.262 1.262 0 011.33.394c.322.384.377.92.14 1.36-.152.283-.64-.177-.925-.079l.003.003zm1.12 5.34a2.166 2.166 0 011.325-1.106c.07-.02.144.06.219.171l.192.306c.069.1.139.175.209.175.074 0 .15-.074.223-.172l.205-.302c.08-.11.157-.188.234-.165.537.168.986.536 1.25 1.026.932-.724 1.275-1.905 1.275-2.633 0-.508-.306-.426-.81-.19l-.616.296c-.52.24-1.148.48-1.824.48-.676 0-1.302-.24-1.823-.48l-.589-.283c-.52-.248-.838-.342-.838.177 0 .703.32 1.831 1.187 2.56l.18.14z\" fill=\"#3A3B45\"/><path d=\"M17.812 10.366a.806.806 0 00.813-.8c0-.441-.364-.8-.813-.8a.806.806 0 00-.812.8c0 .442.364.8.812.8zm-11.624 0a.806.806 0 00.812-.8c0-.441-.364-.8-.812-.8a.806.806 0 00-.813.8c0 .442.364.8.813.8zM4.515 13.073c-.405 0-.765.162-1.017.46a1.455 1.455 0 00-.333.925 1.801 1.801 0 00-.485-.074c-.387 0-.737.146-.985.409a1.41 1.41 0 00-.2 1.722 1.302 1.302 0 00-.447.694c-.06.222-.12.69.2 1.166a1.267 1.267 0 00-.093 1.236c.238.533.81.958 1.89 1.405l.24.096c.768.3 1.473.492 1.478.494.89.243 1.808.375 2.732.394 1.465 0 2.513-.443 3.115-1.314.93-1.342.842-2.575-.274-3.763l-.151-.154c-.692-.684-1.155-1.69-1.25-1.912-.195-.655-.71-1.383-1.562-1.383-.46.007-.889.233-1.15.605-.25-.31-.495-.553-.715-.694a1.87 1.87 0 00-.993-.312zm14.97 0c.405 0 .767.162 1.017.46.216.262.333.588.333.925.158-.047.322-.071.487-.074.388 0 .738.146.985.409a1.41 1.41 0 01.2 1.722c.22.178.377.422.445.694.06.222.12.69-.2 1.166.244.37.279.836.093 1.236-.238.533-.81.958-1.889 1.405l-.239.096c-.77.3-1.475.492-1.48.494-.89.243-1.808.375-2.732.394-1.465 0-2.513-.443-3.115-1.314-.93-1.342-.842-2.575.274-3.763l.151-.154c.695-.684 1.157-1.69 1.252-1.912.195-.655.708-1.383 1.56-1.383.46.007.889.233 1.15.605.25-.31.495-.553.718-.694.244-.162.523-.265.814-.3l.176-.012z\" fill=\"#FF9D0B\"/><path d=\"M9.785 20.132c.688-.994.638-1.74-.305-2.667-.945-.928-1.495-2.288-1.495-2.288s-.205-.788-.672-.714c-.468.074-.81 1.25.17 1.971.977.721-.195 1.21-.573.534-.375-.677-1.405-2.416-1.94-2.751-.532-.332-.907-.148-.782.541.125.687 2.357 2.35 2.14 2.707-.218.362-.983-.42-.983-.42S2.953 14.9 2.43 15.46c-.52.558.398 1.026 1.7 1.803 1.308.778 1.41.985 1.225 1.28-.187.295-3.07-2.1-3.34-1.083-.27 1.011 2.943 1.304 2.745 2.006-.2.7-2.265-1.324-2.685-.537-.425.79 2.913 1.718 2.94 1.725 1.075.276 3.813.859 4.77-.522zm4.432 0c-.687-.994-.64-1.74.305-2.667.943-.928 1.493-2.288 1.493-2.288s.205-.788.675-.714c.465.074.807 1.25-.17 1.971-.98.721.195 1.21.57.534.377-.677 1.407-2.416 1.94-2.751.532-.332.91-.148.782.541-.125.687-2.355 2.35-2.137 2.707.215.362.98-.42.98-.42S21.05 14.9 21.57 15.46c.52.558-.395 1.026-1.7 1.803-1.308.778-1.408.985-1.225 1.28.187.295 3.07-2.1 3.34-1.083.27 1.011-2.94 1.304-2.743 2.006.2.7 2.263-1.324 2.685-.537.423.79-2.912 1.718-2.94 1.725-1.077.276-3.815.859-4.77-.522z\" fill=\"#FFD21E\"/>",
+    "color": "<path d=\"M2.25 11.535c0-3.407 1.847-6.554 4.844-8.258a9.822 9.822 0 019.687 0c2.997 1.704 4.844 4.851 4.844 8.258 0 5.266-4.337 9.535-9.687 9.535S2.25 16.8 2.25 11.535z\" fill=\"#FF9D0B\"/> <path d=\"M11.938 20.086c4.797 0 8.687-3.829 8.687-8.551 0-4.722-3.89-8.55-8.687-8.55-4.798 0-8.688 3.828-8.688 8.55 0 4.722 3.89 8.55 8.688 8.55z\" fill=\"#FFD21E\"/> <path d=\"M11.875 15.113c2.457 0 3.25-2.156 3.25-3.263 0-.576-.393-.394-1.023-.089-.582.283-1.365.675-2.224.675-1.798 0-3.25-1.693-3.25-.586 0 1.107.79 3.263 3.25 3.263h-.003z\" fill=\"#FF323D\"/> <path d=\"M14.76 9.21c.32.108.445.753.767.585.447-.233.707-.708.659-1.204a1.235 1.235 0 00-.879-1.059 1.262 1.262 0 00-1.33.394c-.322.384-.377.92-.14 1.36.153.283.638-.177.925-.079l-.002.003zm-5.887 0c-.32.108-.448.753-.768.585a1.226 1.226 0 01-.658-1.204c.048-.495.395-.913.878-1.059a1.262 1.262 0 011.33.394c.322.384.377.92.14 1.36-.152.283-.64-.177-.925-.079l.003.003zm1.12 5.34a2.166 2.166 0 011.325-1.106c.07-.02.144.06.219.171l.192.306c.069.1.139.175.209.175.074 0 .15-.074.223-.172l.205-.302c.08-.11.157-.188.234-.165.537.168.986.536 1.25 1.026.932-.724 1.275-1.905 1.275-2.633 0-.508-.306-.426-.81-.19l-.616.296c-.52.24-1.148.48-1.824.48-.676 0-1.302-.24-1.823-.48l-.589-.283c-.52-.248-.838-.342-.838.177 0 .703.32 1.831 1.187 2.56l.18.14z\" fill=\"#3A3B45\"/> <path d=\"M17.812 10.366a.806.806 0 00.813-.8c0-.441-.364-.8-.813-.8a.806.806 0 00-.812.8c0 .442.364.8.812.8zm-11.624 0a.806.806 0 00.812-.8c0-.441-.364-.8-.812-.8a.806.806 0 00-.813.8c0 .442.364.8.813.8zM4.515 13.073c-.405 0-.765.162-1.017.46a1.455 1.455 0 00-.333.925 1.801 1.801 0 00-.485-.074c-.387 0-.737.146-.985.409a1.41 1.41 0 00-.2 1.722 1.302 1.302 0 00-.447.694c-.06.222-.12.69.2 1.166a1.267 1.267 0 00-.093 1.236c.238.533.81.958 1.89 1.405l.24.096c.768.3 1.473.492 1.478.494.89.243 1.808.375 2.732.394 1.465 0 2.513-.443 3.115-1.314.93-1.342.842-2.575-.274-3.763l-.151-.154c-.692-.684-1.155-1.69-1.25-1.912-.195-.655-.71-1.383-1.562-1.383-.46.007-.889.233-1.15.605-.25-.31-.495-.553-.715-.694a1.87 1.87 0 00-.993-.312zm14.97 0c.405 0 .767.162 1.017.46.216.262.333.588.333.925.158-.047.322-.071.487-.074.388 0 .738.146.985.409a1.41 1.41 0 01.2 1.722c.22.178.377.422.445.694.06.222.12.69-.2 1.166.244.37.279.836.093 1.236-.238.533-.81.958-1.889 1.405l-.239.096c-.77.3-1.475.492-1.48.494-.89.243-1.808.375-2.732.394-1.465 0-2.513-.443-3.115-1.314-.93-1.342-.842-2.575.274-3.763l.151-.154c.695-.684 1.157-1.69 1.252-1.912.195-.655.708-1.383 1.56-1.383.46.007.889.233 1.15.605.25-.31.495-.553.718-.694.244-.162.523-.265.814-.3l.176-.012z\" fill=\"#FF9D0B\"/> <path d=\"M9.785 20.132c.688-.994.638-1.74-.305-2.667-.945-.928-1.495-2.288-1.495-2.288s-.205-.788-.672-.714c-.468.074-.81 1.25.17 1.971.977.721-.195 1.21-.573.534-.375-.677-1.405-2.416-1.94-2.751-.532-.332-.907-.148-.782.541.125.687 2.357 2.35 2.14 2.707-.218.362-.983-.42-.983-.42S2.953 14.9 2.43 15.46c-.52.558.398 1.026 1.7 1.803 1.308.778 1.41.985 1.225 1.28-.187.295-3.07-2.1-3.34-1.083-.27 1.011 2.943 1.304 2.745 2.006-.2.7-2.265-1.324-2.685-.537-.425.79 2.913 1.718 2.94 1.725 1.075.276 3.813.859 4.77-.522zm4.432 0c-.687-.994-.64-1.74.305-2.667.943-.928 1.493-2.288 1.493-2.288s.205-.788.675-.714c.465.074.807 1.25-.17 1.971-.98.721.195 1.21.57.534.377-.677 1.407-2.416 1.94-2.751.532-.332.91-.148.782.541-.125.687-2.355 2.35-2.137 2.707.215.362.98-.42.98-.42S21.05 14.9 21.57 15.46c.52.558-.395 1.026-1.7 1.803-1.308.778-1.408.985-1.225 1.28.187.295 3.07-2.1 3.34-1.083.27 1.011-2.94 1.304-2.743 2.006.2.7 2.263-1.324 2.685-.537.423.79-2.912 1.718-2.94 1.725-1.077.276-3.815.859-4.77-.522z\" fill=\"#FFD21E\"/>",
     "mono": "<path d=\"M16.781 3.277c2.997 1.704 4.844 4.851 4.844 8.258 0 .995-.155 1.955-.443 2.857a1.332 1.332 0 011.125.4 1.41 1.41 0 01.2 1.723c.204.165.352.385.428.632l.017.062c.06.222.12.69-.2 1.166.244.37.279.836.093 1.236-.255.57-.893 1.018-2.128 1.5l-.202.078-.131.048c-.478.173-.89.295-1.061.345l-.086.024c-.89.243-1.808.375-2.732.394-1.32 0-2.3-.36-2.923-1.067a9.852 9.852 0 01-3.18.018C9.778 21.647 8.802 22 7.494 22a11.249 11.249 0 01-2.541-.343l-.221-.06-.273-.08a16.574 16.574 0 01-1.175-.405c-1.237-.483-1.875-.93-2.13-1.501-.186-.4-.151-.867.093-1.236a1.42 1.42 0 01-.2-1.166c.069-.273.226-.516.447-.694a1.41 1.41 0 01.2-1.722c.233-.248.557-.391.917-.407l.078-.001a9.385 9.385 0 01-.44-2.85c0-3.407 1.847-6.554 4.844-8.258a9.822 9.822 0 019.687 0zM4.188 14.758c.125.687 2.357 2.35 2.14 2.707-.19.315-.796-.239-.948-.386l-.041-.04-.168-.147c-.561-.479-2.304-1.9-2.74-1.432-.43.46.119.859 1.055 1.42l.784.467.136.083c1.045.643 1.12.84.95 1.113-.188.295-3.07-2.1-3.34-1.083-.27 1.011 2.942 1.304 2.744 2.006-.2.7-2.265-1.324-2.685-.537-.425.79 2.913 1.718 2.94 1.725l.16.04.175.042c1.227.284 3.565.65 4.435-.604.673-.973.64-1.709-.248-2.61l-.057-.057c-.945-.928-1.495-2.288-1.495-2.288l-.017-.058-.025-.072c-.082-.22-.284-.639-.63-.584-.46.073-.798 1.21.12 1.933l.05.038c.977.721-.195 1.21-.573.534l-.058-.104-.143-.25c-.463-.799-1.282-2.111-1.739-2.397-.532-.332-.907-.148-.782.541zm14.842-.541c-.533.335-1.563 2.074-1.94 2.751a.613.613 0 01-.687.302.436.436 0 01-.176-.098.303.303 0 01-.049-.06l-.014-.028-.008-.02-.007-.019-.003-.013-.003-.017a.289.289 0 01-.004-.048c0-.12.071-.266.25-.427.026-.024.054-.047.084-.07l.047-.036c.022-.016.043-.032.063-.049.883-.71.573-1.81.131-1.917l-.031-.006-.056-.004a.368.368 0 00-.062.006l-.028.005-.042.014-.039.017-.028.015-.028.019-.036.027-.023.02c-.173.158-.273.428-.31.542l-.016.054s-.53 1.309-1.439 2.234l-.054.054c-.365.358-.596.69-.702 1.018-.143.437-.066.868.21 1.353.055.097.117.195.187.296.882 1.275 3.282.876 4.494.59l.286-.07.25-.074c.276-.084.736-.233 1.2-.42l.188-.077.065-.028.064-.028.124-.056.081-.038c.529-.252.964-.543.994-.827l.001-.036a.299.299 0 00-.037-.139c-.094-.176-.271-.212-.491-.168l-.045.01c-.044.01-.09.024-.136.04l-.097.035-.054.022c-.559.23-1.238.705-1.607.745h.006a.452.452 0 01-.05.003h-.024l-.024-.003-.023-.005c-.068-.016-.116-.06-.14-.142a.22.22 0 01-.005-.1c.062-.345.958-.595 1.713-.91l.066-.028c.528-.224.97-.483.985-.832v-.04a.47.47 0 00-.016-.098c-.048-.18-.175-.251-.36-.251-.785 0-2.55 1.36-2.92 1.36-.025 0-.048-.007-.058-.024a.6.6 0 01-.046-.088c-.1-.238.068-.462 1.06-1.066l.209-.126c.538-.32 1.01-.588 1.341-.831.29-.212.475-.406.503-.6l.003-.028c.008-.113-.038-.227-.147-.344a.266.266 0 00-.07-.054l-.034-.015-.013-.005a.403.403 0 00-.13-.02c-.162 0-.369.07-.595.18-.637.313-1.431.952-1.826 1.285l-.249.215-.033.033c-.08.078-.288.27-.493.386l-.071.037-.041.019a.535.535 0 01-.122.036h.005a.346.346 0 01-.031.003l.01-.001-.013.001c-.079.005-.145-.021-.19-.095a.113.113 0 01-.014-.065c.027-.465 2.034-1.991 2.152-2.642l.009-.048c.1-.65-.271-.817-.791-.493zM11.938 2.984c-4.798 0-8.688 3.829-8.688 8.55 0 .692.083 1.364.24 2.008l.008-.009c.252-.298.612-.46 1.017-.46.355.008.699.117.993.312.22.14.465.384.715.694.261-.372.69-.598 1.15-.605.852 0 1.367.728 1.562 1.383l.047.105.06.127c.192.396.595 1.139 1.143 1.68 1.06 1.04 1.324 2.115.8 3.266a8.865 8.865 0 002.024-.014c-.505-1.12-.26-2.17.74-3.186l.066-.066c.695-.684 1.157-1.69 1.252-1.912.195-.655.708-1.383 1.56-1.383.46.007.889.233 1.15.605.25-.31.495-.553.718-.694a1.87 1.87 0 01.99-.312c.357 0 .682.126.925.36.14-.61.215-1.245.215-1.898 0-4.722-3.89-8.55-8.687-8.55zm1.857 8.926l.439-.212c.553-.264.89-.383.89.152 0 1.093-.771 3.208-3.155 3.262h-.184c-2.325-.052-3.116-2.06-3.156-3.175l-.001-.087c0-1.107 1.452.586 3.25.586.716 0 1.379-.272 1.917-.526zm4.017-3.143c.45 0 .813.358.813.8 0 .441-.364.8-.813.8a.806.806 0 01-.812-.8c0-.442.364-.8.812-.8zm-11.624 0c.448 0 .812.358.812.8 0 .441-.364.8-.812.8a.806.806 0 01-.813-.8c0-.442.364-.8.813-.8zm7.79-.841c.32-.384.846-.54 1.33-.394.483.146.83.564.878 1.06.048.495-.212.97-.659 1.203-.322.168-.447-.477-.767-.585l.002-.003c-.287-.098-.772.362-.925.079a1.215 1.215 0 01.14-1.36zm-4.323 0c.322.384.377.92.14 1.36-.152.283-.64-.177-.925-.079l.003.003c-.108.036-.194.134-.273.24l-.118.165c-.11.15-.22.262-.377.18a1.226 1.226 0 01-.658-1.204c.048-.495.395-.913.878-1.059a1.262 1.262 0 011.33.394z\" fill-rule=\"evenodd\"/>"
   },
   {

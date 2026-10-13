@@ -6,7 +6,12 @@ import { svgInner } from './sync-icons.mjs';
 
 test('svgInner keeps only the elements inside the root svg', () => {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\n  <path d="M4 12h16"/>\n  <path d="M14 6l6 6-6 6"/>\n</svg>\n`;
-  assert.equal(svgInner(svg), '<path d="M4 12h16"/><path d="M14 6l6 6-6 6"/>');
+  assert.equal(svgInner(svg), '<path d="M4 12h16"/> <path d="M14 6l6 6-6 6"/>');
+});
+
+test('svgInner keeps attributes apart when a tag wraps across lines', () => {
+  const svg = `<svg viewBox="0 0 24 24">\n  <path\n    d="M4 12h16"\n    fill="#000"\n  />\n</svg>`;
+  assert.equal(svgInner(svg), '<path d="M4 12h16" fill="#000" />');
 });
 
 test('svgInner rejects a file that is not an SVG', () => {

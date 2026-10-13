@@ -20,7 +20,7 @@ export function svgInner(svg) {
     .split('\n')
     .map((line) => line.trim())
     .filter(Boolean)
-    .join('');
+    .join(' ');
 }
 
 /** The data module, from the package's `svg/` directory. */
