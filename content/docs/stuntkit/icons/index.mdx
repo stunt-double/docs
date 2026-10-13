@@ -11,6 +11,10 @@ brand: 235 stroked icons on a 24 unit grid with a 2 unit margin, at stroke
 width 1.5 with square caps and mitred joins. It ships as framework-free
 geometry, standalone SVG files and React components.
 
+<IconGallery categories={['product']} />
+
+Hover an icon for its component name. [See every icon](#all-icons) below.
+
 ## Install
 
 Add `@stunt-double:registry=https://npm.pkg.github.com` and a GitHub token with
@@ -67,6 +71,14 @@ iconToSvg(iconNodes.arrowRight, { size: 32, color: "#111" });
 `@stunt-double/icons/icons.json` lists every icon with its category, search
 tags and the lucide-react names it replaces.
 
+## All icons
+
+All 235 icons at 24px, grouped by category. The name under each is its file
+and its key in `iconComponents`; the component is the PascalCase name plus
+`Icon`.
+
+<IconGallery />
+
 ## AI provider marks
 
 Filled logos for AI providers and coding agents (Claude, OpenAI, Cursor,
@@ -79,6 +91,11 @@ import { ClaudeLogo, CursorLogo } from '@stunt-double/icons/react';
 <ClaudeLogo />
 <CursorLogo variant="mono" size="sm" />
 ```
+
+Each mark below shows the `color` variant on the left and the `mono` variant
+on the right, with its component name.
+
+<BrandGallery />
 
 The marks are from [LobeHub Icons](https://github.com/lobehub/lobe-icons) (MIT)
 and are trademarks of their owners: use them to refer to those products, not
