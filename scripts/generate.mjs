@@ -74,7 +74,8 @@ export function readmeToMdx(markdown, { repo, tag, dir = '' }) {
         fence = open[1];
         return line;
       }
-      return escapeText(line).replace(
+      const [, quote] = /^((?:\s*>)*\s*)/.exec(line);
+      return (quote + escapeText(line.slice(quote.length))).replace(
         /\]\((?!https?:|mailto:|#|\/)(?:\.\/)?([^)\s]+)\)/g,
         (_, path) => `](${new URL(path, blob).href})`
       );
@@ -132,6 +133,7 @@ export function clean(markdown) {
     .filter((p) => !INTERNAL.test(p))
     .join('\n\n')
     .replace(/(https:\/\/)?(?:www\.)?stuntdouble\.io\/support\/docs(\/[^)\s\]]*)?/g, (_, h, p) => `${h ?? ''}docs.stuntdouble.io${p ?? ''}`)
+    .replace(/(?<=\|)[ \t]*\u2014[ \t]*(?=\|)/g, ' n/a ')
     .replace(/\s*\u2014\s*([^\u2014\n|]+?)\s*\u2014\s*/g, ' ($1) ')
     .replace(/\s*\u2014\s*/g, ': ');
 }
