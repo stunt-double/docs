@@ -11,9 +11,10 @@ cloud browser can't reach it. A device is a Mac on your side of the firewall
 running the Stunt Double app, so actors browse from there without you opening
 anything up.
 
-<Callout variant="note" title="Startup plan and above">
-  Devices are available on the Startup plan and above. A workspace owner or admin switches
-  them on, then any member can set up their own Mac.
+<Callout variant="note" title="Plans">
+  Devices are on every paid plan, and testing private or internal addresses from one needs the
+  Startup plan or above. A workspace owner or admin switches devices on, then any member can set
+  up their own Mac.
 </Callout>
 
 ## Turn devices on
@@ -32,7 +33,8 @@ On other plans, this page explains what devices do and how to upgrade.
 The app dials out to Stunt Double rather than waiting for an inbound
 connection, so your firewall needs no changes. If your product sits behind a
 VPN portal or SSO, sign in once in the device console. The sign-in persists
-for later runs.
+for later runs. If the sign-in needs a client certificate, Keychain or a smart
+card, switch **How the browser runs** to **Its own window** first.
 
 ## Choose where each actor's browser runs
 
@@ -70,5 +72,6 @@ on it.
 ## Next steps
 
 - **[Devices reference and troubleshooting](/integrations/self-hosted-workers)**
+- **[Run a live session](/tutorials/live-sessions)** to watch and steer an actor on your Mac
 - **[Automate multi-step workflows](/tutorials/building-workflows)**
 - **[Turn runs into insights](/tutorials/reviewing-runs)**

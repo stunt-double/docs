@@ -13,7 +13,10 @@ saved sign-ins. The app connects out to Stunt Double, so you open no inbound
 ports.
 
 For a full walkthrough, read
-[Test a product behind your firewall](/tutorials/self-hosted-worker).
+[Test a product behind your firewall](/tutorials/self-hosted-worker). To watch
+and steer an actor on your own Mac in real time instead, start a
+[live session](/tutorials/live-sessions) on **This Mac**: it pairs the Mac for
+you in the background.
 
 ## What it does
 
@@ -26,10 +29,10 @@ For a full walkthrough, read
 
 ## Before you start
 
-- **Plan.** Devices are available on the Startup plan and above. On other plans,
-  **Settings**, then **Devices**, explains what they do and how to upgrade.
-  You see the same prompt when you point an actor at an address that only
-  works inside a network.
+- **Plan.** Devices are available on every paid plan, for public sites.
+  Private and internal addresses (staging behind a VPN, an intranet, a local
+  dev server) need the Startup plan or above. Pointing an actor at one of those
+  on another plan shows what is needed and how to upgrade.
 - **Role.** A workspace owner or admin turns devices on. Once they are on, any
   member can set up their own Mac.
 - **A Mac.** macOS on Apple silicon or Intel, with Google Chrome installed,
@@ -51,6 +54,11 @@ For a full walkthrough, read
      a run starts.
    - **A named device**, to always use that Mac.
 
+The browser runs inside the app by default, and you watch it from the device
+console. If a site asks for a client certificate, Keychain or a smart card,
+switch **How the browser runs** to **Its own window** in the console (see the
+[desktop app](/integrations/desktop-app#how-the-browser-runs)).
+
 To check a device can reach a site before a run depends on it, enter the
 address under **Test connection** in **Settings**, then **Devices**. The test
 runs in the device's browser, so a pass means actors can reach that address.
@@ -67,6 +75,10 @@ MCP server, the Figma plugin, the assistant, Slack, Linear or an interview.
   internal, or the address only works inside a network (a private IP range,
   for example), the run stops up front and asks you to choose a device for
   the actor.
+- **Internal addresses need Startup.** Below the Startup plan, a run to a
+  private or internal address stops, on a device as well as in the cloud.
+- **Cancelling frees the device.** Cancel a run from its report and the device
+  is free for the next one straight away.
 
 ## Move a Mac to another workspace
 
@@ -106,8 +118,12 @@ and has outbound HTTPS to `app.stuntdouble.io`, then click **Reconnect**.
 **The console says "This device is no longer paired".** The device was removed
 from the workspace, or its key no longer works. Click **Pair again**.
 
-**A run says devices need the Startup plan.** Devices are available on the
-Startup plan and above. Upgrade from **Settings**, then **Billing**.
+**A run says devices are not on your plan.** Devices are available on every
+paid plan. Upgrade from **Settings**, then **Billing**.
+
+**A run says the address needs the Startup plan.** Private and internal
+addresses need Startup or above, whether the actor runs on a device or in the
+cloud. Upgrade from **Settings**, then **Billing**.
 
 **You need a custom deployment.** If the Mac app does not fit how your network
 works, for example you want the relay running in your own cloud, the
