@@ -10,6 +10,7 @@
     "...feedback-widget",
     "...slack-design-review",
     "...self-hosted-worker",
-    "...automate-with-mcp"
+    "...automate-with-mcp",
+    "...live-sessions"
   ]
 }

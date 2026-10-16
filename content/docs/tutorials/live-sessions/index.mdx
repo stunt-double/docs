@@ -1,0 +1,177 @@
+---
+title: "Run a live session"
+icon: "actor"
+description: "Watch an actor use your product in real time, steer it as it goes, take over the browser when you need to and keep what it finds."
+---
+
+# Run a live session
+
+A checklist run or an interview round goes off and comes back with a report. A
+live session is the opposite: you sit beside the actor while it works. The
+browser is on the left, the chat on the right, and underneath it the steps the
+actor took and the captures it kept. Ask it to try something, watch what it
+does, change the task halfway through, or take the browser and drive it
+yourself.
+
+<Callout variant="note" title="Alpha">
+  Live sessions are in alpha and switched on per workspace. When they are on for
+  yours, **Live sessions** appears under **Discover** in each project's
+  navigation.
+</Callout>
+
+## Start a session
+
+<Steps>
+<Step>
+
+### Open Live sessions
+
+Open a project and choose **Live sessions** under **Discover**. The page lists
+the project's sessions, newest first, so you can go back to any earlier one and
+read what happened.
+
+</Step>
+<Step>
+
+### Click New session
+
+The dialog asks only what cannot change once the session is running:
+
+- **Actor**: who uses the product.
+- **Start on**: the address the browser opens first.
+- **Session**: **Interview** or **Task** (see below).
+- **Browser**: **This Mac** or **Cloud browser**.
+
+Replies, tools and sign-ins are all changed from inside the session.
+
+</Step>
+<Step>
+
+### Click Start session
+
+The browser opens on the start address and the actor is ready for its first
+message.
+
+</Step>
+</Steps>
+
+## Interview or task
+
+- **Interview** (the default): the actor stays in character and thinks aloud
+  while you moderate. Ask it what it expects a page to do, what it would click
+  next, or what would stop it signing up. This is a moderated usability
+  session without recruiting anyone.
+- **Task**: the actor does what you ask and reports back. Use it to reproduce
+  a bug, walk a flow end to end, or check something quickly before a release.
+
+## Choose a browser
+
+- **Cloud browser** works from anywhere, on public sites.
+- **This Mac** is offered when you are in the
+  [desktop app](/integrations/desktop-app) and your plan includes devices. The
+  actor drives a Chrome on your Mac, so it can open local dev servers, staging
+  behind your VPN and anything else this Mac can reach. When a session can run
+  on this Mac, it is the default.
+
+You do not need to set your Mac up as a device first. If it is not one yet,
+starting the session pairs it for you in the background, and that pairing is
+removed again when its last session ends. A Mac that already belongs to
+someone else in the workspace, or to another workspace, is never moved: the
+dialog says so and offers the cloud browser instead.
+
+## Steer the actor
+
+Type in the chat to give the actor a task or ask it a question. While it is
+working, a new message is queued for when it finishes. Choose **Send now** to
+steer the current task instead of waiting.
+
+Each step it takes appears in the journey under the browser, grouped by task,
+so you can see exactly what it clicked, typed and read.
+
+### Replies
+
+The actor keeps replies short by default: the result first, no recap of the
+task and no commentary on each click, since you can see the browser yourself.
+Open **Replies** to change that from its next reply:
+
+- **Detail**: from a sentence to a thorough account with evidence.
+- **Narration**: from results only to thinking aloud at every step. An
+  interview starts with more narration than a task.
+
+## Take control
+
+Click **Take control** in the header, or click or type in the browser
+itself. If the actor is in the
+middle of a step, it stops first. Now the browser is yours: sign in, fill a
+form, dismiss a banner or get the page into the state you want.
+
+Click **Return control** when you are done. The actor is told you drove the
+browser in the meantime, so its next step starts from the page as you left it.
+
+## Keep what it finds
+
+- **Findings** are recorded by the actor as it works, with a severity and the
+  screenshot that shows the problem.
+- **Capture** saves a screenshot of the browser as it is now. It is off while
+  the actor is driving.
+- **Notes** are your own, added from the captures tray.
+
+Captures stay with the session after it ends.
+
+## Tools and sign-ins
+
+Open **Tools** during a session to see what the actor can use beyond the
+browser.
+
+- **Project and actor** MCP servers you have already connected in Stunt Double.
+- **On this Mac**: MCP servers that run on your own Mac, in sessions using the
+  desktop app. Turn them on for the session, then import servers from Claude
+  Desktop or Cursor, or add them in the app. The app asks you to approve each
+  server, showing the exact command, before it ever runs, and the chat asks you
+  before each tool call. Switch on **Run read-only tools without asking** to
+  skip that question for tools their server marks read-only.
+
+What a tool returns is kept in the session's transcript, which everyone in the
+workspace can read, so only turn on servers whose output you are happy to
+share.
+
+**Browser sign-ins** (sessions on This Mac) controls where the browser keeps
+its cookies and sign-ins:
+
+- **Per actor**: each actor keeps its own sign-ins, the way two real people
+  would. This is the default.
+- **Shared in this workspace**: sign in once and every actor in the workspace
+  starts signed in.
+
+Sign-ins stay on your Mac, in a browser profile kept apart from your own
+Chrome, so an actor never sees your personal sessions. The same section lists
+the profiles stored on this Mac with their size, and can clear one.
+
+A Mac MCP server that starts with `npx` or `uvx` needs Node or uv. If it is
+missing, the server's row links to [Set up this Mac](/integrations/desktop-app#set-up-this-mac),
+which installs it.
+
+## End the session
+
+Click **End session** and confirm. The browser closes and the transcript,
+journey and captures stay where they are.
+
+Once a session ends, a summary takes the browser's place: how long it ran,
+the pages visited, the findings by severity and your notes, with a short
+account of what happened and suggested next steps.
+
+A session left idle closes its browser on its own after a while. When that is
+close, **Keep session open** appears in the header with the time it closes.
+
+## Who can see a session
+
+Only the person who started a session can chat with the actor or drive the
+browser. Everyone else in the workspace can open it and follow along: the
+journey, the captures and the transcript update live, and the browser pane
+shows the latest screenshot.
+
+## Next steps
+
+- **[Set up the desktop app](/integrations/desktop-app)** to run sessions on your Mac
+- **[Run an interview](/tutorials/running-an-interview)** across a whole panel of actors
+- **[Write effective checklists](/tutorials/effective-checklists)** to keep checking what a session found
