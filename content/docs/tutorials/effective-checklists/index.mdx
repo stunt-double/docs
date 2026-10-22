@@ -1,20 +1,20 @@
 ---
 title: "Write checklists"
 icon: "checklist"
-description: "Structure checks around outcomes, not clicks, and read the evidence behind a pass or fail instead of trusting the badge."
+description: "Write a checklist that holds up: checks around outcomes, not clicks, pass/fail, weighted and informational types, a passing score, and order and conditions."
 ---
 
 # Write checklists that catch real regressions
 
 A checklist is only as useful as the checks inside it. This tutorial covers
-how to write checks that hold up over time, and how to read a run so a
-"failed" badge tells you something you can act on.
+how to write checks that hold up over time, decide what each one is worth and
+order them, so a "failed" verdict tells you something you can act on.
 
 <PageFacts
   items={[
     { label: "Time", value: "20 minutes" },
     { label: "You need", value: "An actor and a URL" },
-    { label: "Next", value: "Turn runs into insights" },
+    { label: "Next", value: "Review runs and act on them" },
   ]}
 />
 
@@ -23,6 +23,16 @@ how to write checks that hold up over time, and how to read a run so a
   alt="The new checklist dialog on its Checks step: four plain-language checks in order, each with a check type, when it runs and what happens on failure."
   caption="Each check says what should be true. Under it: its type, when it runs, and whether a failure stops the run."
 />
+
+## Start from a template
+
+**Create checklist** opens on categories first: Core & reliability, Onboarding &
+activation, Conversion & growth, Forms & input, Accessibility, Mobile &
+responsive, Content & trust, and Navigation & findability. Pick a template to
+start from its checks, or **Start from scratch** for a blank one. The next two
+steps name the checklist, choose the URL and actor, then let you edit the
+checks before you create it. Treat a template's checks as a first draft: the
+rest of this tutorial is about making them specific to your product.
 
 ## Write one check per outcome, not per click
 
@@ -106,6 +116,13 @@ Set its run condition to:
 Without conditions, both shapes produce a misleading report: one failure
 counted twice, or a check that fails because the product worked.
 
+A check's **On failure** setting decides what a failure does to the rest of the
+run. **Fail and continue**, the default, records the failure and carries on.
+**Fail and stop** ends the run there and records every check it had not reached
+as skipped. Use it for a step everything after depends on, like signing in, so
+one broken step does not show up as a page of knock-on failures. A check set to
+stop fails the run when it fails, whatever its type.
+
 A check whose condition is unmet is recorded as **skipped**, naming the check it
 depended on, and left out of the score entirely. It did not fail, and it is not
 inconclusive either. A condition is only unmet when the previous check's verdict
@@ -117,49 +134,20 @@ One thing to know before you reach for informational checks: they need the
 actor to read the page, so a checklist containing one always runs the full
 agent rather than replaying its recorded script.
 
-## Read the evidence, not just the pass/fail badge
+## Tighten a check that fails for the wrong reason
 
-A run reports a verdict, a score for its weighted checks, and the evidence
-behind every check. Each check carries its own screenshot, taken on the page
-the actor was actually on when it reached its verdict. A run report has tabs
-for:
-
-- **Results**, each check's status and a short explanation.
-- **Screenshots**, the page as the actor saw it at each step.
-- **Recording**, the full session if you want to watch it play out.
-- **Knowledge**, which knowledge entries the actor drew on.
-
-When a check fails, read the explanation and screenshot before deciding
-whether it's a real regression or an ambiguous instruction. A surprising
-number of "failures" turn out to be a check that needs to be more specific
-about what counts as success.
-
-<Screenshot
-  name="checklist-run"
-  alt="A checklist run report with one failed check open, showing the actor's explanation and the screenshot of the form error, above three passed checks."
-  caption="The failed check leads, with what the actor did, what it saw, and the step and time it happened."
-/>
-
-## Read a run against the one before it
-
-A finished run is compared with the previous completed run of the same
-checklist, under **Since the previous run** on the report. It names what
-changed rather than what is red, which is the difference between a report you
-read every time and one you stop opening. Informational checks are compared as
-text, so "$29 per month" becoming "$39 per month" shows up even though no
-pass or fail state moved.
+When a check fails, read its explanation and screenshot before deciding whether
+it is a real regression or an ambiguous check. A surprising number of failures
+turn out to be a check that needs to say more precisely what counts as
+success: "the order total is shown" passes on a page that shows the wrong
+total, while "the order total matches the cart total" does not.
 
 Editing a checklist keeps its history: checks you did not touch keep their ids
-and their past results, so a comparison still has something to compare against.
-
-## Re-run before you trust a result
-
-An actor working through a hosted browser can hit a transient issue, a slow
-page load, a flaky third-party script, just like a human tester can. Before
-filing a bug from a single failed run, re-run the checklist once. A result
-that reproduces consistently is worth acting on immediately.
+and their past results, so the next run is still compared with the last one.
+How to read a report, compare runs and re-run before you file a bug is
+covered in **[Review runs and act on them](/tutorials/reviewing-runs)**.
 
 ## Next steps
 
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
 - **[Automate multi-step workflows](/tutorials/building-workflows)**

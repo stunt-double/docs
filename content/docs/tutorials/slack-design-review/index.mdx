@@ -1,7 +1,7 @@
 ---
 title: "Design review in Slack"
 icon: "slack"
-description: "Get a design review on any link your team shares in Slack: Stunt Double opens the page or Figma frame and replies in the thread with prioritized findings."
+description: "Ask for a design review in Slack, steer it from the thread and turn it on in a channel, with prioritized findings in the reply."
 ---
 
 # Review designs from Slack
@@ -31,27 +31,18 @@ workspace and starts checklists and workflows for you.
 
 ## 1. Connect Slack
 
-Open **Integrations** > Slack and select **Install Slack agent**, then **Add**
-your Slack team to the workspace (a workspace owner or admin does this step).
-That is the whole setup. The Slack app already asks for the permissions it
-needs, so nothing has to be wired up by hand. Review settings live under
-**Design reviews > Settings**. The **[Slack](/integrations/slack)** page covers
-permissions, and the difference between **Remove** (one workspace) and
-**Disconnect** (your account, every workspace).
+Install the Slack agent and add it to your workspace as
+**[Slack](/integrations/slack#set-it-up)** describes. The first two steps there
+are all a review needs: from the moment the connection exists, anyone in your
+Slack team can message Stunt Double directly and ask for one. Channels are
+optional and covered in [step 4](#4-turn-it-on-in-a-channel).
 
-From the moment the connection exists, anyone in your Slack workspace can
-message Stunt Double directly and ask for a review. Channels are optional and
-covered in [step 4](#4-turn-it-on-in-a-channel).
+Review settings live on the **Settings** tab of **Design review** in the
+sidebar, beside the **Reviews** list and your **Guidelines**.
 
-Figma is the one extra, and only for Figma links. Connect it from **Integrations** ([Figma](/integrations/figma))
-and Figma frames are rendered and reviewed. Without it, a Figma link comes back
-with a **Connect Figma** button instead of feedback. Web links are reviewed
-either way.
-
-If your workspace connected Slack before direct messages were supported, the
-page shows **Reconnect Slack**. An installation keeps whatever permissions it
-was granted, so Slack quietly delivers nothing rather than reporting an error.
-Reconnecting grants the two permissions the direct-message surface needs.
+Figma links need one extra: connect [Figma](/integrations/figma) and Figma
+frames are rendered and reviewed. Without it, a Figma link comes back with a
+**Connect Figma** button instead of feedback. Web links are reviewed either way.
 
 ## 2. Ask for a review
 
@@ -143,7 +134,8 @@ come back, and the thread says which one failed and why.
 Direct messages work on their own. A channel is for teams that share work in the
 open, where nobody should have to remember to mention a bot.
 
-Under **Design reviews > Settings**, add the channel. Every message
+On the **Settings** tab of **Design review**, add the channel under
+**Channels**. Every message
 posted there that carries a link and asks for feedback then starts a review, with
 no mention needed.
 
@@ -156,7 +148,8 @@ checks both against live Slack state rather than a stored flag:
 - **The connection can read messages there.** Being mentioned in a channel is a
   different permission from reading it, and public and private channels differ
   again. A connection made before the permission was requested keeps its old
-  grant, so the page prompts for a reconnect naming the channel it affects.
+  grant, so the page shows **Reinstall to watch channels** and names the
+  channel it affects.
 
 **Try it** on the same page posts a request in the channel as the bot and reviews
 it, so you can watch the whole flow before asking your team to use it.
@@ -165,30 +158,11 @@ Turning a channel off removes the automatic behavior, not the feature: an
 @mention with a link and a request still starts a review anywhere the bot has
 been invited.
 
-## 5. Ask the agent for anything else
+## 5. Ask for anything else
 
-Anything that is not a link plus a request for feedback goes to the agent. It
-runs against one workspace, with the same read and dispatch surface as the
-[MCP server](/mcp):
-
-- List the projects, actors, checklists, and workflows in the workspace.
-- Start a checklist run and hand back the run it created.
-- Start a workflow run.
-
-Both surfaces work: a direct message, or an @mention in any channel it has been
-invited to. Replies stream in as they are written rather than landing all at
-once.
-
-A thread is one conversation. The first message starts a session that stays warm
-for a day, and every follow-up in that thread feeds the same conversation, so
-"run that one again" resolves to the checklist you were just discussing. The
-direct message also pins a few starting prompts to the top of the Messages tab.
-
-Runs started from Slack are attributed to the person who asked, as long as they
-have linked their Slack identity in their notification settings. Everyone else's
-runs are attributed to whoever installed the connection, which is worth fixing
-before a team leans on this: attribution is what makes a run's history legible a
-month later.
+Anything that is not a link plus a request for feedback, such as "run the
+checkout checklist", goes to the Slack agent instead of the reviewer. What it
+can do is on the [Slack](/integrations/slack#the-slack-agent) page.
 
 ## When nothing happens
 
@@ -200,10 +174,11 @@ order:
 2. **It was a reply in a thread nobody has reviewed yet.** A reply only starts a
    review when the thread already holds one. Post the link as a new message.
 3. **The bot is not in the channel.** Run `/invite @Stunt Double` there.
-4. **The connection is missing a permission.** **Design reviews > Settings** names
-   this against each configured channel, with a reconnect button.
-5. **The workspace is over a usage limit.** The thread says which limit was hit
+4. **The workspace is over a usage limit.** The thread says which limit was hit
    rather than going silent.
+
+If direct messages or channels get no answer at all, the connection itself is
+the problem: see [Troubleshooting](/integrations/slack#troubleshooting).
 
 Reviews and agent runs are metered against your plan like any other browser work,
 plus the tokens the review spends. A review that drives the page uses one browser
@@ -217,8 +192,9 @@ falls back to capturing screens uses one per link.
 - Ask for the review before the internal critique, not instead of it. It clears
   the obvious contrast, hierarchy, and label problems so your team spends its
   time on the decisions that need judgment.
-- Link your Slack identity if you plan to start runs from Slack. Attribution
-  costs nothing to set up and cannot be backfilled.
+- Link your Slack identity under your notification preferences if you plan to
+  start runs from Slack. Attribution costs nothing to set up and cannot be
+  backfilled.
 - Send a Figma link with a node selected. The frame you are asking about beats
   the first frame in the file.
 

@@ -33,7 +33,11 @@ Every validation workflow follows the same three steps, and the MCP prompts
    reviewer actor (brand and tone guidelines, design tokens and component
    rules, the list of regulatory requirements). Stored knowledge is what makes
    audits repeatable: every future run enforces the same standard, not
-   whatever was in the prompt that day.
+   whatever was in the prompt that day. For rules every actor on a project
+   should hold to, add them as workspace guidelines instead (on the
+   **Guidelines** tab of **Design review**) and attach them to the project
+   from its **Guidelines** settings tab. Mark a guideline **Apply to design
+   reviews** and it also reaches reviews requested from Slack and Linear.
 2. **Assert the standard with observable checks.** Each rule becomes a
    checklist check a reader could verify on the rendered page. Phrase checks
    in terms of what is visible, not how it is implemented.
@@ -79,9 +83,10 @@ visually rather than in terms of code:
 - "Empty states use the illustration style, not stock icons."
 
 The natural trigger is a Figma event: when the design library is published or
-a file changes, the audit re-runs against staging and drift between the system
-and the shipped product surfaces within minutes. See the
-**[Figma guide](/guides/figma)** for the connection setup.
+a file changes (the automation listens to one file, for up to three events),
+the audit re-runs against staging and drift between the system
+and the shipped product surfaces within minutes. The
+**[Figma connection](/integrations/figma#set-it-up)** sets up the trigger.
 
 ## Legal and compliance
 
@@ -164,11 +169,11 @@ Checklist  DS adherence: core app   (run by Design-System Guardian, url: staging
            Instructions: Walk the dashboard, a form, and one empty state.
            Checks:
            - Body and heading text use the product font stack, no serif fallback.
-           - Primary CTAs use the brand primary colour and sentence case.
+           - Primary CTAs use the brand primary color and sentence case.
            - Focus states are visible on every input.
            - Empty states use the illustration style, not stock icons.
 Workflow   DS drift check on library publish
-           Trigger: figma_event   (library publish / file update)
+           Trigger: figma_event   (library publish / file update, on the library file)
            Steps:   run_checklist  ->  notification (#design-system)
 ```
 
@@ -189,7 +194,7 @@ Checklist  Compliance sweep: acquisition   (run by Compliance Reviewer, url: acm
              cookie banner, footer links, pricing, and a marketing email.
            Checks:
            - A cookie banner appears before any non-essential tracking fires.
-           - The banner's reject option works and is honoured.
+           - The banner's reject option works and is honored.
            - Privacy policy and terms are reachable from every page footer.
            - Displayed prices include GST or clearly state they exclude it.
            - The latest marketing email has a working unsubscribe link.
@@ -217,10 +222,6 @@ Workflow   Weekly continuity check
            Steps:   run_checklist (marketing) -> run_checklist (checkout)
                     -> notification (#growth)
 ```
-
-For promise-versus-product continuity, an interview is a better fit than a
-checklist: attach a persona and give it the task "the homepage says setup takes
-two minutes; sign up and see if that holds", then read the transcript.
 
 ## Where this fits in the other workflows
 

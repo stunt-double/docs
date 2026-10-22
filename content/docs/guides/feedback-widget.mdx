@@ -1,7 +1,7 @@
 ---
 title: "Stakeholder feedback"
 icon: "feedback"
-description: "Install the feedback widget so visitors pin comments in context, then triage them alongside what your actors find."
+description: "When to put the feedback widget on staging, a beta or production, and how to turn what people pin into checks that run on every deploy."
 ---
 
 AI personas tell you what a careful, unhurried user would hit. Real visitors
@@ -11,8 +11,9 @@ your own site, and anyone looking at a page can drop a pin on the exact spot
 that confused them and say why.
 
 What arrives is not a support ticket with "the page is broken" in it. It is a
-comment anchored to a coordinate, with a screenshot of the page as that person
-saw it, the URL, the viewport, and which version of the page they were on.
+comment attached to the element it is about, with a screenshot of the page as
+that person saw it, the URL, the viewport, and which version of the page they
+were on.
 
 <Callout variant="who">
   PMs and designers running prototype and staging reviews, founders collecting
@@ -20,42 +21,34 @@ saw it, the URL, the viewport, and which version of the page they were on.
   Slack with no idea which page or build they came from.
 </Callout>
 
-## Setup, in about five minutes
+## The pieces, in order
 
 <FlowStrip
   nodes={[
-    { label: 'Enable', sub: 'Project -> Comments' },
-    { label: 'Install', sub: 'One script tag' },
-    { label: 'Allow', sub: 'Your domains only' },
+    { label: 'Install', sub: 'One script tag per site' },
+    { label: 'Decide who', sub: 'Domains and sign in' },
+    { label: 'Collect', sub: 'Pins on the real page' },
     { label: 'Triage', sub: 'Reply and resolve' },
+    { label: 'Guard', sub: 'Checks for repeat issues' },
   ]}
 />
 
-Enable **Comments** on the project, paste one script tag before `</body>` (or
-hand the install prompt to a coding agent), and the install screen flips to
-**Widget detected** once a page loads it. Then set your allowed domains before
-you point anyone at it. The
-[integration reference](/integrations/feedback-widget) has the snippet and
-every setting.
-
-## What a visitor does
-
-Press **`c`** or click the floating button, click the thing you mean, type the
-comment, send. Name and email are remembered on their browser, so the second
-comment is just the comment. Email is optional and only used to tell them when
-someone replies or marks their comment resolved.
-
-If you enable **Show comments on page**, existing pins render for everyone, so a
-group review turns into a shared thread rather than five people reporting the
-same button. Turn it off and the widget still collects, it just does not
-display.
+Installing takes a few minutes and is the same everywhere: see the
+[integration reference](/integrations/feedback-widget) for the snippet, every
+setting and who can use it. To try one complete round first, follow
+[Collect stakeholder feedback on a prototype](/tutorials/feedback-widget). The
+rest of this guide is about choosing how to run it and what to do with what
+comes back.
 
 <Pullquote>
-  The pin is the point. A comment attached to a coordinate and a screenshot
-  needs no reproduction steps.
+  The pin is the point. A comment attached to an element and a screenshot needs
+  no reproduction steps.
 </Pullquote>
 
 ## Three ways teams use it
+
+The same script tag serves three quite different jobs. What changes is two
+settings: **Require sign in** and **Show comments on page**.
 
 <RoleGrid
   items={[
@@ -65,58 +58,41 @@ display.
   ]}
 />
 
-**Internal review on staging.** Switch on **Require sign in** and only signed-in
-members of your workspace can read or leave comments. Reviewers sign in through
-a popup from the widget, and their replies are badged **Team** on the page. It
-is the cheapest possible design-review tool: no seats to provision, no file to
-upload, and the thing under review is the actual product.
+**Internal review on staging.** Turn on **Require sign in** and keep comments
+shown. Only workspace members can read or leave comments, their notes are
+badged **Team**, and a group review becomes one shared thread per issue rather
+than five people reporting the same button. It is the cheapest possible
+design-review tool: no seats to provision, no file to upload, and the thing
+under review is the actual product.
 
-**Prototype and beta testing.** Ship the rough version to a handful of real
-users with the widget on. Where pins cluster is your friction, and you have the
-screenshot to prove it. This pairs directly with persona interviews: run an
-interview to find what a careful user hits, run the widget to find what a
-hurried one does.
+**Prototype and beta testing.** Leave sign-in off and send the link to a
+handful of real users. Hide comments on the page if you want independent
+reactions rather than people agreeing with the first pin. Where pins cluster is
+your friction, and you have the screenshot to prove it. This pairs directly
+with persona interviews: run an
+[interview](/tutorials/running-an-interview) to find what a careful user hits,
+run the widget to find what a hurried one does.
 
 **A standing channel on production.** Leave it installed with sign-in off and
 comments hidden from other visitors. People report what bothers them where it
-bothers them, and it lands in a queue rather than a support inbox.
+bothers them, and it lands in a queue grouped by page and version rather than
+in a support inbox. Declare a version on each release (see
+[Versions](/integrations/feedback-widget#versions)) so a week of comments reads
+back by build, not by guesswork.
 
-## Triage without losing the thread
+## Close the loop with the people who commented
 
-Comments are grouped **by page**, because that is how fixes get made. Each group
-shows every pin left on that page, and you collapse the ones you have handled.
+Collecting feedback and going quiet is worse than not collecting it. The
+**Comments** view gives you three ways to answer: reply in the thread (the
+reply shows on the page, and the author is emailed if they left an address),
+resolve (which notifies the author), and **Summarise**, which turns a busy
+queue into themes, open questions and a brief for a coding agent. The
+[tutorial](/tutorials/feedback-widget#4-triage-what-comes-back) goes through
+each.
 
-<Screenshot
-  name="feedback"
-  alt="The project Comments view with comments grouped by page, each showing a screenshot of where it was pinned, its status and replies."
-  caption="Comments grouped by page, each with the screenshot and element it was pinned to."
-/>
-
-Open one and you get the screenshot with the pin in place, the device and
-viewport, the reply thread, and the status. Reply and the visitor is notified if
-they left an email, with your reply appearing on the page for them. Move it
-through **new**, **reviewed**, **resolved**, or **dismissed**; resolving notifies
-the author, which is the difference between collecting feedback and closing a
-loop. After a round of fixes, **Resolve all** clears the open queue in one go.
-
-### Versions, so old comments stay readable
-
-Pages change, and a comment about a button you deleted is noise unless you know
-which build it was about. Every comment records a hash of the page content, and
-comments are grouped into **v1**, **v2**, and so on, with the newest badged
-**Latest**. Select a version to see only the comments left on it.
-
-If you would rather tie versions to your releases than to page content, set
-`data-sd-version` on the script tag to a build ID, release tag, or commit SHA.
-The widget then uses that verbatim.
-
-## Who can actually use it
-
-The API key in your page source is an identifier, not a secret. The domain
-allowlist decides which sites the widget answers, **Require sign in** limits it
-to workspace members, and workspace admins can narrow or switch it off for
-every project. See
-[Control who can use it](/integrations/feedback-widget#control-who-can-use-it).
+The habit that keeps the queue useful: resolve as you ship, and use **Resolve
+all** after a round of fixes. An open queue that reflects genuinely outstanding
+work gets looked at; one that has become an archive does not.
 
 <TextureBreak />
 
@@ -133,9 +109,11 @@ ones into checks:
 4. Resolve the comment (update_feedback_status) so the author is notified
 ```
 
-All three feedback tools are on the MCP server, so an agent can work that loop
-with you: "read the new comments on the pricing page, reproduce the top one with
-a checklist, and tell me what you find." See the
+The feedback tools are on the MCP server (see
+[Use it from an agent](/integrations/feedback-widget#use-it-from-an-agent)), so
+an agent can work that loop with you: "read the new comments on the pricing
+page, reproduce the top one with a checklist, and tell me what you find." The
+`triage_feedback` prompt packages it. See the
 **[codebases guide](/guides/codebases)** for the deploy-trigger side, and the
 **[validation playbook](/guides/validation)** for turning findings into standing
 checks.
@@ -146,9 +124,8 @@ checks.
   immediately and nothing is exposed while you are still deciding.
 - Only ask for an email if you intend to reply. Collecting addresses and going
   quiet is worse than not collecting them.
-- Set `data-sd-version` if you deploy several times a day. Content hashing works,
-  but grouping by release is unambiguous when you are reading back a week later.
-- Resolve aggressively. An open queue that reflects genuinely outstanding work
-  gets looked at; one that has become an archive does not.
+- Declare a version if you deploy several times a day. The automatic fingerprint
+  works, but grouping by release is unambiguous when you are reading back a
+  week later.
 - Turn off the `c` shortcut if your own page already uses it. It is one toggle,
   and clashing shortcuts confuse visitors more than they help.

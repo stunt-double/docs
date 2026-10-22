@@ -1,97 +1,108 @@
 ---
 title: "Tutorials"
-description: "Step-by-step guides for getting the most out of every part of Stunt Double: actors, checklists, interviews, workflows, Slack, devices, live sessions, and the API."
+description: "Pick a tutorial by what you want to get done: each one takes a single task in Stunt Double from start to finish."
 ---
 
 # Tutorials
 
-The **[Quickstart](/getting-started)** gets you from an empty
-workspace to a first checklist run, and **[Core concepts](/concepts)**
-explains what each building block does. These tutorials go further: practical,
-task-oriented guides for getting real value out of each part of the product as
-your usage grows.
+Each tutorial takes one task from start to finish and stands on its own, so
+start with the one your team needs. New to Stunt Double? Do the
+**[Quickstart](/getting-started)** first.
 
-## The series
+## Test your product
 
 <CardGrid
   columns={2}
   items={[
     {
-      icon: 'actor',
-      title: '1. Build an actor that behaves like your audience',
-      description:
-        'Write instructions and knowledge that make an actor behave like a real member of your audience.',
-      href: '/tutorials/first-actor',
+      icon: "actor",
+      title: "Build an actor that behaves like your audience",
+      description: "When the starting actors are too generic for your users.",
+      href: "/tutorials/first-actor",
     },
     {
-      icon: 'checklist',
-      title: '2. Write checklists that catch real regressions',
+      icon: "checklist",
+      title: "Write checklists that catch real regressions",
       description:
-        'Structure checks around outcomes, not clicks, and read the evidence behind a pass or fail instead of trusting the badge.',
-      href: '/tutorials/effective-checklists',
+        "When a flow must keep working and you want a verdict you can trust.",
+      href: "/tutorials/effective-checklists",
     },
     {
-      icon: 'interview',
-      title: '3. Run a user interview',
+      icon: "insight",
+      title: "Review runs and act on them",
       description:
-        'Structure sections and items, recruit actor personas or real participants, and read an evidence-backed report.',
-      href: '/tutorials/running-an-interview',
+        "When runs are coming back and you need to decide what is broken.",
+      href: "/tutorials/reviewing-runs",
     },
     {
-      icon: 'automation',
-      title: '4. Automate multi-step workflows',
+      icon: "worker",
+      title: "Test a product behind your firewall",
       description:
-        'Chain checklists, conditions, notifications, and PR reviews into one repeatable automation.',
-      href: '/tutorials/building-workflows',
-    },
-    {
-      icon: 'insight',
-      title: '5. Turn runs into insights',
-      description:
-        'Read results, screenshots, and recordings like a teammate would, and see what surfaces automatically as an insight.',
-      href: '/tutorials/reviewing-runs',
-    },
-    {
-      icon: 'feedback',
-      title: '6. Collect stakeholder feedback on a prototype',
-      description:
-        'Install the feedback widget so reviewers pin comments in context, then triage, reply, and resolve them from the project.',
-      href: '/tutorials/feedback-widget',
-    },
-    {
-      icon: 'users',
-      title: '7. Review designs from Slack',
-      description:
-        'Share a link in Slack and get the screen opened, reviewed, and written up in the thread, then ask the agent to run the rest of your workspace.',
-      href: '/tutorials/slack-design-review',
-    },
-    {
-      icon: 'worker',
-      title: '8. Test a product behind your firewall',
-      description:
-        'Run actors against an internal product from a Mac on your network, no inbound firewall changes required.',
-      href: '/tutorials/self-hosted-worker',
-    },
-    {
-      icon: 'terminal',
-      title: '9. Automate Stunt Double from Claude',
-      description:
-        'Connect the MCP server to Claude and drive actors, checklists, and interviews from a conversation.',
-      href: '/tutorials/automate-with-mcp',
-    },
-    {
-      icon: 'actor',
-      title: '10. Run a live session',
-      description:
-        'Watch an actor use your product in real time, steer it as it goes, take over the browser when you need to and keep what it finds.',
-      href: '/tutorials/live-sessions',
+        "When the site is staging or an internal tool that hosted browsers cannot reach.",
+      href: "/tutorials/self-hosted-worker",
     },
   ]}
 />
 
-## Next steps
+## Learn how people get on
 
-Each tutorial stands on its own, so start where your team needs it most. To
-connect Slack, GitHub, Linear, Figma or Vercel, see
-**[Integrations](/integrations)**. To drive Stunt Double from an assistant, see
-**[MCP](/mcp)**.
+<CardGrid
+  columns={2}
+  items={[
+    {
+      icon: "interview",
+      title: "Run a user interview",
+      description:
+        "When you have a design question and want answers with evidence.",
+      href: "/tutorials/running-an-interview",
+    },
+    {
+      icon: "feedback",
+      title: "Collect stakeholder feedback on a prototype",
+      description: "When real reviewers need to comment in place on a page.",
+      href: "/tutorials/feedback-widget",
+    },
+    {
+      icon: "users",
+      title: "Review designs from Slack",
+      description:
+        "When your team already shares links for review in Slack threads.",
+      href: "/tutorials/slack-design-review",
+    },
+    {
+      icon: "actor",
+      title: "Run a live session",
+      description:
+        "When you want to watch and steer an actor as it works. In early access.",
+      href: "/tutorials/live-sessions",
+    },
+  ]}
+/>
+
+## Automate it
+
+<CardGrid
+  columns={2}
+  items={[
+    {
+      icon: "automation",
+      title: "Automate multi-step workflows",
+      description:
+        "When checks should run on every deploy, pull request or schedule.",
+      href: "/tutorials/building-workflows",
+    },
+    {
+      icon: "terminal",
+      title: "Automate Stunt Double from Claude",
+      description:
+        "When you would rather ask an assistant than open the dashboard.",
+      href: "/tutorials/automate-with-mcp",
+    },
+  ]}
+/>
+
+## Not a tutorial?
+
+For a workflow that starts in a design tool (Figma, Claude Design or your
+codebase), see **[Guides](/guides)**. For setup and settings of a connected
+tool, see **[Integrations](/integrations)**.

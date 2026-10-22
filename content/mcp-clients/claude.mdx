@@ -1,0 +1,30 @@
+---
+description: Add Stunt Double to Claude on the web, Claude Desktop and the mobile apps as a custom connector, with run results drawn as cards.
+---
+
+A custom connector gives Claude the Stunt Double tools and prompts in claude.ai, Claude Desktop and the mobile apps. Checklist runs, interview reports and Index reports come back as cards in the conversation. For Claude Code, use the [Claude Code](/mcp/clients/claude-code) page instead. To get the task skills as well, install the [Stunt Double plugin](https://claude.ai/customize/plugins/id/9cd49c97-13c2-4844-bc3d-53ef7956c1ef%40anthropic-plugin-directory) from Claude's plugin directory: it adds this connector plus the skills in one go.
+
+{/* setup */}
+
+Newer versions of Claude show Connectors under **Customize** rather than **Settings**; the steps are the same. On a Team or Enterprise plan, an owner adds the connector in **Organization settings**, **Connectors**, and each member then connects to it. For Claude Desktop there is also a one-click extension under **Integrations** in your workspace (see [Connect](/mcp/connect#claude-desktop)).
+
+## Sign in
+
+After you add the connector, select **Connect** next to it. A browser window opens on Stunt Double: sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope. Connectors you add on the web also work in Claude Desktop and the mobile apps.
+
+## Check it works
+
+- In a chat, open the **+** menu, choose **Connectors** and make sure Stunt Double is switched on for this conversation.
+- Ask: "List my Stunt Double workspaces."
+
+## Troubleshooting
+
+- **Free plan:** Claude allows one custom connector on the Free plan. Remove another to add Stunt Double.
+- **Too many tools for one chat:** use the **Search and tools** menu to turn off Stunt Double tools you don't need in that conversation.
+- **Disconnect:** remove the connector in Claude's Connectors settings, and revoke it on the Stunt Double side as [Connect](/mcp/connect#revoke-access) describes.
+
+## Next
+
+- [Skills](/mcp/skills): task recipes you can add to Claude
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

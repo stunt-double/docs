@@ -1,77 +1,118 @@
 ---
 title: "Test behind a firewall"
 icon: "worker"
-description: "Run actors against an internal product from a Mac on your network, no inbound firewall changes required."
+description: "Run a checklist against an internal product from a Mac on your network, from setting up the Mac to reading the result."
 ---
 
 # Test a product behind your firewall
 
 If the product you want to test is only reachable inside your network, a
-cloud browser can't reach it. A device is a Mac on your side of the firewall
-running the Stunt Double app, so actors browse from there without you opening
-anything up.
+cloud browser can't reach it. In this tutorial you set up a Mac on your network
+as a device, point a project at your internal product, run one checklist
+through that Mac and read what the actor found. Nothing on your firewall
+changes: the Mac dials out to Stunt Double.
 
 <Callout variant="note" title="Plans">
-  Devices are on every paid plan, and testing private or internal addresses from one needs the
-  Startup plan or above. A workspace owner or admin switches devices on, then any member can set
-  up their own Mac.
+  Testing private or internal addresses needs the Startup plan or above.
+  [Devices](/integrations/self-hosted-workers#before-you-start) lists what each
+  plan and role can do.
 </Callout>
 
-## Turn devices on
+<Steps>
+<Step>
 
-Open **Settings > Devices** and switch on **Use devices in this workspace**.
-On other plans, this page explains what devices do and how to upgrade.
+### Set up a Mac on your network
 
-## Set up a Mac
+Pick a Mac that can open your internal product in its own browser: on the
+office network, or with the VPN connected. Install the
+[desktop app](/integrations/desktop-app#install-it) on it, sign in, then open
+**Devices** and click **Set up this Mac**. Wait for **This Mac** to show
+**Connected**. The [Devices](/integrations/self-hosted-workers#set-it-up)
+reference covers this step in full.
 
-1. On a Mac that can reach your internal product, download the Stunt Double
-   [desktop app](/integrations/desktop-app), open it and sign in. Google
-   Chrome needs to be installed.
-2. Open **Go > This Device** (Cmd+D) and click **Set up this Mac**.
-3. Wait for the device console to show **Connected**.
+Keep the app open for the rest of the tutorial. A device is only online while
+the app is running.
 
-The app dials out to Stunt Double rather than waiting for an inbound
-connection, so your firewall needs no changes. If your product sits behind a
-VPN portal or SSO, sign in once in the device console. The sign-in persists
-for later runs. If the sign-in needs a client certificate, Keychain or a smart
-card, switch **How the browser runs** to **Its own window** first.
+</Step>
+<Step>
 
-## Choose where each actor's browser runs
+### Sign in once, if the product needs it
 
-Open an actor, go to its **Manage** tab and find **Where this actor's browser
-runs**:
+If your product sits behind a VPN portal or SSO, open the browser under
+**Live view** on **This Mac** and sign in the way you normally would. The
+sign-in persists, so actors start every later run signed in.
 
-- **Stunt Double cloud** for public sites.
-- **Any device in this workspace** to use whichever device is online.
-- **A named device** to always use that Mac.
+If the sign-in asks for a client certificate, Keychain or a smart card, first
+switch **Where the browser runs** to **Its own window**, so the prompt has a
+real Chrome window to appear in.
 
-An actor set to a device never falls back to the cloud: if its device is
-offline, the run stops and tells you. An actor set to the cloud never opens an
-internal site: if the project is marked internal, or the address only works
-inside your network, the run stops and asks you to choose a device.
+</Step>
+<Step>
 
-## Control what it can reach
+### Point a project at the internal address
 
-Each device has an access setting in **Settings > Devices** with three modes:
+Create a project, or open an existing one, and enter the internal address as
+its URL. As you type, the field checks where the address can be reached from.
+For an internal one it reads **This project is internal, so actors open it on
+a device in your network.**
 
-- **Allow all domains**: no restriction.
-- **Allow specific domains**: only the domains you list.
-- **Block specific domains**: everything except the domains you list.
+You do not need to change any actor. An actor on the cloud browser borrows
+whichever device is online when its project is internal.
 
-A new device starts on Allow all domains, so it works as soon as it connects.
-To restrict it, switch to Allow specific domains and list only what your
-actors need to reach.
+</Step>
+<Step>
 
-## Watch status live
+### Check the device can reach it
 
-Devices show their status live everywhere they appear: Settings, the actor's
-Manage tab and the device console. A Mac that stops checking in turns Offline
-within a couple of minutes, so you can tell before starting a run that depends
-on it.
+If you are an owner or admin, open the Mac from **Devices** and enter the
+address under **Test a URL**. The test opens it in the device's browser, so a
+pass means actors can reach it too. A failure here is cheaper to fix than a
+failed run: check the Mac's VPN, and its **Network access** setting.
+
+</Step>
+<Step>
+
+### Run a checklist
+
+Open **Checklists** in the project, choose **Create checklist**, write one or
+two checks as plain-language outcomes (for example "Sign in and open the
+reports page"), then press **Run**.
+
+The run goes to your Mac. Switch to **This Mac** to watch it under **Live
+view**: the device reads **Running a task** while the actor works, and the
+activity log beside it lists what the device did. If another run is already
+using the Mac, yours waits its turn.
+
+</Step>
+<Step>
+
+### Read the result
+
+Open the finished run from the checklist. Each check has its result, the
+screenshot the actor took and its explanation, the same as a run in the
+cloud. [Review runs and act on them](/tutorials/reviewing-runs) covers what to
+do with failures.
+
+</Step>
+</Steps>
+
+## Make it routine
+
+Once one run works, you can rely on the Mac for more:
+
+- **Automations** on an internal project use the device the same way, so a
+  schedule or a deploy trigger can re-check the product without anyone at the
+  Mac. Leave the app running on a Mac that stays awake.
+- **Keep an actor on this Mac** for every run, public sites included, from the
+  actor's **Browser** tab.
+- **Limit what the device can open** to the domains your actors need, under
+  **Network access**.
+
+[Devices](/integrations/self-hosted-workers) explains how runs choose a device,
+how to share one Mac across the team and how to restrict it.
 
 ## Next steps
 
 - **[Devices reference and troubleshooting](/integrations/self-hosted-workers)**
 - **[Run a live session](/tutorials/live-sessions)** to watch and steer an actor on your Mac
 - **[Automate multi-step workflows](/tutorials/building-workflows)**
-- **[Turn runs into insights](/tutorials/reviewing-runs)**

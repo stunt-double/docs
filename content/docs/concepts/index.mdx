@@ -1,146 +1,146 @@
 ---
 title: "Concepts"
 icon: "compass"
-description: "Actors, checklists, interviews, workflows, and insights: the building blocks of Stunt Double and how they relate."
+description: "Short definitions of Stunt Double's building blocks (workspaces, actors, checklists, interviews, automations, issues and more) and how they relate, with a link to the page that goes deeper on each."
 ---
 
 # Core concepts
 
 Stunt Double is organized around a small number of building blocks. This page
-explains each one and how they fit together.
+defines each one and how it relates to the others. For how to use them, follow
+the link at the end of each section.
 
 <ConceptMap />
 
-| Term | In one line |
-| --- | --- |
-| Workspace | Your team: members, billing and every project |
-| Project | One product or surface, and everything that tests it |
-| Actor | An AI user with instructions and knowledge that drives a real browser |
-| Checklist | Plain-language checks an actor verifies, each with evidence |
-| Interview | A structured study run with persona participants, ending in a report |
-| Live session | An actor using your product in real time while you watch and steer it |
-| Automation | A graph of steps that runs checklists on a schedule or an event |
-| Comment | A pin a real visitor drops on your page through the feedback widget |
-| Insight | A notable observation surfaced from a run |
+| Term         | In one line                                                                          |
+| ------------ | ------------------------------------------------------------------------------------ |
+| Workspace    | Your team: members, billing and every project                                        |
+| Project      | One product or surface, and everything that tests it                                 |
+| Actor        | An AI user with instructions and knowledge that drives a real browser                |
+| Checklist    | Plain-language checks an actor verifies, each with evidence                          |
+| Interview    | A structured study run with persona participants, ending in a report                 |
+| Live session | An actor using your product in real time while you watch and steer it (early access) |
+| Automation   | A graph of steps that runs checklists on a schedule or an event                      |
+| Comment      | A pin a real visitor drops on your page through the feedback widget                  |
+| Issue        | A problem a run, review or comment found, tracked until it is fixed                  |
+| Goal         | What a project is trying to achieve, with the evidence linked to it                  |
+| Idea         | A recommendation your actors write after exploring the product together              |
+| Topology     | A map of your product's screens and the paths between them                           |
+| Device       | A Mac in your workspace that runs work against sites inside your network             |
 
 ## Workspaces and projects
 
 A **workspace** is the top-level container for your team. It owns members,
-billing, and every project. A **project** sits inside a workspace and groups the
-actors, checklists, and runs for one product or surface. Teams working on
-several products keep them separated by using a project per product.
+billing and every project. A **project** sits inside a workspace and groups the
+actors, checklists, interviews and runs for one product or surface, so a team
+with several products keeps them apart. A project's overview leads with its
+latest run, anything running now and what changed since your last visit.
 
 ## Actors
 
-An **actor** is an AI assistant you create. It is defined by its instructions
-and its knowledge:
+An **actor** is an AI user you create, named by the role it stands in for
+("Busy shop owner"), never as a person. Three things define it:
 
-- **Instructions** describe the actor's role and how it should behave.
-- **Knowledge** is the reference material the actor can draw on, such as facts
-  about your product or test credentials.
+- **Instructions**: who it is and how it behaves, written to the actor.
+- **Personality**: how skeptical, how technically literate and how quickly
+  frustrated it is, set on sliders and applied everywhere it works.
+- **Knowledge**: what it can look up mid-run (expertise, processes, reference
+  facts and test accounts), opened only when a task needs it.
 
-Under the hood, an actor drives a real browser and works through your product
-the way a person would, observing the page, taking an action, observing the
-result, and repeating until the task is done. It can also read email sent to
-its own inbox, which is what makes signup and verification flows testable.
-Actor inboxes, and actors that stay signed in between runs, come with the
-Startup plan and above.
+An actor drives a real browser and works through your product the way a
+person would: observe the page, act, observe the result, repeat. On the
+Startup plan and above it also gets an inbox of its own for sign-up and
+verification emails. See
+**[Build an actor that behaves like your audience](/tutorials/first-actor)**.
 
 ## Checklists
 
-A **checklist** is an automated verification workflow. You describe the steps you
-want checked in plain language, and an actor runs through them in a hosted
-browser. Each step is reported as passed or failed, with a screenshot and a
-short explanation.
-
-<Screenshot
-  name="checklist-run"
-  alt="A checklist run: a failed check with the actor's explanation and a screenshot of the error, above the passed checks."
-  caption="A checklist run. Each result carries what the actor did and what it saw."
-/>
-
-Checklists are the fastest way to catch regressions in flows that are tedious to
-test by hand, such as signup, checkout, or onboarding.
+A **checklist** is a set of checks written in plain language, each describing
+an outcome that should be true. An actor runs through them in a browser and
+reports each one as passed or failed, with a screenshot and a short
+explanation. A check can block the run, add to a score or just record what the
+actor saw. Checklists are the fastest way to catch regressions in flows that
+are tedious to test by hand, such as sign-up, checkout or onboarding. See
+**[Write checklists that catch real regressions](/tutorials/effective-checklists)**.
 
 ## Interviews
 
-An **interview** is a structured conversation Stunt Double runs with your users.
-You define sections and questions, the platform conducts the interview, and it
-produces a report summarizing what it learned. Interviews are useful for user
-research and feedback gathering at a scale that manual interviews cannot reach.
+An **interview** is a structured study run with persona participants: your
+actors, or personas generated for the study. You write a guide of questions
+and tasks, each participant works through your product and answers in
+character, and every round ends in a report of themes, quotes, the screens
+behind them and a usability score. See
+**[Run a user interview](/tutorials/running-an-interview)**.
 
 ## Live sessions
 
-A **live session** puts you beside an actor while it works: the browser on one
-side, the chat on the other, and the steps it takes underneath. Give it a task
-or interview it in character, change direction mid-task, or take the browser
-and drive it yourself. Sessions run in a cloud browser or, from the desktop
-app, in a browser on your own Mac. See
+A **live session** puts you beside an actor while it works, so you can steer
+it, interview it in character or take over the browser. Live sessions are in
+early access and switched on per workspace. See
 **[Run a live session](/tutorials/live-sessions)**.
 
 ## Workflows
 
-A **workflow** (an **automation** in the dashboard) chains steps into a single repeatable automation. Where a
-checklist verifies a flow, a workflow is meant to get something done end to end,
-and can combine several actions into one run.
+A **workflow**, called an **automation** in the dashboard, is a graph of steps
+started by a trigger. Where a checklist verifies one flow, an automation
+decides when checklists run and what happens with the result: post a comment
+on a pull request, notify a channel, branch on a condition. See
+**[Automate multi-step workflows](/tutorials/building-workflows)**.
 
 <Screenshot
   name="automation-builder"
   alt="The automation flow editor: a GitHub trigger, a Run Checklist step, and a condition that branches to a GitHub comment or a notification."
-  caption="An automation is a graph of steps, started by a trigger: a schedule, a webhook, or an event from GitHub, Vercel, Slack, Linear or Figma."
+  caption="An automation is a graph of steps, started by a trigger: a schedule, a webhook, or an event from GitHub, Vercel, Slack or Figma."
 />
 
 ## Comments and the feedback widget
 
-Actors report what an AI persona experienced. **Comments** cover the other half:
-what a real visitor experienced. The **feedback widget** is a small script you
-add to your own site, letting visitors drop a pin anywhere on a page and leave a
-comment in the place it applies to.
+Actors report what an AI persona experienced. **Comments** cover the other
+half: what a real visitor experienced. The **feedback widget** is a small
+script you add to your own site, so visitors can drop a pin anywhere on a page
+and leave a comment where it applies. Each comment arrives with a screenshot,
+the page and device details, and only domains you approve can send them. See
+**[Collect stakeholder feedback on a prototype](/tutorials/feedback-widget)**
+and the **[feedback widget reference](/integrations/feedback-widget)**.
 
-Each comment arrives with a screenshot, the page URL, the pin position, and
-device details, and lands in the project's Comments view grouped by page. From
-there you reply in the thread and move each one through **new**, **reviewed**,
-**resolved**, or **dismissed**.
+## Issues, goals and ideas [#insights]
 
-<Callout variant="note" title="Security boundary">
-  The widget is identified by a per-project API key that lives in your page source, so the real
-  access control is the **domain allowlist** on the project: the widget API only answers requests
-  from domains you have approved. Workspace admins can narrow that further, or switch the widget off
-  across the whole workspace, from Settings → Security.
-</Callout>
-
-See **[Collect stakeholder feedback on a prototype](/tutorials/feedback-widget)**
-for installation and triage.
-
-## Insights
-
-As actors work, Stunt Double surfaces **insights**: notable observations drawn
-from a run, such as a confusing step, a broken link, or an unexpected result.
-Insights turn raw session recordings into something you can act on without
-watching every replay.
-
-## Issues and goals
-
-Each project has an **Issues** tab. Problems your runs and reviewers have
-already found appear there on their own: failed checks, open design review
-notes, untriaged comments and insight findings, each linked back to its
-evidence. Turn one into a tracked issue in a click, then move it through open,
-in progress, resolved or dismissed. The highest severity sits at the top.
+**Issues** are the problems a project needs to fix. Failed checks, open design
+review notes and new comments show up on the project's **Issues** page on
+their own, each linked to its evidence, and become tracked issues in a click.
+See **[Review runs and act on them](/tutorials/reviewing-runs)**.
 
 **Goals** say what a project is trying to achieve, such as "New visitors finish
-sign-up without help". Link insights and feedback to the goal they support, so
-the evidence for each goal sits in one place. A goal is active until you mark
-it completed or archive it.
+sign-up without help". Link feedback and ideas to the goal they support, so the
+evidence for each goal sits in one place.
+
+**Ideas** come from a co-create session: say what you want to learn and pick
+the actors, and each explores the product before they turn what they found into
+ideas and recommendations. Problems they find become issues.
+
+## Topology
+
+A **topology** is a map of your product: its screens, the paths between them
+and what changed since the last version. An actor crawls the site to draw it,
+and pages that checklist runs and interview participants visit are added as
+you test. Topology is in preview.
+
+## Devices
+
+A **device** is a Mac in your workspace running the desktop app, on any paid
+plan. On the Startup plan and above, runs against a site only reachable inside your network
+go through a device, using that Mac's network and sign-ins. See
+**[Devices](/integrations/self-hosted-workers)**.
 
 ## Recordings and replays
 
 Everything an actor does is recorded. For any run you can replay the session,
-step through each action, and see the screenshot captured at that moment. This
-is what makes a failed checklist or a surprising interview answer easy to
+step through each action and see the screenshot captured at that moment, which
+is what makes a failed check or a surprising interview answer easy to
 diagnose.
 
 ## Next steps
 
-Ready to automate this? See the **[API overview](/api)** and the
-**[MCP server](/mcp)**, and connect the tools your team already uses from
-**[Integrations](/integrations)**.
+To drive any of this from code or an assistant, see **[API and agent
+access](/api)** and the **[MCP server](/mcp)**. To connect the tools your team
+already uses, see **[Integrations](/integrations)**.

@@ -1,0 +1,33 @@
+---
+description: Add the Stunt Double MCP server to VS Code for GitHub Copilot Chat, sign in with OAuth and use its tools in agent sessions.
+---
+
+This page gives GitHub Copilot Chat in VS Code the Stunt Double tools, prompts and resources. If you use Claude Code inside VS Code, follow the [Claude Code](/mcp/clients/claude-code) page instead: it has its own MCP config.
+
+{/* setup */}
+
+A server in `.vscode/mcp.json` belongs to that workspace and can be shared through version control. One in your user configuration is available in every workspace.
+
+## Sign in
+
+Start the server from the Command Palette with **MCP: List Servers**, choose `stuntdouble` and select **Start Server** (VS Code can also start it for you when you send a chat message). VS Code opens your browser on Stunt Double: sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- In Copilot Chat, open **Configure Tools** in the chat input and check the Stunt Double tools are selected.
+- Ask: "List my Stunt Double workspaces."
+- Type `/stuntdouble.` to see the server's prompts, such as `/stuntdouble.verify_change`.
+- Attach a resource from **Add Context**, **MCP Resources**, for example the `stuntdouble://guide` catalog.
+
+## Troubleshooting
+
+- **Nothing happens, or sign-in fails:** in **MCP: List Servers**, choose `stuntdouble` and **Show Output** to read the server's log, then **Restart Server**.
+- **Copilot doesn't call the tools:** confirm the server is running and its tools are selected in **Configure Tools**. Agents only see tools that are turned on.
+- **Server not allowed:** your organization can restrict MCP servers to an allowlist. Ask your administrator to add it.
+- **A tool is missing:** the connection may not hold its scope. Ask Copilot to read `stuntdouble://connection`.
+
+## Next
+
+- [Skills](/mcp/skills): task recipes that drive the server
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

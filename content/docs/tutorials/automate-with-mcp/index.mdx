@@ -1,49 +1,74 @@
 ---
 title: "Automate from Claude"
 icon: "terminal"
-description: "Connect the MCP server to Claude and drive actors, checklists, and interviews from a conversation."
+description: "Drive actors, checklists, interviews and feedback from a conversation in Claude or any other MCP client."
 ---
 
 # Automate Stunt Double from Claude
 
-This tutorial connects Claude and uses it to run your workspace from a
-conversation. The **[MCP server](/mcp)** pages cover authentication and every
-tool.
+Once the [MCP server](/mcp) is connected, you can run most of your workspace
+from a conversation instead of clicking through the dashboard. This tutorial
+uses Claude, but every MCP client works the same way.
 
-## Connect Claude to your workspace
+## Before you start
 
-Follow **[Connect](/mcp/connect)** for Claude Desktop, or the
-**[Claude](/mcp/clients/claude)** and **[Claude Code](/mcp/clients/claude-code)**
-pages. The first time Claude calls a tool, it runs the OAuth flow and asks you
-to sign in to your workspace. Once you approve, Claude can list and call tools
-on your behalf for the rest of the session.
+Connect your client and sign in: pick it from the
+**[client pages](/mcp/clients/claude)** (Claude, Claude Code, ChatGPT, Cursor
+and more). Then ask "List my Stunt Double workspaces." If your workspaces come
+back, you're ready.
 
-## What you can ask Claude to do
+## What you can ask for
 
-With the server connected, you can drive most of the platform in plain
-language instead of clicking through the dashboard:
+Ask in plain language. Claude turns each request into tool calls on actors,
+checklists, workflows, interviews and feedback, and reads back the result:
 
 - "Run the checklist for our signup flow and tell me if anything failed."
-- "Create an actor for a first-time free-trial user and give it browser
-  access."
+- "Create an actor for a first-time free-trial user and give it our brand
+  guidelines to check against."
 - "Launch a new round of our onboarding interview and summarize the top
   themes."
 - "List the workflows that ran in the last day and flag any failures."
+- "Summarize the open feedback on the pricing page and dismiss the duplicates."
+- "Run the checkout checklist against this preview and comment the result on
+  the pull request."
+- "How well can AI agents use example.com?" For a site the
+  [Index](/index-ranking) does not track yet, Claude can request a score.
 
-Claude translates each request into the appropriate tool calls, actors,
-checklists, workflows, interviews, and reads back the result.
+Name the workspace or project when you have more than one, and Claude searches
+before it creates, so it reuses the actor or checklist that already covers a
+flow.
 
-## Scope tokens to least privilege
+## Start from a recipe
 
-Grant only the scopes a given client needs. There are three: `mcp:read` to
-read a workspace, `mcp:write` to create and edit, and `mcp:run` to start runs.
-A client that only reports on results needs `mcp:read`, and nothing more. A
-client that requests no scope gets all three. See
-**[authentication](/mcp#authentication)** for what each covers.
+For the common jobs you don't have to write the request yourself:
+
+- **Prompts.** The server ships ready-made prompts such as `verify_change`,
+  `run_user_research`, `triage_feedback` and `setup_guardrails`. Each client
+  lists them in its own way; the client pages show where.
+- **Skills.** The [skills](/mcp/skills) go further: each one teaches the agent
+  a full job, such as verifying a pull request preview or standing up
+  guardrails. The Claude Code and Cursor plugins install them for you.
+
+## Let runs finish
+
+Checklist runs, workflow runs and interviews take a few minutes. Claude starts
+the run, then checks back every 30 to 60 seconds until it finishes, so you can
+ask for something else in the meantime. In Claude and ChatGPT, the run comes
+back as a card with the verdict, the score and each check's evidence, and the
+card keeps itself up to date while the run is going.
+
+## Give each client only what it needs
+
+A connection that only reports on results needs `mcp:read`, nothing more.
+Approve `mcp:write` for a client that should build checklists and actors, and
+`mcp:run` only where it should start runs, since runs use your workspace's run
+allowance. [Connect](/mcp/connect#what-a-connection-can-do) explains how scopes
+hide tools and how a client without `mcp:run` handles automations.
 
 ## Next steps
 
-- **[Automate multi-step workflows](/tutorials/building-workflows)**,
-  for automations that don't need a human in the loop at all.
-- **[API overview](/api)**, for driving Stunt Double from your
-  own tools instead of Claude.
+- **[Automate multi-step workflows](/tutorials/building-workflows)**, for
+  automations that don't need a human in the loop at all.
+- **[Tools](/mcp/tools)**, for every tool, prompt and resource.
+- **[API overview](/api)**, for driving Stunt Double from your own tools
+  instead of a chat client.

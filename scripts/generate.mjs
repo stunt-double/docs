@@ -38,6 +38,15 @@ const CLIENT_ICONS = {
   'other-clients': 'mcp',
 };
 
+/**
+ * Hand-written notes for each client page, by slug: sign-in, checks and
+ * troubleshooting the README leaves out. The README's setup snippet goes where
+ * a note has the SETUP line, or first when it has none.
+ */
+const CLIENT_NOTES_DIR = join(ROOT, 'content/mcp-clients');
+const SETUP = '{/* setup */}';
+const CLIENT_NOTES_URL = 'https://github.com/stunt-double/docs/blob/main/content/mcp-clients';
+
 /** Page title and description for each source's overview. */
 const PAGES = {};
 
@@ -174,8 +183,9 @@ function takeTitle(body) {
   return m ? { title: m[1].trim(), body: body.slice(m[0].length).trim() } : { title: null, body: body.trim() };
 }
 
-function editLink({ repo, tag }, paths) {
+function editLink({ repo, tag }, paths, extra = []) {
   const url = (p) => `https://github.com/${repo}/blob/${tag}/${p}`;
+  if (extra.length) return `\n\n---\n\nEdit on GitHub: ${[...paths.map((p) => `[${basename(p)}](${url(p)})`), ...extra].join(', ')}\n`;
   return paths.length === 1
     ? `\n\n---\n\n[Edit on GitHub](${url(paths[0])})\n`
     : `\n\n---\n\nEdit on GitHub: ${paths.map((p) => `[${basename(p)}](${url(p)})`).join(', ')}\n`;
@@ -188,7 +198,7 @@ function editLink({ repo, tag }, paths) {
  */
 export function mcpPages(src, at) {
   const mdx = (text, dir) => readmeToMdx(clean(text), { ...at, dir });
-  const page = (data, body, paths) => clean(frontmatter(data) + body + editLink(at, paths));
+  const page = (data, body, paths, extra) => clean(frontmatter(data) + body + editLink(at, paths, extra));
   const out = {};
 
   const [pre, ...sections] = splitSections(src.readme, 2);
@@ -214,14 +224,18 @@ export function mcpPages(src, at) {
   );
 
   for (const c of clients) {
+    const notes = parseFrontmatter(src.clientNotes?.[c.slug] ?? '');
+    const setup = `## Add the server\n\n${mdx(c.body)}`;
+    const body = notes.body.includes(SETUP) ? notes.body.replace(SETUP, () => setup) : `${setup}\n\n${notes.body}`;
     out[`clients/${c.slug}.mdx`] = page(
       {
         title: c.heading.replace(/\s*\(.*\)$/, ''),
         icon: CLIENT_ICONS[c.slug],
-        description: `Connect ${c.heading} to the Stunt Double MCP server.`,
+        description: notes.data.description ?? `Connect ${c.heading} to the Stunt Double MCP server.`,
       },
-      mdx(c.body),
-      ['README.md']
+      body.trim(),
+      ['README.md'],
+      src.clientNotes?.[c.slug] ? [`[${c.slug}.mdx](${CLIENT_NOTES_URL}/${c.slug}.mdx)`] : []
     );
   }
   out['clients/meta.json'] = `${JSON.stringify({ title: 'Clients', icon: 'AppWindow', pages: clients.map((c) => c.slug) }, null, 2)}\n`;
@@ -289,6 +303,15 @@ function readDirFiles(dir, sub, pick) {
     .map((file) => ({ file: `${sub}/${file}`, text: readFileSync(join(path, file), 'utf8') }));
 }
 
+function readClientNotes() {
+  if (!existsSync(CLIENT_NOTES_DIR)) return {};
+  return Object.fromEntries(
+    readdirSync(CLIENT_NOTES_DIR)
+      .filter((n) => n.endsWith('.mdx'))
+      .map((n) => [basename(n, '.mdx'), readFileSync(join(CLIENT_NOTES_DIR, n), 'utf8')])
+  );
+}
+
 function writeMcp(at) {
   const dir = join(SOURCES_DIR, MCP);
   const pages = mcpPages(
@@ -297,6 +320,7 @@ function writeMcp(at) {
       skills: readDirFiles(dir, 'skills', (n) => (existsSync(join(dir, 'skills', n, 'SKILL.md')) ? `${n}/SKILL.md` : null)),
       rules: readDirFiles(dir, 'rules', (n) => (n.endsWith('.mdc') ? n : null)),
       agents: readDirFiles(dir, 'agents', (n) => (n.endsWith('.md') ? n : null)),
+      clientNotes: readClientNotes(),
     },
     at
   );

@@ -1,7 +1,7 @@
 ---
 title: "Stunt Double Index"
 icon: "Gauge"
-description: "The Stunt Double Index is a public ranking of how well AI agents can find, understand and act on a website, scored from HTTP probes and live agent sessions."
+description: "What the Stunt Double Index is: a public ranking of how well AI agents can use a website, how a score is made, what it measures, and how to add, claim and share a site."
 ---
 
 # Stunt Double Index
@@ -19,29 +19,44 @@ report, including your competitors'.
 
 A score comes from two kinds of evidence:
 
-- **Probes.** HTTP checks that look at what agents depend on, such as whether
-  pages are server-rendered, structured data is present and agents are allowed
-  in. Each failing check is listed with its weight.
-- **Agent sessions.** Live sessions, one per AI provider and benchmark task,
-  where an agent tries a real job on the site. Each session records what the
-  agent tried, its rubric evidence, a summary and the frictions it hit.
+- **Probes.** Quick HTTP checks that look at what agents depend on, such as
+  whether the site is reachable, says what agents may do, and publishes the
+  files and structured data agents look for. Each failing check is listed with
+  its weight.
+- **Agent sessions.** Live sessions in a real browser, where each AI provider
+  tries the jobs a customer would: research the brand, its prices and
+  policies; go from the homepage to signing up or checking out; find how an
+  agent could act for a customer; and find how to reach the business. A
+  separate grader marks each session against a fixed rubric, and each session
+  records what the agent tried, its evidence, a summary and the frictions it
+  hit. Each model is also asked, with no browser, how the site compares with
+  its competitors.
 
-A full run is the probes plus about 24 agent sessions. Stunt Double runs the
-sessions on the same [browser toolset](/stuntkit/browser-toolset) its actors
-use.
+What the agents managed counts for more than the probes. The combined score is
+then calibrated against every other site the Index scores, so a number reads
+the same way in every sector.
+
+A full run is the probes plus about 24 agent sessions. The top 50 sites get a
+monthly run of the main agent sessions; other sites get the probes. Stunt Double
+runs the sessions on the same [browser toolset](/stuntkit/browser-toolset) its
+actors use.
 
 ## What it measures
 
-| Category              | Can an agent...                                    |
-| --------------------- | -------------------------------------------------- |
-| Brand awareness       | Recognize the brand and what it offers             |
-| Discovery             | Find the site and the right page for a task        |
-| Information retrieval | Read the facts it needs from the site              |
-| Market ranking        | Place the site among its competitors               |
-| Accuracy              | Report what the site says without getting it wrong |
-| Checkout              | Get through to buying, on a person's behalf        |
-| Delegated access      | Act for a signed-in person                         |
-| Support               | Find help content and get an answer                |
+| Category                | Can an agent...                                         |
+| ----------------------- | ------------------------------------------------------- |
+| Brand awareness         | Recognize the brand and what it offers                  |
+| Discovery               | Find and recommend the site for a person's request      |
+| Information retrieval   | Read the facts it needs from the site                   |
+| Market ranking          | Place the site among its competitors                    |
+| Accuracy                | Report what the site says without getting it wrong      |
+| Task completion         | Carry out a task end to end, on a person's behalf       |
+| Delegated access        | Act for a signed-in person, safely                      |
+| Contact & communication | Find a way to reach the business                        |
+
+Each category has a weight, and Task completion carries the most. Delegated
+access is scored only for sites with a sign-in: a site with nothing to sign in
+to has nothing to delegate.
 
 The report also breaks the score down by provider, so you can see when one
 agent struggles where the others don't.
@@ -55,9 +70,30 @@ agent struggles where the others don't.
 
 Anyone signed in can add a site that isn't tracked yet at
 [index.stuntdouble.io](https://index.stuntdouble.io). A new site gets light
-probes by default, with an option to add live agent sessions.
+probes by default, with an option to add live agent sessions, and becomes
+public on the leaderboard. Sites that opt out in `robots.txt` aren't scored.
 
-Claim your domain to re-score it after you ship changes.
+Claim your domain with an email address on that domain: `sam@acme.com` can
+claim `acme.com` and its subdomains. Claiming lets you re-score the site after
+you ship changes (see [Improve your score](/index-ranking/improve-your-score)),
+and adds it as a project in your Stunt Double workspace, if you have one.
+
+## Share and look up a score
+
+Each scorecard has:
+
+- **A badge** to embed, in a full, compact or 20px README style, as HTML or
+  Markdown.
+- **A fix prompt** to paste into your coding agent, built from the
+  frictions agents hit on the site.
+- **An MCP prompt**: one message that asks your AI assistant about the site
+  and tells it how to connect to the Index's
+  [MCP server](/mcp/connect#index-lookups-with-no-account), which needs no
+  account.
+
+The [reports](https://index.stuntdouble.io/reports) page lists the Index's
+published reports: fixed, citable snapshots of how agents experience a set of
+sites, with a PDF to download once one is ready.
 
 ## Next steps
 

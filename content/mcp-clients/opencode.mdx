@@ -1,0 +1,30 @@
+---
+description: Add the Stunt Double MCP server to OpenCode as a remote server and sign in with opencode mcp auth.
+---
+
+This page gives OpenCode the Stunt Double tools. OpenCode also reads `SKILL.md` files, so you can add the task [skills](/mcp/skills) alongside.
+
+{/* setup */}
+
+The project `opencode.json` and the global `~/.config/opencode/opencode.json` are merged, so a server in either is available. OpenCode prefixes each tool with the server name, so the tools show up as `stuntdouble_list_workspaces` and so on.
+
+## Sign in
+
+OpenCode starts the OAuth flow by itself the first time the server asks for it. To sign in up front, run `opencode mcp auth stuntdouble`, sign in to Stunt Double in the browser that opens, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- `opencode mcp list` (or `opencode mcp auth list`) shows `stuntdouble` and whether it is signed in.
+- Ask: "List my Stunt Double workspaces."
+
+## Troubleshooting
+
+- **Signed in to the wrong account, or access revoked:** run `opencode mcp logout stuntdouble`, then `opencode mcp auth stuntdouble`. Tokens live in `~/.local/share/opencode/mcp-auth.json`.
+- **The tools don't load:** OpenCode waits 5 seconds for a server's tool list by default. Raise it with `"timeout"` (in milliseconds) in the server's block.
+- **Too many tools in context:** turn off the ones you don't need with a glob in your config's `tools` section, such as `"stuntdouble_*interview*": false`, or connect to the on-demand endpoint in [Connect](/mcp/connect#endpoints).
+
+## Next
+
+- [Skills](/mcp/skills): task recipes that drive the server
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

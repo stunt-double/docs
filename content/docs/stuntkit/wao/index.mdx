@@ -70,6 +70,26 @@ The npm entry has no side effects: nothing runs until you call `optimise`. The
 script build runs it once the DOM is ready and exposes the handle as
 `window.wao`.
 
+In a React app, optimise once from an effect and restore on cleanup:
+
+```tsx
+import { optimise } from "@stunt-double/wao";
+import { useEffect } from "react";
+
+export function AgentReady() {
+  useEffect(() => {
+    const controller = new AbortController();
+    optimise({ signal: controller.signal });
+    return () => controller.abort();
+  }, []);
+  return null;
+}
+```
+
+Aborting the signal restores the page, as `restore()` does. The handle is also
+`Disposable`, so `using wao = optimise()` restores the page when the block
+ends.
+
 ## In an agent's browser
 
 You don't need to own a site to use WAO on it. An agent harness can inject the
@@ -88,7 +108,10 @@ const script = readFileSync(
 await context.addInitScript({ content: script });
 ```
 
-With Puppeteer, pass the same content to `page.evaluateOnNewDocument`. Pair it
+To pass options, put `window.waoOptions = {...};` at the start of the same
+init script, since Playwright doesn't define the order of separate ones. The
+script runs once per page, so a second injection is harmless. With Puppeteer,
+pass the same content to `page.evaluateOnNewDocument`. Pair it
 with the [browser toolset](/stuntkit/browser-toolset), whose `read_page` reads
 the same tree.
 
@@ -102,7 +125,8 @@ the same tree.
 
 Each repaired element is marked with `data-wao`, so an agent can tell inferred
 names from ones the page wrote. Switch a repair off with
-`optimise({ repairs: { landmarks: false } })`.
+`optimise({ repairs: { landmarks: false } })`, and skip shadow roots with
+`shadow: false`.
 
 ## Rules
 
@@ -128,7 +152,9 @@ With the script build, set `window.waoOptions` before the script loads.
 
 `report()` lists every change in effect and what WAO found but could not fix
 (`unnamed-control`, `image-without-alt`, `no-main`). Each issue is a good
-candidate for a rule, or for a fix in the site itself.
+candidate for a rule, or for a fix in the site itself. To hear about every
+pass, including passes over content added later, pass an `onReport` callback.
+An agent driving the page can read the same report with `window.wao.report()`.
 
 <Callout variant="note" title="Not an accessibility fix">
   Inferred names are a best guess for agents. A site that people use with

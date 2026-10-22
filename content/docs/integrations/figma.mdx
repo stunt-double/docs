@@ -42,13 +42,25 @@ are connected, read the [Figma guide](/guides/figma).
 2. On **Your account**, click **Connect Figma** and approve Stunt Double in
    Figma. The step changes to **Connected as** with your Figma name.
 3. On the step named after your workspace, an owner or admin turns the switch
-   on. It reads **On. Actors, checklists and automations here can use it.**
+   on, which lends that workspace their Figma connection. It reads **On for
+   this workspace.**
 4. On **Projects**, click **Choose for a project** and pick a project. Its
    **Settings** open on the **Integrations** tab: choose the project's design
    file there. Repeat for each project that works from a Figma file.
 
-To re-check work when a file changes, create an automation, choose a Figma
-trigger, then pick from **Figma Events**.
+To re-check work when a file changes, create an automation and choose the
+**Figma** trigger. Then:
+
+- Pick up to three **Figma Events**. Figma allows three webhooks per file,
+  one event each.
+- For **Library Publish**, optionally narrow it with the **Library filter**
+  to components, styles or variables that were created, modified or deleted.
+- Under **File**, paste the file key from the Figma file's URL. An
+  automation listens to one file, and it needs one.
+
+Stunt Double registers the file webhooks for you, using a Figma connection
+that is on in the workspace and can edit the file. Events from a file reach
+only the workspaces whose connections registered them.
 
 ## What Stunt Double can access
 
@@ -67,7 +79,9 @@ Stunt Double asks Figma for these scopes:
 Open **Integrations**, click **Figma**, then click **Disconnect** on **Your
 account**. The **Disconnect Figma?** dialog lists every workspace that loses
 Figma. Confirm, and those workspaces stop using it until someone connects
-again.
+again. Disconnecting also removes the file webhooks your connection
+registered, so automations that relied on it stop receiving events unless
+another connection in the workspace can edit the file.
 
 To stop one workspace from using Figma and leave the rest, an owner or admin
 turns off the workspace switch instead. You can also remove Stunt Double from
@@ -88,5 +102,13 @@ open that file, and that the file is linked on the project's **Integrations**
 tab.
 
 **Automations do not start on file changes.** Confirm the automation is on,
-its trigger lists the right **Figma Events**, and Figma is still on for the
-workspace.
+its trigger lists the right **Figma Events** and the right **File**, and Figma
+is still on for the workspace. Figma only lets accounts with **Can edit** on a
+file listen to its events, so the connected account needs edit access, not
+just view access. If it has that and events still do not arrive, disconnect
+and connect Figma again to refresh what Stunt Double may do in Figma.
+
+**"Select up to 3 Figma events."** Figma allows three webhooks per file, one
+event type each, so an automation can listen for at most three. The limit
+covers the whole file: if other automations already listen to the same file
+for different events, some of yours may never be registered.

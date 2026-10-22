@@ -1,0 +1,31 @@
+---
+description: Add the Stunt Double MCP server to the Codex CLI and sign in with codex mcp login, which also covers the Codex IDE extension and the ChatGPT desktop app.
+---
+
+This page gives Codex the Stunt Double tools through its MCP config. The Codex CLI, the Codex IDE extension and the ChatGPT desktop app share `~/.codex/config.toml`, so adding the server once covers all three. For the task skills, add them with the skills CLI as [Skills](/mcp/skills) describes.
+
+{/* setup */}
+
+To keep the server to one repository, put the same block in `.codex/config.toml` at the project root instead. Codex reads a project config only for projects you trust.
+
+## Sign in
+
+`codex mcp login stuntdouble` opens your browser on Stunt Double. Sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- `codex mcp list` shows `stuntdouble` among your configured servers.
+- In the `codex` TUI, run `/mcp` to see the active servers and their tools.
+- Ask: "List my Stunt Double workspaces."
+
+## Troubleshooting
+
+- **Signing in over SSH or in a container:** the sign-in redirects to a listener on the machine running Codex. Set `mcp_oauth_callback_port` in `config.toml` to choose a fixed port you can forward, or `mcp_oauth_callback_url` for a remote ingress.
+- **Access expired or revoked:** run `codex mcp login stuntdouble` again.
+- **A tool is missing:** the connection may not hold its scope. Ask Codex to read `stuntdouble://connection`.
+
+## Next
+
+- [Skills](/mcp/skills): task recipes that drive the server
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

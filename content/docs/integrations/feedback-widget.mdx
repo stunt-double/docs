@@ -1,7 +1,7 @@
 ---
 title: "Feedback widget"
 icon: "feedback"
-description: "Let visitors pin comments to the exact spot on your site, with a screenshot, URL and viewport attached."
+description: "Install the feedback widget, lock down who can use it, version comments and reach them from an agent: the full reference."
 ---
 
 # Feedback widget
@@ -10,26 +10,56 @@ Add one script tag to your site and anyone looking at a page can drop a pin on
 the spot that confused them and say why. Each comment arrives in your project
 with a screenshot of the page as they saw it, the URL and the viewport.
 
-This page is the reference for installing and locking it down. For a
-walkthrough on a prototype, read the [tutorial](/tutorials/feedback-widget); for
-running reviews with it, read the [guide](/guides/feedback-widget).
+This page is the reference for installing, configuring and locking it down. To
+run a feedback round on a prototype end to end, follow the
+[tutorial](/tutorials/feedback-widget); for when and how teams use it, read the
+[guide](/guides/feedback-widget).
+
+## What it does
+
+- **Pins snap to elements.** While placing a comment, the widget outlines the
+  element under the cursor and names it, so the comment attaches to that button
+  or field rather than to a coordinate. Hold **Shift** to place a free pin
+  instead, for whitespace or a background. A snapped pin follows its element
+  when the layout changes.
+- **Every comment carries its context.** A screenshot with the pin marked (and,
+  for a snapped pin, cropped around the element), the page URL and title, the
+  element it was pinned to, viewport, scroll position, basic device information
+  and the [page version](#versions).
+- **Replies and resolving happen on the page too.** Your team's replies appear
+  in the thread on the page under a **Team** badge. A workspace member can
+  resolve a comment from the page, and so can its author when they were signed
+  in to Stunt Double.
+- **Visitors control their own view.** A gear beside the feedback button lets
+  each visitor edit the name and email the widget remembers, hide other
+  people's pins, turn off the `c` shortcut for themselves, or **Hide for this
+  session**. These only narrow what the project allows, never widen it.
+- **Comments land in the project.** The project's **Comments** view groups them
+  by page and version for triage. The [tutorial](/tutorials/feedback-widget#4-triage-what-comes-back)
+  goes through it.
 
 ## Before you start
 
-- **Workspace limits.** Owners and admins set a workspace-wide ceiling for
-  the widget under **Settings**, then **Security**.
 - **A site you control.** You need to add a script tag to its HTML.
+- **Workspace limits.** Owners and admins can set a workspace-wide ceiling for
+  the widget under **Settings**, then **Security**.
 
 ## Set it up
 
-1. Open the project and go to **Comments**.
-2. Follow the install step. Copy the snippet and paste it just before
-   `</body>`, or choose **With Claude** to hand the job to a coding agent.
-3. Load your site. The install step shows **Widget detected** once the widget
+1. Open the project and go to **Comments**. The first time, click **Enable
+   comments**, which switches the feature on and creates the project's API key.
+2. Follow the install step. Copy the snippet from the **Code** tab and paste it
+   just before `</body>`, or copy the prompt from the **With Claude** tab and
+   hand the job to a coding agent.
+3. Load a page that carries the snippet. The install step changes from
+   **Waiting for widget connection** to **Widget detected** once the widget
    checks in.
 4. If the widget also runs somewhere other than your project URL, such as a
-   staging or custom domain, add it under **Allowed domains** in the project's
-   feedback settings. Requests from anywhere else are refused.
+   staging, preview or custom domain, add it under **Allowed domains** in the
+   project's comment settings. Requests from anywhere else are refused.
+
+Each project has its own key and its own inbox, so feedback on one site never
+mixes with another.
 
 ## The snippet
 
@@ -44,38 +74,96 @@ running reviews with it, read the [guide](/guides/feedback-widget).
   the widget logs a warning and does nothing.
 - **`data-sd-url`** (required in practice) points at Stunt Double. It must be
   `https`; the widget refuses to run otherwise.
-- **`data-sd-version`** (optional) pins comments to a version string you
-  control, such as a build ID, release tag or commit SHA. Without it, comments
-  are grouped by page content.
+- **`data-sd-version`** (optional) declares the page version yourself. See
+  [Versions](#versions).
 
-There is no package to install and no build step. Screenshot capture loads
-`html2canvas` on demand from a pinned, integrity-checked URL, so one tag is
-enough.
+There is no package to install and no build step, so the same tag works on a
+staging deploy, a preview URL or a throwaway static build. Screenshot capture
+loads `html2canvas` on demand from a pinned, integrity-checked URL, so one tag
+is enough.
+
+## Settings
+
+Open **Comments**, then the settings view.
+
+| Setting                     | What it does                                                                                                                                                                |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Toolbar visible**         | Shows or hides the feedback button on your site.                                                                                                                            |
+| **Show comments on page**   | Draws existing comment pins for everyone. Off, the widget still collects comments but shows nobody else's.                                                                  |
+| **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment.                                                                                                                         |
+| **When the page changes**   | **Keep comments** leaves pins open until someone resolves them. **Auto-resolve on a new version** resolves comments left on earlier versions. See [Versions](#versions).    |
+| **Allowed domains**         | Hosts the widget may run on, beyond your project URL (always accepted). Up to 20. An entry matches an exact host; `*.example.com` covers every subdomain, such as previews. |
+| **Require sign in**         | Only signed-in members of this workspace can read or leave comments. Use it for staging and internal reviews.                                                               |
+| **Allow local development** | Lets `localhost` and private network addresses use the widget. Off by default on new projects.                                                                              |
+| **API Key**                 | **Rotate** issues a new key and stops every install of the old one until its snippet is updated.                                                                            |
 
 ## Control who can use it
 
 The API key sits in your page source, so treat it as an identifier, not a
-secret. The real access control is the domain allowlist, which every widget
-endpoint checks before it answers.
-
-| Setting                     | What it does                                                                                                                                                                |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Allowed domains**         | Hosts the widget may run on, beyond your project URL (always accepted). Up to 20. An entry matches an exact host; `*.example.com` covers every subdomain, such as previews. |
-| **Allow local development** | Lets `localhost` and private network addresses use the widget. On by default.                                                                                               |
-| **Require sign in**         | Only signed-in members of this workspace can read or leave comments. Use it for staging and internal reviews.                                                              |
-| **Toolbar visible**         | Shows or hides the feedback button on your site                                                                                                                             |
-| **Show comments on page**   | Shows existing comment pins on the page                                                                                                                                     |
-| **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment                                                                                                                          |
-| **API Key**                 | **Rotate** issues a new key and stops every install of the old one until its snippet is updated                                                                             |
+secret. The access control is the domain allowlist, which every widget endpoint
+checks before it answers.
 
 The allowlist **fails closed**: a project with no URL and an empty allowlist
 serves nothing at all, and the settings page says so, so you can tell "locked
 down" apart from "broken".
 
+With **Require sign in** on, visitors see **Sign in to review** instead of the
+comment form. It opens a popup where they sign in to Stunt Double as normal,
+and the popup hands the widget a short-lived token proving workspace
+membership. Their name comes from their account, and their comments and
+replies are badged **Team**. The token lasts an hour, so a long session may ask
+them to sign in again.
+
 Workspace admins hold a ceiling above every project under **Settings**, then
-**Security**: a workspace-wide **allowed origins** list that projects can only
-narrow, and a **Feedback widget** switch that turns the widget off for every
-project, including sites where the key is already installed.
+**Security**, in the **Feedback widget** section: **Enable the widget** turns
+it off for every project, including sites where the key is already installed,
+and **Allowed origins** is a workspace-wide list that projects can only narrow.
+Leave it empty to let each project decide.
+
+## Versions
+
+Every comment is stamped with the version of the page it was left on, and the
+**Comments** view numbers each page's versions **v1**, **v2** and so on, with
+the newest badged **Latest**.
+
+By default the widget fingerprints the page's structure: the elements it is
+built from, not the words on it. A changed timestamp, a personalized greeting
+or one more row in a table is the same version; a page that has been rebuilt is
+a new one.
+
+Declaring a version yourself is exact and lines the timeline up with your
+releases. The widget takes the first of these it finds:
+
+- `data-sd-version` on the script tag
+- a `<meta name="sd-version">` tag, which a build step or git hook can stamp
+- `window.SD_FEEDBACK_VERSION`, for an app that already has its build ID in the
+  bundle
+
+Use a build ID, release tag or commit SHA. An empty or unrendered value, such
+as `%VERSION%`, is ignored. The settings view has a snippet for each route and
+a prompt for a coding agent.
+
+With **Auto-resolve on a new version**, comments left on an earlier version are
+resolved when a signed-in workspace member next loads the page on the new one;
+other visitors simply stop seeing the old pins. Whole threads move together,
+nobody is emailed that their comment was resolved, and the comments stay in
+the inbox under **Resolved**. Working from the fingerprint alone, auto-resolve
+catches a rebuild rather than a small tweak, so declare a version if you want
+each release to close its comments exactly.
+
+## Use it from an agent
+
+The MCP server exposes a project's comments, so an assistant can triage them
+with you:
+
+| Tool                     | Scope       | Does                                                                         |
+| ------------------------ | ----------- | ---------------------------------------------------------------------------- |
+| `list_feedback`          | `mcp:read`  | Lists a project's comments, filterable by status                             |
+| `get_feedback`           | `mcp:read`  | Reads one comment and its replies                                            |
+| `summarise_feedback`     | `mcp:write` | Themes, open questions and a brief for a coding agent, shared with dashboard |
+| `update_feedback_status` | `mcp:write` | Marks a comment reviewed, resolved or dismissed                              |
+
+See [MCP](/mcp) for connecting a client.
 
 ## Remove it
 
@@ -85,8 +173,9 @@ working anywhere, rotate the API key.
 ## Troubleshooting
 
 **"Widget detected" never appears.** Check the snippet is on the page you
-loaded, and that the domain is your project URL or under **Allowed
-domains**. For `localhost`, turn on **Allow local development**.
+loaded, the key matches the one in **Comments**, and the domain is your project
+URL or under **Allowed domains**. For `localhost`, turn on **Allow local
+development**.
 
 **The widget stopped loading after a key rotation.** Every copy of the snippet
 needs the new key. Copy the snippet again from **Comments**.
@@ -94,3 +183,8 @@ needs the new key. Copy the snippet again from **Comments**.
 **The widget will not load even though the domain is allowed.** An owner or
 admin may have limited the widget workspace-wide under **Settings**, then
 **Security**.
+
+**Old comments did not auto-resolve after a release.** Auto-resolve waits for a
+workspace member to load the page on the new version. Without a declared
+version, a small change may also count as the same version; set
+`data-sd-version` to close comments per release.

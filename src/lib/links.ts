@@ -9,7 +9,7 @@ export const MARKETING_ORIGIN = 'https://www.stuntdouble.io';
  * the marketing site.
  */
 const DOCS_SECTIONS =
-  /^\/(guides|integrations|mcp|tutorials|concepts|getting-started|api|stuntkit|reference)(?=$|[/#?])/;
+  /^\/(guides|integrations|mcp|tutorials|concepts|getting-started|api|stuntkit|index-ranking|reference)(?=$|[/#?])/;
 
 export function docsHref(href: string): string {
   if (!href.startsWith('/') || href.startsWith('//')) return href;

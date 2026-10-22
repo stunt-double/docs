@@ -1,0 +1,31 @@
+---
+description: Add the Stunt Double MCP server to Gemini CLI over Streamable HTTP and sign in with /mcp auth.
+---
+
+This page gives Gemini CLI the Stunt Double tools and prompts. Gemini CLI also reads `SKILL.md` files, so you can add the task [skills](/mcp/skills) alongside.
+
+{/* setup */}
+
+`gemini mcp add` writes to the project's `.gemini/settings.json` by default. Add `--scope user` to write to `~/.gemini/settings.json` and use the server in every project. If you edit the file by hand, keep the key as `httpUrl`: Gemini CLI reads `url` as an SSE endpoint, which this server doesn't serve.
+
+## Sign in
+
+Gemini CLI notices that the server needs OAuth and finds its sign-in endpoints itself. Run `/mcp auth stuntdouble`, sign in to Stunt Double in the browser that opens, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- `/mcp` (or `gemini mcp list` from the shell) shows `stuntdouble` as connected, with its tools.
+- Ask: "List my Stunt Double workspaces."
+- The server's prompts run as slash commands, for example `/verify_change`.
+
+## Troubleshooting
+
+- **Signing in over SSH, in a container or anywhere without a browser:** Gemini CLI's OAuth needs a local browser, so sign in on a machine that has one.
+- **Start over:** run `/mcp auth stuntdouble` again. Gemini CLI keeps its tokens in `~/.gemini/mcp-oauth-tokens.json`.
+- **The server shows as disconnected:** check it is enabled (`/mcp enable stuntdouble`).
+
+## Next
+
+- [Skills](/mcp/skills): task recipes that drive the server
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

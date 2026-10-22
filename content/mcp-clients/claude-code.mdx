@@ -1,0 +1,32 @@
+---
+description: Add the Stunt Double MCP server to Claude Code from your terminal, sign in once with OAuth, and run its prompts as slash commands.
+---
+
+This page adds the MCP server on its own: the tools, the ready-made prompts and the resources, with nothing else installed. If you also want the skills and subagents, use the [Claude Code plugin](/mcp/clients/claude-code-plugin) instead, and don't add both, or Claude sees every tool twice.
+
+{/* setup */}
+
+The command adds the server for you in the current project only (Claude Code's default `local` scope). Add `--scope user` to use it in every project, or `--scope project` to write it to a `.mcp.json` your team commits.
+
+## Sign in
+
+Start Claude Code, run `/mcp`, choose `stuntdouble` and select **Authenticate**. Your browser opens on Stunt Double: sign in, check the scopes the consent screen lists, and approve. To sign in from the shell instead, run `claude mcp login stuntdouble`. The [scopes are explained on the overview](/mcp#authentication).
+
+## Check it works
+
+- `claude mcp list` shows `stuntdouble` as connected (it says it needs authentication until you sign in).
+- In a session, ask: "List my Stunt Double workspaces."
+- Type `/` to see the server's prompts, listed as `/stuntdouble:verify_change (MCP)` and so on. `/mcp__stuntdouble__verify_change` runs the same prompt.
+- Type `@` to attach a resource such as `@stuntdouble:stuntdouble://guide`, the full tool catalog.
+
+## Troubleshooting
+
+- **Signed in to the wrong account, or access revoked:** in `/mcp`, choose **Clear authentication** (or run `claude mcp logout stuntdouble`), then authenticate again.
+- **The browser didn't open:** Claude Code prints the sign-in URL. Open it by hand.
+- **A tool isn't there:** the connection may not hold the scope that tool needs. Ask Claude to read `stuntdouble://connection`, which lists the scopes it holds and the tools each one unlocks.
+
+## Next
+
+- [Skills](/mcp/skills): install task skills alongside the server
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

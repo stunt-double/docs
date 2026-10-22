@@ -1,0 +1,30 @@
+---
+description: Add the Stunt Double MCP server to Windsurf (now Devin Desktop) for the Cascade agent, and keep within Cascade's tool limit.
+---
+
+This page gives the Cascade agent in Windsurf the Stunt Double tools. Windsurf has been renamed Devin Desktop; its MCP docs now live at [docs.devin.ai](https://docs.devin.ai/desktop/cascade/mcp), and the config below is the one Cascade reads.
+
+{/* setup */}
+
+Windsurf takes `serverUrl` for a remote server. Save the file and restart Windsurf so Cascade picks the server up.
+
+## Sign in
+
+Windsurf supports OAuth for remote servers. When it connects to Stunt Double, your browser opens on the Stunt Double sign-in page: sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- Open the **...** menu in the Cascade panel and look under **MCPs**: Stunt Double should be listed with a count of its enabled tools and its toggle on.
+- Ask Cascade: "List my Stunt Double workspaces."
+
+## Troubleshooting
+
+- **Tools missing because of the 100-tool limit:** Cascade can use at most 100 tools across all your servers at once, and Stunt Double brings dozens. Turn off the ones you don't need with a `disabledTools` list in the server's block, or connect to the on-demand endpoint in [Connect](/mcp/connect#endpoints), which lists only a few core tools and loads the rest as a task needs them.
+- **Server blocked on a team plan:** once a team admin allowlists any MCP server, the rest are blocked. The server ID they allowlist must match the key in your config exactly (`stuntdouble`).
+- **Enterprise:** MCP may be off until you turn it on in Windsurf's settings.
+
+## Next
+
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource
+- [Connect](/mcp/connect): endpoints, and revoking access

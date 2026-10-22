@@ -1,39 +1,87 @@
 ---
 title: "API"
 icon: "Braces"
-description: "How to reach the Stunt Double platform programmatically: the MCP server, the public docs server, versioning and discovery."
+description: "Every way to reach Stunt Double from code or an agent: the MCP server for your workspace, the no-account Index and docs servers, Markdown docs and llms.txt, and the public discovery files."
 ---
 
-# Stunt Double API
+# API and agent access
 
-Stunt Double exposes its platform through a **Model Context Protocol (MCP)**
-server at `https://app.stuntdouble.io/api/mcp` (Streamable HTTP, OAuth 2.1).
-Drive your workspace from Claude, your own agents or any MCP client, without
-writing a bespoke integration.
+Stunt Double has no REST API for workspaces. Code and assistants act on a
+workspace through the **Model Context Protocol (MCP) server**, which covers
+projects, actors, checklists, runs, interviews, automations and feedback. Around it sit a few public, read-only surfaces that
+need no account: an MCP server for the Stunt Double Index, one for the docs,
+and plain-text files that describe the product to agents.
 
-- **[MCP server](/mcp)**: authentication, scopes and what a connection can reach.
-- **[Connect](/mcp/connect)**: set up Claude, Cursor, ChatGPT and other clients.
-- **[Tools](/mcp/tools)**: every tool, prompt and resource, grouped by what it acts on.
+| Surface                               | Endpoint                                                       | Sign-in   |
+| ------------------------------------- | -------------------------------------------------------------- | --------- |
+| Workspace MCP server                  | `https://app.stuntdouble.io/api/mcp`                           | OAuth 2.1 |
+| Workspace MCP server, tools on demand | `https://app.stuntdouble.io/api/mcp/dynamic`                   | OAuth 2.1 |
+| Index MCP server                      | `https://app.stuntdouble.io/api/mcp/index`                     | None      |
+| Docs MCP server                       | `https://www.stuntdouble.io/api/docs-mcp`                      | None      |
+| These docs as Markdown                | `https://docs.stuntdouble.io/llms.txt` and any page with `.md` | None      |
+| Discovery files                       | `https://www.stuntdouble.io/.well-known/...`                   | None      |
 
-## Public docs server
+## Your workspace: the MCP server
 
-Agents that haven't signed in can still connect. A read-only MCP server at
-`https://www.stuntdouble.io/api/docs-mcp` needs no authentication and exposes
-the documentation as resources. It has no tools: to act on a workspace,
-connect to the product server above.
+The workspace server acts as the signed-in person, with OAuth 2.1 in place of
+API keys, and reaches only the workspaces they belong to. Runs are
+asynchronous: a client starts one and polls until it finishes.
+**[Connect](/mcp/connect#endpoints)** compares the full and on-demand
+endpoints, **[MCP server](/mcp)** covers scopes and what a connection can
+reach, and **[Tools](/mcp/tools)** lists every tool, prompt and resource. For a
+walkthrough, see **[Automate Stunt Double from Claude](/tutorials/automate-with-mcp)**.
 
-## Versioning
+## Read-only servers with no account
 
-A client negotiates the MCP protocol version at `initialize`. Breaking changes
-ship alongside the old behavior, never in place, and deprecations are announced
-in the [changelog](https://www.stuntdouble.io/changelog) at least 90 days
-before removal.
+- **Index.** `https://app.stuntdouble.io/api/mcp/index` carries the three
+  [Stunt Double Index](/index-ranking) read tools (`get_index_report`,
+  `list_index_sessions` and `search_index_domains`) with no sign-in. See
+  [Index lookups with no account](/mcp/connect#index-lookups-with-no-account).
+- **Docs.** `https://www.stuntdouble.io/api/docs-mcp` exposes llms.txt, the
+  homepage as Markdown, the OpenAPI spec and the MCP manifest as resources.
+  It has no tools: to act on a workspace, connect to the workspace server.
 
-## Discovery
+## These docs, for agents
 
-| What                  | Where                                                    |
-| --------------------- | -------------------------------------------------------- |
-| MCP manifest          | `https://www.stuntdouble.io/.well-known/mcp.json`        |
-| AI Catalog            | `https://www.stuntdouble.io/.well-known/ai-catalog.json` |
-| OpenAPI spec          | `https://www.stuntdouble.io/openapi.json`                |
-| Site index for agents | [`/llms.txt`](/llms.txt)                                 |
+Every page on this site has a Markdown twin. Append `.md` to its URL
+(`https://docs.stuntdouble.io/concepts.md`), or request the page with
+`Accept: text/markdown`.
+
+| File                                               | What it holds                                    |
+| -------------------------------------------------- | ------------------------------------------------ |
+| [`/llms.txt`](https://docs.stuntdouble.io/llms.txt)                           | An index of every page, linked to its Markdown   |
+| [`/llms-full.txt`](https://docs.stuntdouble.io/llms-full.txt)                 | Every page in one file                           |
+| [`/.well-known/agents.md`](https://docs.stuntdouble.io/.well-known/agents.md) | When to use these docs and how to act for a user |
+| `/sitemap.xml`                                     | Every page with its last change                  |
+
+## Discovery files on stuntdouble.io
+
+Agents and MCP directories find Stunt Double through these files on
+`https://www.stuntdouble.io`:
+
+| File                                    | What it holds                                                                                 |
+| --------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `/.well-known/mcp.json`                 | The MCP server manifest                                                                       |
+| `/.well-known/ai-catalog.json`          | A catalog of Stunt Double's MCP servers                                                       |
+| `/.well-known/oauth-protected-resource` | OAuth metadata for the MCP server: its authorization server and scopes                        |
+| `/.well-known/agent-skills/index.json`  | The Agent Skills Stunt Double publishes                                                       |
+| `/openapi.json`                         | An OpenAPI 3.1 description of the public endpoints, with the MCP server as a single operation |
+| `/llms.txt`                             | What Stunt Double is, for agents                                                              |
+
+The Stunt Double Index publishes its own at `https://index.stuntdouble.io`:
+`/llms.txt`, an MCP server card at `/.well-known/mcp/server-card.json`, each
+domain's findings as a prompt for a coding agent at
+`/d/{domain}/fix-prompt.md`, and the score badge at `/badge/{domain}.svg`.
+
+## Versioning and limits
+
+- **MCP.** A client negotiates the protocol version at `initialize` and sends
+  it back in the `MCP-Protocol-Version` header.
+- **Public endpoints.** The OpenAPI spec follows semantic versioning. A
+  breaking change ships under a new path or header value alongside the old
+  one, never in place, and a deprecation is announced in the
+  [changelog](https://www.stuntdouble.io/changelog) at least 90 days before
+  removal.
+- **Rate limits.** Uncached public endpoints on stuntdouble.io allow 120
+  requests a minute per client, and say so in `RateLimit` and
+  `RateLimit-Policy` headers. A refused request gets a 429 with `Retry-After`.

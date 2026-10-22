@@ -18,18 +18,11 @@ test it.
 
 ## Setup (once)
 
-Pick whichever fits how you use Claude:
-
-- **Claude Desktop, one click**: in the app, open **Integrations** > Claude,
-  select **Download .mcpb** and open the file with Claude Desktop (needs
-  Node 18 or later).
-- **Claude (web or desktop), manual**: in Claude, open Settings > Connectors >
-  Add and paste the URL `https://app.stuntdouble.io/api/mcp`.
-
-See **[Claude](/mcp/clients/claude)** and **[MCP](/mcp)** for more detail.
-
-The first time Claude uses a Stunt Double tool, a browser window opens to sign
-in and authorize. No API keys.
+Add Stunt Double to Claude as a connector, either the one-click Claude Desktop
+extension or the server URL in Claude's connector settings.
+**[Connect a client](/mcp/connect)** has both. The first time Claude uses a
+Stunt Double tool, a browser window opens to sign in and authorize. No API
+keys.
 
 <FlowStrip
   nodes={[
@@ -103,9 +96,8 @@ Stunt Double is also useful in Claude before anything is designed:
 
 ## Tips
 
-- **Personas beat testers.** Ask for personas with real texture (background,
-  goals, patience, device) rather than "a user". Variety across participants
-  is what surfaces the interesting failures.
+- **Give personas texture.** Background, goals, patience and device, rather
+  than "a user".
 - **Tasks beat questions.** "Find the price of the annual plan and start
   checkout" produces observable evidence; "do you like this page?" produces
   pleasantries.

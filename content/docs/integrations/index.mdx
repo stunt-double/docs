@@ -1,6 +1,6 @@
 ---
 title: "Integrations"
-description: "Run checks where the work already happens: on pull requests, deploys, design updates and Linear issues."
+description: "Every Stunt Double integration in one place: how connections work, what each one does, and which to connect first."
 ---
 
 # Integrations
@@ -24,19 +24,29 @@ Three mechanisms connect Stunt Double to your other tools:
    toolset: create and run checklists, launch persona interviews, triage
    feedback and comment on pull requests. Client setup lives in the
    [MCP section](/mcp).
-2. **Connections and event triggers.** Connect GitHub, Figma, Linear, Slack or
-   Vercel and automations can start on pull requests, deploys, design updates,
-   Linear issues and Slack messages, so checks re-run without anyone asking.
+2. **Connections and event triggers.** Connect GitHub, Vercel, Cursor Origin,
+   Figma or Slack and automations can start on pull requests, deploys, design
+   updates and Slack messages, so checks re-run without anyone asking. Slack
+   and Linear also bring an agent your team can ask directly.
 3. **The dashboard** at [app.stuntdouble.io](https://app.stuntdouble.io), for
    anything visual: watching session recordings, reading interview reports and
    managing actors and integrations.
 
 ## How every connection works
 
-Every integration lives on the **Integrations** page of your workspace. Open
-the sidebar, choose **Integrations**, then click a card. Each one is set up in
-the same three steps, in the same order, so learning one teaches you all of
-them.
+Every integration lives on the **Integrations** page of your workspace, which
+you open from the sidebar. It lists them in two sections: **Plugins**, which
+install Stunt Double into the tools you already work in (Claude, ChatGPT, the
+Cursor plugin, the Figma plugin and other MCP clients), and **Platform
+integrations**, the services the workspace connects to. **Custom MCP servers**,
+your own systems for actors to use during a run, are listed below them.
+
+Each row shows whether it is connected. An integration you have not connected
+yet has a **Connect** button right on its row, so you can start without
+opening it. Click a row to open its page. Each platform integration is set up
+in the same three steps, in the same order, so learning one teaches you all of
+them. The exception is [Cursor Origin](#cursor-origin), which is installed
+straight onto the workspace.
 
 <FlowStrip
   nodes={[
@@ -57,9 +67,9 @@ them.
    site. The step then reads **Connected as** with your account name, and
    lists the workspaces already using it.
 2. **Your workspace.** The second step carries your workspace's name and a
-   switch. An owner or admin turns it on, and the step reads **On. Actors,
-   checklists and automations here can use it.** Members see **Off. Ask a
-   workspace owner or admin to turn it on.** until an admin does.
+   switch. An owner or admin turns it on, and the step reads **On for this
+   workspace.** Members see **Off. Ask a workspace owner or admin to turn it
+   on.** until an admin does.
 3. **Projects.** Click **Choose for a project** and pick a project. That opens
    the project's **Settings**, on the **Integrations** tab, where you choose
    the design file, repository, Linear team, Slack channel or Vercel project
@@ -112,42 +122,71 @@ and picks up wherever they left off.
 
 ## Every integration
 
-| Integration                                      | What it does                                                                              | Who sets it up                                                                       | What Stunt Double requests                                                                                                                                                                                                                |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [GitHub](/integrations/github)                   | Actor pull request reviews, PR comments, automations on GitHub events                     | Anyone connects; an owner or admin turns it on                                       | OAuth: `read:user`, `user:email`, `repo`. GitHub App: access to the repositories you choose                                                                                                                                               |
-| [Vercel](/integrations/vercel)                   | Automations on deployment events                                                          | Anyone connects, or install from the Vercel Marketplace                              | The permissions the Vercel integration asks for at install                                                                                                                                                                                |
-| [Figma](/integrations/figma)                     | Design context for actors, automations on file events                                     | Anyone connects; an owner or admin turns it on                                       | `current_user:read`, `file_content:read`, `file_metadata:read`, `file_comments:read`, `file_comments:write`                                                                                                                               |
-| [Figma plugin](/integrations/figma-plugin)       | Design reviews, checklists, feedback and actor chat inside Figma                          | Each designer, from Figma                                                            | A plugin token valid for 90 days. The plugin only talks to stuntdouble.io                                                                                                                                                                 |
-| [Linear](/integrations/linear)                   | The Stunt Double agent on Linear issues, automations on issue events                      | Anyone connects; an owner or admin turns it on and picks the agent's actor           | `read`, `write`, `issues:create`, `comments:create`, `app:assignable`, `app:mentionable`                                                                                                                                                  |
-| [Slack](/integrations/slack)                     | Design reviews in threads, notifications, a workspace agent in direct messages            | An owner or admin adds it to the workspace                                           | `channels:read`, `groups:read`, `channels:history`, `groups:history`, `chat:write`, `chat:write.customize`, `mcp:connect`, `commands`, `users:read`, `app_mentions:read`, `incoming-webhook`, `assistant:write`, `im:history`, `im:write` |
-| [Webhooks](/integrations/webhooks)               | Start an automation from any system that can send an HTTP request                         | Anyone who can edit automations                                                      | A secret per automation, sent as `X-Webhook-Secret`                                                                                                                                                                                       |
-| [Feedback widget](/integrations/feedback-widget) | Collect comments on your live site into a project                                         | Project members; owners and admins set workspace limits                              | A project key that identifies the project, limited to your allowed domains                                                                                                                                                                |
-| [Devices](/integrations/self-hosted-workers)     | Run actors from a Mac on your own network, against sites the public internet cannot reach | An owner or admin turns devices on, on Startup and above; each member sets up their own Mac | Your Stunt Double sign-in, in the desktop app                                                                                                                                                                                             |
-| [Desktop app](/integrations/desktop-app)         | Stunt Double in a Mac window, and the way to use your Mac as a device                     | Anyone                                                                               | Your Stunt Double sign-in                                                                                                                                                                                                                 |
+| Integration                                      | What it does                                                                              | Who sets it up                                                             |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [GitHub](/integrations/github)                   | Actor pull request reviews, PR comments, automations on GitHub events                     | Anyone connects; an owner or admin turns it on                             |
+| [Vercel](/integrations/vercel)                   | Automations on deployment events, runs against the latest preview, protected previews     | Anyone connects, or install from the Vercel Marketplace                    |
+| [Cursor Origin](#cursor-origin)                  | Automations on Origin pull requests, results as Origin check runs and comments            | Any member installs it; an owner or admin removes it                       |
+| [Figma](/integrations/figma)                     | Design context for actors, automations on file events                                     | Anyone connects; an owner or admin turns it on                             |
+| [Figma plugin](/integrations/figma-plugin)       | Design reviews, checklists, feedback and actor chat inside Figma                          | Each designer, from Figma                                                  |
+| [Linear](/integrations/linear)                   | The Stunt Double agent on Linear issues: reviews, runs and answers                        | Anyone connects; an owner or admin turns it on and picks the agent's actor |
+| [Slack](/integrations/slack)                     | Design reviews in threads, notifications, a workspace agent in direct messages            | An owner or admin adds it to the workspace                                 |
+| [Webhooks](/integrations/webhooks)               | Start an automation from any system that can send an HTTP request                         | Anyone who can edit automations                                            |
+| [Feedback widget](/integrations/feedback-widget) | Collect comments on your live site into a project                                         | Project members; owners and admins set workspace limits                    |
+| [Devices](/integrations/self-hosted-workers)     | Run actors from a Mac on your own network, against sites the public internet cannot reach | Each member sets up their own Mac, from **Devices** in the sidebar         |
+| [Desktop app](/integrations/desktop-app)         | Stunt Double in a Mac window, local tools and models, and the way to make a Mac a device  | Anyone                                                                     |
 
-MCP clients (Claude, Claude Code, Cursor, Windsurf, ChatGPT) request
-`mcp:read`, `mcp:write` and `mcp:run`. Their setup is in the [MCP section](/mcp).
+Each integration's page lists exactly what Stunt Double requests from it, such
+as OAuth scopes, and what it uses them for. MCP clients (Claude, Claude Code,
+Cursor, Windsurf, ChatGPT) request `mcp:read`, `mcp:write` and `mcp:run`;
+their setup is in the [MCP section](/mcp).
 
-## Guides by workflow
+## Cursor Origin
 
-The pages above cover setup. The **[guides](/guides)** cover what to do once you
-are connected: designing in Claude, testing Figma prototypes and Make sites,
-verifying code changes, and standing validation.
+Cursor Origin hosts pull requests opened by Cursor agents. Install the Stunt
+Double app on Origin and those pull requests can start automations, with the
+result reported back on Origin.
 
-## Where each role feels it
+- **Connect.** Open **Cursor Origin** under **Integrations** and click
+  **Install Cursor Origin**. Choose all repositories or only some, and Origin
+  returns you to the page, which reads **On for everyone in this workspace.**
+  An install started from Origin itself waits for an owner or admin to click
+  **Add to workspace**.
+- **Trigger.** Choose **Cursor** as an automation's trigger and pick the
+  events: **PR Opened**, **PR Published** (a draft is published), **PR
+  Reopened**, **PR Updated** (new commits on the pull request), **PR Closed**
+  and **Check Re-run**. An optional repository filter, as
+  `owner-slug/repo-name`, limits it to one repository.
+- **Results.** Each run reports as an Origin check run, named after the
+  automation in a **Stunt Double** check suite, and can be re-run from Origin.
+  A **GitHub Comment** step posts on the Origin pull request instead.
+- **Access.** The app reads repository contents and pull requests, and writes
+  only pull request comments, reviews and check runs. It never pushes code or
+  creates branches.
+- **Remove.** An owner or admin clicks **Remove** on the workspace step. That
+  stops automations and check runs here; uninstall the app in Origin to remove
+  it there too.
 
-- **Designers** find usability problems while the design is still cheap to
-  change: persona interviews against prototypes, with transcripts and
-  evidence.
-- **Product managers** get research at decision speed: a structured study
-  with a brief, a discussion guide, varied personas and a synthesized report,
-  plus feedback triage that clusters and reproduces what users report.
-- **Engineers** get a user-level regression net: checklists that walk real
-  flows on preview deployments, results as PR comments, and re-runs on every
-  deploy.
-- **Leadership** gets scheduled checks over the critical paths (signup,
-  checkout, the core action), with failures reaching Slack or Linear before
-  they reach support.
-- **Brand, legal and design-system owners** get enforcement instead of
-  periodic review: standards written down once and checked on every deploy or
-  design update.
+## Which to connect first
+
+- **Your code ships through pull requests:** connect [GitHub](/integrations/github),
+  and [Vercel](/integrations/vercel) if your previews deploy there, so every
+  preview is checked and the result lands on the pull request. The
+  [codebases guide](/guides/codebases) covers the whole loop.
+- **Your agents open pull requests on Cursor Origin:** install
+  [Cursor Origin](#cursor-origin).
+- **You design in Figma:** connect [Figma](/integrations/figma) for design
+  context and file-change triggers, and give designers the
+  [Figma plugin](/integrations/figma-plugin).
+- **Your team lives in Slack or Linear:** add [Slack](/integrations/slack) or
+  [Linear](/integrations/linear), so people can ask for a review or a run
+  where they already talk.
+- **Your CI deploys somewhere else:** call a [webhook](/integrations/webhooks)
+  at the end of the deploy.
+- **Your product is behind a firewall:** set up a
+  [device](/integrations/self-hosted-workers) with the
+  [desktop app](/integrations/desktop-app).
+- **You want comments from real visitors:** install the
+  [feedback widget](/integrations/feedback-widget).
+
+The **[guides](/guides)** cover what to do once you are connected.

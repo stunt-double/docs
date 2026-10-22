@@ -1,32 +1,35 @@
 ---
 title: "Linear"
 icon: "linear"
-description: "Delegate an issue to Stunt Double in Linear and the agent answers on it, with evidence."
+description: "Connect Linear, set up the Stunt Double agent on your issues, and see its scopes, controls and fixes for common problems."
 ---
 
 # Linear
 
 Connect Linear and Stunt Double becomes a teammate on your issues. Assign an
 issue to Stunt Double or mention it in a comment, and the agent works on it
-and replies in the issue. Automations can start on the same events and post
-their results back to the issue.
+and replies in the issue: it reviews designs, starts checklist and automation
+runs, and answers questions about your workspace.
 
 ## What it does
 
-- **Issue triage.** Actors triage, comment on and update issues.
 - **The Stunt Double agent.** Delegate an issue to Stunt Double, or mention it
   in a comment, and the agent answers on the issue. Pick an actor for it to
   act as, and it uses that actor's model and MCP servers.
-- **Workflow triggers.** Automations can start on **Issue Assigned** (an issue
-  is assigned to Stunt Double) and **Issue Mentioned** (Stunt Double is
-  mentioned in an issue comment).
-- **Two-way updates.** Workflow results post back to the Linear issue.
+- **Design reviews.** Ask it to review the links in an issue. It opens each
+  one in a real browser and replies with findings. A link only your network
+  can reach opens on your own [device](/integrations/self-hosted-workers#pool-devices).
+- **Runs on request.** Ask it to run a checklist or an automation, and it
+  starts the run and tells you on the issue.
+- **Workspace answers.** It can list the projects, actors, checklists and
+  automations in your workspace.
 
 ## Before you start
 
 - **Role.** Any member can connect Linear. Turning it on for the workspace and
   choosing the agent's actor takes an owner or admin.
-- **Plan.** Linear does not need a particular plan.
+- **Plan.** Free and Solo cannot connect Linear. Hobby can connect one of
+  Linear or Slack, and Startup and above can connect both.
 
 ## Set it up
 
@@ -35,7 +38,7 @@ their results back to the issue.
 2. On **Your account**, click **Connect Linear** and approve Stunt Double in
    Linear. The step changes to **Connected as** with your Linear name.
 3. On the step named after your workspace, an owner or admin turns the switch
-   on.
+   on. It reads **On for this workspace.**
 4. On **Projects**, click **Choose for a project** and pick a project. Its
    **Settings** open on the **Integrations** tab: choose the project's Linear
    team there.
@@ -46,13 +49,13 @@ their results back to the issue.
 Then try it: open an issue in Linear and assign it to Stunt Double, or mention
 Stunt Double in a comment.
 
-To start an automation from Linear, create an automation, choose a Linear
-trigger, and pick from **Linear Events**. You can limit it to one team.
+To stop the agent partway through, use Linear's **Stop** control on the
+agent session. Stunt Double ends that turn and hands the session back to you.
 
 ### Hand setup to someone else
 
 At the foot of the Linear page, the **Install link** card has a link that
-walks someone through connecting Linear, turning it on for this workspace,
+takes someone through connecting Linear, turning it on for this workspace,
 choosing a team and the agent's actor. It picks up wherever they left off.
 
 ## What Stunt Double can access
@@ -96,8 +99,11 @@ to **No actor**. An owner or admin can pick an actor under **Settings**.
 **Agent identity is missing.** It only appears to owners and admins, and only
 once Linear is connected and on for the workspace.
 
-**Linear will not let you install the app.** Adding apps to a Linear workspace can be limited to Linear admins. Ask one to connect, or send them the install link.
+**Linear will not let you install the app.** Adding apps to a Linear
+workspace can be limited to Linear admins. Ask one to connect, or send them
+the install link.
 
-**An automation does not start.** Check that it is on, that its trigger
-includes **Issue Assigned** or **Issue Mentioned**, and that any team filter
-matches the issue's team.
+**The agent cannot find a checklist or automation.** Each issue is answered
+from one Stunt Double workspace. If your Linear organization is turned on in
+more than one, the agent may be working in a different one from the
+checklist: turn Linear off in the workspaces that should not answer.

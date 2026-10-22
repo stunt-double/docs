@@ -1,0 +1,30 @@
+---
+description: Connect ChatGPT to Stunt Double as a custom app in developer mode, with checklist runs, reports and feedback drawn as cards.
+---
+
+In ChatGPT, Stunt Double is an app: the hosted MCP server with its tools, plus cards that draw checklist runs, interview and Index reports, workflow runs and feedback in the conversation. The same package will install in Codex once it is in OpenAI's plugin directory. Until then, use the [Codex CLI](/mcp/clients/codex-cli) page for Codex.
+
+{/* setup */}
+
+OpenAI moves this setting around. If you don't see developer mode under **Settings**, **Apps**, **Advanced**, open the plugins page in ChatGPT, select **+** and choose **Add custom MCP server**.
+
+## Sign in
+
+When you create the app, choose OAuth as the authentication method and paste the server URL. ChatGPT registers itself with Stunt Double and opens the sign-in page: sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- Start a new conversation, type `@` and choose Stunt Double, then ask: "List my Stunt Double workspaces."
+- Ask for a checklist run's result. It comes back as a card with the verdict, score and each check's evidence, and refreshes while the run is still going.
+
+## Troubleshooting
+
+- **Tools look out of date:** open the app's connection settings in ChatGPT and select **Refresh**, then start a new conversation.
+- **A tool you expected is missing:** the connection may not hold its scope. Ask ChatGPT to read the `stuntdouble://connection` resource, or reconnect and approve the scope.
+- **No option to add a custom app:** your plan or workspace policy may not allow developer mode. Ask your ChatGPT workspace admin.
+
+## Next
+
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, and which ones draw a card
+- [Connect](/mcp/connect): other endpoints, and revoking access

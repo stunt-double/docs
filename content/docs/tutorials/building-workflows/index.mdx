@@ -1,59 +1,127 @@
 ---
 title: "Build workflows"
 icon: "automation"
-description: "Chain checklists, conditions, notifications, and PR reviews into one repeatable automation."
+description: "Build one automation end to end: a pull request runs a checklist, a condition routes the result, and failures land back on the pull request."
 ---
 
 # Automate multi-step workflows
 
-A checklist verifies one flow in one run. A workflow chains several steps
-together into a single repeatable automation, so you can wire up a whole
-process instead of a single check.
+A checklist verifies one flow in one run. An automation (a workflow, in the
+MCP tools) chains steps into a graph that runs on its own: a trigger starts
+it, and each step hands its result to the next. In this tutorial you build a
+common one for a product team: when a pull request changes, run a checklist
+against it, and report the outcome.
 
 <Screenshot
   name="automation-builder"
   alt="The automation flow editor: a GitHub pull request trigger runs a checklist, then a condition sends failures to a GitHub comment and passes to a notification."
-  caption="An automation is a graph. A condition splits the path: true on the left, false on the right."
+  caption="An automation is a graph. A condition splits the path: True on the left, False on the right."
 />
 
-## Step types available
+## Before you start
 
-A workflow is built from steps, each with its own configuration:
+- A project with a checklist for the flow the pull request touches. If you
+  have none yet, the [Quickstart](/getting-started) creates some.
+- [GitHub](/integrations/github) connected, with the repository under
+  **Watched repositories**. If your previews deploy on Vercel, you can start
+  from [Vercel](/integrations/vercel) instead, so the checklist runs against
+  the preview.
 
-- **Run Checklist**, executes an existing checklist and carries its result
-  forward.
-- **Condition**, branches the workflow based on the result of a previous
-  step.
-- **Notification**, sends an alert when the workflow reaches that step.
-- **Delay**, waits before continuing, useful for giving an async process time
-  to finish.
-- **GitHub Comment**, posts a comment back to a pull request.
-- **Actor PR Review**, has an actor review a pull request and report its
-  findings.
+<Steps>
+<Step>
 
-## Example: verify a pull request automatically
+### Create the automation
 
-A common workflow for a product team:
+Open **Automations** and click **Create automation**. The dialog has three
+steps:
 
-1. **Run Checklist**, runs the checklist for the flow the pull request
-   touches.
-2. **Condition**, checks whether every check in that run passed.
-3. **Actor PR Review**, if the condition passes, has an actor review the
-   change directly.
-4. **GitHub Comment**, posts the outcome back to the pull request either way,
-   so the result is visible without leaving GitHub.
+1. **Trigger**: choose **GitHub** (or **Vercel**). An event trigger whose
+   integration is not set up yet says **Set up** followed by its name, and
+   choosing it opens the connect dialog.
+2. **Configure**: pick the events that count, such as **PR Opened** and **PR
+   Updated**, and optionally limit it to one repository.
+3. **Details**: name the automation and choose the project it runs in.
 
-Each step only needs to know about the step before it, which is what makes it
-possible to compose a whole review process out of a handful of pieces.
+Click **Create automation**. It opens in the flow editor with the trigger
+already in place. Later, **Edit flow** on the automation's page opens it
+again.
 
-## Toggle a workflow on when you're ready
+</Step>
+<Step>
 
-A new workflow can be built and tested without affecting anything else.
-Toggle it on only once you've run it a few times and are confident in the
-result, since an enabled workflow runs automatically going forward rather
-than waiting for you to trigger it by hand.
+### Turn it off while you build
+
+A new automation is **Active** as soon as it is created, so the next pull
+request would start it. Switch **Active** off in the automation's **Settings**
+tab, or from the Automations list, until it does what you want.
+
+</Step>
+<Step>
+
+### Add the steps
+
+Click **Add step** and add, in order:
+
+1. **Run Checklist**: choose the checklist. With a Vercel trigger, tick **Use
+   Vercel deployment URL** so it runs against the preview that started the
+   automation.
+2. **Condition**: check the previous step, for example **Previous step →
+   Failed count** equals 0. A condition has two outputs, **True** and
+   **False**.
+3. **GitHub Comment** on the **False** output, so a failing run is reported
+   on the pull request. From a Vercel trigger, the pull request is found from
+   the deployment.
+4. **Notification** on the **True** output, to tell the team by email or
+   Slack that the change passed. Or put an **Actor PR Review** there, so an
+   actor reviews the change once the checklist passes.
+
+</Step>
+<Step>
+
+### Try it
+
+Click **Run Now** to start it by hand, then open the run from the **Runs**
+tab to see what each step did. Adjust and run it again until you trust the
+result.
+
+</Step>
+<Step>
+
+### Switch it on
+
+Switch **Active** back on. From now on, every matching pull request runs the
+checklist and reports its outcome, without anyone starting it.
+
+</Step>
+</Steps>
+
+## Steps you can use
+
+| Step                | What it does                                                                |
+| ------------------- | --------------------------------------------------------------------------- |
+| **Run Checklist**   | Runs an existing checklist and carries its result forward                   |
+| **Condition**       | Branches on the previous step's status or its passed, failed or error count |
+| **Notification**    | Sends an email or Slack message to workspace members                        |
+| **Delay**           | Waits before continuing, to give an async process time to finish            |
+| **GitHub Comment**  | Posts a comment on the triggering pull request                              |
+| **Actor PR Review** | Has an actor review a pull request and report its findings                  |
+
+## Other triggers
+
+The same editor works with every trigger. **Manual** runs when you (or the
+API) start it, **Schedule** runs on a recurring schedule in your timezone, and
+**Webhook** runs when your CI calls its URL. The event triggers each have
+their reference on the integration's page:
+[GitHub](/integrations/github), [Vercel](/integrations/vercel),
+[Slack](/integrations/slack),
+[Figma](/integrations/figma), [Cursor Origin](/integrations#cursor-origin) and
+[Webhooks](/integrations/webhooks).
+
+An automation created from an assistant over [MCP](/mcp) needs the `mcp:run`
+scope to run unattended. Without it, a schedule, webhook or event automation is
+created paused, and it cannot be switched on from that connection.
 
 ## Next steps
 
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
 - **[Automate Stunt Double from Claude](/tutorials/automate-with-mcp)**
