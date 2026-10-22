@@ -91,6 +91,7 @@ test('mcpPages splits the README by client and ends every page with an edit link
       skills: [{ file: 'skills/x/SKILL.md', text: '---\nname: x\ndescription: Do x \u2014 well\n---\n\n# Do X\n\nBody.' }],
       rules: [{ file: 'rules/r.mdc', text: '---\ndescription: A rule.\nalwaysApply: true\n---\n\nr:' }],
       agents: [{ file: 'agents/a.md', text: '---\nname: a\ndescription: An agent\n---\n\n# A\n\n## Use\n' }],
+      clientNotes: { 'claude-code': '---\ndescription: Use it in Claude Code.\n---\n\nIntro.\n\n{/* setup */}\n\n## Sign in\n\nRun /mcp.\n' },
     },
     at
   );
@@ -109,7 +110,9 @@ test('mcpPages splits the README by client and ends every page with an edit link
   assert.match(pages['index.mdx'], /description: "Tagline\."/);
   assert.doesNotMatch(pages['index.mdx'], /Plugin internals|Internal\./);
   assert.match(pages['clients/cursor-windsurf.mdx'], /title: "Cursor and Windsurf"/);
-  assert.match(pages['clients/claude-code.mdx'], /title: "Claude Code"\nicon: "claude-code"\n/);
+  assert.match(pages['clients/claude-code.mdx'], /title: "Claude Code"\nicon: "claude-code"\ndescription: "Use it in Claude Code\."/);
+  assert.match(pages['clients/claude-code.mdx'], /Intro\.\n\n## Add the server\n\n```bash[\s\S]*```\n\n## Sign in/);
+  assert.match(pages['clients/cursor-windsurf.mdx'], /^## Add the server\n\nJSON\./m);
   assert.doesNotMatch(pages['clients/cursor-windsurf.mdx'], /icon:/);
   assert.match(pages['skills/x.mdx'], /title: "Do X"\ndescription: "Do x: well"/);
   assert.doesNotMatch(pages['skills/index.mdx'], /\| a \|/);

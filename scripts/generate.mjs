@@ -38,6 +38,14 @@ const CLIENT_ICONS = {
   'other-clients': 'mcp',
 };
 
+/**
+ * Hand-written notes for each client page, by slug: sign-in, checks and
+ * troubleshooting the README leaves out. The README's setup snippet goes where
+ * a note has the SETUP line, or first when it has none.
+ */
+const CLIENT_NOTES_DIR = join(ROOT, 'content/mcp-clients');
+const SETUP = '{/* setup */}';
+
 /** Page title and description for each source's overview. */
 const PAGES = {};
 
@@ -214,13 +222,16 @@ export function mcpPages(src, at) {
   );
 
   for (const c of clients) {
+    const notes = parseFrontmatter(src.clientNotes?.[c.slug] ?? '');
+    const setup = `## Add the server\n\n${mdx(c.body)}`;
+    const body = notes.body.includes(SETUP) ? notes.body.replace(SETUP, () => setup) : `${setup}\n\n${notes.body}`;
     out[`clients/${c.slug}.mdx`] = page(
       {
         title: c.heading.replace(/\s*\(.*\)$/, ''),
         icon: CLIENT_ICONS[c.slug],
-        description: `Connect ${c.heading} to the Stunt Double MCP server.`,
+        description: notes.data.description ?? `Connect ${c.heading} to the Stunt Double MCP server.`,
       },
-      mdx(c.body),
+      body.trim(),
       ['README.md']
     );
   }
@@ -289,6 +300,15 @@ function readDirFiles(dir, sub, pick) {
     .map((file) => ({ file: `${sub}/${file}`, text: readFileSync(join(path, file), 'utf8') }));
 }
 
+function readClientNotes() {
+  if (!existsSync(CLIENT_NOTES_DIR)) return {};
+  return Object.fromEntries(
+    readdirSync(CLIENT_NOTES_DIR)
+      .filter((n) => n.endsWith('.mdx'))
+      .map((n) => [basename(n, '.mdx'), readFileSync(join(CLIENT_NOTES_DIR, n), 'utf8')])
+  );
+}
+
 function writeMcp(at) {
   const dir = join(SOURCES_DIR, MCP);
   const pages = mcpPages(
@@ -297,6 +317,7 @@ function writeMcp(at) {
       skills: readDirFiles(dir, 'skills', (n) => (existsSync(join(dir, 'skills', n, 'SKILL.md')) ? `${n}/SKILL.md` : null)),
       rules: readDirFiles(dir, 'rules', (n) => (n.endsWith('.mdc') ? n : null)),
       agents: readDirFiles(dir, 'agents', (n) => (n.endsWith('.md') ? n : null)),
+      clientNotes: readClientNotes(),
     },
     at
   );
