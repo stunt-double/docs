@@ -1,14 +1,14 @@
 ---
 title: "Review runs"
 icon: "insight"
-description: "Read results, screenshots, and recordings like a teammate would, and see what surfaces automatically as an insight."
+description: "Read results, screenshots, and recordings like a teammate would, and triage what runs find from the project Issues page."
 ---
 
-# Turn runs into insights
+# Review runs and act on them
 
 Every run an actor completes, whether it's a checklist, an interview round,
 or a workflow, is recorded in full. This tutorial covers how to read a run
-report and how to use the insights Stunt Double surfaces on top of it.
+report and how to work through the problems Stunt Double collects from it.
 
 ## Read a run report
 
@@ -38,25 +38,30 @@ so you can stop it from where you are watching. Cancelling a run on a
 [device](/integrations/self-hosted-workers) frees that device for the next run
 straight away.
 
-## What surfaces automatically as an insight
+A report can leave the workspace too. Under **Share**, **Copy report link**
+gives teammates the report itself, and **Get share link** creates a public link
+that shows the checks, evidence and screenshots without a sign-in (**Disable
+link** revokes it). **Email report** sends it to a list of addresses.
 
-Not everything worth knowing fits into a pass or fail. As actors work,
-Stunt Double surfaces insights: notable observations from a run that fall
-outside strict pass/fail, a confusing step, a broken link, an unexpected
-result the actor flagged on its own. Insights turn a pile of session
-recordings into a short list of things worth your attention, without
-requiring anyone to watch every replay.
+## Triage what runs find in Issues
 
-Review new insights on a regular cadence rather than only after something
-breaks; the most useful ones are often things nobody thought to write a check
-for.
+You should not have to open every report to find out what is broken. A
+project's **Issues** page collects it for you. Its **Detected** tab lists
+checks that failed on the latest run, design review notes nobody resolved, and
+feedback comments nobody has triaged, each linked to its evidence. **Create
+issue** turns one into an issue you can assign, prioritize and close, and
+**Needs attention** shows the open ones.
+
+Work through Detected on a regular cadence rather than only after something
+breaks. A failure that keeps coming back is a sign the check, or the product,
+needs a closer look.
 
 ## Share findings with your team
 
-Runs and insights are most useful when they reach the people who can act on
+Runs and issues are most useful when they reach the people who can act on
 them. Connect **[Slack](/integrations/slack)**,
 **[Linear](/integrations/linear)** and **[GitHub](/integrations/github)** (all
-listed under **[Integrations](/integrations)**) so failed runs and new insights land where your team already works,
+listed under **[Integrations](/integrations)**) so failed runs land where your team already works,
 instead of waiting to be checked manually.
 
 ## Next steps

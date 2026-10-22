@@ -1,10 +1,10 @@
 ---
 title: "Connect"
 icon: "plug"
-description: "Add the MCP server to Claude, Cursor or ChatGPT from Integrations in your workspace, and revoke a client's access when you are done with it."
+description: "Add the MCP server to Claude, Cursor or ChatGPT from Integrations in your workspace, look up the Stunt Double Index with no account, and revoke a client's access when you are done with it."
 ---
 
-Every client connects to the same endpoint, `https://app.stuntdouble.io/api/mcp`, and signs in with OAuth the first time it calls a tool. No API keys. The app gives you a shorter path for the clients below. For the rest, follow the [client pages](/mcp/clients/claude-code).
+Every client connects to the same endpoint, `https://app.stuntdouble.io/api/mcp`, and signs in with OAuth the first time it calls a tool. No API keys. A client can list the tools and prompts before you sign in. The app gives you a shorter path for the clients below, under **Integrations** in your workspace. For the rest, follow the [client pages](/mcp/clients/claude-code).
 
 ## Claude plugin
 
@@ -20,24 +20,40 @@ If you would rather not install an extension, select **Add it manually instead**
 
 For Claude Code, run the command on the [Claude Code page](/mcp/clients/claude-code) instead.
 
-## Cursor, Windsurf and other MCP clients
+## Cursor
 
-Open **Integrations** and choose **MCP**. Install Stunt Double from the Cursor marketplace, or import `stunt-double/stuntdouble-mcp` into your team marketplace. To add only the server, put it in `.cursor/mcp.json` under `mcpServers.stuntdouble.url`, as the [Cursor and Windsurf page](/mcp/clients/cursor-windsurf) shows.
+Open **Integrations** and choose **Cursor plugin**. The plugin adds the MCP server plus skills, rules and agents. Install Stunt Double from the Cursor marketplace, or add `https://github.com/stunt-double/stuntdouble-mcp` as a team marketplace (in the Cursor dashboard, **Plugins**, **Team Marketplaces**, **Import from Repo**). The [Cursor page](/mcp/clients/cursor) has the details.
+
+## Windsurf and other MCP clients
+
+Open **Integrations** and choose **MCP**. Add the server to your client's JSON configuration under `mcpServers.stuntdouble.url`, then restart it. The [Windsurf page](/mcp/clients/windsurf) and [other clients](/mcp/clients/other-clients) show the config.
+
+If your client has no tool search of its own, connect to `https://app.stuntdouble.io/api/mcp/dynamic` instead. It lists a few core tools plus `find_tools` and `call_tool`, and loads the rest only when a task needs them, so the whole catalog doesn't sit in the model's context on every turn.
 
 ## ChatGPT
 
 The Stunt Double app is not in the ChatGPT app directory yet. You can connect it in developer mode:
 
-1. In ChatGPT, open **Settings**, then **Apps**, then **Advanced**, and turn on developer mode.
-2. Create a custom connector and paste the endpoint URL.
-3. Sign in to Stunt Double when ChatGPT asks.
+1. In ChatGPT, open **Settings**, then **Apps**, and turn on developer mode under **Advanced**.
+2. Create an app with OAuth authentication and paste the endpoint URL.
+3. Sign in to Stunt Double when ChatGPT asks, and choose what it may do in your workspace.
 
-Checklist runs and Stunt Double Index results show up as cards in the conversation.
+Checklist runs, reports, feedback and Stunt Double Index results show up as cards in the conversation.
+
+## Index lookups with no account
+
+To read [Stunt Double Index](/index-ranking) reports without a Stunt Double account, connect to `https://app.stuntdouble.io/api/mcp/index`. It needs no sign-in and carries only the three read tools: `get_index_report`, `list_index_sessions` and `search_index_domains`. In Claude Code:
+
+```sh
+claude mcp add --transport http stunt-double-index https://app.stuntdouble.io/api/mcp/index
+```
+
+In Claude, add it as a custom connector and leave the OAuth fields empty. In ChatGPT, create a connector with **No authentication**. Every scorecard on the Index has a ready-made prompt that asks about that site and tells your agent how to connect.
 
 ## What a client can do
 
-A client asks for some or all of three scopes: `mcp:read`, `mcp:write` and `mcp:run`. A client that asks for none gets all three. Whatever it holds, it acts as you and reaches only the workspaces you belong to. The [overview](/mcp#authentication) explains each scope, and [tools](/mcp/tools) lists what they unlock.
+A client asks for some or all of three scopes: `mcp:read`, `mcp:write` and `mcp:run`. A client that asks for none gets all three. Whatever it holds, it acts as you and reaches only the workspaces you belong to. A scope it doesn't hold hides that scope's tools entirely, and `mcp:run` also covers turning on an automation that runs on its own (on a schedule, webhook or event). The `stuntdouble://connection` resource lists the scopes a connection holds and the tools each one unlocks. The [overview](/mcp#authentication) explains each scope, and [tools](/mcp/tools) lists what they unlock.
 
 ## Revoke access
 
-Go to **Account**, then **Security**, and find the client under **connected apps**. Revoke it there to end that client's access to your account.
+Go to **Account**, then **Security**, and find the client under **Connected apps**. Revoke it there to end that client's access to your account.

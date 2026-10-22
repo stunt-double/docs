@@ -70,7 +70,7 @@ open a page, take a screenshot, click, type, evaluate a script. Implement it
 over Playwright, a hosted browser or a raw CDP client. The repository has a
 complete
 [Playwright driver](https://github.com/stunt-double/stuntkit/tree/main/packages/browser-toolset/examples)
-you can copy.
+you can copy, with agent loops on the Anthropic SDK and the Vercel AI SDK.
 
 ## Run Claude on the browser use toolset
 
@@ -107,7 +107,11 @@ for (;;) {
 ## Run any other model on the direct tools
 
 ```ts
-import { DIRECT_TOOL_SPECS, DirectBrowserTools } from '@stunt-double/browser-toolset';
+import {
+  DIRECT_TOOL_SPECS,
+  DirectBrowserTools,
+  INDEX_SESSION_SAFETY,
+} from '@stunt-double/browser-toolset';
 
 const tools = new DirectBrowserTools(driver, {
   viewport: { width: 1280, height: 800 },
@@ -119,7 +123,13 @@ const result = await tools.run(call.name, call.input);
 ```
 
 `run` never throws. A failure comes back as text the model can act on, and
-every call has a 45 second ceiling.
+every call has a 45 second ceiling. After anything that can change the page,
+the result carries a PNG screenshot as well as text.
+
+`@anthropic-ai/sdk` and `ai` are optional peer dependencies, used for types
+only. A project on the direct tools alone, with no Anthropic SDK, imports from
+the subpaths (`@stunt-double/browser-toolset/direct-tools`, `/safety`,
+`/driver`) or sets `skipLibCheck`.
 
 ## Turn on the safety guards
 
@@ -153,7 +163,8 @@ doing exactly that.
 `navigate` refuses anything but `http` and `https`, and by default refuses
 loopback, private and cloud metadata addresses. A page can't talk your agent
 into probing the machine the browser runs on. Pass `allowPrivateHosts: true`
-when an intranet or a local dev server is the point.
+when an intranet or a local dev server is the point, and `checkNavigation(url)`
+to add a policy of your own: return a message to refuse, or `null` to allow.
 
 ## Next steps
 

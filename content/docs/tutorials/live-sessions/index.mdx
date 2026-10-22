@@ -13,8 +13,8 @@ actor took and the captures it kept. Ask it to try something, watch what it
 does, change the task halfway through, or take the browser and drive it
 yourself.
 
-<Callout variant="note" title="Alpha">
-  Live sessions are in alpha and switched on per workspace. When they are on for
+<Callout variant="note" title="Early Access">
+  Live sessions are in early access and switched on per workspace. When they are on for
   yours, **Live sessions** appears under **Discover** in each project's
   navigation.
 </Callout>
@@ -28,7 +28,8 @@ yourself.
 
 Open a project and choose **Live sessions** under **Discover**. The page lists
 the project's sessions, newest first, so you can go back to any earlier one and
-read what happened.
+read what happened. A session that has ended opens on its summary. The latest
+few also appear on the project's overview.
 
 </Step>
 <Step>
@@ -41,6 +42,9 @@ The dialog asks only what cannot change once the session is running:
 - **Start on**: the address the browser opens first.
 - **Session**: **Interview** or **Task** (see below).
 - **Browser**: **This Mac** or **Cloud browser**.
+- **Model**: **Stunt Double**, or a model on this Mac. Asked only when the
+  browser is This Mac and the Mac already has
+  [local models](/integrations/desktop-app#local-models).
 
 Replies, tools and sign-ins are all changed from inside the session.
 
@@ -72,6 +76,15 @@ message.
   actor drives a Chrome on your Mac, so it can open local dev servers, staging
   behind your VPN and anything else this Mac can reach. When a session can run
   on this Mac, it is the default.
+
+A project that is only reachable inside your network needs **This Mac**: the
+cloud browser refuses it before the session starts. Private and internal
+addresses also need the Startup plan or above.
+
+On This Mac, the browser follows the app's **Where the browser runs**
+setting: inside the app by default, where you watch it in the session, or in
+its own Chrome window (see the
+[desktop app](/integrations/desktop-app#how-the-browser-runs)).
 
 You do not need to set your Mac up as a device first. If it is not one yet,
 starting the session pairs it for you in the background, and that pairing is
@@ -158,7 +171,10 @@ journey and captures stay where they are.
 
 Once a session ends, a summary takes the browser's place: how long it ran,
 the pages visited, the findings by severity and your notes, with a short
-account of what happened and suggested next steps.
+account of what happened and suggested next steps. A session that thought with
+a model on your Mac gets the facts without the written account, since its
+transcript is not sent to Stunt Double's model. Opening an ended session from
+the list, or from the actor's activity, takes you straight to its summary.
 
 A session left idle closes its browser on its own after a while. When that is
 close, **Keep session open** appears in the header with the time it closes.

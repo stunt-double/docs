@@ -1,26 +1,32 @@
 ---
-title: "Americanize"
+title: "Localeizer"
 icon: "SpellCheck"
-description: "Use Americanize (@stunt-double/spelling) to rewrite text into American, British, Australian or Canadian spelling, whole words only, from American or British source text."
+description: "Use Localeizer (@stunt-double/localeizer) to rewrite text into American, British, Australian or Canadian spelling, whole words only, from American or British source text."
 ---
 
-# Americanize
+# Localeizer
 
-Americanize rewrites text into American, British, Australian or Canadian
+Localeizer rewrites text into American, British, Australian or Canadian
 spelling, from source written in either American or British English. It ships
-as the `@stunt-double/spelling` package. Stunt Double's public sites are
+as the `@stunt-double/localeizer` package. Stunt Double's public sites are
 written in American English and rewritten in the browser for visitors who read
 British, Australian or Canadian spelling.
 
 ```ts
-import { localiseSpelling } from "@stunt-double/spelling";
+import { localiseSpelling } from "@stunt-double/localeizer";
 
 localiseSpelling("Organize the color of the center.", "british");
 // 'Organise the colour of the centre.'
 
 localiseSpelling("Analyse the cancelled catalogue.", "american");
 // 'Analyze the canceled catalog.'
+
+localiseSpelling("Organise the colour of the centre.", "canadian");
+// 'Organize the colour of the centre.'
 ```
+
+Canadian spelling takes "-our", "-re" and the doubled "l" from British, and
+"-ize", "-yze" and words such as "program" and "check" from American.
 
 ## Australian English
 
@@ -49,8 +55,14 @@ Add `@stunt-double:registry=https://npm.pkg.github.com` and a GitHub token with
 `read:packages` to your `.npmrc`.
 
 ```sh
-npm install @stunt-double/spelling
+npm install @stunt-double/localeizer
 ```
+
+<Callout variant="note" title="Moving from @stunt-double/spelling">
+  The package was published as `@stunt-double/spelling` up to 0.1.0. The API
+  is the same: swap the dependency and change the import path to
+  `@stunt-double/localeizer`.
+</Callout>
 
 No dependencies. Runs anywhere JavaScript does: browsers, Node 20 or later
 and workers.
@@ -87,7 +99,7 @@ Australia, New Zealand, Ireland and most of the Commonwealth use `'british'`
 ## Rewrite a page in the browser
 
 ```ts
-import { localiseSpelling, type SpellingSystem } from "@stunt-double/spelling";
+import { localiseSpelling, type SpellingSystem } from "@stunt-double/localeizer";
 
 function localisePage(root: Node, system: SpellingSystem): void {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
@@ -103,4 +115,4 @@ Skip `code`, `pre` and anything else where text isn't prose.
 
 ## Next steps
 
-- **[Read the full API on GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/spelling)**
+- **[Read the full API on GitHub](https://github.com/stunt-double/stuntkit/tree/main/packages/localeizer)**

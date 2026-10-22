@@ -26,10 +26,10 @@ prototype never mixes with another.
 The Comments view then shows the install step with two tabs.
 
 **With Claude** gives you a prompt to paste into Claude, Claude Code, or any
-coding assistant. It describes both script tags and where they go, which is
+coding assistant, with a **Copy** button beside it. It describes both script tags and where they go, which is
 usually the fastest route if an agent already has your repo open.
 
-**Code** gives you the snippet directly. Add it just before the closing
+**Code** gives you the snippet directly, also with **Copy**. Add it just before the closing
 `</body>` tag. Set `data-sd-version` to your build ID if you want each round of
 feedback kept apart (see [Prototype versions](#prototype-versions) below). The
 [integration reference](/integrations/feedback-widget#the-snippet) explains
@@ -93,8 +93,9 @@ widget still collects everything, it just does not show anyone else's.
 ## 4. Triage what comes back
 
 The project's **Comments** view is where feedback lands. It opens on the
-**Open** queue with counts across the top: total comments, how many are open,
-how many pages they came from, and how many are resolved.
+**Open** queue, with **New**, **Resolved** and **All** beside it, and counts
+across the top: total comments, how many are open, how many pages they came
+from, and how many are resolved.
 
 <Screenshot
   name="feedback"
@@ -120,6 +121,13 @@ control. From there you can:
 
 Resolved and dismissed comments are filed under **Resolved** rather than
 deleted, so you can still show why a decision was made three iterations ago.
+
+When a round brings in more comments than you can read one by one,
+**Summarise** reads the queue you are on and groups it into themes, calls out
+what needs a decision, and drafts a prompt you can hand to a coding assistant
+to fix what was reported. Comments nobody has triaged also show up on the
+project's **Issues** page beside failed checks and open design review notes,
+so they are not forgotten between rounds.
 
 ### Prototype versions
 

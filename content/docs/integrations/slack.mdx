@@ -20,12 +20,18 @@ For the full design review walkthrough, read
 - **Direct messages.** Anyone in your Slack team can DM Stunt Double. Send a
   link and ask for feedback and it runs a design review. Ask about the
   workspace and it can start checklists and automations.
-- **Design reviews in channels.** Once design review is set up for a channel,
-  Stunt Double picks up messages that carry a link and ask for feedback, and
-  replies in the thread.
-- **Notifications.** Each project can post to its own Slack channel.
-- **Workflow triggers.** Automations can start from Slack events with the
-  **Slack Event** trigger.
+- **Design reviews in channels.** @mention Stunt Double with a link in any
+  channel it has been invited to. In a channel turned on under design review
+  settings, it picks up any message that carries a link and asks for
+  feedback, no mention needed, and replies in the thread.
+- **Figma links.** With [Figma](/integrations/figma) connected, a Figma link
+  is rendered and reviewed, and a link to a selected frame reviews that
+  frame. Web links are reviewed either way.
+- **Notifications.** Workflow alerts go to a default channel, and each project
+  can post to its own.
+- **Workflow triggers.** Automations can start from Slack with the **Slack**
+  trigger, on **App Mention** (someone @mentions Stunt Double) or **Message**
+  (a message in the chosen channel).
 
 ## Before you start
 
@@ -48,8 +54,15 @@ For the full design review walkthrough, read
 4. On **Projects**, click **Choose for a project** and pick a project. Its
    **Settings** open on the **Integrations** tab: choose the project's
    **channel** there.
-5. To have Stunt Double pick up review requests in a channel, open **Design
-   reviews**, then **Settings**, and choose the channels to watch.
+5. Under **Settings** on the Slack panel, pick a **Default channel** for
+   notifications. A project's own channel overrides it.
+6. To have Stunt Double pick up review requests in a channel without a
+   mention, open **Design reviews**, then **Settings**, and under **Channels**
+   click **Add a channel**. **Try it** posts a test request in a channel so
+   you can see the whole flow before your team uses it.
+
+Guidelines marked **Apply to design reviews** on the **Guidelines** tab of
+**Design reviews** are applied to reviews requested from Slack too.
 
 Setting Slack up for someone else? The card at the bottom of the Slack panel
 gives you a link to share. It walks them through installing the Slack agent
@@ -70,7 +83,7 @@ The Slack agent asks for these scopes:
 | `assistant:write`                    | Replying as an assistant in Slack's agent view      |
 | `commands`                           | Handling Stunt Double's slash commands              |
 | `users:read`                         | Showing who asked                                   |
-| `mcp:connect`                        | Letting Slack reach Stunt Double's MCP server    |
+| `mcp:connect`                        | Letting Slack reach Stunt Double's MCP server       |
 
 Installs from before direct messages were supported lack `im:history` and
 `im:write`. Under **Settings**, **Direct messages** shows **Reinstall the
@@ -108,9 +121,11 @@ install is gone."** The app was removed from Slack's side. Click **Install
 Slack agent** to install it again.
 
 **Stunt Double does not reply in a channel.** DMs work as soon as Slack is
-added. Channels need design review turned on for them under **Design
-reviews**, then **Settings**. Check that Stunt Double has been invited to the
-channel too.
+added. In a channel, check that Stunt Double has been invited, then either
+@mention it or add the channel under **Design reviews**, then **Settings**,
+then **Channels**. If a channel there shows **Needs attention** and the page
+asks you to **Reinstall to watch channels**, the install cannot read messages
+in that channel, so only @mentions reach it until you reinstall.
 
 **Direct messages do not arrive.** Check **Direct messages** under
 **Settings** on the Slack panel. If it asks you to reinstall, the install

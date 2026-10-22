@@ -14,7 +14,7 @@ how to write checks that hold up over time, and how to read a run so a
   items={[
     { label: "Time", value: "20 minutes" },
     { label: "You need", value: "An actor and a URL" },
-    { label: "Next", value: "Turn runs into insights" },
+    { label: "Next", value: "Review runs and act on them" },
   ]}
 />
 
@@ -23,6 +23,16 @@ how to write checks that hold up over time, and how to read a run so a
   alt="The new checklist dialog on its Checks step: four plain-language checks in order, each with a check type, when it runs and what happens on failure."
   caption="Each check says what should be true. Under it: its type, when it runs, and whether a failure stops the run."
 />
+
+## Start from a template
+
+**Create checklist** opens on categories first: Core & reliability, Onboarding &
+activation, Conversion & growth, Forms & input, Accessibility, Mobile &
+responsive, Content & trust, and Navigation & findability. Pick a template to
+start from its checks, or **Start from scratch** for a blank one. The next two
+steps name the checklist, choose the URL and actor, then let you edit the
+checks before you create it. Treat a template's checks as a first draft: the
+rest of this tutorial is about making them specific to your product.
 
 ## Write one check per outcome, not per click
 
@@ -106,6 +116,13 @@ Set its run condition to:
 Without conditions, both shapes produce a misleading report: one failure
 counted twice, or a check that fails because the product worked.
 
+A check's **On failure** setting decides what a failure does to the rest of the
+run. **Fail and continue**, the default, records the failure and carries on.
+**Fail and stop** ends the run there and records every check it had not reached
+as skipped. Use it for a step everything after depends on, like signing in, so
+one broken step does not show up as a page of knock-on failures. A check set to
+stop fails the run when it fails, whatever its type.
+
 A check whose condition is unmet is recorded as **skipped**, naming the check it
 depended on, and left out of the score entirely. It did not fail, and it is not
 inconclusive either. A condition is only unmet when the previous check's verdict
@@ -125,6 +142,7 @@ the actor was actually on when it reached its verdict. A run report has tabs
 for:
 
 - **Results**, each check's status and a short explanation.
+- **Journey**, the pages the actor visited and the emails it read, in order.
 - **Screenshots**, the page as the actor saw it at each step.
 - **Recording**, the full session if you want to watch it play out.
 - **Knowledge**, which knowledge entries the actor drew on.
@@ -149,6 +167,14 @@ read every time and one you stop opening. Informational checks are compared as
 text, so "$29 per month" becoming "$39 per month" shows up even though no
 pass or fail state moved.
 
+Agentic runs also leave notes for the next run of the same checklist by the
+same actor: the route that worked, what blocked it, and what it left behind
+(an account it created, a password it reset). The report shows them under
+**Notes between runs**. Notes never carry verdicts or passwords, so every run
+still judges each check on what the page shows today. If the product is
+rebuilt between runs, turn off **Learn from the last run** under **Configuration** on the
+checklist's **Instructions** tab.
+
 Editing a checklist keeps its history: checks you did not touch keep their ids
 and their past results, so a comparison still has something to compare against.
 
@@ -161,5 +187,5 @@ that reproduces consistently is worth acting on immediately.
 
 ## Next steps
 
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
 - **[Automate multi-step workflows](/tutorials/building-workflows)**

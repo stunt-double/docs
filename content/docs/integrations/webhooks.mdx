@@ -33,6 +33,12 @@ an automation, read [Automate multi-step workflows](/tutorials/building-workflow
 Treat the secret like a password. Store it in your CI system's secret store,
 not in a repository.
 
+The secret is only shown here, in the dashboard. The [MCP server](/mcp), the
+assistant and the Slack and Linear agents can read an automation's trigger
+but never its secret, so nothing they are connected to can start a webhook
+run. A webhook automation created over MCP by a connection without the
+`mcp:run` scope starts turned off, and that connection cannot turn it on.
+
 ## Send the request
 
 Send a `POST` to the **Webhook URL** with the secret in the `X-Webhook-Secret`

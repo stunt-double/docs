@@ -34,8 +34,9 @@ workspace and starts checklists and workflows for you.
 Open **Integrations** > Slack and select **Install Slack agent**, then **Add**
 your Slack team to the workspace (a workspace owner or admin does this step).
 That is the whole setup. The Slack app already asks for the permissions it
-needs, so nothing has to be wired up by hand. Review settings live under
-**Design reviews > Settings**. The **[Slack](/integrations/slack)** page covers
+needs, so nothing has to be wired up by hand. Review settings live on the
+**Settings** tab of **Design review** in the sidebar, beside the **Reviews**
+list and your **Guidelines**. The **[Slack](/integrations/slack)** page covers
 permissions, and the difference between **Remove** (one workspace) and
 **Disconnect** (your account, every workspace).
 
@@ -49,9 +50,10 @@ with a **Connect Figma** button instead of feedback. Web links are reviewed
 either way.
 
 If your workspace connected Slack before direct messages were supported, the
-page shows **Reconnect Slack**. An installation keeps whatever permissions it
-was granted, so Slack quietly delivers nothing rather than reporting an error.
-Reconnecting grants the two permissions the direct-message surface needs.
+Settings tab shows **Reinstall to receive direct messages**. An installation
+keeps whatever permissions it was granted, so Slack quietly delivers nothing
+rather than reporting an error. **Reinstall** grants the two permissions the
+direct-message surface needs.
 
 ## 2. Ask for a review
 
@@ -143,7 +145,8 @@ come back, and the thread says which one failed and why.
 Direct messages work on their own. A channel is for teams that share work in the
 open, where nobody should have to remember to mention a bot.
 
-Under **Design reviews > Settings**, add the channel. Every message
+On the **Settings** tab of **Design review**, add the channel under
+**Channels**. Every message
 posted there that carries a link and asks for feedback then starts a review, with
 no mention needed.
 
@@ -156,7 +159,8 @@ checks both against live Slack state rather than a stored flag:
 - **The connection can read messages there.** Being mentioned in a channel is a
   different permission from reading it, and public and private channels differ
   again. A connection made before the permission was requested keeps its old
-  grant, so the page prompts for a reconnect naming the channel it affects.
+  grant, so the page shows **Reinstall to watch channels** and names the
+  channel it affects.
 
 **Try it** on the same page posts a request in the channel as the bot and reviews
 it, so you can watch the whole flow before asking your team to use it.
@@ -200,8 +204,9 @@ order:
 2. **It was a reply in a thread nobody has reviewed yet.** A reply only starts a
    review when the thread already holds one. Post the link as a new message.
 3. **The bot is not in the channel.** Run `/invite @Stunt Double` there.
-4. **The connection is missing a permission.** **Design reviews > Settings** names
-   this against each configured channel, with a reconnect button.
+4. **The connection is missing a permission.** The **Settings** tab of **Design
+   review** names this against each configured channel, with a **Reinstall**
+   button.
 5. **The workspace is over a usage limit.** The thread says which limit was hit
    rather than going silent.
 

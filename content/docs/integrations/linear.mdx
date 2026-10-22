@@ -35,7 +35,7 @@ their results back to the issue.
 2. On **Your account**, click **Connect Linear** and approve Stunt Double in
    Linear. The step changes to **Connected as** with your Linear name.
 3. On the step named after your workspace, an owner or admin turns the switch
-   on.
+   on. It reads **On for this workspace.**
 4. On **Projects**, click **Choose for a project** and pick a project. Its
    **Settings** open on the **Integrations** tab: choose the project's Linear
    team there.
@@ -46,13 +46,17 @@ their results back to the issue.
 Then try it: open an issue in Linear and assign it to Stunt Double, or mention
 Stunt Double in a comment.
 
-To start an automation from Linear, create an automation, choose a Linear
-trigger, and pick from **Linear Events**. You can limit it to one team.
+To stop the agent partway through, use Linear's **Stop** control on the
+agent session. Stunt Double ends that turn and hands the session back to you.
+
+To start an automation from Linear, create an automation, choose the
+**Linear** trigger, and pick from **Linear Events**. You can limit it to one
+team.
 
 ### Hand setup to someone else
 
 At the foot of the Linear page, the **Install link** card has a link that
-walks someone through connecting Linear, turning it on for this workspace,
+takes someone through connecting Linear, turning it on for this workspace,
 choosing a team and the agent's actor. It picks up wherever they left off.
 
 ## What Stunt Double can access
@@ -96,7 +100,9 @@ to **No actor**. An owner or admin can pick an actor under **Settings**.
 **Agent identity is missing.** It only appears to owners and admins, and only
 once Linear is connected and on for the workspace.
 
-**Linear will not let you install the app.** Adding apps to a Linear workspace can be limited to Linear admins. Ask one to connect, or send them the install link.
+**Linear will not let you install the app.** Adding apps to a Linear
+workspace can be limited to Linear admins. Ask one to connect, or send them
+the install link.
 
 **An automation does not start.** Check that it is on, that its trigger
 includes **Issue Assigned** or **Issue Mentioned**, and that any team filter

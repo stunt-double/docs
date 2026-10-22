@@ -1,7 +1,7 @@
 ---
 title: "Run an interview"
 icon: "interview"
-description: "Structure sections and items, recruit actor personas or real participants, and read an evidence-backed report."
+description: "Structure sections and items, choose actor and persona participants, and read an evidence-backed report."
 ---
 
 # Run a user interview
@@ -22,47 +22,70 @@ items. An item is either:
 
 Mixing the two in a section works well: a task that puts the participant in a
 flow, followed by questions that surface what confused them or what they
-expected instead.
+expected instead. **Generate with AI** drafts a guide for you to edit.
 
-## Recruit participants: actor personas or real people
+## Choose participants: actors and personas
 
-Participants can be AI actor personas, real people, or a mix of both in the
-same round. Actor personas give you a fast, repeatable panel for testing a
-direction before you're ready to recruit, while real participants give you an
-authentic voice you can't get any other way. A common pattern is to run an
-actor panel first to catch obvious problems, then bring in real participants
-to validate what's left.
+Every participant is an AI persona standing in for a real user. **Add actors**
+brings in actors you already have in the workspace, with their knowledge and
+history. **Generate audience** creates personas to match an audience you
+describe. Mix the two in the same round: a panel of personas gives you a fast,
+repeatable read on a direction before you take it to real customers.
 
-## Launch a round
+## Measure usability
 
-When the guide and participant list are ready, launch a round. Each round is
-a complete pass through the guide with every recruited participant. As you
-make product changes, launch another round against the same guide to see how
-perception shifts, rather than starting from scratch each time.
+After the guide, each participant answers a short **usability questionnaire**
+in character, and the round reports a usability score and grade you can
+compare between rounds. It is on by default with **UMUX** (four statements,
+comparable with SUS scores). Switch it to **UMUX-Lite** (two statements) or
+**Off** under the interview's setup. A round that ran with it off can still be
+scored afterwards with **Score usability**, from the transcripts it already
+has.
+
+## Run a round
+
+When the guide and participant list are ready, select **Run interview**. Each
+round is a complete pass through the guide with every participant. As you
+make product changes, select **Re-run interview** to run another round against
+the same guide and see how perception shifts, rather than starting from
+scratch each time.
+
+The pages participants visit also feed the project's topology, so an interview
+fills in the map of your product the same way checklist runs do.
 
 ## Read the report
 
 Every round produces a report with:
 
-- **Overview**: the counts and a **summary** of what the round found.
-- **Findings**: the patterns that came up across participants, each backed by
-  evidence drawn straight from the interview.
+- **Overview**: four short blocks, each opening onto its own tab. The summary
+  with the counts beneath it, **Highlights** (the findings that reached the
+  most participants), **Actions** (the highest priority recommendations) and
+  **Evidence** (a quote for each highlight, with the screen it was said on).
+- **Findings**: the study cut, a short video of the moments behind the report,
+  then the patterns that came up across participants, each backed by quotes
+  drawn straight from the interview.
 - **By question**: what most participants did, where they differed, and the
   outliers.
 - **Recommendations**: ranked by priority, ready to track as goals.
-- **Usability** and **Transcripts**: the questionnaire scores and every
-  participant's session in full.
+- **Usability** and **Transcripts**: the questionnaire scores, compared with
+  the previous round, and every participant's session in full.
 
 <Screenshot
   name="interview-report"
   alt="An interview round report on its Overview tab: counts of participants, findings, questions analysed and recommendations, a summary, and the participant list."
-  caption="A round's Overview: the counts, a summary of what participants did, then Findings, By question and Recommendations in order."
+  caption="A round's Overview: the summary and counts first, then Findings, By question and Recommendations in order."
 />
 
-Because every finding and recommendation is tied to evidence quotes, you can
-check a claim against what a participant actually said before acting on it.
+Because every finding and recommendation is tied to evidence quotes, and each
+quote shows the screen it was said on, you can check a claim against what a
+participant actually said and saw before acting on it.
+
+To share a round with people outside the workspace, use **Share** on the
+report and **Get share link**. The link shows the report; recordings and
+transcripts stay behind sign-in. **Email report** sends it to a list of
+addresses, and **Download PDF** saves a copy.
 
 ## Next steps
 
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
 - **[Automate multi-step workflows](/tutorials/building-workflows)**

@@ -19,9 +19,9 @@ Mac, with MCP servers and models from this Mac.
   device. [Set up this Mac](#set-up-this-mac) can install a separate Chrome for
   Testing for live sessions instead.
 - **Plan.** The app itself works on any plan. Using the Mac as a device needs
-  a paid plan, with devices switched on by an owner or admin in **Settings**,
-  then **Devices**. Testing private or internal addresses from it needs the
-  Startup plan or above.
+  a paid plan, and testing private or internal addresses from it needs the
+  Startup plan or above. There is no switch to turn devices on: any member can
+  set up their own Mac.
 
 ## Install it
 
@@ -32,34 +32,37 @@ Mac, with MCP servers and models from this Mac.
 
 The app updates itself. It checks when it launches, when it wakes from sleep
 and when you come back to it, so a Mac that is never quit still gets the
-latest version.
+latest version. To check straight away, choose **Stunt Double**, then **Check
+for Updates…**.
 
 ## Use this Mac as a device
 
-1. In the app, open **Go**, then **This Device** (Cmd+D). The device console
-   opens in its own window.
-2. Click **Set up this Mac**. The console shows **Connected** once the Mac
-   checks in.
-3. Choose where each actor's browser runs. Open an actor, go to its **Manage**
-   tab and, under **Where this actor's browser runs**, choose this Mac or
-   **Any device in this workspace**.
+1. In the app, open **Devices** from the sidebar, or **Go**, then **This
+   Device** (Cmd+D). **This Mac** sits at the top of the page.
+2. Click **Set up this Mac**. It shows **Connected** once the Mac checks in.
+   Below it, **Live view** shows the browser as actors use it, beside an
+   activity log that never leaves this Mac.
+3. Runs on internal projects can now borrow the Mac. To keep an actor on it
+   for every run, open the actor, go to its **Browser** tab, choose **Device**,
+   then pick this Mac or **Any device in this workspace**.
 
 Setting up is remembered. When the app restarts, including after an update,
 the Mac reconnects by itself. Quitting the app closes its browser.
 
-To stop, click **Disable this device** in the console. A run already in
-progress stops with it.
+To stop, click **Disconnect** on **This Mac**. A run already in progress stops
+with it.
 
 A live session does not need this step: starting a session on **This Mac**
 pairs the Mac in the background when it is not a device yet.
 
 ### How the browser runs
 
-The device console lets you choose how the browser appears, under **How the
-browser runs**:
+Under **Browser**, below **This Mac**, **Where the browser runs** sets how the
+browser appears, for runs and for [live sessions](/tutorials/live-sessions)
+alike:
 
 - **Inside the app** (the default). The browser has no window of its own. You
-  watch it in the device console and can take control when you need to.
+  watch it in the app and can take control when you need to.
 - **Its own window.** A real Chrome window on your desktop. Slower to work
   alongside, but the only way to answer a client certificate, Keychain or smart
   card prompt.
@@ -71,15 +74,15 @@ is running.
 ## Set up this Mac
 
 Live sessions on this Mac can use a few optional extras. Open them from the
-app menu, **Stunt Double**, then **Set Up This Mac…**, or from **Packages and
-models** in the device console.
+app menu, **Stunt Double**, then **Set Up This Mac…**, or from **Tools and
+models** on **This Mac**.
 
-| Package            | What it adds                                                  |
-| ------------------ | ------------------------------------------------------------- |
-| Chrome for Testing | A clean browser for sessions, kept apart from your own Chrome |
-| Node               | MCP servers that start with `npx` or `node`                   |
-| uv                 | Python MCP servers that start with `uvx` or `uv`              |
-| Ollama             | Running the actor on a model on this Mac                      |
+| Package                 | What it adds                                                  |
+| ----------------------- | ------------------------------------------------------------- |
+| Chrome for Testing      | A clean browser for sessions, kept apart from your own Chrome |
+| Node                    | MCP servers that start with `npx` or `node`                   |
+| uv                      | Python MCP servers that start with `uvx` or `uv`              |
+| Local models (Ollama)   | Running the actor on a model on this Mac                      |
 
 Each row says whether the package is already here and its size. Click
 **Install** and the app asks you to confirm, naming the package, its size and
@@ -91,22 +94,28 @@ over the one installed here.
 
 ## Local models
 
-With Ollama installed and running, **Set Up This Mac** suggests models that
-work well with actors:
+With Ollama installed and running, **Set Up This Mac** suggests models built
+for tool use and multi-step tasks, all of which read the actor's screenshots.
+The list is ranked by this Mac's memory: the largest model that runs well
+alongside the browser is marked **Best fit for this Mac**, and one that needs
+more memory than the Mac has says so.
 
-| Model          | Size   | Notes                                   |
-| -------------- | ------ | --------------------------------------- |
-| `gemma3:4b`    | 3.3 GB | Small, and reads screenshots            |
-| `qwen2.5vl:7b` | 6 GB   | Reads screenshots; better at long tasks |
-| `llama3.2`     | 2 GB   | Small and quick. Text only              |
-| `qwen2.5:7b`   | 4.7 GB | Good at tools. Text only                |
+| Model            | Size   | Memory | Notes                                    |
+| ---------------- | ------ | ------ | ---------------------------------------- |
+| `qwen3.5:4b`     | 3.4 GB | 8 GB   | Small and quick                          |
+| `ministral-3:8b` | 6 GB   | 16 GB  | Fast at tool calls                       |
+| `qwen3.5:9b`     | 6.6 GB | 16 GB  | A good all-rounder for multi-step tasks  |
+| `gemma4:12b`     | 7.7 GB | 24 GB  | Reads pages and screenshots closely      |
+| `gemma4:26b`     | 16 GB  | 32 GB  | Steadier on long tasks                   |
+| `qwen3.8:27b`    | 18 GB  | 32 GB  | The strongest here at long agentic tasks |
 
 Click **Install** on a model to download it. If you already run Ollama, the app
 uses yours and the models you have pulled; otherwise it starts the one it
 installed when it is needed, listening only on this Mac, and stops it when you
 quit.
 
-When a live session's actor thinks with a model on this Mac, the model never
+To use one, choose it under **Model** when you start a live session on **This
+Mac**. When a live session's actor thinks with a model on this Mac, the model never
 sees Stunt Double's credentials, and what it reads stays on your Mac. Only the
 session's journey, captures and transcript are saved to your workspace, and the
 end-of-session summary is built from those facts alone, without sending the
@@ -114,8 +123,7 @@ transcript to Stunt Double's model.
 
 <Callout variant="note" title="Early access">
   Choosing a local model for a session is in early access alongside live
-  sessions. A model that reads screenshots gives the actor a much better view of
-  the page than a text-only one.
+  sessions.
 </Callout>
 
 ## MCP servers on this Mac
@@ -130,22 +138,22 @@ for how they work in a session.
 
 ## Troubleshooting
 
-**This Device asks you to install Google Chrome.** The device drives Chrome.
-Install it, then click **Set up this Mac** again.
+**This Mac says "No browser found on this Mac".** The device drives Chrome.
+Install Google Chrome, reopen **Devices** and click **Set up this Mac**.
 
-**The console says this Mac is paired with another workspace.** A Mac belongs
-to one workspace at a time. Click **Move to** and confirm to move it here.
-Runs in the other workspace stop using it.
+**This Mac says it is set up for another workspace.** A Mac belongs to one
+workspace at a time. Click **Move to** followed by this workspace's name and
+confirm to move it here. Runs in the other workspace stop using it.
 
-**The console says "This device is no longer paired".** The device was removed
-from the workspace, or its key no longer works. Click **Pair again**.
+**This Mac says "This Mac is no longer paired".** The device was removed from
+the workspace, or its key no longer works. Click **Pair again**.
 
-**The console says "Not reaching Stunt Double".** The app is running, but
-Stunt Double has not heard from it for over a minute. Check the Mac is online,
-then click **Reconnect**.
+**This Mac says "Not reaching Stunt Double".** The app is running, but Stunt
+Double has not heard from it for over a minute. Check the Mac is online, then
+click **Reconnect**.
 
-**The console says to update the app.** That version cannot run a device yet.
-Update the app and reopen **This Device**.
+**This Mac says "Update the desktop app".** That version cannot run a device.
+Updates install in the background, so restarting the app is usually enough.
 
 **A run says the browser was suspended by security software.** Endpoint
 security on the Mac froze Chrome before it could start. Ask your IT team to

@@ -45,8 +45,11 @@ running reviews with it, read the [guide](/guides/feedback-widget).
 - **`data-sd-url`** (required in practice) points at Stunt Double. It must be
   `https`; the widget refuses to run otherwise.
 - **`data-sd-version`** (optional) pins comments to a version string you
-  control, such as a build ID, release tag or commit SHA. Without it, comments
-  are grouped by page content.
+  control, such as a build ID, release tag or commit SHA. The widget also
+  reads a `<meta name="sd-version">` tag or `window.SD_FEEDBACK_VERSION`, if
+  either suits your build better. An empty or unrendered value, such as
+  `%VERSION%`, is ignored. Without one, comments are grouped by page
+  content.
 
 There is no package to install and no build step. Screenshot capture loads
 `html2canvas` on demand from a pinned, integrity-checked URL, so one tag is
@@ -66,6 +69,7 @@ endpoint checks before it answers.
 | **Toolbar visible**         | Shows or hides the feedback button on your site                                                                                                                             |
 | **Show comments on page**   | Shows existing comment pins on the page                                                                                                                                     |
 | **Keyboard shortcut**       | Lets visitors press `c` to start placing a comment                                                                                                                          |
+| **When the page changes**   | **Keep comments** leaves pins open until someone resolves them. **Auto-resolve on a new version** resolves comments on earlier versions the first time a new one is seen.   |
 | **API Key**                 | **Rotate** issues a new key and stops every install of the old one until its snippet is updated                                                                             |
 
 The allowlist **fails closed**: a project with no URL and an empty allowlist
@@ -73,9 +77,10 @@ serves nothing at all, and the settings page says so, so you can tell "locked
 down" apart from "broken".
 
 Workspace admins hold a ceiling above every project under **Settings**, then
-**Security**: a workspace-wide **allowed origins** list that projects can only
-narrow, and a **Feedback widget** switch that turns the widget off for every
-project, including sites where the key is already installed.
+**Security**, in the **Feedback widget** section: **Enable the widget** turns
+it off for every project, including sites where the key is already
+installed, and **Allowed origins** is a workspace-wide list that projects can
+only narrow. Leave it empty to let each project decide.
 
 ## Remove it
 

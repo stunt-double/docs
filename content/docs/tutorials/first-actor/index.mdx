@@ -1,15 +1,15 @@
 ---
 title: "Build an actor"
 icon: "actor"
-description: "Write instructions and knowledge that make an actor behave like a real member of your audience."
+description: "Write instructions, set a personality and add knowledge that make an actor behave like a real member of your audience."
 ---
 
 # Build an actor that behaves like your audience
 
 The **[Quickstart](/getting-started)** has you create a minimal
-actor to run one checklist. This tutorial goes further: writing instructions
-and knowledge that make an actor behave like a genuine member of your
-audience.
+actor to run one checklist. This tutorial goes further: writing instructions,
+setting a personality and adding knowledge that make an actor behave like a
+genuine member of your audience.
 
 <PageFacts
   items={[
@@ -21,9 +21,23 @@ audience.
 
 <Screenshot
   name="actor-create"
-  alt="An actor's Overview tab in Stunt Double: name, description, instructions and location, with counts of its conversations, emails and knowledge."
+  alt="An actor's profile in Stunt Double: name, description, instructions and location."
   caption="An actor is named by role and described in plain language. The Knowledge tab holds what it knows."
 />
+
+## Create the actor
+
+Open **Actors** in the sidebar and choose **Create actor**. Creating one takes
+two steps:
+
+1. **Start**: pick a template for a common type of user, or **Write your own**.
+   A template fills in the next step rather than creating the actor straight
+   away, so you see everything before it is saved.
+2. **Details**: a **name**, an optional **description** and the
+   **instructions**. Name the actor by role ("Busy shop owner"), never as a
+   person, so results read clearly.
+
+Everything here can be changed later on the actor's **Profile** tab.
 
 ## Start with a persona, not a checklist
 
@@ -37,19 +51,47 @@ familiarity, and a tone:
 > before showing you the product.
 
 An actor written this way makes the same kind of judgment calls a real
-visitor would, rather than mechanically executing steps.
+visitor would, rather than mechanically executing steps. Write instructions to
+the actor, in the second person. They hold up to 1,000 characters, so facts it
+needs to look up belong in knowledge instead.
+
+## Set its personality
+
+The **Personality** section of the Profile tab has three sliders:
+
+- **Skepticism**, from trusting to skeptical: how much proof it wants before
+  taking the product at its word.
+- **Technical literacy**, from novice to expert: how comfortable it is with
+  software, jargon and unfamiliar interfaces.
+- **Frustration**, from patient to short fuse: how quickly a struggle wears it
+  down, and how soon it gives up on a task.
+
+The personality applies everywhere the actor works: chats, checklist runs and
+interviews. Leave a trait unset to let the instructions decide. An interview
+can override a trait for its own participants.
 
 ## Give it knowledge to draw on
 
-Knowledge entries are the reference material an actor can pull from mid-run:
-facts about your product, test account credentials, brand or tone
-guidelines, or answers to questions it might otherwise get wrong. Add a
-knowledge entry for anything you would otherwise have to explain to a new
+Knowledge is the reference material an actor can pull from mid-run. Add
+entries on the actor's **Knowledge** tab, each as one of four kinds:
+
+| Kind | What it holds | Example |
+| --- | --- | --- |
+| Expertise | A skill or standard the actor applies | Accessibility auditing |
+| Process | Steps the actor follows, in order | Reporting a bug |
+| Reference | Facts to look up: an FAQ, a policy, pricing | Refund policy |
+| Account | A test account to sign in with, never a real password | Staging test account |
+
+The actor is never handed everything at once. It sees the titles of its
+expertise and processes and opens the one a task needs before starting it,
+and it searches reference and account entries before guessing a fact or a
+login. Add an entry for anything you would otherwise have to explain to a new
 team member on day one.
 
-Keep entries short and specific. A dozen focused entries work better than one
-long document, since the actor only needs to draw on what's relevant to the
-step it's on.
+Keep entries short and specific, with clear titles. A dozen focused entries
+work better than one long document, since the actor finds entries by what they
+are about. An entry holds up to 8,000 characters; split anything longer into
+entries with titles of their own.
 
 ## What an actor can do
 
@@ -57,11 +99,17 @@ Out of the box an actor works through your product the way a real visitor
 would:
 
 - **Drives a real browser** through your product, observing each page and
-  deciding what to do next.
-- **Reads email** sent to its own inbox, so it can pick up verification codes
-  and magic links during signup and verification flows.
-- **Searches the web** when it needs information beyond your product.
-- **Remembers context** it has seen before, carrying useful state between runs.
+  deciding what to do next. The **Browser** tab sets where that browser runs
+  and where sites see it browsing from.
+- **Reads email** sent to an inbox of its own, so it can pick up verification
+  codes and magic links during sign-up. Each actor gets one address, assigned
+  by the platform, on the Startup plan and above.
+- **Stays signed in** between runs once you log in as the actor from the
+  Browser tab, on the Startup plan and above.
+- **Searches the web** in chat when it needs information beyond your product.
+
+Email is the only channel an actor has. It never enters a phone number or
+picks SMS verification; when a site insists, it reports the step as a blocker.
 
 You don't have to wire any of this up. Give the actor a clear persona and the
 knowledge it needs, and it draws on whatever is relevant to the step it's on.

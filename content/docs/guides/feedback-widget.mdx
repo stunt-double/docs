@@ -108,7 +108,15 @@ comments are grouped into **v1**, **v2**, and so on, with the newest badged
 
 If you would rather tie versions to your releases than to page content, set
 `data-sd-version` on the script tag to a build ID, release tag, or commit SHA.
-The widget then uses that verbatim.
+The widget then uses that verbatim. It reads a `<meta name="sd-version">` tag
+or `window.SD_FEEDBACK_VERSION` the same way, if either is easier to fill from
+your build.
+
+By default, comments stay open across versions until someone resolves them.
+Under **When the page changes** in the project's comment settings, choose
+**Auto-resolve on a new version** and comments left on earlier versions are
+resolved the first time the widget reports a new one. They stay in the inbox
+under resolved.
 
 ## Who can actually use it
 
@@ -133,7 +141,7 @@ ones into checks:
 4. Resolve the comment (update_feedback_status) so the author is notified
 ```
 
-All three feedback tools are on the MCP server, so an agent can work that loop
+The feedback tools are on the MCP server, so an agent can work that loop
 with you: "read the new comments on the pricing page, reproduce the top one with
 a checklist, and tell me what you find." See the
 **[codebases guide](/guides/codebases)** for the deploy-trigger side, and the

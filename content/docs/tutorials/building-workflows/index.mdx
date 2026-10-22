@@ -8,13 +8,33 @@ description: "Chain checklists, conditions, notifications, and PR reviews into o
 
 A checklist verifies one flow in one run. A workflow chains several steps
 together into a single repeatable automation, so you can wire up a whole
-process instead of a single check.
+process instead of a single check. In the product, workflows live under
+**Automations**.
 
 <Screenshot
   name="automation-builder"
   alt="The automation flow editor: a GitHub pull request trigger runs a checklist, then a condition sends failures to a GitHub comment and passes to a notification."
   caption="An automation is a graph. A condition splits the path: true on the left, false on the right."
 />
+
+## Create an automation
+
+**Create automation** opens a stepped dialog:
+
+1. **Trigger**, what starts it: **Manual** (you, or the API), **Schedule** (a
+   recurring schedule in your timezone), **Webhook** (an external service or CI
+   calls its URL), **Vercel** (after a deployment), **GitHub** (a pull request
+   opens or changes), **Cursor** (a Cursor agent opens a pull request),
+   **Slack**, **Linear**, or **Figma** (a file changes, gets a comment or a
+   named version, or a library publishes).
+2. **Configure**, when that trigger counts: which deployment events, which pull
+   request events, which Figma file and events, and so on.
+3. **Details**, the automation's name and the project it runs in.
+
+The new automation opens straight into the flow editor, where you add its
+steps. Event triggers need the matching **[integration](/integrations)**
+connected first: a Figma trigger, for example, listens to the file through
+your workspace's Figma connection, so only your workspace receives its events.
 
 ## Step types available
 
@@ -24,16 +44,20 @@ A workflow is built from steps, each with its own configuration:
   forward.
 - **Condition**, branches the workflow based on the result of a previous
   step.
-- **Notification**, sends an alert when the workflow reaches that step.
+- **Notification**, sends an email or Slack message to workspace members
+  when the workflow reaches that step.
 - **Delay**, waits before continuing, useful for giving an async process time
   to finish.
-- **GitHub Comment**, posts a comment back to a pull request.
+- **GitHub Comment**, posts a comment back to the triggering pull request.
+  It works from a Vercel trigger too: the pull request is found from the
+  deployment.
 - **Actor PR Review**, has an actor review a pull request and report its
   findings.
 
 ## Example: verify a pull request automatically
 
-A common workflow for a product team:
+A common workflow for a product team, triggered by a GitHub pull request or by
+the Vercel preview deployment it produces:
 
 1. **Run Checklist**, runs the checklist for the flow the pull request
    touches.
@@ -46,14 +70,18 @@ A common workflow for a product team:
 Each step only needs to know about the step before it, which is what makes it
 possible to compose a whole review process out of a handful of pieces.
 
-## Toggle a workflow on when you're ready
+## Decide when it runs on its own
 
-A new workflow can be built and tested without affecting anything else.
-Toggle it on only once you've run it a few times and are confident in the
-result, since an enabled workflow runs automatically going forward rather
-than waiting for you to trigger it by hand.
+A new automation is **Active** as soon as you create it, so a schedule or event
+trigger starts runs without waiting for you. To try it first, switch **Active**
+off in the automation's settings, or from the Automations list, and use **Run
+Now** until you trust the result. Then switch it back on.
+
+An automation created from an assistant over [MCP](/mcp) needs the `mcp:run`
+scope to run unattended. Without it, a schedule, webhook or event automation is
+created paused, and it cannot be switched on from that connection.
 
 ## Next steps
 
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
 - **[Automate Stunt Double from Claude](/tutorials/automate-with-mcp)**

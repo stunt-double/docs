@@ -18,27 +18,44 @@ pages. The first time Claude calls a tool, it runs the OAuth flow and asks you
 to sign in to your workspace. Once you approve, Claude can list and call tools
 on your behalf for the rest of the session.
 
+If your client has no tool search of its own, use the on-demand endpoint
+described in **[Connect](/mcp/connect)**: it loads a few core tools up front and
+finds the rest when a task needs them, which keeps long conversations lean.
+
 ## What you can ask Claude to do
 
 With the server connected, you can drive most of the platform in plain
 language instead of clicking through the dashboard:
 
 - "Run the checklist for our signup flow and tell me if anything failed."
-- "Create an actor for a first-time free-trial user and give it browser
-  access."
+- "Create an actor for a first-time free-trial user and give it our brand
+  guidelines to check against."
 - "Launch a new round of our onboarding interview and summarize the top
   themes."
 - "List the workflows that ran in the last day and flag any failures."
+- "Summarize the open feedback on the pricing page and dismiss the duplicates."
+- "Run the checkout checklist against this preview and comment the result on
+  the pull request."
+- "How well can AI agents use example.com?" For a site the
+  [Index](/index-ranking) does not track yet, Claude can request a score.
 
 Claude translates each request into the appropriate tool calls, actors,
-checklists, workflows, interviews, and reads back the result.
+checklists, workflows, interviews, feedback, and reads back the result. Runs
+take a few minutes, so Claude checks back on a run until it finishes. The
+server also offers ready-made prompts for these jobs, which most clients list
+alongside the tools.
 
 ## Scope tokens to least privilege
 
 Grant only the scopes a given client needs. There are three: `mcp:read` to
 read a workspace, `mcp:write` to create and edit, and `mcp:run` to start runs.
 A client that only reports on results needs `mcp:read`, and nothing more. A
-client that requests no scope gets all three. See
+client that requests no scope gets all three.
+
+`mcp:run` also covers automations that run on their own. A client without it
+can still build a scheduled or event-triggered automation, but it is created
+paused, and switching it on takes a connection with `mcp:run` or the
+dashboard. See
 **[authentication](/mcp#authentication)** for what each covers.
 
 ## Next steps

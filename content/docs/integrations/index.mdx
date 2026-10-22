@@ -33,9 +33,17 @@ Three mechanisms connect Stunt Double to your other tools:
 
 ## How every connection works
 
-Every integration lives on the **Integrations** page of your workspace. Open
-the sidebar, choose **Integrations**, then click a card. Each one is set up in
-the same three steps, in the same order, so learning one teaches you all of
+Every integration lives on the **Integrations** page of your workspace, which
+you open from the sidebar. It lists them in two sections: **Plugins**, which
+install Stunt Double into the tools you already work in (Claude, ChatGPT, the
+Cursor plugin, the Figma plugin and other MCP clients), and **Platform
+integrations**, the services the workspace connects to. **Custom MCP servers**,
+your own systems for actors to use during a run, are listed below them.
+
+Each row shows whether it is connected. An integration you have not connected
+yet has a **Connect** button right on its row, so you can start without
+opening it. Click a row to open its page. Each platform integration is set up
+in the same three steps, in the same order, so learning one teaches you all of
 them.
 
 <FlowStrip
@@ -57,9 +65,9 @@ them.
    site. The step then reads **Connected as** with your account name, and
    lists the workspaces already using it.
 2. **Your workspace.** The second step carries your workspace's name and a
-   switch. An owner or admin turns it on, and the step reads **On. Actors,
-   checklists and automations here can use it.** Members see **Off. Ask a
-   workspace owner or admin to turn it on.** until an admin does.
+   switch. An owner or admin turns it on, and the step reads **On for this
+   workspace.** Members see **Off. Ask a workspace owner or admin to turn it
+   on.** until an admin does.
 3. **Projects.** Click **Choose for a project** and pick a project. That opens
    the project's **Settings**, on the **Integrations** tab, where you choose
    the design file, repository, Linear team, Slack channel or Vercel project
@@ -122,7 +130,7 @@ and picks up wherever they left off.
 | [Slack](/integrations/slack)                     | Design reviews in threads, notifications, a workspace agent in direct messages            | An owner or admin adds it to the workspace                                           | `channels:read`, `groups:read`, `channels:history`, `groups:history`, `chat:write`, `chat:write.customize`, `mcp:connect`, `commands`, `users:read`, `app_mentions:read`, `incoming-webhook`, `assistant:write`, `im:history`, `im:write` |
 | [Webhooks](/integrations/webhooks)               | Start an automation from any system that can send an HTTP request                         | Anyone who can edit automations                                                      | A secret per automation, sent as `X-Webhook-Secret`                                                                                                                                                                                       |
 | [Feedback widget](/integrations/feedback-widget) | Collect comments on your live site into a project                                         | Project members; owners and admins set workspace limits                              | A project key that identifies the project, limited to your allowed domains                                                                                                                                                                |
-| [Devices](/integrations/self-hosted-workers)     | Run actors from a Mac on your own network, against sites the public internet cannot reach | An owner or admin turns devices on, on Startup and above; each member sets up their own Mac | Your Stunt Double sign-in, in the desktop app                                                                                                                                                                                             |
+| [Devices](/integrations/self-hosted-workers)     | Run actors from a Mac on your own network, against sites the public internet cannot reach | Each member sets up their own Mac, from **Devices** in the sidebar                  | Your Stunt Double sign-in, in the desktop app                                                                                                                                                                                             |
 | [Desktop app](/integrations/desktop-app)         | Stunt Double in a Mac window, and the way to use your Mac as a device                     | Anyone                                                                               | Your Stunt Double sign-in                                                                                                                                                                                                                 |
 
 MCP clients (Claude, Claude Code, Cursor, Windsurf, ChatGPT) request

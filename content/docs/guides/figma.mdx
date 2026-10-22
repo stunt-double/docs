@@ -7,7 +7,9 @@ description: "Walk prototypes with personas and re-check the built flows automat
 Figma is where the design decisions happen; Stunt Double is how you find out
 whether users can actually follow them. The integration works at two levels:
 agent-driven testing of prototypes (via MCP), and event-driven automation that
-re-checks work whenever a file changes (via the Figma connection).
+re-checks work whenever a file changes (via the Figma connection). To review
+frames on the canvas itself, see the [Figma plugin](/integrations/figma-plugin),
+currently in early access.
 
 <Callout variant="who">
   Designers validating flows before handoff, design-systems teams guarding
@@ -70,9 +72,12 @@ Figma events:
 
 1. Create checklists for the flows the design feeds (staging or production
    URLs).
-2. Create a workflow with a Figma event trigger and steps that run those
-   checklists, plus a notification step.
-3. Activate it.
+2. Create a workflow with the Figma trigger: pick up to three events (Figma
+   allows three webhooks per file) and paste the key of the file to listen
+   to. Add steps that run those checklists, plus a notification step.
+3. Activate it. Stunt Double registers the file webhook through a Figma
+   connection in the workspace that can edit the file, so the connected
+   account needs edit access, not just view access.
 
 <FlowStrip
   nodes={[

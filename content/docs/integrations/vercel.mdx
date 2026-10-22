@@ -19,6 +19,12 @@ review.
   so they test the build that just shipped.
 - **Per-project links.** Each Stunt Double project links its own Vercel
   project.
+- **Always the newest build.** A checklist or interview on a linked project
+  can run against the latest preview or production deployment instead of a
+  fixed URL.
+- **Protected previews.** Actors get past Vercel Authentication and password
+  protection with the project's Protection Bypass for Automation, so a
+  protected preview can be checked before it is promoted.
 
 ## Before you start
 
@@ -27,7 +33,8 @@ review.
 - **Plan.** Installing the integration is free. Runs it starts count toward
   your Stunt Double plan as usual.
 - **Vercel access.** You need permission to add integrations to the Vercel
-  team that owns your projects.
+  team or personal account that owns your projects. Personal (Hobby)
+  accounts work the same way as teams.
 
 ## Set it up
 
@@ -40,7 +47,7 @@ There are two ways in. Both end with the same per-project link.
 2. On **Your account**, click **Connect Vercel**. Vercel opens and asks which
    team and projects to install the integration on. Approve it.
 3. On the step named after your workspace, an owner or admin turns the switch
-   on. It reads **On. Actors, checklists and automations here can use it.**
+   on. It reads **On for this workspace.**
 4. On **Projects**, click **Choose for a project** and pick a project. Its
    **Settings** open on the **Integrations** tab: choose the project's
    **Vercel project** there.
@@ -49,8 +56,9 @@ There are two ways in. Both end with the same per-project link.
 
 1. Find Stunt Double in the Vercel Marketplace and install it on your Vercel
    team.
-2. Open the Vercel card under **Integrations**. **Your account** reads
-   **Installed from the Vercel Marketplace**, and the workspace step reads
+2. Open **Vercel** under **Integrations**. Choosing **Configure** on the
+   install in Vercel lands there too. **Your account** reads **Installed from
+   the Vercel Marketplace**, and the workspace step reads
    **On for everyone in this workspace.** Nobody needs to connect their own
    account.
 3. On **Projects**, click **Choose for a project** and pick the **Vercel
@@ -67,16 +75,36 @@ There are two ways in. Both end with the same per-project link.
    only** or **Preview only**.
 5. Optionally, set a **Project Filter** to one Vercel project. Leave it empty
    to trigger for all of them.
-6. Click **Create automation**, then add the checklists it should run.
+6. Click **Create automation**, then add the checklists it should run. On each
+   checklist step, tick **Use Vercel deployment URL** to run it against the
+   deployment that started the automation rather than the checklist's usual
+   address.
 
 **Deployment Succeeded** fires once the build completes and checks pass, which
-is the usual choice for testing previews.
+is the usual choice for testing previews. To post the results on the pull
+request the preview came from, add a **GitHub Comment** step (see
+[GitHub](/integrations/github)).
+
+### Run against the latest deployment
+
+Once a project links a Vercel project, a checklist's **Settings** and an
+interview's environment offer **Run against**: **A fixed URL**, **Latest
+Vercel preview deployment** or **Latest Vercel production deployment**. The
+newest matching deployment is looked up each time it runs, and the URL you
+entered is kept as a fallback for when none can be found.
 
 ## What Stunt Double can access
 
 Vercel sets the integration's permissions, and shows them on the install
 screen before you approve. Stunt Double uses them to list your projects, read
-deployment status and metadata, and receive deployment events.
+deployment status and metadata, receive deployment events and read each
+linked project's Protection Bypass for Automation secret. When a project has
+none, a Marketplace install creates one, labelled **Stunt Double automation**
+in Vercel.
+
+The bypass secret is only used to open deployments. Stunt Double leaves it out
+of the addresses it shows you, in reports, emails and search, and in what
+actors and assistants read.
 
 ## Disconnect
 
@@ -103,6 +131,11 @@ that its events and **Deployment Environment** match the deploy, and that any
 **Project Filter** names the right Vercel project. The integration also has to
 be installed on the Vercel team that owns that project.
 
-**Actors cannot open a preview.** Vercel's deployment protection blocks
-anonymous visitors to previews. Give actors a way past it, such as a
-protection bypass, or test a deployment they can reach.
+**Actors land on Vercel's sign-in page.** The preview is protected and Stunt
+Double could not get a bypass secret for it. Only a Marketplace install can
+create one. Otherwise, copy the secret from the project's **Deployment
+Protection** settings in Vercel, open the Stunt Double project's **Settings**,
+then **Integrations**, and click **Add secret** under the linked Vercel
+project. It is used only when Stunt Double cannot get one itself, and never
+shown again. Also check the run uses the deployment URL or the latest
+deployment, not a fixed URL, since the bypass is only added to those.

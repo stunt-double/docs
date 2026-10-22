@@ -1,7 +1,7 @@
 ---
 title: "Concepts"
 icon: "compass"
-description: "Actors, checklists, interviews, workflows, and insights: the building blocks of Stunt Double and how they relate."
+description: "Actors, checklists, interviews, workflows, issues and ideas: the building blocks of Stunt Double and how they relate."
 ---
 
 # Core concepts
@@ -18,10 +18,13 @@ explains each one and how they fit together.
 | Actor | An AI user with instructions and knowledge that drives a real browser |
 | Checklist | Plain-language checks an actor verifies, each with evidence |
 | Interview | A structured study run with persona participants, ending in a report |
-| Live session | An actor using your product in real time while you watch and steer it |
+| Live session | An actor using your product in real time while you watch and steer it (early access) |
 | Automation | A graph of steps that runs checklists on a schedule or an event |
 | Comment | A pin a real visitor drops on your page through the feedback widget |
-| Insight | A notable observation surfaced from a run |
+| Issue | A problem a run, review or comment found, tracked until it is fixed |
+| Idea | A recommendation your actors write after exploring the product together |
+| Topology | A map of your product's screens and the paths between them |
+| Device | A Mac in your workspace that runs work against sites inside your network |
 
 ## Workspaces and projects
 
@@ -30,21 +33,30 @@ billing, and every project. A **project** sits inside a workspace and groups the
 actors, checklists, and runs for one product or surface. Teams working on
 several products keep them separated by using a project per product.
 
+A project's overview leads with its latest run, step by step, beside anything
+running now, what changed since your last visit and what needs your attention
+next.
+
 ## Actors
 
-An **actor** is an AI assistant you create. It is defined by its instructions
-and its knowledge:
+An **actor** is an AI user you create. It is defined by its instructions,
+its personality and its knowledge:
 
 - **Instructions** describe the actor's role and how it should behave.
-- **Knowledge** is the reference material the actor can draw on, such as facts
-  about your product or test credentials.
+- **Personality** sets how skeptical it is, how technically literate, and how
+  quickly it gets frustrated, on sliders. It applies everywhere the actor works.
+- **Knowledge** is what the actor can look up: **expertise** it applies,
+  **processes** it follows, **reference** facts such as an FAQ or a policy, and
+  test **accounts** to sign in with. The actor opens or searches entries as it
+  needs them, so it is never handed everything at once.
 
 Under the hood, an actor drives a real browser and works through your product
 the way a person would, observing the page, taking an action, observing the
-result, and repeating until the task is done. It can also read email sent to
-its own inbox, which is what makes signup and verification flows testable.
-Actor inboxes, and actors that stay signed in between runs, come with the
-Startup plan and above.
+result, and repeating until the task is done. On the Startup plan and above,
+each actor gets an inbox of its own, which is what makes sign-up and
+verification flows testable, and can stay signed in between runs. Email is the
+only channel an actor has: it never uses a phone number or SMS verification,
+and reports the step as a blocker instead.
 
 ## Checklists
 
@@ -64,15 +76,18 @@ test by hand, such as signup, checkout, or onboarding.
 
 ## Interviews
 
-An **interview** is a structured conversation Stunt Double runs with your users.
-You define sections and questions, the platform conducts the interview, and it
-produces a report summarizing what it learned. Interviews are useful for user
-research and feedback gathering at a scale that manual interviews cannot reach.
+An **interview** is a structured study run with persona participants: your
+actors, or personas generated for the study. You define sections and
+questions, each participant works through your product in a real browser and
+answers in character, and the round ends in a report of themes, quotes and the
+screens behind them. Each participant also answers a standard usability
+questionnaire (UMUX), so every round carries a usability score. Share a round's
+report with a link.
 
 ## Live sessions
 
-A **live session** puts you beside an actor while it works: the browser on one
-side, the chat on the other, and the steps it takes underneath. Give it a task
+A **live session** (in early access, and not yet in every workspace) puts you beside
+an actor while it works: the browser on one side, the chat on the other, and the steps it takes underneath. Give it a task
 or interview it in character, change direction mid-task, or take the browser
 and drive it yourself. Sessions run in a cloud browser or, from the desktop
 app, in a browser on your own Mac. See
@@ -112,25 +127,36 @@ there you reply in the thread and move each one through **new**, **reviewed**,
 See **[Collect stakeholder feedback on a prototype](/tutorials/feedback-widget)**
 for installation and triage.
 
-## Insights
+## Issues, goals and ideas
 
-As actors work, Stunt Double surfaces **insights**: notable observations drawn
-from a run, such as a confusing step, a broken link, or an unexpected result.
-Insights turn raw session recordings into something you can act on without
-watching every replay.
-
-## Issues and goals
-
-Each project has an **Issues** tab. Problems your runs and reviewers have
+Each project has an **Issues** page. Problems your runs and reviewers have
 already found appear there on their own: failed checks, open design review
-notes, untriaged comments and insight findings, each linked back to its
-evidence. Turn one into a tracked issue in a click, then move it through open,
-in progress, resolved or dismissed. The highest severity sits at the top.
+notes and new comments, each linked back to its evidence. Turn one into a
+tracked issue in a click, then move it through open, in progress, resolved or
+dismissed. The highest severity sits at the top.
 
 **Goals** say what a project is trying to achieve, such as "New visitors finish
-sign-up without help". Link insights and feedback to the goal they support, so
-the evidence for each goal sits in one place. A goal is active until you mark
-it completed or archive it.
+sign-up without help". Link feedback and ideas to the goal they support, so the
+evidence for each goal sits in one place. A goal is active until you mark it
+completed or archive it.
+
+**Ideas** come from a co-create session: say what you want to learn, pick the
+actors, and each explores the product before they turn what they found into
+ideas and recommendations. Problems they find become issues.
+
+## Topology
+
+A **topology** is a map of your product: its screens, the paths between them
+and what changed since the last version. An actor crawls the site to draw it,
+and pages that checklist runs and interview participants go through are added
+as you test. Topology is in preview.
+
+## Devices
+
+A **device** is a Mac in your workspace running the desktop app. On the
+Startup plan and above, runs against a site only reachable inside your network
+go through a device, using that Mac's network and sign-ins, and runs that need
+the same device wait their turn. See **[Devices](/integrations/self-hosted-workers)**.
 
 ## Recordings and replays
 

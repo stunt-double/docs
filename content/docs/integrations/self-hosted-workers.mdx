@@ -7,10 +7,13 @@ description: "Test products that only exist inside your network, with actors tha
 # Devices
 
 Your staging site sits behind a VPN, so a cloud browser cannot reach it. A
-device is a Mac running the Stunt Double app, inside your network. Actors set
-to run on it browse with that Mac's Chrome, its VPN, its internal DNS and its
-saved sign-ins. The app connects out to Stunt Double, so you open no inbound
-ports.
+device is a Mac running the Stunt Double [desktop app](/integrations/desktop-app),
+inside your network. Actors that run on it browse with that Mac's Chrome, its
+VPN, its internal DNS and its saved sign-ins. The app connects out to Stunt
+Double, so you open no inbound ports.
+
+The desktop app is the only way to run a device. The older command-line and
+Docker workers have been retired.
 
 For a full walkthrough, read
 [Test a product behind your firewall](/tutorials/self-hosted-worker). To watch
@@ -23,119 +26,147 @@ you in the background.
 - **Reach internal products.** Actors on a device open staging, intranet and
   local dev servers, the same way the person at that Mac can.
 - **Outbound only.** The app connects to Stunt Double. Nothing connects in.
+- **Every kind of run.** Checklists, interviews, ideas, design reviews,
+  crawls of a project's pages and actor chat all use a device when the site
+  needs one, however they start.
 - **Domain controls.** Each device can be limited to the domains actors need.
-- **Mixed workspaces.** Actors set to the cloud keep using Stunt Double's
-  cloud browser, so one workspace can use both.
+- **Mixed workspaces.** Public sites keep using Stunt Double's cloud browser,
+  so one workspace can use both.
 
 ## Before you start
 
-- **Plan.** Devices are available on every paid plan, for public sites.
-  Private and internal addresses (staging behind a VPN, an intranet, a local
-  dev server) need the Startup plan or above. Pointing an actor at one of those
-  on another plan shows what is needed and how to upgrade.
-- **Role.** A workspace owner or admin turns devices on. Once they are on, any
-  member can set up their own Mac.
+- **Plan.** Devices are on every paid plan, for public sites. Private and
+  internal addresses (staging behind a VPN, an intranet, a local dev server)
+  need the Startup plan or above. Pointing an actor at one of those on another
+  plan shows what is needed and how to upgrade.
+- **Role.** Any member can set up their own Mac. Testing, restricting and
+  removing a device, and pooling devices, take an owner or admin.
 - **A Mac.** macOS on Apple silicon or Intel, with Google Chrome installed,
   that can reach both the product you want to test and `app.stuntdouble.io`.
 
+There is no switch to turn devices on. They are on wherever the plan includes
+them, and nothing runs on one until a run needs it.
+
 ## Set it up
 
-1. **Turn devices on.** An owner or admin opens **Settings**, then
-   **Devices**, and switches on **Use devices in this workspace**.
-2. **Install the app.** On the Mac, download the
+1. **Install the app.** On the Mac, download the
    [desktop app](/integrations/desktop-app), open it and sign in.
-3. **Set up this Mac.** Open **Go**, then **This Device** (Cmd+D), and click
-   **Set up this Mac**. The device console shows **Connected** once the Mac
-   checks in, and the Mac appears under **Settings**, then **Devices**.
-4. **Choose where each actor's browser runs.** Open an actor, go to its
-   **Manage** tab and find **Where this actor's browser runs**. Choose one of:
-   - **Stunt Double cloud**, for public sites.
-   - **Any device in this workspace**, to use whichever device is online when
-     a run starts.
-   - **A named device**, to always use that Mac.
+2. **Set up this Mac.** Open **Devices** from the sidebar (or **Go**, then
+   **This Device**, Cmd+D). In the app, **This Mac** sits at the top of the
+   page. Click **Set up this Mac**. It shows **Connected** once the Mac checks
+   in, and the Mac joins the list under **Macs**.
+3. **Point actors at it, if you want.** An actor on the cloud browser already
+   borrows a device for internal sites (see below). To keep an actor on a
+   device for every run, open the actor, go to its **Browser** tab, choose
+   **Device**, then pick **Any device in this workspace** or a named Mac.
 
-The browser runs inside the app by default, and you watch it from the device
-console. If a site asks for a client certificate, Keychain or a smart card,
-switch **How the browser runs** to **Its own window** in the console (see the
+The browser runs inside the app by default, and you watch it under **Live
+view** on This Mac, beside an activity log that stays on the Mac. If a site
+asks for a client certificate, Keychain or a smart card, switch **Where the
+browser runs** to **Its own window** (see the
 [desktop app](/integrations/desktop-app#how-the-browser-runs)).
 
-To check a device can reach a site before a run depends on it, enter the
-address under **Test connection** in **Settings**, then **Devices**. The test
-runs in the device's browser, so a pass means actors can reach that address.
+To check a device can reach a site before a run depends on it, open the
+device from **Devices** and enter the address under **Test a URL**. The test
+opens it in the device's browser, so a pass means actors can reach that
+address.
+
+## Internal projects
+
+Stunt Double works out whether a project's address is public or internal when
+you save it. As you type the address, the form says whether actors will open
+it in the cloud or on a device. An owner or admin can override it in the
+project's **Settings**, under **Network**, with **Reached from**: **Public
+internet** or **Internal network**.
 
 ## How runs pick a browser
 
 The same rules apply however a run starts: the Run button, an automation, the
 MCP server, the Figma plugin, the assistant, Slack, Linear or an interview.
 
+- **A cloud actor borrows a device for an internal site.** If the project is
+  internal, or the address only works inside a network (a private IP range,
+  for example), the run takes whichever device is online. If none is, it stops
+  up front and says so rather than failing in a cloud browser. `localhost` is
+  the exception: it means one particular Mac, so only an actor set to that
+  device opens it.
 - **An actor set to a device never runs in the cloud.** If its device is
   offline, or no device is online for an actor set to any device, the run
   stops and says so. It does not fall back to a cloud browser.
-- **A cloud actor never opens an internal site.** If the project is marked
-  internal, or the address only works inside a network (a private IP range,
-  for example), the run stops up front and asks you to choose a device for
-  the actor.
+- **Runs sharing a device take turns.** A device runs one browser at a time,
+  oldest run first. A run waiting its turn stops at once if the device goes
+  offline, or after an hour in line. With several Macs online, runs go to the
+  one with the shortest queue.
 - **Internal addresses need Startup.** Below the Startup plan, a run to a
   private or internal address stops, on a device as well as in the cloud.
 - **Cancelling frees the device.** Cancel a run from its report and the device
   is free for the next one straight away.
 
+## Pool devices
+
+When someone sends Stunt Double's Slack or Linear agent a link only your
+network can reach, it opens on that person's own Mac. Under **Sharing** on the
+**Devices** page, an owner or admin can switch on **Pool devices** so any
+connected Mac in the workspace can open it, the sender's own first. One
+always-on Mac can then cover the whole team. While it is off, each person's
+links open on their own Mac only.
+
 ## Move a Mac to another workspace
 
 A Mac belongs to one workspace at a time. To move it, open the workspace you
-want it in, then open **This Device**. The console shows that the Mac is paired
-with another workspace. Click **Move to** and confirm. Runs in the old
-workspace stop using it from then on.
+want it in, then open **Devices** in the app. **This Mac** says the Mac is set
+up for another workspace. Click **Move to** followed by the workspace's name
+and confirm. Runs in the old workspace stop using it from then on.
 
 ## Control what it can reach
 
-Each device has an **Access** setting under **Settings**, then **Devices**:
+Open a device from **Devices**. Under **Network access**, **Sites actors can
+open** has three settings:
 
-- **Allow all domains.** The default. The device may reach any host.
-- **Allow specific domains.** Only the hosts you list, and their subdomains.
-- **Block specific domains.** Any host except the ones you list, and their
+- **No restriction.** The default. Actors on the device can open any site.
+- **Only these domains.** Only the domains you list, and their subdomains.
+- **Any domain except these.** Any site except the domains you list, and their
   subdomains.
 
 The setting applies to every request the browser makes, including redirects,
 popups and page resources, not only the addresses an actor types. On a network
-where reach matters, switch to **Allow specific domains** and list only what
+where reach matters, switch to **Only these domains** and list only what
 actors need. The workspace policy under **Settings**, then **Security**,
 applies on top.
 
 ## Remove a device
 
-Remove the Mac from **Settings**, then **Devices**. Actors set to it go back
-to the Stunt Double cloud. To stop a Mac without removing it, click **Disable
-this device** in its device console.
+Open the device from **Devices** and click **Remove device**. Actors pinned to
+it go back to the Stunt Double cloud. To stop a Mac without removing it, click
+**Disconnect** on **This Mac** in the app.
 
 ## Troubleshooting
 
 **The device shows Offline.** Open the Stunt Double app on that Mac. A device
 is online only while the app is running and checking in. If the app is open
-and the console says **Not reaching Stunt Double**, check the Mac is online
+and **This Mac** says **Not reaching Stunt Double**, check the Mac is online
 and has outbound HTTPS to `app.stuntdouble.io`, then click **Reconnect**.
 
-**The console says "This device is no longer paired".** The device was removed
-from the workspace, or its key no longer works. Click **Pair again**.
+**This Mac says it is no longer paired.** The device was removed from the
+workspace, or its key no longer works. Click **Pair again**.
 
-**A run says devices are not on your plan.** Devices are available on every
-paid plan. Upgrade from **Settings**, then **Billing**.
+**A run says no device in this workspace is online.** The site is internal,
+so the run needs a device. Open the Stunt Double app on a Mac in that network
+and set it up.
 
-**A run says the address needs the Startup plan.** Private and internal
+**A run says it needs a device, which is included on every paid plan.**
+Upgrade from **Settings**, then **Billing**.
+
+**A run says private URLs need the Startup plan.** Private and internal
 addresses need Startup or above, whether the actor runs on a device or in the
 cloud. Upgrade from **Settings**, then **Billing**.
+
+**A run says devices are turned off.** Devices have been switched off for
+your workspace. Contact hello@stuntdouble.io to turn them back on.
 
 **You need a custom deployment.** If the Mac app does not fit how your network
 works, for example you want the relay running in your own cloud, the
 Enterprise plan includes custom deployments. Contact us to talk it through.
-
-**A run says devices are turned off.** Your plan includes devices, but
-devices are switched off. An owner or admin can switch them on in
-**Settings**, then **Devices**.
-
-**A run says the address needs a device.** The actor runs in the cloud, but
-the site only works inside your network. Choose a device for the actor on its
-**Manage** tab.
 
 **A run says the browser was suspended by security software.** Something on
 the Mac, most likely endpoint security, froze Chrome before it could start.
@@ -146,6 +177,6 @@ device's profile at a time. Close any Chrome window still open on that
 profile, such as a sign-in window, and try again. A browser left behind by an
 earlier session of the app is closed for you.
 
-**A run says the address is not permitted.** The device's **Access** setting,
+**A run says the address is not permitted.** The device's **Network access**,
 or the workspace policy in **Settings**, then **Security**, blocks that host.
 Add it to the allowed list or remove it from the blocked list.

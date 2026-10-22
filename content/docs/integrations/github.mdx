@@ -21,7 +21,10 @@ For the full loop of preview deploys, checklists and PR reports, read the
 - **Workflow triggers.** Pull request, review, push, issue, check suite and
   release events start automations automatically.
 - **PR comments.** Workflow results and checklist summaries post directly on
-  the pull request.
+  the pull request. The **GitHub Comment** and **Actor PR Review** automation
+  steps find the pull request from a GitHub trigger, and from a
+  [Vercel](/integrations/vercel) deployment trigger when the preview was built
+  from a pull request, so a checked preview reports back on its PR.
 
 ## Before you start
 

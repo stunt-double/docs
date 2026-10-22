@@ -12,66 +12,73 @@ running the Stunt Double app, so actors browse from there without you opening
 anything up.
 
 <Callout variant="note" title="Plans">
-  Devices are on every paid plan, and testing private or internal addresses from one needs the
-  Startup plan or above. A workspace owner or admin switches devices on, then any member can set
-  up their own Mac.
+  Devices are on every paid plan, and testing private or internal addresses from
+  one needs the Startup plan or above. There is nothing to switch on: any member
+  can set up their own Mac.
 </Callout>
-
-## Turn devices on
-
-Open **Settings > Devices** and switch on **Use devices in this workspace**.
-On other plans, this page explains what devices do and how to upgrade.
 
 ## Set up a Mac
 
 1. On a Mac that can reach your internal product, download the Stunt Double
    [desktop app](/integrations/desktop-app), open it and sign in. Google
    Chrome needs to be installed.
-2. Open **Go > This Device** (Cmd+D) and click **Set up this Mac**.
-3. Wait for the device console to show **Connected**.
+2. Open **Devices** from the sidebar, or **Go > This Device** (Cmd+D).
+3. Under **This Mac**, click **Set up this Mac** and wait for it to show
+   **Connected**.
 
 The app dials out to Stunt Double rather than waiting for an inbound
 connection, so your firewall needs no changes. If your product sits behind a
-VPN portal or SSO, sign in once in the device console. The sign-in persists
-for later runs. If the sign-in needs a client certificate, Keychain or a smart
-card, switch **How the browser runs** to **Its own window** first.
+VPN portal or SSO, open the browser under **Live view** and sign in once.
+The sign-in persists for later runs. If the sign-in needs a client certificate,
+Keychain or a smart card, switch **Where the browser runs** to **Its own
+window** first.
 
-## Choose where each actor's browser runs
+## Point a project at it
 
-Open an actor, go to its **Manage** tab and find **Where this actor's browser
-runs**:
+When you save a project's address, Stunt Double works out whether it is public
+or only reachable inside your network, and the address field says which as
+you type. Runs on an internal project go to a device automatically: an actor
+on the cloud browser borrows whichever device is online, and if none is, the
+run stops up front and tells you.
 
-- **Stunt Double cloud** for public sites.
-- **Any device in this workspace** to use whichever device is online.
-- **A named device** to always use that Mac.
+## Choose where an actor's browser runs
+
+To keep an actor on a device for every run, open the actor and go to its
+**Browser** tab:
+
+- **Cloud browser** for public sites. Internal projects still use any online
+  device.
+- **Device**, then **Any device in this workspace** to use whichever Mac is
+  online, or a named Mac to always use that one.
 
 An actor set to a device never falls back to the cloud: if its device is
-offline, the run stops and tells you. An actor set to the cloud never opens an
-internal site: if the project is marked internal, or the address only works
-inside your network, the run stops and asks you to choose a device.
+offline, the run stops and tells you. Runs that share a device take turns, one
+browser at a time.
 
 ## Control what it can reach
 
-Each device has an access setting in **Settings > Devices** with three modes:
+Owners and admins can open a device from **Devices** and set **Network
+access**:
 
-- **Allow all domains**: no restriction.
-- **Allow specific domains**: only the domains you list.
-- **Block specific domains**: everything except the domains you list.
+- **No restriction**: actors can open any site.
+- **Only these domains**: only the domains you list.
+- **Any domain except these**: everything except the domains you list.
 
-A new device starts on Allow all domains, so it works as soon as it connects.
-To restrict it, switch to Allow specific domains and list only what your
-actors need to reach.
+A new device starts with no restriction, so it works as soon as it connects.
+To restrict it, switch to Only these domains and list only what your actors
+need to reach. **Test a URL** on the same page checks the device can open an
+address before a run depends on it.
 
 ## Watch status live
 
-Devices show their status live everywhere they appear: Settings, the actor's
-Manage tab and the device console. A Mac that stops checking in turns Offline
-within a couple of minutes, so you can tell before starting a run that depends
-on it.
+Devices show their status live everywhere they appear: the **Devices** list,
+the actor's **Browser** tab and **This Mac** in the app. A Mac that stops
+checking in turns Offline within a couple of minutes, so you can tell before
+starting a run that depends on it.
 
 ## Next steps
 
 - **[Devices reference and troubleshooting](/integrations/self-hosted-workers)**
 - **[Run a live session](/tutorials/live-sessions)** to watch and steer an actor on your Mac
 - **[Automate multi-step workflows](/tutorials/building-workflows)**
-- **[Turn runs into insights](/tutorials/reviewing-runs)**
+- **[Review runs and act on them](/tutorials/reviewing-runs)**
