@@ -1,13 +1,14 @@
 ---
 title: "Quickstart"
 icon: "rocket"
-description: "Create a workspace, add your first actor, and run a checklist against your product in a few minutes."
+description: "The first-run path: create a workspace, give Stunt Double your URL, watch the first checklist run and read its evidence."
 ---
 
 # Quickstart
 
-This guide takes you from a new account to your first checklist run, then
-shows you how to make your own actor and checklist.
+This is the one path from a new account to your first run and its evidence.
+Everything it skips (writing actors, tuning checks, interviews) is a tutorial
+of its own, linked at the end.
 
 <PageFacts
   items={[
@@ -22,34 +23,24 @@ shows you how to make your own actor and checklist.
 
 ### Create a workspace
 
-When you first sign in, Stunt Double asks you to create a **workspace**. It
-holds your projects, members and billing, so name it after your team or
-company. If a colleague's workspace accepts your email domain, you can join it
-instead.
-
-Sign-in is passwordless: enter the six-digit code sent to your email, or
-continue with Google.
+Sign in with the six-digit code sent to your email, or continue with Google.
+Stunt Double then asks you to create a **workspace** for your team. If a
+colleague's workspace accepts your email domain, you can join it instead.
 
 </Step>
 <Step>
 
 ### Tell it what to test
 
-Next, enter your product's URL. Stunt Double reads the site, writes actors for
-the people who use it and picks the flows worth checking first, as checklists
-in your first **project**. It takes a couple of minutes, and the project also
+Enter your product's URL. Stunt Double reads the site, writes actors for the
+people who use it and picks the flows worth checking first, as checklists in
+your first **project**. It takes a couple of minutes, and the project also
 gets a first agent readiness score from the
 **[Stunt Double Index](/index-ranking)**.
 
 No URL yet? Choose **I don't have a URL yet** and describe the product and who
-it is for instead. Checklists run as soon as you add a URL to the project.
-
-When setup finishes, choose **Watch your first run** to see an actor work
-through the first checklist live.
-
-A project keeps related actors, checklists and runs together, so a team with
-several products keeps them apart. Its overview shows the latest run step by
-step, anything running now and what changed since your last visit.
+it is for instead. The checklists wait, and run as soon as you add a URL to the
+project.
 
 <Screenshot
   name="dashboard"
@@ -60,59 +51,21 @@ step, anything running now and what changed since your last visit.
 </Step>
 <Step>
 
-### Create an actor of your own
+### Watch your first run
 
-Setup gives you a starting cast, but you can add actors at any time. An
-**actor** is an AI user that does the work. Open **Actors** in the sidebar,
-choose **Create actor**, then pick a template or **Write your own**. Give it:
-
-- A **name** that describes a role, such as "Busy shop owner".
-- **Instructions** that describe who it is and how it behaves.
-
-After it is created, its **Knowledge** tab holds what it can look up: facts
-about your product, test accounts, processes to follow.
-
-Out of the box an actor drives a real browser and works through your product
-the way a person would. For a first run, a one-paragraph description of your
-audience is plenty.
-
-<Screenshot
-  name="actor-create"
-  alt="An actor's profile, with its name, description, instructions and location."
-  caption="Name the actor by role, not as a person. Instructions say who it is; knowledge is what it knows."
-/>
+When setup finishes, choose **Watch your first run**. An actor opens a hosted
+browser and works through the first checklist while you watch. To run any
+other checklist, open it from **Checklists** and press **Run**.
 
 </Step>
 <Step>
 
-### Write and run a checklist
+### Read the evidence
 
-To write one yourself, open **Checklists** in the project and choose **Create checklist**. A
-checklist is a set of checks written in plain language, for example:
-
-1. Open the pricing page.
-2. Confirm the Pro plan shows a monthly and an annual price.
-3. Start sign-up and confirm it reaches the email step.
-
-<Screenshot
-  name="checklist-editor"
-  alt="A checklist being edited, with three plain-language checks listed in order and a Run button."
-  caption="One check per outcome. The actor works out the clicks."
-/>
-
-Create the checklist, then press **Run** on its page. The actor opens a
-hosted browser and works through each check. On the Startup plan and above, a
-site only reachable inside your network runs on a Mac in your workspace
-instead (see **[Devices](/integrations/self-hosted-workers)**).
-
-</Step>
-<Step>
-
-### Review the run
-
-Every run is recorded. Open it to replay the session and inspect each check's
-result and screenshot. Share the report with a link, and find failed checks
-waiting on the project's **Issues** page.
+Every run is recorded. Open the finished run to see each check's result with
+the screenshot the actor took and its explanation, then replay the session if
+you need more. Failed checks also wait for you on the project's **Issues**
+page.
 
 <Screenshot
   name="checklist-run"
@@ -121,7 +74,31 @@ waiting on the project's **Issues** page.
 />
 
 </Step>
+<Step>
+
+### Add a check of your own
+
+Open **Checklists**, choose **Create checklist** and pick a template or
+**Start from scratch**. Write each check as a plain-language outcome, such as
+"Confirm the Pro plan shows a monthly and an annual price", choose the actor
+and URL, then create the checklist and press **Run**. The actor works out the
+clicks.
+
+<Screenshot
+  name="checklist-editor"
+  alt="A checklist being edited, with three plain-language checks listed in order and a Run button."
+  caption="One check per outcome. The actor works out the clicks."
+/>
+
+</Step>
 </Steps>
+
+<Callout variant="note" title="Testing a site inside your network?">
+  A hosted browser can't reach a site that is only available inside your
+  network. On the Startup plan and above, a Mac in your workspace runs those
+  checks instead. See
+  **[Devices](/integrations/self-hosted-workers)**.
+</Callout>
 
 ## Next steps
 
@@ -130,13 +107,13 @@ waiting on the project's **Issues** page.
     {
       icon: "actor",
       title: "Build an actor that behaves like your audience",
-      description: "Instructions and knowledge that make an actor act like a real member of your audience.",
+      description: "Instructions, personality and knowledge for an actor of your own.",
       href: "/tutorials/first-actor",
     },
     {
       icon: "checklist",
       title: "Write checklists that catch real regressions",
-      description: "Check outcomes, not clicks, and read the evidence behind the badge.",
+      description: "Outcome-based checks, scoring, ordering and conditions.",
       href: "/tutorials/effective-checklists",
     },
     {

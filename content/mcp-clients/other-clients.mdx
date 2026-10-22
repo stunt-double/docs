@@ -1,0 +1,31 @@
+---
+description: Connect any MCP client to Stunt Double over Streamable HTTP with OAuth, or bridge a stdio-only client with mcp-remote.
+---
+
+Use this page for a client without its own page here. What you need from the client is Streamable HTTP and OAuth 2.1 with dynamic client registration; a client that only launches local (stdio) servers can still connect through `mcp-remote`.
+
+{/* setup */}
+
+The block above is the common `mcpServers` shape; put it wherever your client keeps its MCP servers, and restart the client.
+
+## Sign in
+
+A client that speaks OAuth discovers Stunt Double's sign-in endpoints from the server, registers itself, and opens your browser. With `mcp-remote`, the bridge does this for the client the first time it starts. Either way, sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope.
+
+## Check it works
+
+- Ask: "List my Stunt Double workspaces." An answer with your workspaces means you're signed in.
+- If your client shows MCP resources, open `stuntdouble://connection` to see the scopes the connection holds.
+
+## Troubleshooting
+
+- **mcp-remote needs Node 18 or later.** Desktop apps use the system Node, not one from a version manager in your shell.
+- **Start the sign-in over:** `mcp-remote` stores its tokens in `~/.mcp-auth`. Delete that folder and restart the client. Do the same after a "Token exchange failed" error.
+- **Port conflict during sign-in:** `mcp-remote` listens for the OAuth redirect on a local port. Pass a different port as the argument after the server URL.
+- **Too many tools for the client:** connect to the on-demand endpoint in [Connect](/mcp/connect#endpoints) instead.
+
+## Next
+
+- [Skills](/mcp/skills): task recipes for any agent that reads `SKILL.md` files
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

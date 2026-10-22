@@ -1,7 +1,7 @@
 ---
 title: "Overview"
 icon: "book"
-description: "Authentic user insights from autonomous AI agents, backed by evidence. Learn how to set up actors, run checklists and interviews, connect your tools, and drive Stunt Double from an assistant."
+description: "What Stunt Double is and where to go next: run a first check, test a design, automate re-runs, or drive it from an assistant."
 ---
 
 # Stunt Double documentation
@@ -74,16 +74,21 @@ actors do three kinds of work, and every run comes back as evidence.
 
 <ConceptMap />
 
-Read **[Core concepts](/concepts)** for each building block in detail.
+Each name links to its definition in **[Core concepts](/concepts)**.
 
 ## Browse by section
 
 <CardGrid
-  columns={3}
+  columns={2}
   items={[
     {
+      title: "Core concepts",
+      description: "Workspaces, actors, checklists, interviews and the evidence they return, in one page.",
+      href: "/concepts",
+    },
+    {
       title: "Tutorials",
-      description: "Step by step, from your first actor to a review in Slack.",
+      description: "One task each, end to end: an actor, a checklist suite, an interview, an automation.",
       href: "/tutorials",
     },
     {
@@ -97,18 +102,23 @@ Read **[Core concepts](/concepts)** for each building block in detail.
       href: "/integrations",
     },
     {
+      title: "Stunt Double Index",
+      description: "How well AI agents can use a website: the public ranking and how to raise a score.",
+      href: "/index-ranking",
+    },
+    {
       title: "MCP server",
       description: "Endpoint, clients, scopes, and every tool, prompt and resource.",
       href: "/mcp",
     },
     {
-      title: "API",
-      description: "OAuth scopes, versioning and what you can automate.",
+      title: "API and agent access",
+      description: "Every programmatic surface: the MCP servers, Markdown docs, llms.txt and discovery files.",
       href: "/api",
     },
     {
       title: "StuntKit",
-      description: "The open source browser tools and icons behind Stunt Double.",
+      description: "The open source browser tools, icons and agent-readiness packages behind Stunt Double.",
       href: "/stuntkit",
     },
   ]}

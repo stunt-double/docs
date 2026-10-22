@@ -1,7 +1,7 @@
 ---
 title: "Figma Make"
 icon: "figma"
-description: "Publish a Make site and have AI personas try to use it before an engineer touches it."
+description: "The build, publish, test, revise loop: interview AI personas on a published Make site before an engineer touches it."
 ---
 
 Figma Make turns a prompt or a design into a working web app and publishes it
@@ -15,14 +15,14 @@ use it, all before an engineer touches it.
   before committing to a build.
 </Callout>
 
-## Setup
+## What you need
 
-- Add the Stunt Double MCP connector to the agent you use around Make (Claude,
-  Claude Code, Cursor): `https://app.stuntdouble.io/api/mcp`. Sign in when
-  prompted the first time. **[MCP](/mcp)** covers each client.
-- Optionally connect Figma from **Integrations** at
-  [app.stuntdouble.io](https://app.stuntdouble.io) so workflows can also react
-  to Figma events. See **[Figma](/integrations/figma)**.
+- The Stunt Double MCP server in the agent you use around Make (Claude, Claude
+  Code, Cursor). **[Connect a client](/mcp/connect)** covers each one.
+- Nothing in Make itself. A published Make site is a public URL, and actors
+  need nothing else; there is no SDK to embed. The
+  **[Figma connection](/integrations/figma)** is optional and only matters once
+  you want automations to react to Figma events.
 
 ## The loop: build, publish, test, revise
 
@@ -39,8 +39,7 @@ use it, all before an engineer touches it.
 1. **Build in Make.** Get the prototype to the point where the core flow
    exists, even roughly. Real (fake) content beats lorem ipsum: personas read
    the page like users do.
-2. **Publish.** Use Make's publish action to get the live site URL. Stunt
-   Double needs nothing else; there is no SDK to embed.
+2. **Publish.** Use Make's publish action to get the live site URL.
 3. **Test with personas.** From your agent, use the `validate_design` prompt
    with the published URL, or be specific:
 
@@ -82,8 +81,6 @@ validation come along:
 
 ## Tips
 
-- Test the ugly version. The strongest signal comes before you polish;
-  personas are immune to embarrassment.
 - One flow per round. "Can they sign up" and "do they understand pricing" are
   separate studies; mixing them muddies the report.
 - Watch a session recording in the dashboard at least once per round; seeing a

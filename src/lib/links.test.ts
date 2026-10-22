@@ -10,6 +10,7 @@ test('maps old docs links to docs paths and other root links to marketing', () =
   assert.equal(docsHref('/integrations'), '/integrations');
   assert.equal(docsHref('/mcp/connect#auth'), '/mcp/connect#auth');
   assert.equal(docsHref('/tutorials/self-hosted-worker'), '/tutorials/self-hosted-worker');
+  assert.equal(docsHref('/index-ranking/improve-your-score'), '/index-ranking/improve-your-score');
   assert.equal(docsHref('/mcpx'), 'https://www.stuntdouble.io/mcpx');
   assert.equal(docsHref('/pricing'), 'https://www.stuntdouble.io/pricing');
   assert.equal(docsHref('/support'), 'https://www.stuntdouble.io/support');

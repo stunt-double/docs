@@ -1,15 +1,13 @@
 ---
 title: "Figma prototypes"
 icon: "figma"
-description: "Walk prototypes with personas and re-check the built flows automatically when a file changes."
+description: "Which Stunt Double piece to use with Figma for prototype testing, frame reviews and re-checking the built product when a file changes."
 ---
 
 Figma is where the design decisions happen; Stunt Double is how you find out
-whether users can actually follow them. The integration works at two levels:
-agent-driven testing of prototypes (via MCP), and event-driven automation that
-re-checks work whenever a file changes (via the Figma connection). To review
-frames on the canvas itself, see the [Figma plugin](/integrations/figma-plugin),
-currently in early access.
+whether users can actually follow them. Three pieces cover different moments
+in a design's life, and this guide is about which to reach for and how they
+combine.
 
 <Callout variant="who">
   Designers validating flows before handoff, design-systems teams guarding
@@ -17,28 +15,21 @@ currently in early access.
   buried in a separate report.
 </Callout>
 
-## Setup
-
-1. **Connect Figma and link files to projects**, as
-   **[Figma](/integrations/figma#set-it-up)** describes. That turns on Figma
-   triggers for workflows and keeps runs, feedback and interviews attached to
-   the design source.
-2. **For agent workflows**, add the Stunt Double MCP connector to whichever
-   agent you use alongside Figma (Claude, Claude Code, Cursor):
-   `https://app.stuntdouble.io/api/mcp` (setup per client in
-   **[MCP](/mcp)**). If you also run Figma's own MCP
-   server, the two compose well: Figma MCP reads and edits the design, Stunt
-   Double MCP tests it.
-
-<FlowStrip
-  nodes={[
-    { label: 'Figma MCP', sub: 'Reads and edits the design' },
-    { label: 'Stunt Double MCP', sub: 'Tests the rendered result' },
-    { label: 'Evidence', sub: 'Transcripts on the file' },
+<RoleGrid
+  items={[
+    { role: 'MCP in your agent', gets: 'Interviews personas against a prototype link or Make site, from the conversation where you design.' },
+    { role: 'Figma plugin', gets: 'Reviews a selected frame on the canvas and places the findings as annotations. Early access.' },
+    { role: 'Figma connection', gets: 'Links files to projects and starts automations when a file changes or a library is published.' },
   ]}
 />
 
-## Workflow: test a prototype with personas
+None of them depends on another. Most teams start with the MCP server for
+prototype testing, then add the connection once there is a built product to
+keep in step with the design. Setup for each lives on its own page:
+[MCP](/mcp), the [Figma plugin](/integrations/figma-plugin) and the
+[Figma connection](/integrations/figma).
+
+## Test a prototype with personas
 
 Actors drive real browsers, so anything viewable at a URL is testable. For
 Figma that means:
@@ -47,17 +38,29 @@ Figma that means:
   link can view". Good for click-through flow testing: can a persona find
   their way from the landing frame to the goal?
 - **Figma Make published sites** for anything with real interaction. See the
-  dedicated **[Figma Make guide](/guides/figma-make)**.
+  **[Figma Make guide](/guides/figma-make)**.
 
 From your agent:
 
-> “Use the validate_design prompt on my prototype link with personas for our
-> two main segments. Focus on whether the new onboarding order makes sense.”
+> "Use the validate_design prompt on my prototype link with personas for our
+> two main segments. Focus on whether the new onboarding order makes sense."
 
 The agent creates an interview, adds task items ("Get from the welcome screen
 to creating your first project"), attaches varied personas (mix devices;
 prototypes often fail on mobile first), launches, and returns the synthesized
 report with transcripts as evidence.
+
+If you also run Figma's own MCP server, the two compose well: Figma MCP reads
+and edits the design, Stunt Double MCP tests the result, and the agent carries
+the findings from one to the other.
+
+<FlowStrip
+  nodes={[
+    { label: 'Figma MCP', sub: 'Reads and edits the design' },
+    { label: 'Stunt Double MCP', sub: 'Tests the rendered result' },
+    { label: 'Evidence', sub: 'Transcripts and findings' },
+  ]}
+/>
 
 <Callout variant="note" title="Reading results on prototypes">
   Personas can only follow the interactions you wired. A "could not proceed"
@@ -65,24 +68,36 @@ report with transcripts as evidence.
   transcript makes it obvious which.
 </Callout>
 
-## Workflow: re-check automatically when the design changes
+## Review frames before there is a prototype
 
-This is the predictive half. Once Figma is connected, workflows can trigger on
-Figma events:
+A prototype link needs wiring. Earlier than that, a static frame can still be
+judged. The [Figma plugin](/integrations/figma-plugin) exports the selected
+frame for actors to review, places their findings on the canvas as annotations
+next to the layers they are about, and re-checks once you have fixed them. It
+can also run a project's checklist against a sequence of frames, or hand a
+prototype link to Stunt Double to start an interview. Use it for the quick
+critique pass inside the file; use an interview when the question is whether
+someone can complete a flow.
 
-1. Create checklists for the flows the design feeds (staging or production
-   URLs).
-2. Create a workflow with the Figma trigger: pick up to three events (Figma
-   allows three webhooks per file) and paste the key of the file to listen
-   to. Add steps that run those checklists, plus a notification step.
-3. Activate it. Stunt Double registers the file webhook through a Figma
-   connection in the workspace that can edit the file, so the connected
-   account needs edit access, not just view access.
+## Re-check the product when the design changes
+
+This is the predictive half. Once a design has been built, the risk moves from
+"can users follow this" to "does the product still match it". With the
+[Figma connection](/integrations/figma) in place, an automation can start on a
+Figma event:
+
+1. Create checklists for the flows the design feeds, against staging or
+   production URLs.
+2. Create an automation with the **Figma** trigger on the design file (or the
+   library file), and add steps that run those checklists and send a
+   notification.
+3. Turn it on. The [trigger settings](/integrations/figma#set-it-up) explain
+   which events to pick and the access the connected Figma account needs.
 
 <FlowStrip
   nodes={[
     { label: 'File update', sub: 'or a library publish' },
-    { label: 'Workflow fires', sub: 'Figma event trigger' },
+    { label: 'Automation fires', sub: 'Figma event trigger' },
     { label: 'Checklists run', sub: 'Against staging or prod' },
     { label: 'Team notified', sub: 'Drift, within minutes' },
   ]}
@@ -96,21 +111,14 @@ prompt.
 
 <TextureBreak />
 
-## Workflow: brand and design-system guardianship
+## Guard the design system
 
-Give an actor your brand guidelines as knowledge (voice, spacing rules, color
-usage, component dos and don'ts) and use it to run checklists like:
-
-- "Every page uses the product font stack; no default serif fallbacks
-  anywhere."
-- "Primary CTAs use the brand primary color and sentence case."
-- "Empty states show the illustration style, not stock icons."
-
-Run these against staging on a schedule or on library publishes, and the
-design system stops drifting silently. The `check_brand` and
-`check_design_system` MCP prompts encode this whole workflow; the
-**[validation guide](/guides/validation)** covers the pattern in depth,
-including compliance and cross-surface continuity audits.
+The same trigger is the natural home for a design-system audit: a reviewer
+actor that holds your tokens and component rules, a checklist of visual checks
+against staging, and an automation that runs it whenever the library is
+published. The **[validation guide](/guides/validation#design-system-adherence)**
+covers the pattern, with a complete example, and the `check_design_system` MCP
+prompt sets it up.
 
 ## Tips
 
@@ -118,6 +126,9 @@ including compliance and cross-surface continuity audits.
   do not have Figma accounts.
 - Name interviews after the design iteration ("Onboarding v3, post-crit") so
   before/after comparisons are easy.
-- Feedback captured in Stunt Double carries page URL, pin position, and
-  screenshots, which maps naturally back to frames when you triage with the
-  `triage_feedback` prompt.
+- Re-run the same interview after each iteration rather than starting a new
+  one. Unchanged tasks and personas make the differences attributable to the
+  design.
+- Point the design-change automation at the file that actually changes. An
+  automation listens to one file, so a library and the screens built from it
+  need one each.

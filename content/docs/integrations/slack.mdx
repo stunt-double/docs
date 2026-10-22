@@ -12,7 +12,8 @@ page in a real browser, reviews it and replies with ranked findings. The same
 Slack agent takes direct messages, answers questions about your workspace and
 starts checklists and automations for you.
 
-For the full design review walkthrough, read
+This page is the reference for connecting Slack and what it can do. For how a
+review is triggered, steered and read, follow
 [Review designs from Slack](/tutorials/slack-design-review).
 
 ## What it does
@@ -55,18 +56,47 @@ For the full design review walkthrough, read
    **Settings** open on the **Integrations** tab: choose the project's
    **channel** there.
 5. Under **Settings** on the Slack panel, pick a **Default channel** for
-   notifications. A project's own channel overrides it.
+   notifications. A project's own channel overrides it, and with neither set,
+   nothing is posted to a channel.
 6. To have Stunt Double pick up review requests in a channel without a
-   mention, open **Design reviews**, then **Settings**, and under **Channels**
+   mention, open **Design review**, then **Settings**, and under **Channels**
    click **Add a channel**. **Try it** posts a test request in a channel so
    you can see the whole flow before your team uses it.
 
 Guidelines marked **Apply to design reviews** on the **Guidelines** tab of
-**Design reviews** are applied to reviews requested from Slack too.
+**Design review** are applied to reviews requested from Slack too.
+
+Only the person who installed the Slack agent can browse the Slack team's
+channels, because one install can serve several workspaces and the list covers
+the whole Slack team. So the installer picks the default channel and project
+channels; everyone else in the workspace sees where notifications go.
 
 Setting Slack up for someone else? The card at the bottom of the Slack panel
-gives you a link to share. It walks them through installing the Slack agent
+gives you a link to share. It takes them through installing the Slack agent
 for this workspace and choosing where notifications go.
+
+## The Slack agent
+
+Anything sent to Stunt Double that is not a link plus a request for feedback
+goes to the Slack agent, in a direct message or as an @mention in any channel
+it has been invited to. It works in one workspace, with the same read and
+dispatch surface as the [MCP server](/mcp):
+
+- List the projects, actors, checklists and automations in the workspace.
+- Start a checklist run and hand back the run it created.
+- Start an automation run.
+- Start a design review for a link the review rules did not pick up.
+
+Replies stream in as they are written. A thread is one conversation: every
+follow-up in it continues the same session, so "run that one again" resolves to
+the checklist you were just discussing. The direct message also pins a few
+starting prompts to the top of the Messages tab.
+
+Runs started from Slack are attributed to the person who asked, once they link
+their Slack identity under their account's notification preferences. Runs from
+anyone who has not are attributed to whoever installed the Slack agent, so link
+identities before a team leans on this: attribution is what makes a run's
+history legible a month later.
 
 ## What Stunt Double can access
 
@@ -122,7 +152,7 @@ Slack agent** to install it again.
 
 **Stunt Double does not reply in a channel.** DMs work as soon as Slack is
 added. In a channel, check that Stunt Double has been invited, then either
-@mention it or add the channel under **Design reviews**, then **Settings**,
+@mention it or add the channel under **Design review**, then **Settings**,
 then **Channels**. If a channel there shows **Needs attention** and the page
 asks you to **Reinstall to watch channels**, the install cannot read messages
 in that channel, so only @mentions reach it until you reinstall.
@@ -130,3 +160,11 @@ in that channel, so only @mentions reach it until you reinstall.
 **Direct messages do not arrive.** Check **Direct messages** under
 **Settings** on the Slack panel. If it asks you to reinstall, the install
 predates DM support.
+
+**A channel picker reads "Only the installer can browse channels".** Ask the
+person who installed the Slack agent to choose the channel, or install it
+yourself.
+
+**A review never starts.** If DMs and @mentions get answers but a review does
+not, the message probably did not qualify as a review request. See
+[When nothing happens](/tutorials/slack-design-review#when-nothing-happens).

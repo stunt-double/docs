@@ -35,7 +35,7 @@ Every validation workflow follows the same three steps, and the MCP prompts
    audits repeatable: every future run enforces the same standard, not
    whatever was in the prompt that day. For rules every actor on a project
    should hold to, add them as workspace guidelines instead (on the
-   **Guidelines** tab of **Design reviews**) and attach them to the project
+   **Guidelines** tab of **Design review**) and attach them to the project
    from its **Guidelines** settings tab. Mark a guideline **Apply to design
    reviews** and it also reaches reviews requested from Slack and Linear.
 2. **Assert the standard with observable checks.** Each rule becomes a
@@ -85,8 +85,8 @@ visually rather than in terms of code:
 The natural trigger is a Figma event: when the design library is published or
 a file changes (the automation listens to one file, for up to three events),
 the audit re-runs against staging and drift between the system
-and the shipped product surfaces within minutes. See the
-**[Figma guide](/guides/figma)** for the connection setup.
+and the shipped product surfaces within minutes. The
+**[Figma connection](/integrations/figma#set-it-up)** sets up the trigger.
 
 ## Legal and compliance
 
@@ -222,10 +222,6 @@ Workflow   Weekly continuity check
            Steps:   run_checklist (marketing) -> run_checklist (checkout)
                     -> notification (#growth)
 ```
-
-For promise-versus-product continuity, an interview is a better fit than a
-checklist: attach a persona and give it the task "the homepage says setup takes
-two minutes; sign up and see if that holds", then read the transcript.
 
 ## Where this fits in the other workflows
 

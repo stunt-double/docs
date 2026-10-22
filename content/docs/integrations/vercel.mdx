@@ -64,28 +64,29 @@ There are two ways in. Both end with the same per-project link.
 3. On **Projects**, click **Choose for a project** and pick the **Vercel
    project** for each Stunt Double project.
 
-### Start an automation on deploy
+## Deployment trigger reference
 
-1. Open **Automations** and create a new one.
-2. Under **Trigger Type**, choose **Vercel Event**.
-3. Pick one or more events: **Deployment Created**, **Deployment Succeeded**,
-   **Deployment Error**, **Deployment Canceled**, **Deployment Ready** or
-   **Deployment Promoted**.
-4. Under **Deployment Environment**, choose **Any environment**, **Production
-   only** or **Preview only**.
-5. Optionally, set a **Project Filter** to one Vercel project. Leave it empty
-   to trigger for all of them.
-6. Click **Create automation**, then add the checklists it should run. On each
-   checklist step, tick **Use Vercel deployment URL** to run it against the
-   deployment that started the automation rather than the checklist's usual
-   address.
+Choose **Vercel** as the trigger when you create an automation (it shows as
+**Vercel Event** on the automation afterwards). The **Configure** step sets
+when it fires:
+
+- **Events**, one or more of: **Deployment Created**, **Deployment
+  Succeeded**, **Deployment Error**, **Deployment Canceled**, **Deployment
+  Ready** and **Deployment Promoted**.
+- **Deployment Environment**: **Any environment**, **Production only** or
+  **Preview only**.
+- **Project Filter** (optional): one Vercel project. Leave it empty to
+  trigger for all of them.
 
 **Deployment Succeeded** fires once the build completes and checks pass, which
-is the usual choice for testing previews. To post the results on the pull
-request the preview came from, add a **GitHub Comment** step (see
-[GitHub](/integrations/github)).
+is the usual choice for testing previews. On each **Run Checklist** step, tick
+**Use Vercel deployment URL** to run it against the deployment that started
+the automation rather than the checklist's usual address. To post the results
+on the pull request the preview came from, add a **GitHub Comment** step (see
+[GitHub](/integrations/github)). [Automate multi-step workflows](/tutorials/building-workflows)
+builds a full automation step by step.
 
-### Run against the latest deployment
+## Run against the latest deployment
 
 Once a project links a Vercel project, a checklist's **Settings** and an
 interview's environment offer **Run against**: **A fixed URL**, **Latest
@@ -110,7 +111,7 @@ actors and assistants read.
 
 Open **Integrations**, click **Vercel**, then click **Disconnect** on **Your
 account**. The **Disconnect Vercel?** dialog lists every workspace that loses
-Vercel. Confirm, and automations with a **Vercel Event** trigger stop firing
+Vercel. Confirm, and automations with a Vercel trigger stop firing
 in those workspaces.
 
 To stop one workspace from using Vercel and leave the rest, an owner or admin
@@ -119,7 +120,7 @@ the integrations page of your Vercel team.
 
 ## Troubleshooting
 
-**Vercel shows "Set up Vercel" next to Vercel Event in the trigger list.**
+**The trigger list shows "Set up Vercel".**
 Vercel is not connected for this workspace yet. Choosing the trigger opens the
 connect dialog.
 

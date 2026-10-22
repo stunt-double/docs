@@ -17,44 +17,16 @@ persona before merge, with results reported where engineers already look.
 
 ## Setup
 
-1. **Connect your coding agent** (plugin preferred, MCP config as a fallback):
+1. **Connect your coding agent.** For Claude Code, the
+   [Stunt Double plugin](/mcp/clients/claude-code-plugin) bundles the MCP
+   server with skills and agents; Cursor has a
+   [plugin](/mcp/clients/cursor) too. Any other MCP-capable agent takes the
+   server URL, as **[Connect a client](/mcp/connect)** describes. You authorize
+   in the browser on first use; no API keys.
 
-   **Claude Code:** install the
-   [official Stunt Double plugin](https://claude.ai/customize/plugins/id/9cd49c97-13c2-4844-bc3d-53ef7956c1ef%40anthropic-plugin-directory)
-   from Claude's plugin directory (server plus skills and agents), or add the
-   server, or install the plugin from the terminal:
-
-   ```bash
-   claude mcp add --transport http stuntdouble https://app.stuntdouble.io/api/mcp
-   ```
-
-   ```bash
-   claude plugin marketplace add stunt-double/stuntdouble-mcp
-   claude plugin install stuntdouble@stuntdouble
-   ```
-
-   **Cursor:** install the
-   [Stunt Double Cursor plugin](https://github.com/stunt-double/stuntdouble-mcp)
-   (MCP server plus skills, rules and agents). From the
-   [Cursor marketplace](https://cursor.com/marketplace) once listed, or add the
-   repo as a team marketplace (Dashboard → Plugins → Team Marketplaces → Add
-   Marketplace → Import from Repo), then install `stuntdouble` from Customize.
-
-   **MCP only** (Cursor without the plugin, Windsurf, or any other JSON-config
-   client):
-
-   ```json
-   // .cursor/mcp.json or ~/.cursor/mcp.json
-   { "mcpServers": { "stuntdouble": { "url": "https://app.stuntdouble.io/api/mcp" } } }
-   ```
-
-   You authorize via browser on first use; no API keys. **[MCP](/mcp)** has
-   setup for more clients.
-
-2. **Connect GitHub** to your workspace (**Integrations** > GitHub >
-   **Connect GitHub**, then **Install GitHub App** for the repositories you
-   choose) so agents can read PRs and post results, and workflows can trigger
-   on GitHub events. See **[GitHub](/integrations/github)**.
+2. **Connect [GitHub](/integrations/github)** for the repositories you work
+   in, so agents can read PRs and post results, and automations can trigger on
+   GitHub events.
 
 3. **Teach your agent the habit.** Add a note to your repo's agent
    instructions (`CLAUDE.md`, `.cursorrules`, etc.) so verification happens by
@@ -120,8 +92,8 @@ run.
 
 ## Workflow: from bug report to fix without a human repro
 
-Feedback captured by Stunt Double (pinned to a page, with screenshot and
-device info) is agent-readable:
+Comments people leave through the [feedback widget](/guides/feedback-widget)
+(pinned to an element, with a screenshot and device info) are agent-readable:
 
 > “Triage the new feedback on the dashboard project; reproduce anything that
 > looks like a bug.”

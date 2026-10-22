@@ -1,7 +1,7 @@
 ---
 title: "Devices"
 icon: "worker"
-description: "Test products that only exist inside your network, with actors that browse from a Mac on that network."
+description: "Reference for devices: setup, how runs choose a browser, network access, admin controls and troubleshooting for actors that browse from a Mac on your network."
 ---
 
 # Devices
@@ -12,14 +12,15 @@ inside your network. Actors that run on it browse with that Mac's Chrome, its
 VPN, its internal DNS and its saved sign-ins. The app connects out to Stunt
 Double, so you open no inbound ports.
 
-The desktop app is the only way to run a device. The older command-line and
-Docker workers have been retired.
-
-For a full walkthrough, read
-[Test a product behind your firewall](/tutorials/self-hosted-worker). To watch
-and steer an actor on your own Mac in real time instead, start a
+This page is the reference: setup, how runs choose a browser, network access,
+admin controls and troubleshooting. To test an internal site once, end to end,
+follow [Test a product behind your firewall](/tutorials/self-hosted-worker).
+To watch and steer an actor on your own Mac instead, start a
 [live session](/tutorials/live-sessions) on **This Mac**: it pairs the Mac for
 you in the background.
+
+The desktop app is the only way to run a device. The older command-line and
+Docker workers have been retired.
 
 ## What it does
 
@@ -41,35 +42,46 @@ you in the background.
   plan shows what is needed and how to upgrade.
 - **Role.** Any member can set up their own Mac. Testing, restricting and
   removing a device, and pooling devices, take an owner or admin.
-- **A Mac.** macOS on Apple silicon or Intel, with Google Chrome installed,
-  that can reach both the product you want to test and `app.stuntdouble.io`.
+- **A Mac.** macOS 10.15 or later on Apple silicon or Intel, with Google
+  Chrome installed, that can reach both the product you want to test and
+  `app.stuntdouble.io`.
 
 There is no switch to turn devices on. They are on wherever the plan includes
 them, and nothing runs on one until a run needs it.
 
 ## Set it up
 
-1. **Install the app.** On the Mac, download the
-   [desktop app](/integrations/desktop-app), open it and sign in.
+1. **Install the app.** On the Mac, install the
+   [desktop app](/integrations/desktop-app#install-it), open it and sign in.
 2. **Set up this Mac.** Open **Devices** from the sidebar (or **Go**, then
    **This Device**, Cmd+D). In the app, **This Mac** sits at the top of the
    page. Click **Set up this Mac**. It shows **Connected** once the Mac checks
    in, and the Mac joins the list under **Macs**.
 3. **Point actors at it, if you want.** An actor on the cloud browser already
-   borrows a device for internal sites (see below). To keep an actor on a
+   borrows a device for internal sites (see
+   [How runs pick a browser](#how-runs-pick-a-browser)). To keep an actor on a
    device for every run, open the actor, go to its **Browser** tab, choose
    **Device**, then pick **Any device in this workspace** or a named Mac.
 
 The browser runs inside the app by default, and you watch it under **Live
-view** on This Mac, beside an activity log that stays on the Mac. If a site
-asks for a client certificate, Keychain or a smart card, switch **Where the
-browser runs** to **Its own window** (see the
-[desktop app](/integrations/desktop-app#how-the-browser-runs)).
+view** on This Mac. If a site asks for a client certificate, Keychain or a
+smart card, switch **Where the browser runs** to **Its own window** (see
+[How the browser runs](/integrations/desktop-app#how-the-browser-runs)). If
+the product sits behind a VPN portal or SSO, open the browser under **Live
+view** and sign in once: the sign-in persists for later runs.
 
 To check a device can reach a site before a run depends on it, open the
 device from **Devices** and enter the address under **Test a URL**. The test
 opens it in the device's browser, so a pass means actors can reach that
 address.
+
+### Device status
+
+A device shows its status live everywhere it appears: the **Devices** list,
+an actor's **Browser** tab and **This Mac** in the app. It reads
+**Connected**, **Running a task** or **Offline**. A Mac that stops checking in
+turns **Offline** within a couple of minutes, so you can tell before starting
+a run that depends on it.
 
 ## Internal projects
 
@@ -142,13 +154,27 @@ it go back to the Stunt Double cloud. To stop a Mac without removing it, click
 
 ## Troubleshooting
 
+### Messages on This Mac
+
 **The device shows Offline.** Open the Stunt Double app on that Mac. A device
 is online only while the app is running and checking in. If the app is open
-and **This Mac** says **Not reaching Stunt Double**, check the Mac is online
-and has outbound HTTPS to `app.stuntdouble.io`, then click **Reconnect**.
+and **This Mac** says **Not reaching Stunt Double**, Stunt Double has not
+heard from it for over a minute: check the Mac is online and has outbound
+HTTPS to `app.stuntdouble.io`, then click **Reconnect**.
+
+**This Mac says "No browser found on this Mac".** The device drives Chrome.
+Install Google Chrome, reopen **Devices** and click **Set up this Mac**.
 
 **This Mac says it is no longer paired.** The device was removed from the
 workspace, or its key no longer works. Click **Pair again**.
+
+**This Mac says it is set up for another workspace.** See
+[Move a Mac to another workspace](#move-a-mac-to-another-workspace).
+
+**This Mac says "Update the desktop app".** That version cannot run a device.
+Restart the app to finish the update that installs in the background.
+
+### Errors on runs
 
 **A run says no device in this workspace is online.** The site is internal,
 so the run needs a device. Open the Stunt Double app on a Mac in that network
@@ -164,10 +190,6 @@ cloud. Upgrade from **Settings**, then **Billing**.
 **A run says devices are turned off.** Devices have been switched off for
 your workspace. Contact hello@stuntdouble.io to turn them back on.
 
-**You need a custom deployment.** If the Mac app does not fit how your network
-works, for example you want the relay running in your own cloud, the
-Enterprise plan includes custom deployments. Contact us to talk it through.
-
 **A run says the browser was suspended by security software.** Something on
 the Mac, most likely endpoint security, froze Chrome before it could start.
 Ask your IT team to allow Stunt Double to launch Google Chrome.
@@ -180,3 +202,9 @@ earlier session of the app is closed for you.
 **A run says the address is not permitted.** The device's **Network access**,
 or the workspace policy in **Settings**, then **Security**, blocks that host.
 Add it to the allowed list or remove it from the blocked list.
+
+## Custom deployments
+
+If the Mac app does not fit how your network works, for example you want the
+relay running in your own cloud, the Enterprise plan includes custom
+deployments. Contact hello@stuntdouble.io to talk it through.

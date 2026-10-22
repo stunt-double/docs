@@ -1,0 +1,31 @@
+---
+description: Install the Stunt Double plugin for Claude Code to get the MCP server plus task skills and subagents in one step.
+---
+
+The plugin installs the same hosted MCP server as the [Claude Code](/mcp/clients/claude-code) page, plus the [skills](/mcp/skills) (such as `verify-change` and `run-user-interview`) and the [subagents](/mcp/agents) that know which tools to call for one kind of job. Pick it over the plain server when you want Claude to follow a tested recipe instead of working out each step. If you already added the server with `claude mcp add`, remove it (`claude mcp remove stuntdouble`) so the tools don't load twice.
+
+{/* setup */}
+
+You can also install it from `/plugin` inside Claude Code: add the marketplace, then pick **stuntdouble** from the **Discover** tab and choose a scope (just you, this repository, or every project).
+
+## Sign in
+
+The plugin's server signs in the same way as the plain server: run `/mcp`, choose the Stunt Double server (it is listed under the plugin) and select **Authenticate**, then approve in the browser. The consent screen lists the scopes the connection asks for; the [overview](/mcp#authentication) explains each.
+
+## Check it works
+
+- Type `/stuntdouble:` to list the skills, for example `/stuntdouble:verify-change`. Claude also picks a skill on its own when your request matches it.
+- Run `/agents` to see the subagents the plugin added.
+- Ask: "List my Stunt Double workspaces."
+
+## Troubleshooting
+
+- **Skills or tools missing after install:** plugins load when a session starts, so start a new one.
+- **Turn it off without uninstalling:** disable it in `/plugin` or with `claude plugin disable`.
+- **Re-authenticate:** in `/mcp`, choose **Clear authentication** on the Stunt Double server, then authenticate again.
+
+## Next
+
+- [Skills](/mcp/skills) and [agents](/mcp/agents): what each one does
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

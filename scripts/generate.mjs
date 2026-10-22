@@ -45,6 +45,7 @@ const CLIENT_ICONS = {
  */
 const CLIENT_NOTES_DIR = join(ROOT, 'content/mcp-clients');
 const SETUP = '{/* setup */}';
+const CLIENT_NOTES_URL = 'https://github.com/stunt-double/docs/blob/main/content/mcp-clients';
 
 /** Page title and description for each source's overview. */
 const PAGES = {};
@@ -182,8 +183,9 @@ function takeTitle(body) {
   return m ? { title: m[1].trim(), body: body.slice(m[0].length).trim() } : { title: null, body: body.trim() };
 }
 
-function editLink({ repo, tag }, paths) {
+function editLink({ repo, tag }, paths, extra = []) {
   const url = (p) => `https://github.com/${repo}/blob/${tag}/${p}`;
+  if (extra.length) return `\n\n---\n\nEdit on GitHub: ${[...paths.map((p) => `[${basename(p)}](${url(p)})`), ...extra].join(', ')}\n`;
   return paths.length === 1
     ? `\n\n---\n\n[Edit on GitHub](${url(paths[0])})\n`
     : `\n\n---\n\nEdit on GitHub: ${paths.map((p) => `[${basename(p)}](${url(p)})`).join(', ')}\n`;
@@ -196,7 +198,7 @@ function editLink({ repo, tag }, paths) {
  */
 export function mcpPages(src, at) {
   const mdx = (text, dir) => readmeToMdx(clean(text), { ...at, dir });
-  const page = (data, body, paths) => clean(frontmatter(data) + body + editLink(at, paths));
+  const page = (data, body, paths, extra) => clean(frontmatter(data) + body + editLink(at, paths, extra));
   const out = {};
 
   const [pre, ...sections] = splitSections(src.readme, 2);
@@ -232,7 +234,8 @@ export function mcpPages(src, at) {
         description: notes.data.description ?? `Connect ${c.heading} to the Stunt Double MCP server.`,
       },
       body.trim(),
-      ['README.md']
+      ['README.md'],
+      src.clientNotes?.[c.slug] ? [`[${c.slug}.mdx](${CLIENT_NOTES_URL}/${c.slug}.mdx)`] : []
     );
   }
   out['clients/meta.json'] = `${JSON.stringify({ title: 'Clients', icon: 'AppWindow', pages: clients.map((c) => c.slug) }, null, 2)}\n`;

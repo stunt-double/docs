@@ -1,0 +1,30 @@
+---
+description: Install the Stunt Double plugin in Cursor for the MCP server plus skills, rules and agents, or add the server on its own.
+---
+
+The Cursor plugin installs the hosted MCP server together with the [skills](/mcp/skills), the [rules](/mcp/rules) and the [agents](/mcp/agents). Add the server on its own (the `mcp.json` block below) only if you want the tools without them. Use one or the other, not both.
+
+{/* setup */}
+
+Once Stunt Double is listed in the Cursor marketplace, install the plugin from **Customize** in Cursor's sidebar (find Stunt Double, choose **Install** and pick a scope) or from the marketplace website. On a Teams or Enterprise plan, an admin can add the repository as a team marketplace instead: **Dashboard**, **Plugins & MCPs**, **Team Marketplaces**, **Add Marketplace**, **Import from Repo**, then paste `https://github.com/stunt-double/stuntdouble-mcp`.
+
+## Sign in
+
+Cursor signs in with OAuth and PKCE. The first time Cursor uses a Stunt Double tool, your browser opens on Stunt Double: sign in, review the scopes the consent screen lists, and approve. The [overview](/mcp#authentication) explains each scope. Stunt Double accepts whichever callback Cursor registers, so there's nothing to configure.
+
+## Check it works
+
+- Open **Customize** and check the Stunt Double server is listed with its toggle on.
+- Ask the agent: "List my Stunt Double workspaces." Cursor asks for approval before it calls an MCP tool, unless you've allowed it.
+
+## Troubleshooting
+
+- **Sign-in or connection errors:** open the Output panel (Cmd+Shift+U on macOS), choose **MCP Logs** from the dropdown, and read the Stunt Double entries.
+- **The server doesn't appear in chat:** a disabled server doesn't load. Turn it back on in **Customize**.
+- **Tools show up twice:** you have both the plugin and a `mcp.json` entry. Remove one.
+
+## Next
+
+- [Cursor rules](/mcp/rules): what the plugin's rules tell the agent
+- [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
+- [Tools](/mcp/tools): every tool, prompt and resource

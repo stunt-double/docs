@@ -21,10 +21,7 @@ For the full loop of preview deploys, checklists and PR reports, read the
 - **Workflow triggers.** Pull request, review, push, issue, check suite and
   release events start automations automatically.
 - **PR comments.** Workflow results and checklist summaries post directly on
-  the pull request. The **GitHub Comment** and **Actor PR Review** automation
-  steps find the pull request from a GitHub trigger, and from a
-  [Vercel](/integrations/vercel) deployment trigger when the preview was built
-  from a pull request, so a checked preview reports back on its PR.
+  the pull request, including from a Vercel preview built from one.
 
 ## Before you start
 
@@ -59,11 +56,6 @@ repositories it can see.
    **Settings** open on the **Integrations** tab: choose the project's
    repository there.
 
-To start an automation from GitHub, create an automation, choose a GitHub
-trigger, and pick the events: **PR Opened**, **PR Merged**, **PR Updated**,
-**Review Requested**, **Push**, **Issue Opened**, **Check Suite Completed**,
-**Release Published** and more.
-
 ### Watched repositories versus project repositories
 
 **Watched repositories** are a workspace setting: GitHub events from these
@@ -83,6 +75,30 @@ it to the organization owner who can install apps.
   alt="The GitHub integration page once set up: connected as an account, switched on for the workspace, ready to choose a repository for each project."
   caption="GitHub once it is set up. Choose for a project opens the project's settings, where you pick its repository."
 />
+
+## GitHub trigger reference
+
+Choose **GitHub** as the trigger when you create an automation. The
+**Configure** step sets when it fires:
+
+| Group         | Events                                                                                   |
+| ------------- | ---------------------------------------------------------------------------------------- |
+| Pull Requests | **PR Opened**, **PR Closed**, **PR Merged**, **PR Reopened**, **PR Updated**, **Review Requested** |
+| PR Reviews    | **Review Submitted**, **Review Dismissed**                                               |
+| Push          | **Push**                                                                                 |
+| Issues        | **Issue Opened**, **Issue Closed**, **Issue Reopened**, **Comment Created**              |
+| CI/CD         | **Check Suite Completed**                                                                |
+| Releases      | **Release Published**                                                                    |
+
+**Repository Filter** (optional) limits it to one repository, as
+`owner/repo`. Leave it empty to trigger for all of them. Either way, events
+only arrive from repositories under **Watched repositories**.
+
+Two steps report back to GitHub: **GitHub Comment** posts on the pull request,
+and **Actor PR Review** has an actor review it. Both find the pull request
+from a GitHub trigger, or from a [Vercel](/integrations/vercel) deployment
+built from one. [Automate multi-step workflows](/tutorials/building-workflows)
+builds one end to end.
 
 ## What Stunt Double can access
 

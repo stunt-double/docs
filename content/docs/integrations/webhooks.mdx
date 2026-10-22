@@ -22,12 +22,12 @@ an automation, read [Automate multi-step workflows](/tutorials/building-workflow
 
 ## Create a webhook trigger
 
-1. Open **Automations** and create a new one.
-2. Choose the **Project**, and give it a **Name**.
-3. Under **Trigger Type**, choose **Webhook**. A webhook secret is generated
-   when the automation is created.
-4. Click **Create automation**, then add the steps it should run.
-5. Open the automation's **Settings** tab. Under **Trigger configuration**,
+1. Open **Automations** and click **Create automation**.
+2. Under **Trigger**, choose **Webhook**. **Configure** has nothing to set: a
+   webhook secret is generated when the automation is created.
+3. Under **Details**, give it a **Name** and choose the **Project**, then
+   click **Create automation** and add the steps it should run.
+4. Open the automation's **Settings** tab. Under **Trigger configuration**,
    copy the **Webhook URL** and the **Webhook secret**.
 
 Treat the secret like a password. Store it in your CI system's secret store,
@@ -94,7 +94,7 @@ To stop accepting requests, turn the automation off. Requests then return
 newline to the stored value.
 
 **`400` straight after creating it.** The automation has to be on. Check its
-status, and that **Trigger Type** is still **Webhook**.
+**Active** switch, and that its trigger is still **Webhook**.
 
 **The run starts but does nothing useful.** The webhook only starts the
 automation. Check that it has steps, and that its checklists point at the
