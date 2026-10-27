@@ -155,6 +155,22 @@ export function slugify(heading) {
 const INTERNAL = /\.cursor-plugin|plugin validation|plugin layout|mcp-publisher|CONTRIBUTING\.md|validate-json/i;
 
 /** Drop internal paragraphs, point old marketing docs URLs at this site and take out em dashes. */
+/**
+ * A meta description from a long one (a skill's trigger text): its first
+ * sentence, cut back to a clause boundary if that still runs past `max`, so
+ * search snippets and the OG card never end mid-word.
+ */
+export function summary(text, max = 160) {
+  if (text.length <= max) return text;
+  const first = text.match(/^.*?[.!?](?=\s|$)/)?.[0] ?? text;
+  if (first.length <= max) return first;
+  const head = first.slice(0, max);
+  // A colon or bracket ends the main clause; a comma may sit inside a list.
+  const clause = Math.max(head.lastIndexOf(': '), head.lastIndexOf(' ('));
+  const cut = clause > 40 ? clause : head.lastIndexOf(', ') > 60 ? head.lastIndexOf(', ') : head.lastIndexOf(' ');
+  return `${head.slice(0, cut).replace(/[,:;]$/, '')}.`;
+}
+
 export function clean(markdown) {
   return markdown
     .split(/\n{2,}/)
@@ -261,7 +277,7 @@ export function mcpPages(src, at) {
   );
   for (const s of skills) {
     out[`skills/${s.name}.mdx`] = page(
-      { title: s.title, description: s.description },
+      { title: s.title, description: summary(s.description) },
       mdx(s.body, s.file.replace(/[^/]+$/, '')),
       [s.file]
     );
