@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { clean, mcpPages, readmeToMdx } from './generate.mjs';
+import { clean, mcpPages, readmeToMdx, summary } from './generate.mjs';
 
 const at = { repo: 'stunt-double/x', tag: 'v1.0.0' };
 
@@ -121,4 +121,12 @@ test('mcpPages splits the README by client and ends every page with an edit link
     if (path.endsWith('.mdx')) assert.match(content, /Edit on GitHub.*blob\/v1\.0\.0\//, path);
     assert.doesNotMatch(content, /\u2014/, path);
   }
+});
+
+test('summary keeps short text and cuts long text at a sentence or clause', () => {
+  assert.equal(summary('Short.'), 'Short.');
+  assert.equal(summary(`${'a'.repeat(100)}. ${'b'.repeat(100)}.`), `${'a'.repeat(100)}.`);
+  const long = `Check a product (${'x'.repeat(40)}), ${'y'.repeat(60)}, ${'z'.repeat(80)}.`;
+  const out = summary(long);
+  assert.ok(out.length <= 161 && out.endsWith('.') && !out.includes('z'), out);
 });
