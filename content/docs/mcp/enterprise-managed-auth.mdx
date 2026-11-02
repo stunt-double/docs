@@ -1,0 +1,110 @@
+---
+title: "Enterprise Managed Auth"
+icon: "KeyRound"
+description: "Let Claude connect your members to Stunt Double through your identity provider, with no consent screen. Setup for workspace, identity provider and Claude admins."
+---
+
+With Enterprise Managed Auth, members of your Claude Team or Enterprise organization use Stunt Double in Claude without ever seeing a Stunt Double sign-in or consent screen. Claude asks your identity provider (IdP) to vouch for the person they're already signed in as, and Stunt Double exchanges that signed assertion for an access token. When an admin switches it on, the connector just works for everyone it covers.
+
+It is built on [Claude's Enterprise Managed Auth](https://claude.com/docs/connectors/building/enterprise-managed-auth) and the JWT bearer grant (RFC 7523). Setting it up takes three admins, who are often the same person: a Stunt Double workspace admin, your IdP admin and your Claude admin.
+
+## Before you start
+
+- **Claude Team or Enterprise**, with your organization signing in to Claude through SSO.
+- **An IdP that issues identity assertions for third-party apps.** On Okta this is Cross App Access (XAA). Check that your IdP supports the Identity Assertion JWT Authorization Grant before you begin.
+- **A Stunt Double workspace admin with a work email** on your organization's domain, such as `ada@acme.com`. Public mail services (gmail.com, outlook.com and the like) can't turn this on.
+- **Members already in the workspace, signed up with that same work email.** Enterprise Managed Auth signs existing members in; it never creates accounts or adds anyone to a workspace. Invite people first, or use auto-join for your domain.
+
+## Who it covers
+
+Stunt Double accepts an assertion only when all of these hold:
+
+- It's signed by the issuer your workspace trusts, and its signature checks out against that issuer's published keys.
+- It carries a verified `email` on the domain of the admin who switched the setting on.
+- That email belongs to a member of the workspace.
+
+Anyone else, including members on another email domain, still connects with the normal sign-in and consent screen. The token acts as the person, with the same access they'd have after signing in themselves, and reaches only the workspaces they belong to.
+
+## Set it up
+
+<Steps>
+<Step>
+
+### Register Stunt Double in your IdP
+
+Add Stunt Double as a resource app your IdP can issue assertions for, with these values:
+
+| Setting                                    | Value                                                               |
+| ------------------------------------------ | ------------------------------------------------------------------- |
+| Authorization server (issuer and audience) | `https://app.stuntdouble.io`                                        |
+| Token endpoint                             | `https://app.stuntdouble.io/oauth/token`                            |
+| Resource (MCP server)                      | `https://app.stuntdouble.io/api/mcp`                                |
+| Authorization server metadata              | `https://app.stuntdouble.io/.well-known/oauth-authorization-server` |
+| Requesting client                          | Claude, with the client ID Claude gives you                         |
+
+Make sure the assertion includes the person's `email` claim: it's how Stunt Double finds their account. Stunt Double accepts assertions with a `typ` of `oauth-id-jag+jwt`, a lifetime of an hour or less, and an asymmetric signature (RS, PS, ES or EdDSA).
+
+**Okta:** Stunt Double doesn't have an Okta Integration Network app with Cross App Access yet, so create a custom app for it in Okta, then follow Okta's [Cross App Access guide for Claude](https://support.okta.com/help/s/article/claude-enterprise-managed-auth-with-okta-cross-app-access-xaa-beta-participation-guide?language=en_US).
+
+Note your IdP's **issuer URL**, exactly as it appears in the `iss` claim of the assertions it signs (for example `https://acme.okta.com` or `https://acme.okta.com/oauth2/default`). You need it in the next step.
+
+</Step>
+<Step>
+
+### Trust your IdP in Stunt Double
+
+In your workspace, open **Settings**, then **Security**, and find **Enterprise Managed Auth**.
+
+1. Paste the issuer URL into **Identity provider issuer**. It must be an `https` URL and match the `iss` claim character for character, including any trailing slash.
+2. Switch on **Silent sign-in from Claude**.
+
+The line under the switch names the email domain it covers, which is your own. Only owners and admins can change this; members see it read-only.
+
+</Step>
+<Step>
+
+### Turn it on in Claude
+
+In Claude's admin console, add Stunt Double as a connector for your organization with the URL `https://app.stuntdouble.io/api/mcp`, then set it up to use Enterprise Managed Auth with your IdP. Claude's own admin documentation covers these screens.
+
+</Step>
+<Step>
+
+### Check it works
+
+As a member covered by the setting, open a chat in Claude, make sure Stunt Double is switched on under **Connectors**, and ask: "List my Stunt Double workspaces." The answer should come back with no sign-in prompt.
+
+</Step>
+</Steps>
+
+## How long access lasts
+
+Each access token lasts an hour. When it lapses, Claude quietly asks your IdP for a fresh assertion, so people stay connected for as long as their IdP session allows. That also means access ends within the hour when someone is removed from your IdP or from the workspace.
+
+Each assertion can be redeemed only once.
+
+## Turn it off
+
+Switch off **Silent sign-in from Claude**, or clear the issuer. Every connection made through it ends straight away, and members fall back to the normal sign-in. Changing the issuer ends existing connections too, as does another admin with a different email domain saving the setting.
+
+## Troubleshooting
+
+Stunt Double answers a failed exchange with a standard OAuth error. Your IdP or Claude's admin console may show it.
+
+| Error                                               | Likely cause                                                                                                                                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `invalid_grant`: issuer is not trusted              | The issuer in Settings doesn't match the assertion's `iss` exactly, or the switch is off.                                                                                            |
+| `invalid_grant`: signature could not be verified    | Stunt Double couldn't read the issuer's keys. It looks for `/.well-known/openid-configuration` under the issuer, and the document must name the same issuer and a public `jwks_uri`. |
+| `invalid_grant`: audience does not name this server | Set the audience to `https://app.stuntdouble.io`.                                                                                                                                    |
+| `invalid_grant`: missing an email claim             | Add `email` to the assertion.                                                                                                                                                        |
+| `invalid_grant`: no workspace member matches        | The email isn't on the covered domain, or that person isn't a member of the workspace with this address.                                                                             |
+| `invalid_client`                                    | Claude's client ID isn't one Stunt Double recognizes. Use the client ID Claude provides.                                                                                             |
+| `invalid_scope`                                     | The assertion limits scopes to ones that don't cover the request. Allow `mcp:read`, `mcp:write` and `mcp:run`, or omit MCP scopes from the assertion.                                |
+
+To test without a Claude organization, Okta's [cross app access playground](https://xaa.dev) can send assertions from a sandbox IdP: trust its issuer in a test workspace, then point it at `https://app.stuntdouble.io`.
+
+## Next
+
+- [Claude](/mcp/clients/claude): add the connector the usual way
+- [Connect](/mcp/connect): endpoints, scopes and revoking access
+- [Tools](/mcp/tools): what members can do once connected
