@@ -4,6 +4,15 @@ description: Install the Stunt Double plugin for Claude Code to get the MCP serv
 
 The plugin installs the same hosted MCP server as the [Claude Code](/mcp/clients/claude-code) page, plus the [skills](/mcp/skills) (such as `verify-change` and `run-user-interview`) and the [subagents](/mcp/agents) that know which tools to call for one kind of job. Pick it over the plain server when you want Claude to follow a tested recipe instead of working out each step. If you already added the server with `claude mcp add`, remove it (`claude mcp remove stuntdouble`) so the tools don't load twice.
 
+## What the plugin ships
+
+The plugin ships two servers:
+
+- **The hosted server, for cloud runs.** Parallel, scheduled and independently judged runs in a Stunt Double workspace, plus interviews, design reviews and feedback triage. It needs you to sign in.
+- **[Stunt Double Studio](/studio), the free local app.** It runs a checklist in Chrome on your own machine, on your Claude plan, and keeps each run as files in `.stuntdouble/`. It needs no account. Start with `/stuntdouble setup`.
+
+`/stuntdouble cloud <checklist>` moves a Studio checklist to a workspace unchanged. See [cloud runs](/studio/cloud-runs).
+
 {/* setup */}
 
 You can also install it from `/plugin` inside Claude Code: add the marketplace, then pick **stuntdouble** from the **Discover** tab and choose a scope (just you, this repository, or every project).
@@ -14,6 +23,7 @@ The plugin's server signs in the same way as the plain server: run `/mcp`, choos
 
 ## Check it works
 
+- Run `/stuntdouble doctor` to check that Studio can run locally.
 - Type `/stuntdouble:` to list the skills, for example `/stuntdouble:verify-change`. Claude also picks a skill on its own when your request matches it.
 - Run `/agents` to see the subagents the plugin added.
 - Ask: "List my Stunt Double workspaces."
@@ -26,6 +36,7 @@ The plugin's server signs in the same way as the plain server: run `/mcp`, choos
 
 ## Next
 
+- [Stunt Double Studio](/studio): run checklists locally, for free
 - [Skills](/mcp/skills) and [agents](/mcp/agents): what each one does
 - [Automate from a conversation](/tutorials/automate-with-mcp): what to ask for once you're connected
 - [Tools](/mcp/tools): every tool, prompt and resource

@@ -1,0 +1,111 @@
+---
+title: "Overview"
+icon: "run"
+description: "Stunt Double Studio is the free local app: run a checklist in Chrome on your own machine, from your coding agent, and keep every run as files in your project."
+---
+
+# Stunt Double Studio
+
+Check your change before you push it. Studio runs a Stunt Double checklist in
+a Chrome on your own machine, from the coding agent session you already have
+open. Point it at localhost, staging or production. An actor goes through the
+flow, judges each check and leaves the evidence in your project.
+
+<PageFacts
+  items={[
+    { label: "Price", value: "Free" },
+    { label: "Account", value: "None needed" },
+    { label: "You need", value: "Node 22.18 or later and Google Chrome (or Playwright's Chromium)" },
+  ]}
+/>
+
+## What you get
+
+- **Runs on your machine.** The actor drives a local Chrome, so it reaches
+  `localhost`, a staging site behind your VPN, or production.
+- **Runs on your existing subscription.** Your coding agent is the actor, so
+  local runs use your Claude plan (or your API key, if Claude Code uses one).
+  Stunt Double makes no model calls for local runs.
+- **Runs are files.** Actors, checklists and every run live in
+  `.stuntdouble/` in your project. Commit them, review them in a pull
+  request, and share them with your team like any other file.
+- **A viewer for the evidence.** A local page shows each check's verdict, the
+  screenshots and the activity log as the run happens, with a button to stop
+  it.
+
+## Start here
+
+```sh
+claude plugin marketplace add stunt-double/stuntdouble-mcp
+claude plugin install stuntdouble@stuntdouble
+```
+
+Then, in Claude Code:
+
+```text
+/stuntdouble setup
+/stuntdouble run <checklist>
+```
+
+[Install and set up](/studio/install) covers each step and other agents.
+
+## Studio and cloud runs
+
+Studio verdicts are self-judged: the same agent that went through the flow
+decides whether each check passed. When you need more, a
+[cloud run](/studio/cloud-runs) on the hosted server adds an independent
+judge, runs in parallel and on a schedule, and triggers on deploys, pull
+requests and Figma changes. `/stuntdouble cloud <checklist>` moves a local
+checklist to a workspace with the same actor and checks. A localhost URL
+needs a public or preview URL for the cloud.
+
+| | Studio | Cloud runs |
+| --- | --- | --- |
+| Where the browser runs | Chrome on your machine | Hosted browsers |
+| Who pays for the model | Your Claude plan or API key | Your Stunt Double plan |
+| Account | None | A Stunt Double workspace |
+| Verdicts | Self-judged by your agent | Independent judge |
+| When it runs | When you ask | On demand, on a schedule or on a trigger |
+
+## In this section
+
+<CardGrid
+  items={[
+    {
+      icon: "rocket",
+      title: "Install and set up",
+      description: "Add the plugin, check your machine and write your first checklist.",
+      href: "/studio/install",
+    },
+    {
+      icon: "checklist",
+      title: "Run a checklist",
+      description: "Start a run, resume one, and read the result.",
+      href: "/studio/run-checklists",
+    },
+    {
+      icon: "monitor",
+      title: "The viewer",
+      description: "Watch a run, read the evidence and stop a run early.",
+      href: "/studio/viewer",
+    },
+    {
+      icon: "code",
+      title: "Files and commands",
+      description: "What lives in .stuntdouble/ and every command Studio takes.",
+      href: "/studio/files-and-commands",
+    },
+    {
+      icon: "automation",
+      title: "Cloud runs",
+      description: "Move a checklist to a workspace for scheduled, judged runs.",
+      href: "/studio/cloud-runs",
+    },
+    {
+      icon: "terminal",
+      title: "Troubleshooting",
+      description: "Doctor, Node, Chrome, the viewer port and billing.",
+      href: "/studio/troubleshooting",
+    },
+  ]}
+/>

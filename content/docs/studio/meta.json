@@ -1,0 +1,5 @@
+{
+  "title": "Stunt Double Studio",
+  "icon": "run",
+  "pages": ["index", "install", "run-checklists", "viewer", "files-and-commands", "cloud-runs", "troubleshooting"]
+}

@@ -1,0 +1,54 @@
+---
+title: "Run a checklist"
+icon: "checklist"
+description: "Start a local run with /stuntdouble run, resume an interrupted run, and read the result Studio reports back."
+---
+
+# Run a checklist
+
+```text
+/stuntdouble run <checklist>
+```
+
+## What happens
+
+1. Studio checks the checklist file. If a field is wrong, it names the field
+   so your agent can fix it and try again.
+2. It prints a link to the [viewer](/studio/viewer), where you can watch the
+   run and stop it.
+3. An actor opens Chrome on your machine and goes through the flow. Page text
+   and screenshots stay with the actor, so your main session stays short.
+4. Studio reports the result, for example "failed. 3/4 checks passed",
+   then each failed or unjudged check with its evidence, and the viewer link.
+   It offers to fix what failed and run again.
+
+If the checklist sets `local_base_url` in `stuntdouble.json`, a local run
+swaps the checklist URL's origin for it. That's how one checklist tests
+localhost on your machine and a preview URL in the cloud.
+
+## Scores
+
+A checklist with only pass/fail checks has no score: it passes when every
+pass/fail check passes. A checklist with one or more weighted checks gets a
+score. It passes when the score meets `pass_threshold` (100 if you leave it
+out) and no pass/fail check failed. Informational checks are recorded, never
+scored.
+
+## Verdicts are self-judged
+
+In Studio, the agent that went through the flow also decides whether each
+check passed. That's fast and free, and good for catching what you
+broke. For a second opinion, a [cloud run](/studio/cloud-runs) adds an
+independent judge.
+
+## Resume a run
+
+If a run ends early, because you closed the session, the actor was
+interrupted or you stopped it from the viewer, carry on where it left off:
+
+```text
+/stuntdouble run <checklist> resume
+```
+
+Checks already judged keep their verdicts, and the actor judges only the ones
+left.

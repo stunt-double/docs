@@ -1,0 +1,72 @@
+---
+title: "Troubleshooting"
+icon: "terminal"
+description: "Fix Studio problems: run doctor, update Node, find Chrome, free the viewer port, and see which account pays for local runs."
+---
+
+# Troubleshooting
+
+## Doctor
+
+Start here. Doctor checks everything a local run needs, one line each:
+
+```text
+/stuntdouble doctor
+```
+
+Outside Claude Code, run it in a terminal:
+
+```sh
+npx -y stuntdouble doctor
+```
+
+A `FAIL` line blocks local runs until you fix it. A `note` line is worth
+reading but doesn't block anything.
+
+## Node
+
+Studio needs Node 22.18 or later. On an older Node, the local server stops at
+start with a message naming the version it found. Update Node, then restart
+Claude Code.
+
+If the Studio tools are missing altogether, the local server didn't start.
+Check `node --version` and that `npx` works, then look at the server in `/mcp`.
+The first tool listing takes a second or two while `npx` starts. That's
+normal.
+
+## Chrome
+
+Studio uses Google Chrome, or Playwright's Chromium when Chrome isn't
+installed. If doctor reports no Chrome, install Google Chrome, or run:
+
+```sh
+npx playwright install chromium
+```
+
+## The viewer port
+
+The viewer starts at port 4747 and moves to the next free port if that one is
+taken. Doctor tells you which. Always open the link Studio prints rather than
+typing the port.
+
+## Billing
+
+Stunt Double makes no model calls for local runs. Your coding agent does the
+work, so local runs count against whatever account Claude Code is signed in
+with: your Claude plan, or your API key if Claude Code uses one. Run `/status`
+in Claude Code to see which.
+
+If `ANTHROPIC_API_KEY` is set in your environment, doctor adds a note: when
+Claude Code uses that key, local runs are billed to it rather than your Claude
+plan.
+
+[Cloud runs](/studio/cloud-runs) are billed to your Stunt Double plan instead.
+
+## A hosted server in `/mcp` asks to sign in
+
+The plugin also adds the hosted server for [cloud runs](/studio/cloud-runs).
+You can leave it signed out, since local runs don't use it.
+
+## Skills or commands missing after install
+
+Plugins load when a session starts. Start a new Claude Code session.
