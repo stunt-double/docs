@@ -1,0 +1,95 @@
+---
+title: "Install and set up"
+icon: "rocket"
+description: "Install Stunt Double Studio in Claude Code or any MCP client, check your machine with doctor, and write your first actor and checklist."
+---
+
+# Install and set up
+
+Install the plugin once, then set up each project you want to test.
+
+## Before you start
+
+- **Node 22.18 or later.** Check with `node --version`.
+- **Google Chrome.** Or Playwright's Chromium, if you'd rather not install
+  Chrome (`npx playwright install chromium`).
+- **A coding agent.** Claude Code gets the full plugin: the local app, the
+  `/stuntdouble` commands and the [cloud runs](/studio/cloud-runs) server.
+
+## Install in Claude Code
+
+<Steps>
+<Step>
+
+### Add the plugin
+
+```sh
+claude plugin marketplace add stunt-double/stuntdouble-mcp
+claude plugin install stuntdouble@stuntdouble
+```
+
+Plugins load when a session starts, so start a new Claude Code session after
+installing.
+
+</Step>
+<Step>
+
+### Set up your project
+
+Open Claude Code in your project folder and run:
+
+```text
+/stuntdouble setup
+```
+
+Setup runs [doctor](/studio/troubleshooting#doctor) first and tells you how
+local runs are billed. It then asks for three things:
+
+- the URL to test (localhost is fine),
+- who the user is,
+- what must be true when they're done.
+
+From your answers it writes `.stuntdouble/` with an actor, a checklist of 3 to
+8 checks and a `.gitignore`. See [files and commands](/studio/files-and-commands)
+for what each file holds.
+
+</Step>
+<Step>
+
+### Run it
+
+```text
+/stuntdouble run <checklist>
+```
+
+Replace `<checklist>` with the checklist's file name, without `.json`.
+[Run a checklist](/studio/run-checklists) explains what happens next.
+
+</Step>
+</Steps>
+
+<Callout variant="tip" title="Skip the prompt on every browser action">
+  Setup offers to allow Studio's browser tools for this project, so Claude Code
+  stops asking before each click. It adds the permission to
+  `.claude/settings.local.json` only if you agree.
+</Callout>
+
+## Other agents
+
+Any MCP client can start the local server over stdio:
+
+```sh
+npx -y stuntdouble mcp
+```
+
+Add that command as a stdio server in your client's MCP settings. The
+`/stuntdouble` commands are Claude Code plugin commands, so in other clients
+ask your agent to set up and run a checklist in plain words.
+
+The package is [`stuntdouble` on npm](https://www.npmjs.com/package/stuntdouble),
+under the Apache-2.0 license.
+
+## No account needed
+
+Studio never asks you to sign in. You only need a Stunt Double account when you
+move a checklist to [cloud runs](/studio/cloud-runs).

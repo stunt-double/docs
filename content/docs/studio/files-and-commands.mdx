@@ -1,0 +1,54 @@
+---
+title: "Files and commands"
+icon: "code"
+description: "What Studio keeps in .stuntdouble/, which files to commit, and every /stuntdouble command and CLI command."
+---
+
+# Files and commands
+
+## The files
+
+Everything lives in `.stuntdouble/` at the project root. Commit all of it
+except `.live/`, which setup adds to `.gitignore`.
+
+| Path | What it holds |
+| --- | --- |
+| `stuntdouble.json` | Project settings: `local_base_url`, `headless`, and the workspace a cloud push goes to |
+| `actors/<slug>.json` | One actor: name, description, instructions and knowledge |
+| `checklists/<slug>.json` | One checklist: its actor, URL, instructions and checks |
+| `runs/<stamp>-<checklist>/` | One run: `run.json`, `activity.jsonl` and `shots/` |
+| `.live/` | The state of a run in progress. Not committed |
+
+Actors and checklists use the same fields as the hosted server, with slugs in
+place of ids, so a [cloud push](/studio/cloud-runs) sends them unchanged. Each
+check has a `key` that never changes, since verdicts and cloud ids follow it.
+
+Studio writes the `runs/` folders. Don't edit them by hand.
+
+<Callout variant="note" title="Test accounts only">
+  Actor knowledge can hold a login for the actor to use. These files are
+  committed, so put only test accounts in them, never real credentials.
+</Callout>
+
+## Commands in Claude Code
+
+| Command | What it does |
+| --- | --- |
+| `/stuntdouble setup` | Checks your machine, then writes an actor and a checklist for this project |
+| `/stuntdouble run <checklist>` | Runs a checklist in your local Chrome |
+| `/stuntdouble run <checklist> resume` | Carries on a run that stopped before it finished |
+| `/stuntdouble open` | Opens the viewer |
+| `/stuntdouble cloud <checklist>` | Moves a checklist to a workspace and starts a [cloud run](/studio/cloud-runs) |
+| `/stuntdouble doctor` | Checks Node, Chrome, the viewer port and how local runs are billed |
+
+## The CLI
+
+The `stuntdouble` package takes three commands:
+
+```sh
+npx -y stuntdouble mcp      # the local MCP server over stdio (your agent starts this)
+npx stuntdouble view        # the viewer over this folder's .stuntdouble/
+npx -y stuntdouble doctor   # check Node, Chrome, the viewer port and billing
+```
+
+`view` also takes a folder: `npx stuntdouble view path/to/project`.

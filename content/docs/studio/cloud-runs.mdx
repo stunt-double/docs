@@ -1,0 +1,85 @@
+---
+title: "Cloud runs"
+icon: "automation"
+description: "Move a Studio checklist to a Stunt Double workspace with /stuntdouble cloud for parallel, scheduled and independently judged runs."
+---
+
+# Cloud runs
+
+Studio answers "did I break this?" on your machine. Cloud runs keep
+answering it after you've moved on: on every deploy, every pull request and
+every night, with nobody watching.
+
+Cloud runs are the paid step, on the hosted MCP server the Claude Code plugin
+also installs. They add:
+
+- **Parallel, unattended and scheduled runs** in hosted browsers.
+- **Triggers** on deploys, pull requests and Figma changes.
+- **An independent judge**, so the agent that went through the flow doesn't
+  grade its own work.
+- **Interviews, design reviews and feedback triage.**
+- **Index scoring** from the [Stunt Double Index](/index-ranking).
+- **Team sharing**, plus [Slack](/integrations/slack),
+  [Linear](/integrations/linear) and [GitHub](/integrations/github).
+
+## Move a checklist to the cloud
+
+```text
+/stuntdouble cloud <checklist>
+```
+
+<Steps>
+<Step>
+
+### Agree to the upload
+
+Studio tells you what leaves your machine: the actor, the checklist and its
+URL. Cloud runs on the Free plan may go into the research corpus. It goes on
+only when you agree.
+
+</Step>
+<Step>
+
+### Sign in and pick a workspace
+
+The first time, Claude Code shows the hosted server's sign-in: a code sent to
+your email, or Google. Pick a workspace, and Studio saves it in
+`stuntdouble.json`.
+
+</Step>
+<Step>
+
+### Give it a URL the cloud can reach
+
+Hosted browsers can't reach your `localhost`. If the checklist points at a
+local URL, Studio asks for a public or preview URL, writes it to the
+checklist, and moves the local origin to `local_base_url` so your local runs
+keep using it. On the Startup plan and above, a
+[device](/integrations/self-hosted-workers) can reach private sites instead.
+
+</Step>
+<Step>
+
+### Push and run
+
+Studio creates or updates the project, actor and checklist in your workspace,
+writes their cloud ids back into your files, and starts a run. Running the
+command again updates the same checklist instead of making a copy.
+
+The result lands in `runs/` beside your local runs, so the
+[viewer](/studio/viewer) lists both, with a link to the run in the dashboard.
+
+</Step>
+</Steps>
+
+<Callout variant="note" title="Plans">
+  Cloud runs need a Stunt Double plan. The Free plan includes 60 compute
+  minutes a month and 2 actors. Hobby, Startup, Pro and Enterprise add more.
+  See [pricing](https://www.stuntdouble.io/pricing). If a run would go past
+  your plan's limit, Studio tells you and offers a local run instead.
+</Callout>
+
+## Next
+
+- [Re-check every deploy automatically](/tutorials/building-workflows)
+- [MCP server](/mcp): every tool the hosted server offers

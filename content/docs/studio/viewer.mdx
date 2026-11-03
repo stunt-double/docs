@@ -1,0 +1,44 @@
+---
+title: "The viewer"
+icon: "monitor"
+description: "Studio's local viewer shows each check's verdict, the screenshots and the activity log while a run happens, and lets you stop the run."
+---
+
+# The viewer
+
+The viewer is a local page over your project's `.stuntdouble/` folder. It
+lists every run, local and cloud, and updates while a run is going.
+
+## Open it
+
+Every run prints its viewer link. To open the viewer at any other time:
+
+```text
+/stuntdouble open
+```
+
+Someone without Claude Code, such as a teammate reviewing your branch, can open
+it from the project folder:
+
+```sh
+npx stuntdouble view
+```
+
+Open the link it prints. Press <kbd>Ctrl</kbd> <kbd>C</kbd> to stop the viewer.
+
+## What it shows
+
+- **Verdicts.** Each check's result and the evidence behind it.
+- **Screenshots.** What the actor saw at each step.
+- **The activity log.** Every action the actor took, in order.
+
+## Stop a run
+
+Select **Stop** while a run is going. The actor stops at its next step and
+ends the run. Checks it already judged keep their verdicts, and
+`/stuntdouble run <checklist> resume` picks up a stopped run later.
+
+## The port
+
+The viewer listens on `127.0.0.1`, starting at port 4747. If that port is
+taken, it uses the next free one, so always use the link Studio prints.
