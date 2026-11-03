@@ -15,7 +15,7 @@ flow, judges each check and leaves the evidence in your project.
   items={[
     { label: "Price", value: "Free" },
     { label: "Account", value: "None needed" },
-    { label: "You need", value: "Node 22.18 or later and Google Chrome" },
+    { label: "You need", value: "Node 22.18 or later and Google Chrome (or Playwright's Chromium)" },
   ]}
 />
 
@@ -56,7 +56,8 @@ decides whether each check passed. When you need more, a
 [cloud run](/studio/cloud-runs) on the hosted server adds an independent
 judge, runs in parallel and on a schedule, and triggers on deploys, pull
 requests and Figma changes. `/stuntdouble cloud <checklist>` moves a local
-checklist to a workspace unchanged.
+checklist to a workspace with the same actor and checks. A localhost URL
+needs a public or preview URL for the cloud.
 
 | | Studio | Cloud runs |
 | --- | --- | --- |

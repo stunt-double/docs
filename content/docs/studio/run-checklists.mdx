@@ -18,7 +18,7 @@ description: "Start a local run with /stuntdouble run, resume an interrupted run
    run and stop it.
 3. An actor opens Chrome on your machine and goes through the flow. Page text
    and screenshots stay with the actor, so your main session stays short.
-4. Studio reports the result, for example "Failed: 3 of 4 checks passed",
+4. Studio reports the result, for example "failed. 3/4 checks passed",
    then each failed or unjudged check with its evidence, and the viewer link.
    It offers to fix what failed and run again.
 
@@ -29,8 +29,10 @@ localhost on your machine and a preview URL in the cloud.
 ## Scores
 
 A checklist with only pass/fail checks has no score: it passes when every
-pass/fail check passes. A checklist with two or more weighted checks and a
-`pass_threshold` gets a score, and passes when the score meets the threshold.
+pass/fail check passes. A checklist with one or more weighted checks gets a
+score. It passes when the score meets `pass_threshold` (100 if you leave it
+out) and no pass/fail check failed. Informational checks are recorded, never
+scored.
 
 ## Verdicts are self-judged
 
