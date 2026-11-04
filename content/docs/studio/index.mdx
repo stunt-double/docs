@@ -8,7 +8,7 @@ description: "Stunt Double Studio is the free local app: run a checklist in Chro
 
 Check your change before you push it. Studio runs a Stunt Double checklist in
 a Chrome on your own machine, from the coding agent session you already have
-open. Point it at localhost, staging or production. An actor goes through the
+open or from Studio in your browser. Point it at localhost, staging or production. An actor goes through the
 flow, judges each check and leaves the evidence in your project.
 
 <PageFacts
@@ -23,9 +23,11 @@ flow, judges each check and leaves the evidence in your project.
 
 - **Runs on your machine.** The actor drives a local Chrome, so it reaches
   `localhost`, a staging site behind your VPN, or production.
-- **Runs on your existing subscription.** Your coding agent is the actor, so
-  local runs use your Claude plan (or your API key, if Claude Code uses one).
-  Stunt Double makes no model calls for local runs.
+- **Runs on the model you already have.** From your coding agent, the agent
+  is the actor, so local runs use your Claude plan (or your API key, if Claude
+  Code uses one). Studio in your browser uses a connection you set up: an
+  Anthropic API key or an OpenAI-compatible endpoint. Stunt Double makes no
+  model calls for local runs.
 - **Runs are files.** Actors, checklists and every run live in
   `.stuntdouble/` in your project. Commit them, review them in a pull
   request, and share them with your team like any other file.
@@ -47,6 +49,12 @@ Then, in Claude Code:
 /stuntdouble run <checklist>
 ```
 
+Or open Studio in your browser, on your own model connection:
+
+```sh
+npx stuntdouble studio
+```
+
 [Install and set up](/studio/install) covers each step and other agents.
 
 ## Studio and cloud runs
@@ -62,7 +70,7 @@ needs a public or preview URL for the cloud.
 | | Studio | Cloud runs |
 | --- | --- | --- |
 | Where the browser runs | Chrome on your machine | Hosted browsers |
-| Who pays for the model | Your Claude plan or API key | Your Stunt Double plan |
+| Who pays for the model | Your Claude plan, or your own API key | Your Stunt Double plan |
 | Account | None | A Stunt Double workspace |
 | Verdicts | Self-judged by your agent | Independent judge |
 | When it runs | When you ask | On demand, on a schedule or on a trigger |

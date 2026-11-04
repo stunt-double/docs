@@ -79,6 +79,19 @@ The result lands in `runs/` beside your local runs, so the
   your plan's limit, Studio tells you and offers a local run instead.
 </Callout>
 
+## From the terminal or Studio
+
+Without Claude Code, sign in and run the checklist in the cloud from the
+terminal, or from Settings in Studio:
+
+```sh
+npx stuntdouble login
+npx stuntdouble run <checklist> --cloud
+```
+
+It pushes the same files, runs the checklist in your workspace and writes the
+result beside your local runs. This path is for workspaces on a paid plan.
+
 ## Next
 
 - [Re-check every deploy automatically](/tutorials/building-workflows)

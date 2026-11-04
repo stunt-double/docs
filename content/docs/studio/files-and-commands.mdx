@@ -45,12 +45,16 @@ Studio writes the `runs/` folders. Don't edit them by hand.
 
 ## The CLI
 
-The `stuntdouble` package takes three commands:
+The `stuntdouble` package takes these commands:
 
 ```sh
-npx -y stuntdouble mcp      # the local MCP server over stdio (your agent starts this)
-npx stuntdouble view        # the viewer over this folder's .stuntdouble/
-npx -y stuntdouble doctor   # check Node, Chrome, the viewer port and billing
+npx stuntdouble studio            # open Studio in your browser (--port, --no-open)
+npx stuntdouble run <checklist>   # run one on your model connection (--resume, --max-steps, --cloud)
+npx stuntdouble login | logout    # sign in or out for cloud runs (--workspace <slug>)
+npx -y stuntdouble mcp            # the local MCP server over stdio (your agent starts this)
+npx stuntdouble view              # the read-only viewer over this folder's .stuntdouble/
+npx -y stuntdouble doctor         # check Node, Chrome, the viewer port and billing
 ```
 
-`view` also takes a folder: `npx stuntdouble view path/to/project`.
+`studio` and `view` also take a folder: `npx stuntdouble studio path/to/project`.
+In a terminal, `npx stuntdouble` on its own opens Studio.
