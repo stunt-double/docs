@@ -20,7 +20,8 @@ There are two ways to use Studio, and both read and write the same
 - **Google Chrome.** Or Playwright's Chromium, if you'd rather not install
   Chrome (`npx playwright install chromium`).
 - **A coding agent or a model key.** Claude Code gets the full plugin: the
-  local server, the `/stuntdouble` commands and the
+  local server, the Studio commands
+  (`/stuntdouble:setup`, `/stuntdouble:run` and the rest) and the
   [cloud runs](/studio/cloud-runs) server. Studio in your browser needs an
   Anthropic API key or an OpenAI-compatible endpoint instead.
 
@@ -47,7 +48,7 @@ installing.
 Open Claude Code in your project folder and run:
 
 ```text
-/stuntdouble setup
+/stuntdouble:setup
 ```
 
 Setup runs [doctor](/studio/troubleshooting#doctor) first and tells you how
@@ -67,7 +68,7 @@ for what each file holds.
 ### Run it
 
 ```text
-/stuntdouble run <checklist>
+/stuntdouble:run <checklist>
 ```
 
 Replace `<checklist>` with the checklist's file name, without `.json`.
@@ -91,7 +92,7 @@ npx -y stuntdouble mcp
 ```
 
 Add that command as a stdio server in your client's MCP settings. The
-`/stuntdouble` commands are Claude Code plugin commands, so in other clients
+`/stuntdouble:` commands are Claude Code plugin commands, so in other clients
 ask your agent to set up and run a checklist in plain words.
 
 The package is [`stuntdouble` on npm](https://www.npmjs.com/package/stuntdouble),

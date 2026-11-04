@@ -45,8 +45,8 @@ claude plugin install stuntdouble@stuntdouble
 Then, in Claude Code:
 
 ```text
-/stuntdouble setup
-/stuntdouble run <checklist>
+/stuntdouble:setup
+/stuntdouble:run <checklist>
 ```
 
 Or open Studio in your browser, on your own model connection:
@@ -63,7 +63,7 @@ Studio verdicts are self-judged: the same agent that went through the flow
 decides whether each check passed. When you need more, a
 [cloud run](/studio/cloud-runs) on the hosted server adds an independent
 judge, runs in parallel and on a schedule, and triggers on deploys, pull
-requests and Figma changes. `/stuntdouble cloud <checklist>` moves a local
+requests and Figma changes. `/stuntdouble:cloud <checklist>` moves a local
 checklist to a workspace with the same actor and checks. A localhost URL
 needs a public or preview URL for the cloud.
 

@@ -1,13 +1,13 @@
 ---
 title: "Run a checklist"
 icon: "checklist"
-description: "Start a local run with /stuntdouble run, resume an interrupted run, and read the result Studio reports back."
+description: "Start a local run with /stuntdouble:run, resume an interrupted run, and read the result Studio reports back."
 ---
 
 # Run a checklist
 
 ```text
-/stuntdouble run <checklist>
+/stuntdouble:run <checklist>
 ```
 
 ## What happens
@@ -47,7 +47,7 @@ If a run ends early, because you closed the session, the actor was
 interrupted or you stopped it from the viewer, carry on where it left off:
 
 ```text
-/stuntdouble run <checklist> resume
+/stuntdouble:run <checklist> resume
 ```
 
 Checks already judged keep their verdicts, and the actor judges only the ones
