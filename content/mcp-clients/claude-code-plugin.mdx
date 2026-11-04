@@ -9,9 +9,9 @@ The plugin installs the same hosted MCP server as the [Claude Code](/mcp/clients
 The plugin ships two servers:
 
 - **The hosted server, for cloud runs.** Parallel, scheduled and independently judged runs in a Stunt Double workspace, plus interviews, design reviews and feedback triage. It needs you to sign in.
-- **[Stunt Double Studio](/studio), the free local app.** It runs a checklist in Chrome on your own machine, on your Claude plan, and keeps each run as files in `.stuntdouble/`. It needs no account. Start with `/stuntdouble setup`.
+- **[Stunt Double Studio](/studio), the free local app.** It runs a checklist in Chrome on your own machine, on your Claude plan, and keeps each run as files in `.stuntdouble/`. It needs no account. Start with `/stuntdouble:setup`.
 
-`/stuntdouble cloud <checklist>` moves a Studio checklist to a workspace unchanged. See [cloud runs](/studio/cloud-runs).
+`/stuntdouble:cloud <checklist>` moves a Studio checklist to a workspace unchanged. See [cloud runs](/studio/cloud-runs).
 
 {/* setup */}
 
@@ -23,7 +23,7 @@ The plugin's server signs in the same way as the plain server: run `/mcp`, choos
 
 ## Check it works
 
-- Run `/stuntdouble doctor` to check that Studio can run locally.
+- Run `/stuntdouble:doctor` to check that Studio can run locally.
 - Type `/stuntdouble:` to list the skills, for example `/stuntdouble:verify-change`. Claude also picks a skill on its own when your request matches it.
 - Run `/agents` to see the subagents the plugin added.
 - Ask: "List my Stunt Double workspaces."
