@@ -60,6 +60,10 @@ If `ANTHROPIC_API_KEY` is set in your environment, doctor adds a note: when
 Claude Code uses that key, local runs are billed to it rather than your Claude
 plan.
 
+Studio in your browser, and `npx stuntdouble run`, use only the connection
+you set in Settings: your Anthropic API key or OpenAI-compatible endpoint is
+billed for those runs. They never use a Claude subscription.
+
 [Cloud runs](/studio/cloud-runs) are billed to your Stunt Double plan instead.
 
 ## A hosted server in `/mcp` asks to sign in

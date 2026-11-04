@@ -1,20 +1,28 @@
 ---
 title: "Install and set up"
 icon: "rocket"
-description: "Install Stunt Double Studio in Claude Code or any MCP client, check your machine with doctor, and write your first actor and checklist."
+description: "Install Stunt Double Studio in Claude Code or any MCP client, or open it in your browser with npx stuntdouble studio, then write your first actor and checklist."
 ---
 
 # Install and set up
 
-Install the plugin once, then set up each project you want to test.
+There are two ways to use Studio, and both read and write the same
+`.stuntdouble/` files in your project:
+
+- **From your coding agent.** Install the plugin once, then set up each
+  project. Your agent's session is the actor.
+- **[In your browser](#open-studio-in-your-browser).** Run
+  `npx stuntdouble studio` in a project, on a model connection you set up.
 
 ## Before you start
 
 - **Node 22.18 or later.** Check with `node --version`.
 - **Google Chrome.** Or Playwright's Chromium, if you'd rather not install
   Chrome (`npx playwright install chromium`).
-- **A coding agent.** Claude Code gets the full plugin: the local app, the
-  `/stuntdouble` commands and the [cloud runs](/studio/cloud-runs) server.
+- **A coding agent or a model key.** Claude Code gets the full plugin: the
+  local server, the `/stuntdouble` commands and the
+  [cloud runs](/studio/cloud-runs) server. Studio in your browser needs an
+  Anthropic API key or an OpenAI-compatible endpoint instead.
 
 ## Install in Claude Code
 
@@ -88,6 +96,31 @@ ask your agent to set up and run a checklist in plain words.
 
 The package is [`stuntdouble` on npm](https://www.npmjs.com/package/stuntdouble),
 under the Apache-2.0 license.
+
+## Open Studio in your browser
+
+In your project folder, run:
+
+```sh
+npx stuntdouble studio
+```
+
+Studio opens on `127.0.0.1` and covers setup, actors and checklists, runs,
+the live view and results. A project with no `.stuntdouble/` yet asks for the
+address to test and starts you with a first actor and checklist to edit.
+
+Set the model in Settings: an Anthropic API key (or `ANTHROPIC_API_KEY` from
+your environment), or an OpenAI-compatible endpoint such as OpenAI,
+OpenRouter, or a local model in Ollama or LM Studio. The key stays in
+`~/.stuntdouble/credentials.json`, readable by you only, and never goes into
+the project. Studio never uses a Claude subscription.
+
+A run your agent starts shows up in Studio, and the other way round. To run a
+checklist from the terminal on the same connection:
+
+```sh
+npx stuntdouble run <checklist>
+```
 
 ## No account needed
 
