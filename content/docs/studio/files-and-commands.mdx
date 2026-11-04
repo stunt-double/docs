@@ -50,7 +50,8 @@ The `stuntdouble` package takes these commands:
 ```sh
 npx stuntdouble studio            # open Studio in your browser (--port, --no-open)
 npx stuntdouble run <checklist>   # run one on your model connection (--resume, --max-steps, --cloud)
-npx stuntdouble login | logout    # sign in or out for cloud runs (--workspace <slug>)
+npx stuntdouble login             # sign in for cloud runs (--workspace <slug>)
+npx stuntdouble logout            # sign out
 npx -y stuntdouble mcp            # the local MCP server over stdio (your agent starts this)
 npx stuntdouble view              # the read-only viewer over this folder's .stuntdouble/
 npx -y stuntdouble doctor         # check Node, Chrome, the viewer port and billing
